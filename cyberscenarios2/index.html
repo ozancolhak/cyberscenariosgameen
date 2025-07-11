@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Ransomware Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a2e; --container-bg: #2a2a4a; --section-bg: #333355; --interactive-bg: #444466;
+            --accent-blue: #8be9fd; --accent-purple: #bd93f9; --accent-pink: #ff79c6; --accent-green: #50fa7b;
+            --accent-yellow: #f1fa8c; --accent-red: #ff5555; --text-light: #e0e0e0; --text-dark: #282a36;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: var(--text-light); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+        .container { background-color: var(--container-bg); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); padding: 40px; max-width: 900px; width: 100%; margin: 40px 0; }
+        .centered-page { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 60vh; animation: fadeIn 0.5s ease-out; }
+        h1 { font-size: 2.5em; color: var(--accent-blue); margin-bottom: 20px; }
+        h2 { font-size: 2em; color: var(--accent-blue); border-bottom: 2px solid var(--interactive-bg); padding-bottom: 15px; margin-bottom: 25px; }
+        h3 { font-size: 1.5em; color: var(--accent-blue); }
+        h4 { font-size: 1.2em; color: var(--accent-purple); text-align: left; margin-top: 0; border-bottom: 1px solid var(--interactive-bg); padding-bottom: 10px; }
+        p { line-height: 1.7; font-size: 1.1em; }
+        .section { display: none; padding: 30px; background-color: var(--section-bg); border-radius: 8px; margin-top: 25px; animation: fadeIn 0.5s ease-out; }
+        .interactive-element { background-color: var(--interactive-bg); border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .decision-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+        .btn { background-color: #6272a4; color: white; border: none; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: all 0.3s ease; text-align: left; display: flex; align-items: center; gap: 15px; font-weight: 700; }
+        .btn:hover { background-color: #7a8ab9; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .btn:disabled { background-color: #555 !important; color: #999 !important; cursor: not-allowed; transform: none; box-shadow: none; opacity: 0.7; }
+        .btn .btn-text { flex-grow: 1; }
+        .btn small { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 5px; font-weight: 400; }
+        .btn-start, .btn-continue { font-size: 1.3em; font-weight: bold; text-align: center; background-color: var(--accent-green); color: var(--text-dark); justify-content: center; }
+        .btn.critical { background-color: var(--accent-pink); }
+        #intermissionSection .metric-change { font-size: 1.2em; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
+        .metric-change .positive { color: var(--accent-green); }
+        .metric-change .negative { color: var(--accent-red); }
+        #statusBar { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; background-color: var(--text-dark); padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #6272a4; }
+        #statusBar .metric { text-align: center; font-size: 0.9em; }
+        #statusBar .metric .value { font-size: 1.3em; font-weight: bold; color: var(--accent-yellow); }
+        .final-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+        .metric-card { background-color: var(--section-bg); padding: 25px; border-radius: 8px; text-align: center; border: 1px solid var(--interactive-bg); transition: all 0.3s ease; }
+        .metric-card:hover { transform: scale(1.05); border-color: var(--accent-blue); }
+        .metric-card .icon { font-size: 2.5em; color: var(--accent-blue); margin-bottom: 10px; }
+        .metric-card .label { font-size: 1.1em; margin-bottom: 5px; }
+        .metric-card .value { font-size: 1.8em; font-weight: bold; color: var(--accent-yellow); }
+        .code-block, .siem-log-viewer, .slack-chat { background-color: var(--text-dark); border: 1px solid #6272a4; border-radius: 8px; padding: 20px; margin-top: 15px; white-space: pre-wrap; word-break: break-all; font-family: 'Consolas', monospace; }
+        .learning-note { background-color: var(--text-dark); border-left: 5px solid var(--accent-blue); padding: 20px; border-radius: 8px; margin-top: 30px; }
+        
+        .scenario-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 25px auto;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid var(--interactive-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        #network-map-container-2 {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .network-node {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: white;
+            cursor: help;
+            z-index: 10;
+            border: 2px solid white;
+            text-shadow: 0 0 5px black;
+        }
+        .network-node.infected { background-color: var(--accent-red); animation: pulse 1s infinite alternate; }
+        .network-node.isolated { background-color: var(--accent-yellow); color: var(--text-dark); border-color: var(--text-dark); animation: none; }
+        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introSection" class="centered-page">
+            <h1><i class="fa-solid fa-shield-virus"></i> Ransomware Simulation</h1>
+            <p>You will take on the role of a cybersecurity analyst and respond to an unfolding ransomware attack. The decisions you make will determine the fate of the company. Are you ready?</p>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
+        </div>
+        <div id="intermissionSection" class="centered-page" style="display: none;">
+            <h2 id="intermissionTitle"></h2>
+            <p id="intermissionText" style="max-width: 600px;"></p>
+            <div class="interactive-element" style="width: 100%; max-width: 500px;">
+                <h4>Decision Impacts</h4><div id="intermissionMetrics"></div>
+            </div>
+            <div class="interactive-element" style="width: 100%; max-width: 500px; border-left-color: var(--accent-blue); margin-top: 20px;">
+                <h4>Strategic Assessment</h4><p id="strategicText" style="font-size: 1em;"></p>
+            </div>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px;"><i class="fa-solid fa-forward"></i> Continue</button>
+        </div>
+        <div id="gameContainer" style="display: none;">
+            <div id="statusBar">
+                <div class="metric"><span><i class="fa-solid fa-computer"></i> Affected Systems</span><div class="value" id="status-affectedSystems">1</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">₺0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-database"></i> Data Loss</span><div class="value" id="status-dataLoss">0%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+            </div>
+            <div id="game-content"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const game = {
+                score: { affectedSystems: 1, financialLoss: 0, dataLoss: 0, reputation: 100 },
+                state: { infected: ['hr'], isolated: [] },
+                elements: {},
+                decisionInfo: {
+                    's1-isolate': { title: "Swift Response!", text: "By instantly isolating the computer, you slowed the direct spread of the attack across the network. This proactive move has bought you valuable time.", strat: "Proactive isolation is the correct first step to prevent lateral movement and buy time.", changes: { financialLoss: 5000, newIsolated: ['hr'] } },
+                    's1-observe': { title: "Critical Delay!", text: "Your decision to wait allowed the malware to establish a foothold and spread to the File Server. The crisis is now larger.", strat: "With fast-spreading threats like ransomware, waiting to observe is often disastrous. Containment at the first point of contact is essential.", changes: { financialLoss: 50000, reputation: -10, affectedSystems: 1, newInfected: ['fs'] } },
+                    's2-segment': { title: "Smart Defense!", text: "Segmenting the critical servers prevented the attack from reaching your most valuable asset: the backup server.", strat: "Network segmentation is a vital technique for damage control. It limits the attacker's movement area and protects the most valuable assets.", changes: { financialLoss: 150000, reputation: -5, newIsolated: ['bk'] } },
+                    's2-shutdown': { title: "Radical Solution!", text: "Shutting down all servers stopped the spread cold, but company operations have come to a complete halt.", strat: "This method is like using a sledgehammer. It's effective but has a devastating impact on business continuity. It should generally be considered a last resort.", changes: { financialLoss: 400000, reputation: -15, newIsolated: ['fs', 'db', 'bk'] } },
+                    's3-restore': { title: "Principled Decision!", text: "You did the right thing by refusing to pay the ransom and restoring from backups. However, the 1 week of data loss and the restoration process have been costly.", strat: "Not paying the ransom is important for discouraging cybercriminals. Reliable and up-to-date backups are a company's greatest insurance.", changes: { financialLoss: 500000, reputation: -20, dataLoss: 7 } },
+                    's3-pay': { title: "A Risky Gamble!", text: "You paid the ransom. You were lucky that the attackers kept their word. However, this payment has funded the cybercrime ecosystem and damaged the company's reputation.", strat: "Paying the ransom never guarantees that data will be recovered or will not be leaked. It also makes the company a target for future attacks.", changes: { financialLoss: 5000000, reputation: -40 } },
+                    's4-cut': { title: "Critical Intervention!", text: "By cutting off the data leak immediately, you prevented further theft of customer data. This saved the company from legal penalties and a greater loss of reputation.", strat: "When data exfiltration is detected, the first priority is to stop the bleeding. Every second matters.", changes: { reputation: 10 } },
+                    's4-honeypot': { title: "Advanced Tactic!", text: "Redirecting the attacker to a honeypot system provided valuable intelligence about their tactics. However, some additional data was leaked during this process.", strat: "Using a honeypot is an advanced defense technique, but it has risks. You must be certain you can control the situation.", changes: { financialLoss: 100000, reputation: -5, dataLoss: 5 } },
+                },
+
+                setup() {
+                    this.elements = {
+                        intro: document.getElementById('introSection'), game: document.getElementById('gameContainer'), gameContent: document.getElementById('game-content'),
+                        startButton: document.getElementById('startButton'), intermission: document.getElementById('intermissionSection'),
+                        intermissionTitle: document.getElementById('intermissionTitle'), intermissionText: document.getElementById('intermissionText'),
+                        intermissionMetrics: document.getElementById('intermissionMetrics'), strategicText: document.getElementById('strategicText'),
+                        continueButton: document.getElementById('continueButton'),
+                        statusBar: { affectedSystems: document.getElementById('status-affectedSystems'), financialLoss: document.getElementById('status-financialLoss'), dataLoss: document.getElementById('status-dataLoss'), reputation: document.getElementById('status-reputation') }
+                    };
+                    this.loadGameHTML();
+                    this.attachListeners();
+                },
+
+                attachListeners() {
+                    this.elements.startButton.addEventListener('click', () => {
+                        this.elements.intro.style.display = 'none';
+                        this.elements.game.style.display = 'block';
+                        this.showSection(1);
+                        this.updateState();
+                    });
+                    this.elements.gameContent.addEventListener('click', (e) => {
+                        const button = e.target.closest('.btn[data-decision]');
+                        if (button) this.handleDecision(button.dataset.decision, parseInt(button.dataset.next, 10), button);
+                    });
+                    this.elements.continueButton.addEventListener('click', () => {
+                        const nextSection = parseInt(this.elements.continueButton.dataset.next, 10);
+                        this.elements.intermission.style.display = 'none';
+                        this.elements.game.style.display = 'block';
+                        this.showSection(nextSection);
+                    });
+                },
+                
+                handleDecision(decision, nextSection, button) {
+                    button.closest('.decision-buttons').querySelectorAll('.btn').forEach(btn => btn.disabled = true);
+                    const info = this.decisionInfo[decision];
+                    if (!info) return;
+
+                    this.score.financialLoss += info.changes.financialLoss || 0;
+                    this.score.reputation += info.changes.reputation || 0;
+                    this.score.dataLoss += info.changes.dataLoss || 0;
+                    this.score.affectedSystems += info.changes.affectedSystems || 0;
+                    if (info.changes.newInfected) this.state.infected.push(...info.changes.newInfected);
+                    if (info.changes.newIsolated) this.state.isolated.push(...info.changes.newIsolated);
+                    
+                    this.updateState();
+                    this.showIntermission(info.title, info.text, info.strat, info.changes, nextSection);
+                },
+
+                showIntermission(title, text, strat, changes, next) {
+                    this.elements.intermissionTitle.textContent = title;
+                    this.elements.intermissionText.textContent = text;
+                    this.elements.strategicText.textContent = strat;
+                    
+                    let metricsHTML = '';
+                    const formatChange = (label, value, unit, icon, isPositive) => `<div class="metric-change ${isPositive ? 'positive' : 'negative'}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${isPositive ? 'up' : 'down'}-long"></i> ${value.toLocaleString('en-US')}${unit}</div>`;
+
+                    if (changes.financialLoss) metricsHTML += formatChange('Financial Loss', changes.financialLoss, ' TRY', 'fa-sack-xmark', false);
+                    if (changes.dataLoss) metricsHTML += formatChange('Data Loss', changes.dataLoss, '%', 'fa-database', false);
+                    if (changes.reputation) metricsHTML += formatChange('Reputation Score', Math.abs(changes.reputation), '', 'fa-building-shield', changes.reputation > 0);
+                    if (changes.affectedSystems) metricsHTML += formatChange('Affected System', changes.affectedSystems, '', 'fa-computer', false);
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">This decision had no direct impact on the metrics.</p>';
+
+                    this.elements.intermissionMetrics.innerHTML = metricsHTML;
+                    this.elements.continueButton.dataset.next = next;
+                    this.elements.game.style.display = 'none';
+                    this.elements.intermission.style.display = 'flex';
+                },
+
+                updateStatusBar() {
+                    const s = this.score;
+                    this.elements.statusBar.affectedSystems.textContent = s.affectedSystems;
+                    this.elements.statusBar.financialLoss.textContent = `₺${s.financialLoss.toLocaleString('en-US')}`;
+                    this.elements.statusBar.dataLoss.textContent = `${s.dataLoss}%`;
+                    this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
+                },
+
+                showSection(index) {
+                    this.elements.sections.forEach((section, i) => { section.style.display = (i === index - 1) ? 'block' : 'none'; });
+                    if (index === 5) this.showFinalReport();
+                },
+                
+                showFinalReport() {
+                    this.elements.finalMetrics.affectedSystems.textContent = `${this.score.affectedSystems} Systems`;
+                    this.elements.finalMetrics.financialLoss.textContent = `₺${this.score.financialLoss.toLocaleString('en-US')}`;
+                    this.elements.finalMetrics.dataLoss.textContent = `%${this.score.dataLoss}`;
+                    this.elements.finalMetrics.reputation.textContent = `${Math.max(0, this.score.reputation)}/100`;
+                    let title = '', color = '';
+                    if (this.score.reputation >= 70 && this.score.financialLoss < 1000000 && this.score.dataLoss < 10) { title = "✅ SUCCESSFUL CRISIS MANAGEMENT"; color = 'var(--accent-green)'; }
+                    else if (this.score.reputation >= 40 && this.score.financialLoss < 5000000) { title = "⚠️ HEAVY DAMAGE SUSTAINED"; color = 'var(--accent-yellow)'; }
+                    else { title = "⛔ DISASTROUS OUTCOME"; color = 'var(--accent-red)'; }
+                    this.elements.outcomeTitle.textContent = title; this.elements.outcomeTitle.style.color = color;
+                },
+
+                updateState() { this.updateStatusBar(); this.updateNetworkMap(); this.updateSiemLogs(); },
+                updateNetworkMap() { /* This function is for interactive nodes, not used currently */ },
+                
+                updateSiemLogs() {
+                    if (!this.elements.siemLogs2) return;
+                    
+                    let html = `<div><span style="color:var(--accent-yellow);">[09:45:12] WARNING: Abnormal PowerShell activity from HR-PC-ELIF (192.168.1.112).</span></div>`;
+
+                    if (this.state.infected.includes('fs')) {
+                        html += `<div><span style="color:var(--accent-red); font-weight:bold;">[10:05:11] CRITICAL: Mimikatz (credential dumping) activity on FileServer (192.168.1.50)!</span></div>`;
+                    }
+                    if (this.state.infected.includes('db')) {
+                        html += `<div><span style="color:var(--accent-red); font-weight:bold;">[10:15:40] CRITICAL: Abnormal file encryption activity on DB-Server (192.168.1.70)!</span></div>`;
+                    }
+
+                    if (!this.state.infected.includes('fs') && !this.state.infected.includes('db')) {
+                         html += `<div><span style="color:var(--accent-green);">[10:00:00] No other suspicious activity on the server network for now.</span></div>`;
+                    }
+                    this.elements.siemLogs2.innerHTML = html;
+                },
+
+                loadGameHTML() {
+                    const gameHTMLContent = `
+                        <div id="section1" class="section">
+                            <div id="s1-part1">
+                                <h2><i class="fa-solid fa-envelope-open-text"></i> Chapter 1: The Unexpected Guest</h2>
+                                <p>Elif from the Human Resources department opens an email attachment named "CV_Resume.docx". She reports that the file seemed harmless, but her computer has slowed down.</p>
+                                <img src="elif_eposta.png" alt="Employee opening an email" class="scenario-image">
+                                <button class="btn btn-continue" style="margin: 20px auto 0;" onclick="document.getElementById('s1-part1').style.display='none'; document.getElementById('s1-part2').style.display='block';"><i class="fa-solid fa-arrow-right"></i> Begin Analysis</button>
+                            </div>
+                            <div id="s1-part2" style="display:none; animation: fadeIn 0.5s ease-out;">
+                                 <div class="interactive-element"><h4><i class="fa-solid fa-file-waveform"></i> Initial Findings</h4>
+                                    <p>Email and file analysis reveals that it executed an encrypted PowerShell command hidden inside the document.</p>
+                                    <img src="ilk_bulgular.png" alt="Malicious code analysis" class="scenario-image">
+                                    <div class="code-block"><pre><code class="language-powershell">powershell.exe -NoP -NonI -Exec Bypass -EncodedCommand JABjAGwAaQBlAG4AdA....</code></pre></div>
+                                </div>
+                                <div class="decision-buttons">
+                                    <button class="btn critical" data-decision="s1-isolate" data-next="2"><i class="fa-solid fa-person-running"></i><div class="btn-text">Option A: Immediately isolate Elif's computer from the network.<small>Instant intervention can prevent the spread.</small></div></button>
+                                    <button class="btn" data-decision="s1-observe" data-next="2"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Option B: Monitor the suspicious activity to gather more evidence.<small>Taking action without certainty can disrupt business.</small></div></button>
+                                </div>
+                                <div class="learning-note"><strong>Learning Note:</strong> Phishing emails are the most common entry point for ransomware. Swift isolation is key to preventing lateral movement.</div>
+                            </div>
+                        </div>
+                        
+                        <div id="section2" class="section">
+                            <h2><i class="fa-solid fa-network-wired"></i> Chapter 2: The Chain Reaction</h2>
+                            <p>The malware has begun to spread across the network. The attackers are moving between servers using compromised credentials.</p>
+                            <div class="interactive-element">
+                                <h4><i class="fa-solid fa-map-location-dot"></i> Network Map</h4>
+                                <div id="network-map-container-2">
+                                    <img src="network_map_bg.png" alt="Network Map" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.4;">
+                                </div>
+                            </div>
+                            <div class="interactive-element"><h4><i class="fa-solid fa-terminal"></i> SIEM Logs</h4><div class="siem-log-viewer" id="siemLogs2"></div></div>
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s2-segment" data-next="3"><i class="fa-solid fa-diagram-project"></i><div class="btn-text">Option A: Isolate critical servers by segmenting them from the network.<small>Limits the damage but is a complex operation.</small></div></button>
+                                <button class="btn" data-decision="s2-shutdown" data-next="3"><i class="fa-solid fa-power-off"></i><div class="btn-text">Option B: Shut down all affected servers to completely stop the spread.<small>Effective, but brings operations to a complete halt.</small></div></button>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Network segmentation is a critical defense mechanism that prevents an attacker from accessing the entire network.</div>
+                        </div>
+                        
+                        <div id="section3" class="section">
+                            <h2><i class="fa-solid fa-users-viewfinder"></i> Chapter 3: The War Room and the Ransom Note</h2>
+                            <p>Files have begun to be encrypted, and a ransom note has appeared on the servers. The attackers are demanding 5 Million TRY and threatening to leak the data. Management is in a panic.</p>
+                             <img src="yonetim_toplantisi.png" alt="Crisis management meeting" class="scenario-image">
+                            <div class="interactive-element"><h4><i class="fa-solid fa-comments"></i> Management Emergency Channel</h4><div class="slack-chat"><div><span style="font-weight:bold; color:var(--accent-pink);">CEO:</span> Our reputation will be ruined! Is the customer data safe? End this crisis now!</div><div style="margin-top: 10px;"><span style="font-weight:bold; color:var(--accent-yellow);">CFO:</span> 5 Million TRY! We'll go bankrupt if we pay that. Can't we restore from our backups?</div><div style="margin-top: 10px;"><span style="font-weight:bold; color:var(--accent-blue);">Legal Counsel:</span> Paying the ransom could mean financing illegal activities and may have legal consequences.</div></div></div>
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s3-restore" data-next="4"><i class="fa-solid fa-clock-rotate-left"></i><div class="btn-text">Option A: Do not pay the ransom. Restore from clean backups that are one week old.<small>Data loss will occur, but no money goes to criminals.</small></div></button>
+                                <button class="btn critical" data-decision="s3-pay" data-next="4"><i class="fa-solid fa-money-bill-wave"></i><div class="btn-text">Option B: Don't risk the company's future, pay the ransom.<small>It might be a quick solution, but there are no guarantees and it is very costly.</small></div></button>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The decision to pay a ransom is not just a technical one. It has financial, legal, and ethical dimensions.</div>
+                        </div>
+                        
+                        <div id="section4" class="section">
+                            <h2><i class="fa-solid fa-user-secret"></i> Chapter 4: The Hidden Threat: Data Exfiltration</h2>
+                            <p>While your team deals with the encrypted files, threat hunting tools uncover a more sinister danger: while encrypting files, the attackers are also actively exfiltrating data from the customer database (Double Extortion)!</p>
+                            <img src="siem_ekrani.png" alt="SIEM log screen" class="scenario-image">
+                            <div class="interactive-element"><h4><i class="fa-solid fa-terminal"></i> SIEM Logs</h4><div class="siem-log-viewer"><div style="color:var(--accent-red); font-weight: bold;">[11:45:10] CRITICAL: Encrypted and continuous data stream detected from DB-Server (192.168.1.70) to an unknown external IP (81.25.11.92)!</div></div></div>
+                            <div class="decision-buttons">
+                                <button class="btn critical" data-decision="s4-cut" data-next="5"><i class="fa-solid fa-scissors"></i><div class="btn-text">Option A: Cut the server's external network connection immediately to stop the data leak.<small>Stops the bleeding but takes the server completely offline.</small></div></button>
+                                <button class="btn" data-decision="s4-honeypot" data-next="5"><i class="fa-solid fa-hat-cowboy-side"></i><div class="btn-text">Option B: Redirect the connection to a honeypot system to deceive the attacker and understand what they are stealing.<small>Provides valuable intel but is risky and time-consuming.</small></div></button>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Modern ransomware attacks often use a 'double extortion' tactic.</div>
+                        </div>
+
+                        <div id="section5" class="section">
+                            <h2><i class="fa-solid fa-file-invoice-dollar"></i> Final Report</h2>
+                            <p>The crisis is over. Based on the decisions you made, here is the final state of the company:</p>
+                            <div id="finalOutcome"><h3 id="outcome-title" style="margin-bottom: 20px;"></h3><div class="final-metrics"><div class="metric-card"><div class="icon"><i class="fa-solid fa-computer"></i></div><div class="label">Affected Systems</div><div class="value" id="affectedSystems"></div></div><div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value" id="financialLoss"></div></div><div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Data Loss</div><div class="value" id="dataLoss"></div></div><div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Reputation Score</div><div class="value" id="reputation"></div></div></div></div>
+                            <div class="decision-buttons" style="margin-top: 40px;"><button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button></div>
+                        </div>`;
+                    this.elements.gameContent.innerHTML = gameHTMLContent;
+                    this.queryAndSetupDynamicElements();
+                },
+                queryAndSetupDynamicElements() {
+                    this.elements.sections = this.elements.gameContent.querySelectorAll('.section');
+                    this.elements.finalMetrics = { affectedSystems: document.getElementById('affectedSystems'), financialLoss: document.getElementById('financialLoss'), dataLoss: document.getElementById('dataLoss'), reputation: document.getElementById('reputation') };
+                    this.elements.outcomeTitle = document.getElementById('outcome-title');
+                    this.elements.siemLogs2 = document.getElementById('siemLogs2');
+                    hljs.highlightAll();
+                }
+            };
+            game.setup();
+        });
+    </script>
+</body>
+</html>

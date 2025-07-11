@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberScenario v5: Phishing Crisis Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a2e;
+            --container-bg: #2a2a4a;
+            --section-bg: #333355;
+            --interactive-bg: #444466;
+            --accent-blue: #8be9fd;
+            --accent-purple: #bd93f9;
+            --accent-pink: #ff79c6;
+            --accent-green: #50fa7b;
+            --accent-yellow: #f1fa8c;
+            --accent-red: #ff5555;
+            --text-light: #e0e0e0;
+            --text-dark: #282a36;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            line-height: 1.7;
+            font-size: 0.90em;
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            padding: 20px;
+            max-width: 950px;
+            width: 100%;
+            margin: 40px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @media (min-width: 768px) {
+            .container { padding: 40px; }
+        }
+
+        .centered-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            color: var(--accent-blue);
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 5px var(--shadow-dark);
+        }
+
+        h2 {
+            font-size: 1.9em;
+            color: var(--accent-blue);
+            border-bottom: 2px solid var(--interactive-bg);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--accent-purple);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: var(--accent-yellow);
+            text-align: left;
+            margin-top: 0;
+            border-bottom: 1px solid var(--interactive-bg);
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            margin-top: 25px;
+            animation: fadeIn 0.7s ease-out;
+        }
+
+        @media (min-width: 768px) {
+            .section { padding: 30px; }
+        }
+
+        .interactive-element {
+            background-color: var(--interactive-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
+        .decision-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            background-color: #6272a4;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px var(--shadow-light);
+        }
+
+        .btn:hover {
+            background-color: #7a8ab9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow-dark);
+        }
+
+        .btn:disabled {
+            background-color: #555 !important;
+            color: #999 !important;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            opacity: 0.7;
+        }
+
+        .btn .btn-text {
+            flex-grow: 1;
+        }
+
+        .btn small {
+            display: block;
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 5px;
+            font-weight: 400;
+            color: var(--accent-blue);
+        }
+
+        .btn-start, .btn-continue {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            background-color: var(--accent-green);
+            color: var(--text-dark);
+            justify-content: center;
+            margin-top: 40px;
+            padding: 18px 30px;
+        }
+
+        .btn.critical {
+            background-color: var(--accent-pink);
+        }
+
+        .btn.critical:hover {
+            background-color: #ff6e87;
+        }
+
+        #intermissionSection .metric-change-summary-container {
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 0; /* Adjusted for direct placement after h2 */
+            box-shadow: 0 5px 15px var(--shadow-light);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #intermissionSection .metric-change-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        #intermissionSection .metric-change {
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: var(--interactive-bg); /* Use interactive-bg for metric changes within summary */
+            box-shadow: inset 0 1px 5px rgba(0,0,0,0.2);
+            justify-content: center;
+        }
+
+        .metric-change .positive { color: var(--accent-green); }
+        .metric-change .negative { color: var(--accent-red); }
+        .metric-change .neutral { color: var(--accent-blue); }
+
+        /* Start Section New Styles */
+        .intro-info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .intro-info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .intro-roles-container, .intro-metrics-container {
+            background-color: var(--section-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            border: 1px solid var(--interactive-bg);
+        }
+
+        .intro-roles-container h3, .intro-metrics-container h3 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--interactive-bg);
+            color: var(--accent-purple);
+            text-align: center;
+        }
+
+        .intro-roles-container ul, .intro-metrics-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .intro-roles-container li, .intro-metrics-container li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--interactive-bg);
+            font-size: 1.05em;
+        }
+
+        .intro-roles-container li:last-child, .intro-metrics-container li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .intro-roles-container li .icon, .intro-metrics-container li .icon {
+            font-size: 1.8em;
+            color: var(--accent-blue);
+            flex-shrink: 0;
+            width: 35px;
+            text-align: center;
+        }
+        
+        .intro-roles-container li strong {
+            color: var(--accent-yellow);
+        }
+
+        .intro-roles-container li small {
+            display: block;
+            font-size: 0.9em;
+            color: var(--text-light);
+            opacity: 0.8;
+            margin-top: 3px;
+        }
+        /* End Start Section New Styles */
+
+        #statusBar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: var(--text-dark);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #6272a4;
+            box-shadow: 0 4px 12px var(--shadow-dark);
+        }
+
+        #statusBar .metric {
+            text-align: center;
+            font-size: 0.9em;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        #statusBar .metric .value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            margin-top: 5px;
+        }
+
+        .final-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .metric-card {
+            background-color: var(--section-bg);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--interactive-bg);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 160px;
+        }
+
+        .metric-card:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-blue);
+            box-shadow: 0 6px 20px var(--shadow-dark);
+        }
+
+        .metric-card .icon {
+            font-size: 2.8em;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .metric-card .label {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .metric-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--accent-yellow);
+        }
+
+        .code-block, .slack-chat {
+            background-color: var(--text-dark);
+            border: 1px solid #6272a4;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-family: 'Consolas', monospace;
+            font-size: 0.95em;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .learning-note {
+            background-color: var(--text-dark);
+            border-left: 5px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .scenario-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 25px auto;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid var(--interactive-bg);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+        }
+
+        .slack-chat .message {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 7px;
+            background-color: #3f3f5a;
+            border: 1px solid #555577;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .slack-chat .sender {
+            font-weight: bold;
+            color: var(--accent-pink);
+            margin-right: 8px;
+        }
+
+        .slack-chat .sender.cso { color: var(--accent-green); }
+        .slack-chat .sender.ops { color: var(--accent-yellow); }
+        .slack-chat .sender.hr { color: var(--accent-blue); }
+        .slack-chat .sender.finance { color: var(--accent-red); }
+        .slack-chat .sender.ceo { color: var(--accent-purple); }
+        .slack-chat .sender.bt { color: var(--accent-blue); }
+
+        .suspect-card {
+            background-color: var(--interactive-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent-purple);
+            box-shadow: 0 2px 8px var(--shadow-light);
+        }
+
+        .suspect-card h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: none;
+            color: var(--accent-purple);
+        }
+
+        /* Final Section specific styles */
+        #finalSection {
+            text-align: center;
+        }
+
+        #performance-badge-container {
+            margin: 25px 0;
+        }
+
+        #performance-badge {
+            padding: 15px 35px;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            color: var(--text-dark);
+            box-shadow: 0 5px 20px var(--shadow-dark);
+            transition: transform 0.3s ease;
+        }
+
+        #performance-badge:hover {
+            transform: scale(1.08);
+        }
+
+        .post-crisis-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: left;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        @media (min-width: 800px) {
+            .post-crisis-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .event-timeline, .strategic-debrief {
+            background-color: var(--interactive-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--section-bg);
+            margin-top: 20px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        .event-timeline h3, .strategic-debrief h3 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--section-bg);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-timeline ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .event-timeline li {
+            position: relative;
+            padding: 5px 0 15px 35px;
+            border-left: 2px solid var(--section-bg);
+            font-size: 0.95em;
+        }
+
+        .event-timeline li:last-child {
+            border-left: none;
+        }
+
+        .event-timeline li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-green);
+            position: absolute;
+            left: -12px;
+            top: 5px;
+            background-color: var(--dark-bg);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 0.8em;
+            border: 2px solid var(--section-bg);
+        }
+
+        .event-timeline li.negative::before { content: '\f00d'; color: var(--accent-red); }
+        .event-timeline li.neutral::before { content: '\f05a'; color: var(--accent-blue); }
+
+        .event-timeline li .decision-title {
+            font-weight: bold;
+            color: var(--accent-purple);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .event-timeline li .decision-impact {
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        #strategic-debrief-content p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introSection" class="centered-page">
+            <h1><i class="fa-solid fa-envelope-open-text"></i> Phishing Crisis Simulation</h1>
+            <p style="max-width: 600px;">Welcome, **ÇOLHAK Teknoloji**'s new **Cyber Intelligence Chief**! Your company is developing a groundbreaking AI-powered product that's making waves in the industry. However, a rival group has launched a sophisticated, multi-stage spear phishing campaign to steal intellectual property. This attack isn't just about emails; it's supported by LinkedIn, WhatsApp/Telegram, and even phone calls. Your mission: Detect "abnormal" behaviors and "whispers" across these different layers and protect the company!</p>
+            <img src="intro.png" alt="Cybersecurity themed intro image" class="scenario-image">
+
+            <div class="intro-info-grid">
+                <div class="intro-roles-container">
+                    <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
+                    <ul>
+                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Your Role: Cyber Intelligence Chief</strong> <small>You are responsible for detecting and analyzing multi-channel phishing attacks and managing the crisis.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-users-gear"></i></span><div><strong>CEO Elara Yılmaz</strong> <small>Focused on product launch and company reputation.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-tie"></i></span><div><strong>CSO Can Demir</strong> <small>Responsible for cyber security operations.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-group"></i></span><div><strong>HR Director Ayşe Erdem</strong> <small>Focused on employee morale and productivity.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-money-bill-transfer"></i></span><div><strong>Finance Director Burak Mert</strong> <small>Responsible for budget and finances.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-microchip"></i></span><div><strong>R&D Director Deniz Akın</strong> <small>Lead developer of the AI product.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-server"></i></span><div><strong>IT System Administrator Mert Can</strong> <small>Responsible for network and system health.</small></div></li>
+                    </ul>
+                </div>
+                <div class="intro-metrics-container">
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
+                    <ul>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-square-check"></i></span><div><strong>Intellectual Property Integrity</strong> <small>Security of AI project data. (Start: 100%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Financial Loss</strong> <small>Cost of the crisis to the company. (Start: ₺0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-users"></i></span><div><strong>Employee Trust</strong> <small>Staff confidence in the company and management. (Start: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-building-shield"></i></span><div><strong>Reputation Score</strong> <small>Company's public and industry image. (Start: 100)</small></div></li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
+        </div>
+
+        <div id="intermissionSection" class="centered-page" style="display: none;">
+            <h2 id="intermissionTitle"></h2>
+            <div id="intermissionDetails">
+            </div>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
+        </div>
+
+        <div id="gameContainer" style="display: none;">
+            <div id="statusBar">
+                <div class="metric"><span><i class="fa-solid fa-lock"></i> IP Integrity</span><div class="value" id="status-ipIntegrity">100%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">₺0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> Employee Trust</span><div class="value" id="status-employeeTrust">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+            </div>
+            <div id="game-content">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.game = {
+                score: { ipIntegrity: 100, financialLoss: 0, employeeTrust: 100, reputation: 100 },
+                state: {
+                    currentSectionId: 'start',
+                    emailAnalyzed: false, linkedinProfileAnalyzed: false, awarenessTrainingInitiated: false, threatHuntingStarted: false,
+                    whatsappForensicallyExamined: false, vishingAnalyzed: false, personnelInterviewed: false, internalNetworkMonitored: false,
+                    malwareAnalyzed: false, systemsIsolated: false, cemilConfronted: false, insiderThreatReported: false, usomCollaboration: false,
+                    crisisMeetingHeld: false, publicStatementPrepared: false, externalForensicHired: false, cemilManaged: false,
+                    protocolsRevised: false, ipSecurityEnhanced: false, reputationCampaignLaunched: false, employeeSupportInitiated: false, insiderThreatProgramStarted: false,
+                    decisionHistory: [],
+                    currentTurnDecisions: [], // Store full decision info for the current turn
+                },
+
+                elements: {},
+                
+                decisionInfo: {
+                    // Day 1 Morning
+                    'd1-m-email-analysis': {
+                        title: "Detailed CEO Email Analysis",
+                        text: "You subjected the suspicious email from the CEO to technical analysis. You identified a malicious link/attachment, understanding the primary vector of the attack. The file contained a dropper.",
+                        strat: "Early technical analysis in phishing attacks is essential to break the chain. Speed minimizes damage.",
+                        changes: { financialLoss: 5000, ipIntegrity: -2, employeeTrust: -1 },
+                        clue: 'emailAnalyzed',
+                        impact: 'Positive',
+                    },
+                    'd1-m-linkedin-analysis': {
+                        title: "LinkedIn Profile Analysis and OSINT",
+                        text: "You analyzed the LinkedIn profile and the message received by the engineer. A fake profile and a phishing portal URL were detected. You understood the attacker's social engineering capabilities.",
+                        strat: "OSINT in social engineering is valuable for understanding the attacker's preparation. Following leads is critical.",
+                        changes: { financialLoss: 2000, ipIntegrity: -1, employeeTrust: -1, reputation: -1 },
+                        clue: 'linkedinProfileAnalyzed',
+                        impact: 'Neutral',
+                    },
+                    'd1-m-awareness-training': {
+                        title: "Urgent Cyber Awareness Training",
+                        text: "You requested urgent phishing and social engineering awareness training with HR. An announcement was made, and a program was planned. This can increase employee resilience in the long run.",
+                        strat: "Employee awareness is the strongest defense against attacks targeting human vulnerabilities. The impact of training may not be immediate.",
+                        changes: { financialLoss: 10000, employeeTrust: +5, reputation: -2 },
+                        clue: 'awarenessTrainingInitiated',
+                        impact: 'Neutral',
+                    },
+                    'd1-m-threat-hunting': {
+                        title: "Urgent Threat Hunting Operation",
+                        text: "You reported to the CSO and initiated a comprehensive threat hunting operation. This created an opportunity to detect potential compromises early, but it required intensive resource utilization.",
+                        strat: "Proactive threat hunting is effective in detecting unknown attacks but can be costly and requires planning.",
+                        changes: { financialLoss: 25000, ipIntegrity: -3, reputation: -3 },
+                        clue: 'threatHuntingStarted',
+                        impact: 'Negative',
+                    },
+
+                    // Day 1 Evening - New Section
+                    'd1-a-whatsapp-forensics': {
+                        title: "WhatsApp Account Forensic Examination",
+                        text: "You conducted a forensic examination of the WhatsApp account. You found that the attacker used internal terms and specific project information, strongly indicating insider knowledge.",
+                        strat: "Examining messaging apps is essential for understanding attacker methods. The suspicion of insider information leakage strengthens.",
+                        changes: { financialLoss: 15000, ipIntegrity: -3 },
+                        clue: 'whatsappForensicallyExamined',
+                        impact: 'Negative',
+                    },
+                    'd1-a-vishing-analysis': {
+                        title: "Phone Call Recording Analysis (Vishing)",
+                        text: "You analyzed phone call recordings. You deciphered the attacker's vishing tactics and their questioning of sensitive project details, strengthening the suspicion of an insider information source.",
+                        strat: "Vishing analysis improves defense against future attacks. It's critical not to miss insider threat indicators.",
+                        changes: { financialLoss: 10000, ipIntegrity: -5 },
+                        clue: 'vishingAnalyzed',
+                        impact: 'Negative',
+                    },
+                    'd1-a-personnel-interviews': {
+                        title: "Security Interviews with Targeted Personnel",
+                        text: "You conducted one-on-one interviews with key personnel. You understood the attacker's manipulation techniques. Employee Cemil Kaan's nervousness and financial difficulties caught attention; strengthening the possibility of an insider leak.",
+                        strat: "Human intelligence (HUMINT) is vital for understanding cyber crises from an employee's perspective. A careful and empathetic approach is needed.",
+                        changes: { employeeTrust: -5, reputation: -3, financialLoss: 3000 },
+                        clue: 'personnelInterviewed',
+                        impact: 'Neutral',
+                    },
+                    'd1-a-network-monitoring': {
+                        title: "Internal Network Traffic and Log Monitoring",
+                        text: "You started real-time monitoring of network traffic and logs. Abnormal access attempts to the critical 'AI Project' folder by Cemil Kaan were detected. This was a serious sign of a breach.",
+                        strat: "Network monitoring and log analysis are fundamental for detecting internal movements in advanced attacks. Observing abnormal access to critical assets is vital.",
+                        changes: { financialLoss: 40000, ipIntegrity: -8, reputation: -2 },
+                        clue: 'internalNetworkMonitored',
+                        impact: 'Negative',
+                    },
+
+                    // Day 2 Morning
+                    'd2-m-malware-full-analysis': {
+                        title: "Malware Reverse Engineering and C2 Detection",
+                        text: "You forwarded the malware to the reverse engineering team. The software was determined to create a backdoor, access 'AI Project', and transfer data to an external C2 server. The attacker's goal and infrastructure were revealed, strengthening the suspicion of an insider threat.",
+                        strat: "Malware analysis and C2 detection are critical for understanding the technical mechanism of an attack. It provides fundamental information for effective countermeasures.",
+                        changes: { financialLoss: 30000, ipIntegrity: -10, reputation: -5 },
+                        clue: 'malwareAnalyzed',
+                        impact: 'Negative',
+                    },
+                    'd2-m-system-isolation': {
+                        title: "Urgent Isolation of Critical Systems",
+                        text: "You immediately cut off external access to the 'AI Project' folder and isolated critical development environments. You largely prevented data leakage, but the development process was disrupted, and operational costs increased.",
+                        strat: "Protecting critical data is a priority. Suspect systems should be quickly isolated; this may affect business continuity but protects assets.",
+                        changes: { financialLoss: 50000, ipIntegrity: +15, reputation: -8, employeeTrust: -5 },
+                        clue: 'systemsIsolated',
+                        impact: 'Positive',
+                    },
+                    'd2-m-confront-cemil': {
+                        title: "Confronting Cemil Kaan and Confession",
+                        text: "You confronted Cemil Kaan in a confidential meeting. He confessed to being manipulated and convinced to upload malware to the 'AI Project' folder. The incident became clear, but employee trust was shaken.",
+                        strat: "Confronting insider threats is risky but important for information. The approach should focus on gathering information, considering impact on reputation/trust.",
+                        changes: { financialLoss: 5000, employeeTrust: -15, reputation: -10, ipIntegrity: +8 },
+                        clue: 'cemilConfronted',
+                        impact: 'Negative',
+                    },
+                    'd2-m-report-insider-threat': {
+                        title: "Reporting Insider Threat Suspicion to Senior Management and Legal",
+                        text: "You reported all insider threat findings to the Legal department and the CEO. You accelerated the process by requesting legal advice, but internal tension increased.",
+                        strat: "In insider threats, involving legal and management processes minimizes risks. Balancing transparency and confidentiality is important.",
+                        changes: { financialLoss: 10000, employeeTrust: -7, reputation: -4 },
+                        clue: 'insiderThreatReported',
+                        impact: 'Neutral',
+                    },
+                    'd2-m-usom-collaboration': {
+                        title: "Informing National Cyber Incident Response Center (USOM)",
+                        text: "You informed USOM due to suspicion of a nation-state-backed attack. USOM stated they would provide support. You received national-level assistance, but there was a short-term negative impact on image.",
+                        strat: "Collaboration with national units in nation-state-backed attacks provides additional resources. Potential impacts of information sharing should be evaluated.",
+                        changes: { financialLoss: 5000, reputation: -7, ipIntegrity: +3 },
+                        clue: 'usomCollaboration',
+                        impact: 'Neutral',
+                    },
+
+                    // Day 2 Afternoon
+                    'd2-a-crisis-team-meeting': {
+                        title: "Comprehensive Crisis Team Meeting",
+                        text: "You gathered all key stakeholders in an urgent crisis meeting. The nature of the attack, Cemil's situation, and the intellectual property threat were conveyed. Coordination increased, and panic decreased.",
+                        strat: "Effective communication and collaboration in cyber crises ensure rapid and efficient crisis management. Transparency, no matter how bitter the truth, is important.",
+                        changes: { financialLoss: 5000, reputation: +5, employeeTrust: +2 },
+                        clue: 'crisisMeetingHeld',
+                        impact: 'Positive',
+                    },
+                    'd2-a-public-statement-draft': {
+                        title: "Proactive Public Statement Draft",
+                        text: "You prepared a proactive and detailed public statement draft with Public Relations and Legal departments. The sophisticated nature of the attack and proactive steps were emphasized to protect the company's reputation. There is a risk of short-term public shock.",
+                        strat: "Public communication in a crisis directly affects company reputation. A balanced, transparent statement is critical. Controlled information dissemination is essential.",
+                        changes: { financialLoss: 10000, reputation: +2, employeeTrust: -3 },
+                        clue: 'publicStatementPrepared',
+                        impact: 'Neutral',
+                    },
+                    'd2-a-external-forensic-legal': {
+                        title: "External Cyber Forensic and Legal Support",
+                        text: "Due to the complexity of the attack, you sought urgent assistance from an independent cyber forensic and legal firm. The investigation accelerated, and findings became unbiased, but the cost was very high.",
+                        strat: "External expertise in comprehensive attacks increases crisis management capacity and provides evidence for legal processes. Costs should be well-managed.",
+                        changes: { financialLoss: 150000, reputation: +3, ipIntegrity: +5 },
+                        clue: 'externalForensicHired',
+                        impact: 'Positive',
+                    },
+                    'd2-a-cemil-management': {
+                        title: "Cemil Kaan Situation Management",
+                        text: "Following Cemil Kaan's confession, you collaborated with HR and Legal to provide psychological support to Cemil and requested him to sign a non-disclosure agreement. You managed the situation by protecting the employee's reputation and gaining information. The humane approach positively reflected on the company culture.",
+                        strat: "Managing the human aspect of insider threats is important for ethics and corporate culture. Support and confidentiality can increase long-term company loyalty and security.",
+                        changes: { financialLoss: 8000, employeeTrust: +4, reputation: -2 },
+                        clue: 'cemilManaged',
+                        impact: 'Positive',
+                    },
+
+                    // Day 3 Morning (Final Decisions)
+                    'd3-m-protocol-revision-ai-training': {
+                        title: "Multi-Channel Security Protocols and AI-Powered Awareness Training",
+                        text: "You tightened security protocols across all communication channels. You made employees more resilient with AI-powered phishing simulations and behavioral analysis-based awareness training. The company's overall security posture was strengthened.",
+                        strat: "Defense against multi-channel attacks considers both technical and human behaviors. AI-powered training increases adaptation.",
+                        changes: { financialLoss: 70000, reputation: +10, employeeTrust: +7, ipIntegrity: +5 },
+                        clue: 'protocolsRevised',
+                    },
+                    'd3-m-ip-security-enhancement': {
+                        title: "Comprehensive Enhancement of AI Project Intellectual Property Security",
+                        text: "You implemented additional security layers (DAC, MAC, DLP, IRM) for the AI project's codebase, algorithms, and datasets. You established automated systems that continuously monitor access to critical data. You protected your most valuable asset.",
+                        strat: "Protecting critical intellectual property secures the most important asset. A continuous, layered, and technology-backed security approach is required.",
+                        changes: { financialLoss: 100000, ipIntegrity: +20, reputation: +5, financialLoss: -5000 }, 
+                        clue: 'ipSecurityEnhanced',
+                        impact: 'Positive',
+                    },
+                    'd3-m-reputation-campaign': {
+                        title: "Proactive Reputation Management and Transparency Campaign",
+                        text: "You launched a proactive reputation management campaign for full public transparency, emphasizing that the attack was a common industry problem. You significantly strengthened the company's reputation and solidified your leadership in cybersecurity.",
+                        strat: "Public communication in a crisis directly affects company reputation. A balanced, transparent statement is critical. Turning crises into opportunities is strategic.",
+                        changes: { financialLoss: 120000, reputation: +15, employeeTrust: +5, financialLoss: -10000 },
+                        clue: 'reputationCampaignLaunched',
+                        impact: 'Positive',
+                    },
+                    'd3-m-employee-support': {
+                        title: "Employee Psychological Support and Trust Rebuilding Programs",
+                        text: "You initiated psychological support and morale-boosting activities to mitigate negative impacts on employees. You helped employees regain trust and increase their commitment. Internal resilience was strengthened.",
+                        strat: "Employee well-being and trust are the foundation of company resilience. Rebuilding morale and trust after a crisis is vital. A human-centric approach is critical.",
+                        changes: { financialLoss: 30000, employeeTrust: +10, reputation: +2, financialLoss: -2000 },
+                        clue: 'employeeSupportInitiated',
+                        impact: 'Positive',
+                    },
+                    'd3-m-insider-threat-program': {
+                        title: "Establishment of Insider Threat Intelligence Program and Security Culture Integration",
+                        text: "You developed behavioral analysis tools, risk assessments, and ethically framed monitoring policies to proactively detect insider threats. You integrated it with a strong security culture. In the long run, you minimized vulnerabilities that could originate internally.",
+                        strat: "Insider threat programs are vital for managing one of the most challenging cyber risks. Ethical and transparent execution protects employee trust. Security culture integration guarantees success.",
+                        changes: { financialLoss: 80000, employeeTrust: -5, ipIntegrity: +15, reputation: +7 },
+                        clue: 'insiderThreatProgramStarted',
+                        impact: 'Positive',
+                    }
+                },
+
+                setup() {
+                    this.elements = {
+                        intro: document.getElementById('introSection'), game: document.getElementById('gameContainer'), gameContent: document.getElementById('game-content'),
+                        startButton: document.getElementById('startButton'), intermission: document.getElementById('intermissionSection'),
+                        intermissionTitle: document.getElementById('intermissionTitle'), intermissionDetails: document.getElementById('intermissionDetails'),
+                        continueButton: document.getElementById('continueButton'),
+                        statusBar: { ipIntegrity: document.getElementById('status-ipIntegrity'), financialLoss: document.getElementById('status-financialLoss'), employeeTrust: document.getElementById('status-employeeTrust'), reputation: document.getElementById('status-reputation') }
+                    };
+                    this.loadGameHTML();
+                    
+                    // Attach event listener for start button
+                    this.elements.startButton.addEventListener('click', () => {
+                        this.elements.intro.style.display = 'none';
+                        this.elements.game.style.display = 'block';
+                        this.showSection('day1_morning_phishing');
+                    });
+                    
+                    // Attach event listener for decision buttons in game content
+                    this.elements.gameContent.addEventListener('click', (e) => {
+                        const button = e.target.closest('.btn[data-decision]');
+                        if (!button || button.disabled) return;
+                        
+                        const sectionElement = button.closest('.section');
+                        const decisionId = button.dataset.decision;
+                        const info = this.decisionInfo[decisionId];
+
+                        // Disable the clicked button immediately
+                        button.disabled = true;
+
+                        // Add decision to current turn's list
+                        this.state.currentTurnDecisions.push(info);
+                        
+                        // Apply score changes (these are applied on each click, not just at intermission)
+                        this.score.financialLoss += info.changes.financialLoss || 0;
+                        this.score.reputation = Math.max(0, Math.min(100, this.score.reputation + (info.changes.reputation || 0)));
+                        this.score.ipIntegrity = Math.max(0, Math.min(100, this.score.ipIntegrity + (info.changes.ipIntegrity || 0)));
+                        this.score.employeeTrust = Math.max(0, Math.min(100, this.score.employeeTrust + (info.changes.employeeTrust || 0)));
+                        this.state[info.clue] = true; // Set clue state
+                        this.updateStatusBar(); // Update status bar immediately
+
+                        const maxSelections = parseInt(sectionElement.dataset.maxSelections || 1, 10);
+                        
+                        // If it's the "Day 1 Afternoon" section, we skip intermission and go directly to evening
+                        if (this.state.currentSectionId === 'day1_afternoon_phishing') {
+                            this.elements.game.style.display = 'none';
+                            // This part ensures that the decisions are logged before proceeding
+                            this.state.currentTurnDecisions.forEach(decision => {
+                                this.state.decisionHistory.push({ 
+                                    id: decision.clue, 
+                                    title: decision.title, 
+                                    text: decision.text, 
+                                    impactType: decision.impact 
+                                });
+                            });
+                            this.state.currentTurnDecisions = []; // Clear for next turn
+                            this.showSection('day1_evening_phishing'); // Directly proceed
+                        } else if (this.state.currentTurnDecisions.length >= maxSelections) {
+                            this.elements.game.style.display = 'none';
+                            this.showFullIntermission();
+                        } else {
+                            // If not all decisions made for the turn, just update button states and wait for next click
+                            this.updateButtonStates(this.state.currentSectionId); 
+                        }
+                    });
+
+                    // Attach event listener for the general continue button in intermission (for Day 1 Morning decisions)
+                    this.elements.continueButton.addEventListener('click', () => {
+                        // Add decisions from the current turn to the historical decision history *after* intermission is shown
+                        this.state.currentTurnDecisions.forEach(decision => {
+                            this.state.decisionHistory.push({ 
+                                id: decision.clue, // Using clue as ID for history
+                                title: decision.title, 
+                                text: decision.text, 
+                                impactType: decision.impact 
+                            });
+                        });
+
+                        const nextPath = this.elements.continueButton.dataset.nextPath;
+                        this.elements.intermission.style.display = 'none';
+                        this.elements.continueButton.style.display = 'none'; // Hide continue button for next section setup
+
+                        // Clear decisions for the next turn
+                        this.state.currentTurnDecisions = [];
+                        
+                        if (nextPath === 'finalSection') {
+                            this.showFinalReport();
+                        } else {
+                            this.elements.game.style.display = 'block';
+                            this.showSection(nextPath);
+                        }
+                    });
+
+                    this.updateStatusBar();
+                },
+                
+                showFullIntermission() {
+                    this.elements.intermissionDetails.innerHTML = ''; // Clear previous details
+
+                    // Sum up all changes from decisions made in this turn
+                    let totalChanges = { financialLoss: 0, ipIntegrity: 0, employeeTrust: 0, reputation: 0 };
+                    let combinedDecisionTitles = [];
+                    let combinedDecisionTexts = [];
+                    let combinedStrategicNotes = [];
+
+                    this.state.currentTurnDecisions.forEach((info) => {
+                        totalChanges.financialLoss += info.changes.financialLoss || 0;
+                        totalChanges.ipIntegrity += info.changes.ipIntegrity || 0;
+                        totalChanges.employeeTrust += info.changes.employeeTrust || 0;
+                        totalChanges.reputation += info.changes.reputation || 0;
+                        
+                        combinedDecisionTitles.push(info.title);
+                        combinedDecisionTexts.push(info.text);
+                        combinedStrategicNotes.push(info.strat);
+                    });
+
+                    // Set intermission title directly to "Total Impact of These Decisions"
+                    this.elements.intermissionTitle.textContent = "Total Impact of These Decisions"; 
+                    
+                    // Add the combined metrics summary container (directly after the title)
+                    this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
+                        <div class="metric-change-summary-container">
+                            <div class="metric-change-summary">
+                                ${this.getMetricsHtml(totalChanges)}
+                            </div>
+                        </div>
+                    `);
+
+                    // Add the combined decision details below the total impacts
+                    this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
+                        <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
+                            <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
+                            <p>${combinedDecisionTexts.join('<br><br>')}</p>
+                            <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
+                                <h4>Strategic Assessment</h4>
+                                <p>${combinedStrategicNotes.join('<br><br>')}</p>
+                            </div>
+                        </div>
+                    `);
+
+
+                    let nextSectionToGo;
+                    // Corrected navigation logic for all sections
+                    switch(this.state.currentSectionId) {
+                        case 'day1_morning_phishing': nextSectionToGo = 'day1_afternoon_phishing'; break;
+                        // Day1_afternoon_phishing already has a specific continue button, so this case won't be hit for it.
+                        case 'day1_evening_phishing': nextSectionToGo = 'day2_morning_ipthreat'; break;
+                        case 'day2_morning_ipthreat': nextSectionToGo = 'day2_afternoon_crisis_mgmt'; break;
+                        case 'day2_afternoon_crisis_mgmt': nextSectionToGo = 'day3_morning_resolution'; break;
+                        case 'day3_morning_resolution': nextSectionToGo = 'finalSection'; break; 
+                        default: nextSectionToGo = 'finalSection'; break;
+                    }
+
+                    this.elements.continueButton.dataset.nextPath = nextSectionToGo;
+                    this.elements.intermission.style.display = 'flex';
+                    this.elements.continueButton.style.display = 'flex'; // Show continue button
+                },
+
+                getMetricsHtml(changes) {
+                    let metricsHTML = '';
+                    const formatChange = (label, value, unit) => {
+                        const arrow = value >= 0 ? (value > 0 ? 'up' : 'right') : 'down'; 
+                        const sign = value >= 0 ? '+' : ''; 
+                        let colorClass = 'neutral'; 
+
+                        if (label === 'Financial Loss') {
+                            colorClass = value > 0 ? 'negative' : (value < 0 ? 'positive' : 'neutral');
+                        } else {
+                            colorClass = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
+                        }
+                        
+                        let icon = '';
+                        if (label === 'Financial Loss') icon = 'fa-sack-xmark';
+                        else if (label === 'IP Integrity') icon = 'fa-lock';
+                        else if (label === 'Employee Trust') icon = 'fa-users';
+                        else if (label === 'Reputation Score') icon = 'fa-building-shield';
+
+
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('en-US')}${unit}</div>`;
+                    };
+
+                    if (changes.financialLoss !== undefined && changes.financialLoss !== 0) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '₺');
+                    if (changes.ipIntegrity !== undefined && changes.ipIntegrity !== 0) metricsHTML += formatChange('IP Integrity', changes.ipIntegrity, '%');
+                    if (changes.employeeTrust !== undefined && changes.employeeTrust !== 0) metricsHTML += formatChange('Employee Trust', changes.employeeTrust, '');
+                    if (changes.reputation !== undefined && changes.reputation !== 0) metricsHTML += formatChange('Reputation Score', changes.reputation, '');
+                    
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on metrics.</p>';
+                    return metricsHTML;
+                },
+
+                updateStatusBar() {
+                    const s = this.score;
+                    this.elements.statusBar.ipIntegrity.textContent = `${Math.max(0, s.ipIntegrity)}%`;
+                    this.elements.statusBar.financialLoss.textContent = `₺${s.financialLoss.toLocaleString('en-US')}`;
+                    this.elements.statusBar.employeeTrust.textContent = Math.max(0, s.employeeTrust);
+                    this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
+                },
+
+                showSection(sectionId) {
+                    this.elements.sections.forEach(section => { section.style.display = 'none'; });
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                        this.state.currentSectionId = sectionId;
+                        this.updateDynamicContent(sectionId);
+                        this.updateButtonStates(sectionId);
+                        this.state.currentTurnDecisions = []; // Reset for new section
+                        
+                        // Handle the specific "Continue" button for day1_afternoon_phishing
+                        const day1AfternoonContinueBtn = document.querySelector('#day1_afternoon_phishing .btn-continue');
+                        if (day1AfternoonContinueBtn) {
+                            day1AfternoonContinueBtn.style.display = (sectionId === 'day1_afternoon_phishing') ? 'flex' : 'none';
+                        }
+
+                        // Hide the general intermission continue button when a new game section is shown
+                        this.elements.continueButton.style.display = 'none'; 
+
+                    } else {
+                        console.error('Section not found:', sectionId);
+                        this.showFinalReport();
+                    }
+                    this.updateSlackChat(sectionId);
+                },
+
+                updateButtonStates(sectionId) {
+                    const currentSectionElement = document.getElementById(sectionId);
+                    if (!currentSectionElement) return;
+
+                    const decisionButtonsContainer = currentSectionElement.querySelector('.decision-buttons');
+                    // If the current section does not have decision buttons (like day1_afternoon_phishing), skip this logic.
+                    if (!decisionButtonsContainer) {
+                        return; 
+                    }
+
+                    const buttons = decisionButtonsContainer.querySelectorAll('.btn[data-decision]');
+                    buttons.forEach(button => {
+                        const decisionId = button.dataset.decision;
+                        const info = this.decisionInfo[decisionId];
+
+                        // Disable button if its clue is already set or it's part of current turn's selections
+                        const alreadySelectedInCurrentTurn = this.state.currentTurnDecisions.some(d => d.clue === info.clue);
+
+                        if (info && (this.state[info.clue] || alreadySelectedInCurrentTurn)) {
+                            button.disabled = true;
+                            button.style.backgroundColor = '#555';
+                            button.style.color = '#999';
+                        } else {
+                            button.disabled = false;
+                            button.style.backgroundColor = ''; 
+                            button.style.color = ''; 
+                        }
+
+                        // Special case: Cemil Kaan management button
+                        if (decisionId === 'd2-a-cemil-management') {
+                            if (!this.state.cemilConfronted) {
+                                button.disabled = true;
+                                button.style.backgroundColor = '#555';
+                                button.style.color = '#999';
+                                button.querySelector('small').textContent = 'This option is only valid if you have confronted Cemil Kaan and received his confession.';
+                                button.style.cursor = 'not-allowed';
+                            } else if (!alreadySelectedInCurrentTurn) { // Re-enable if Cemil confronted and not yet selected in this turn
+                                button.disabled = false;
+                                button.style.backgroundColor = '';
+                                button.style.color = '';
+                                button.querySelector('small').textContent = 'Initiate an urgent non-disclosure agreement and psychological support process with HR and Legal to manage Cemil Kaan\'s situation.';
+                                button.style.cursor = 'pointer';
+                            }
+                        }
+                    });
+                },
+                
+                showFinalReport() {
+                    this.elements.intro.style.display = 'none';
+                    this.elements.intermission.style.display = 'none';
+                    this.elements.game.style.display = 'block'; 
+                    document.getElementById('statusBar').style.display = 'none';
+
+                    this.elements.sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    const finalSection = document.getElementById('finalSection');
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
+
+                    finalSection.style.display = 'flex';
+                    
+                    const badge = document.getElementById('performance-badge');
+                    const metricsContainer = document.getElementById('finalMetricsContainer');
+                    const timelineList = document.getElementById('decision-timeline-list');
+                    const debriefContent = document.getElementById('strategic-debrief-content');
+                    const recommendationsList = document.getElementById('recommendations-list');
+
+                    const finalIP = Math.max(0, this.score.ipIntegrity);
+                    const finalRep = Math.max(0, this.score.reputation);
+                    const finalTrust = Math.max(0, this.score.employeeTrust);
+
+                    // Updated scoring for difficulty
+                    let totalScore = (finalRep * 0.35) + (finalIP * 0.3) + (finalTrust * 0.15) - (this.score.financialLoss / 100000); 
+                    totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
+
+                    let badgeInfo = {};
+                    
+                    const totalPossibleDecisions = 2 * 5; 
+                    let decisionsMadeCount = this.state.decisionHistory.length; 
+                    const percentDecisionsMade = (decisionsMadeCount / totalPossibleDecisions) * 100; 
+
+                    // Updated badge conditions for difficulty
+                    if (totalScore >= 90 && finalIP >= 90 && percentDecisionsMade >= 80) { // Higher general score, IP, and decision percentage
+                        badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' };
+                    } else if (totalScore >= 70 && finalIP >= 70) { // General score and IP threshold for Expert
+                        badgeInfo = { text: 'EXPERT CRISIS MANAGER', color: 'var(--accent-blue)' };
+                    } else if (totalScore >= 40 || finalIP >= 50) { // Wider range for Challenging
+                        badgeInfo = { text: 'A TOUGH BATTLE', color: 'var(--accent-yellow)' };
+                    } else { // All other cases result in Severe Damage
+                        badgeInfo = { text: 'SEVERE DAMAGE', color: '#ff5555' };
+                    }
+
+                    badge.textContent = badgeInfo.text;
+                    badge.style.backgroundColor = badgeInfo.color;
+
+                    metricsContainer.innerHTML = `
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Reputation Score</div><div class="value">${finalRep}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value">₺${this.score.financialLoss.toLocaleString('en-US')}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-lock"></i></div><div class="label">IP Integrity</div><div class="value">${finalIP}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Employee Trust</div><div class="value">${finalTrust}/100</div></div>
+                    `;
+
+                    // Only show title in timeline
+                    timelineList.innerHTML = this.state.decisionHistory.map(decision => {
+                        let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
+                        return `<li class="${liClass}"><span class="decision-title">${decision.title}</span></li>`;
+                    }).join('');
+
+                    let debriefHTML = '';
+                    if (badgeInfo.text === 'CYBER HERO') { 
+                        debriefHTML += `<p><strong>Exceptional Success!</strong> As a Cyber Intelligence Chief, you detected this sophisticated, multi-channel attack at all its layers, saving your company from a major catastrophe. Your strategic and swift decisions not only protected our intellectual property but also elevated our company's reputation and employee trust to the highest levels. Thanks to your leadership, this crisis has made ÇOLHAK Teknoloji even stronger.</p>`;
+                    } else if (badgeInfo.text === 'EXPERT CRISIS MANAGER') { 
+                        debriefHTML += `<p><strong>A Successful Intervention!</strong> Despite facing a highly complex attack, you managed to bring the crisis under control with effective interventions. Although some minor losses occurred, you largely protected your company's intellectual property, reputation, and employee trust. Your decisions allowed ÇOLHAK Teknoloji to learn from this challenging process and become more resilient.</p>`;
+                    } else if (badgeInfo.text === 'A TOUGH BATTLE') { 
+                        debriefHTML += `<p><strong>Major Lessons Learned:</strong> You dealt with the crisis and prevented the worst-case scenario, but you couldn't completely prevent some of the attack's impacts. Partial losses occurred in our intellectual property, financial damages arose, and the company's reputation was somewhat tarnished. This experience has provided critical lessons for developing our future cybersecurity strategies.</p>`;
+                    } else { 
+                        debriefHTML += `<p><strong>Severe Consequences:</strong> The multi-channel phishing attack caused severe damage to ÇOLHAK Teknoloji. Major intellectual property leaks occurred, financial losses were very high, and our company's reputation was severely tarnished. Employee trust was shaken. We must urgently learn from this experience, fundamentally change our security strategies, and build stronger defense mechanisms.</p>`;
+                    }
+                    debriefContent.innerHTML = debriefHTML;
+
+                    let recommendationsHTML = new Set();
+                    recommendationsHTML.add(`<li><strong>Comprehensive Phishing Awareness Training:</strong> Regular and simulation-based phishing, vishing, and smishing awareness training should be conducted for all employees.</li>`);
+                    recommendationsHTML.add(`<li><strong>Mandatory Multi-Factor Authentication (MFA):</strong> MFA should be made mandatory for all corporate accounts and critical systems.</li>`);
+                    recommendationsHTML.add(`<li><strong>Social Media Security Policy:</strong> Clear policies and training should be provided for employees' professional social media use.</li>`);
+                    recommendationsHTML.add(`<li><strong>Human Intelligence (HUMINT) Development:</strong> The Cyber Intelligence team's ability to detect anomalous behaviors and "whispers" within the company should be enhanced.</li>`);
+                    recommendationsHTML.add(`<li><strong>Crisis Communication Plan Update:</strong> An updated crisis communication plan including scenarios specific to multi-channel social engineering attacks should be created, and regular drills should be conducted.</li>`);
+                    recommendationsHTML.add(`<li><strong>Intellectual Property Protection Strategy:</strong> Stricter access controls, encryption, and DLP (Data Loss Prevention) solutions should be implemented for critical AI project data.</li>`);
+                    
+                    if (!this.state.emailAnalyzed || !this.state.linkedinProfileAnalyzed || !this.state.whatsappForensicallyExamined || !this.state.vishingAnalyzed) {
+                        recommendationsHTML.add(`<li><strong>Attack Vector Analysis Enhancement:</strong> Threat analysis processes across email, social media, messaging, and phone channels should be strengthened to detect future multi-channel attacks more quickly.</li>`);
+                    }
+                    if (this.score.employeeTrust < 80) {
+                        recommendationsHTML.add(`<li><strong>Employee Psychological Support and Trust Rebuilding:</strong> Psychological support and team-building activities should be organized to mitigate the crisis's impact on employees and boost morale.</li>`);
+                    }
+                    if (this.score.financialLoss > 200000) {
+                        recommendationsHTML.add(`<li><strong>Cyber Insurance Policy Review:</strong> The existing cyber insurance policy should be expanded to cover phishing and intellectual property theft.</li>`);
+                    }
+                    if (!this.state.malwareAnalyzed || !this.state.systemsIsolated) {
+                        recommendationsHTML.add(`<li><strong>Incident Response and Isolation Acceleration:</strong> Malware analysis and system isolation processes should be automated to shorten response times.</li>`);
+                    }
+                    if (!this.state.insiderThreatProgramStarted) { 
+                            recommendationsHTML.add(`<li><strong>Establish Insider Threat Program:</strong> Behavioral analysis tools and processes should be developed to proactively detect insider threats.</li>`);
+                    }
+                    if (!this.state.crisisMeetingHeld || !this.state.publicStatementPrepared || !this.state.externalForensicHired) { 
+                        recommendationsHTML.add(`<li><strong>Comprehensive Crisis Management Drills:</strong> Realistic crisis management drills involving all stakeholders should be conducted to improve coordination and communication skills.</li>`);
+                    }
+                    if (!this.state.threatHuntingStarted) {
+                        recommendationsHTML.add(`<li><strong>Proactive Threat Hunting Capability:</strong> In-house cyber threat hunting capabilities should be developed to proactively detect advanced and unknown threats.</li>`);
+                    }
+
+
+                    recommendationsList.innerHTML = Array.from(recommendationsHTML).map(rec => `<li><i class="fa-solid fa-angle-right"></i> ${rec.substring(4)}</li>`).join('');
+
+                    document.getElementById('finalSection').insertAdjacentHTML('beforeend', `
+                        <p style="margin-top: 30px; font-size: 1.2em; color: var(--accent-yellow);">This simulation demonstrated the complexity of modern cyberattacks and how vital cybersecurity experts' technical, social, and analytical skills are. As ÇOLHAK Teknoloji, we must continue to work to emerge stronger from this crisis.</p>
+                    `);
+                },
+
+                updateSlackChat(currentSection) {
+                    const chatViewer = document.getElementById('slackChat');
+                    if (!chatViewer) return; 
+
+                    let chat = '';
+                    if (currentSection === 'day1_afternoon_phishing') {
+                        chat = `
+                            <div class="message"><span class="sender hr">HR Director Ayşe Erdem:</span> Employee unrest is increasing. We are receiving many questions about WhatsApp and phone messages. Morale is dropping.</div>
+                            <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> This is unacceptable! There should be no leaks regarding the AI project! What kind of information are we talking about?</div>
+                            <div class="message"><span class="sender finance">Finance Director Burak Mert:</span> If our budget details leak, our funding will be severely damaged. We must stop this!</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> Our teams are investigating threats. The Cyber Intelligence Chief's findings are valuable. We are collecting additional logs for anomaly detection.</div>
+                            <div class="message"><span class="sender">You (Cyber Intelligence Chief):</span> This is a multi-channel attack, and they seem to be getting insider information. Every piece of information is critical; we must focus.</div>
+                        `;
+                    } else if (currentSection === 'day2_morning_ipthreat') {
+                        chat = `
+                            <div class="message"><span class="sender ops">R&D Director Deniz Akın:</span> Anomaly alarms are increasing in our codebase! Data transfers are at critical levels! Urgent intervention needed!</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> Cemil Kaan's activities are suspicious. We're monitoring him, but we need to be fast. Prevent the leak!</div>
+                            <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> An insider threat?! This will greatly damage our image. We must stop it at all costs!</div>
+                            <div class="message"><span class="sender finance">Finance Director Burak Mert:</span> Our project budget is sensitive; disruptions will lead to major losses. Is our data safe?</div>
+                            <div class="message"><span class="sender bt">IT System Administrator Mert Can:</span> We are ready for isolation, but shutting down the production environment will cause serious disruptions.</div>
+                            <div class="message"><span class="sender">You (Cyber Intelligence Chief):</span> The target is our intellectual property! We must take immediate action! Cemil's situation is also a priority.</div>
+                        `;
+                    } else if (currentSection === 'day2_afternoon_crisis_mgmt') { 
+                        chat = `
+                            <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> Cemil's confession is shocking. What now? How will we make a public statement? Is the intellectual property recovered?</div>
+                            <div class="message"><span class="sender hr">HR Director Ayşe Erdem:</span> Our employees' morale is low. Cemil's situation creates uncertainty. We must ensure internal peace.</div>
+                            <div class="message"><span class="sender finance">Finance Director Burak Mert:</span> The legal and financial consequences of this crisis could be dire. Is external expert support essential?</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> Technical interventions are ongoing. Communication and crisis management are as important as technical intervention.</div>
+                            <div class="message"><span class="sender ops">R&D Director Deniz Akın:</span> We have isolated the data leak, but we are not sure how much information was exfiltrated. The project launch is at risk.</div>
+                            <div class="message"><span class="sender">You (Cyber Intelligence Chief):</span> Coordination is crucial. With the contribution of every department, we will emerge from this crisis with minimal damage. It's time to make the right decisions.</div>
+                        `;
+                    } else if (currentSection === 'day3_morning_resolution') { 
+                        chat = `
+                            <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> It was terrifying, but we stood strong. Now, how do we move forward? We must turn this crisis into an opportunity.</div>
+                            <div class="message"><span class="sender hr">HR Director Ayşe Erdem:</span> Our employees are very worn out. Keeping morale high and ensuring their trust is our priority. Training and support are essential.</div>
+                            <div class="message"><span class="sender finance">Finance Director Burak Mert:</span> We need a clear roadmap for financial recovery and investments. What about the cybersecurity budget?</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> We must completely rebuild our defense mechanisms. Cyber Intelligence will play a key role. Proactive defense is indispensable.</div>
+                            <div class="message"><span class="sender ops">R&D Director Deniz Akın:</span> The security of our AI project is paramount. We must strengthen our intellectual property. This attack revealed our vulnerabilities.</div>
+                            <div class="message"><span class="sender">You (Cyber Intelligence Chief):</span> The intelligence we gathered will determine our future strategy. We must learn from this crisis and build a stronger ÇOLHAK Teknoloji.</div>
+                        `;
+                    }
+                    chatViewer.innerHTML = chat;
+                },
+
+                updateDynamicContent(sectionId) {
+                    const section = document.getElementById(sectionId);
+                    if (!section) return;
+
+                    // Dynamically update Cemil's status in day2_afternoon_crisis_mgmt
+                    if (sectionId === 'day2_afternoon_crisis_mgmt') {
+                        const cemilStatusSpan = section.querySelector('#cemil-status');
+                        if (cemilStatusSpan) {
+                            if (game.state.cemilConfronted) {
+                                cemilStatusSpan.innerHTML = '<strong>Cemil Kaan\'s manipulation or insider information leak confession was obtained.</strong>';
+                            } else {
+                                cemilStatusSpan.innerHTML = 'there is suspicion of an internal "mole" or a manipulated employee.';
+                            }
+                        }
+                    }
+                },
+
+                loadGameHTML() {
+                    const gameHTMLContent = `
+                        <div id="day1_morning_phishing" class="section" data-max-selections="2">
+                            <h2><i class="fa-solid fa-hourglass-start"></i> Day 1: Morning - Multi-Channel Threat Begins</h2>
+                            <h3>09:00 AM - First Signals</h3>
+                            <p>As the CTI Chief, disturbing signals from multiple sources are **ringing alarm bells** as you start the new week.</p>
+                            <p><strong>Incident 1: Strange Email from CEO</strong><br>You received a suspicious email from CEO Elara Yılmaz with an attachment 'Project_AI_Optimization_V3.pdf'. Grammar mistakes and a small typo in the sender's address (<code>.co</code> instead of <code>.com</code>) are noticeable. Is this spear phishing?</p>
+                            <p><strong>Incident 2: Odd Job Offer on LinkedIn</strong><br>R&D engineer Ozan Demirci reported receiving a "very attractive" job offer on LinkedIn. The offer claimed to be from the "Global R&D Director" of a rival company. Although the profile looked professional, some details seemed odd to Ozan, and he was directed to a special portal.</p>
+                            <img src="linkedin.png" alt="Suspicious email and LinkedIn message" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4>What will be your first steps as Cyber Intelligence Chief? How will you handle these two different vectors? (Make 2 Selections)</h4>
+                                <div class="decision-buttons">
+                                    <button class="btn" data-decision="d1-m-email-analysis"><i class="fa-solid fa-envelope-open-text"></i><div class="btn-text">Option A: Conduct a technical analysis of the suspicious CEO email.<small>Perform a deep dive to detect malicious links and attachments.</small></div></button>
+                                    <button class="btn" data-decision="d1-m-linkedin-analysis"><i class="fa-brands fa-linkedin"></i><div class="btn-text">Option B: Analyze the LinkedIn profile and the message received by the engineer.<small>Use OSINT tools to determine if it's fake and analyze the redirection link.</small></div></button>
+                                    <button class="btn" data-decision="d1-m-awareness-training"><i class="fa-solid fa-user-graduate"></i><div class="btn-text">Option C: Request urgent cyber awareness training and announcement with HR.<small>Initiate awareness training for personnel against phishing and social engineering attacks.</small></div></button>
+                                    <button class="btn" data-decision="d1-m-threat-hunting"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Option D: Report to CSO and suggest initiating an urgent "Threat Hunting" operation.<small>Start similar threat hunting activities across network, email systems, and endpoints.</small></div></button>
+                                </div>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In multi-channel attacks, each vector exploits a different vulnerability. The initial response is critical to prevent spread and understand scope.</div>
+                        </div>
+
+                        <div id="day1_afternoon_phishing" class="section" data-max-selections="0">
+                            <h2><i class="fa-solid fa-comments"></i> Day 1: Afternoon - Deepening Threat</h2>
+                            <h3>02:30 PM - New Vectors</h3>
+                            <p>As the results of your morning interventions come in, you realize the attackers are not limited to just email and LinkedIn.</p>
+                            <p><strong>Incident 1: Critical Data Request via WhatsApp</strong><br>A finance employee received a request for 'AI Project Budget Details' on WhatsApp from someone posing as a former colleague. The message's use of specific internal company terms is a strong indicator of **insider information being obtained**.</p>
+                            <p><strong>Incident 2: Vishing (Voice Phishing) Attempt</strong><br>R&D Director Deniz Akın reported receiving a strange phone call from someone claiming to be 'technical support'. During the call, technical details of the AI project were questioned, which **strengthened the suspicion of an insider information source**.</p>
+                            <div class="slack-chat" id="slackChat"></div>
+                            <button class="btn btn-continue" onclick="game.showSection('day1_evening_phishing')" style="margin-top: 30px;">Continue</button>
+                        </div>
+
+                        <div id="day1_evening_phishing" class="section" data-max-selections="2">
+                            <h2><i class="fa-solid fa-cloud-moon"></i> Day 1: Evening - Intelligence Gathering and Response Strategy</h2>
+                            <h3>06:00 PM - Insider Suspicions and Decisions</h3>
+                            <img src="tespit.png" alt="WhatsApp and phone call screenshots" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4>What intelligence gathering and response strategy will you pursue against these new and deepening attack vectors? (Make 2 Selections)</h4>
+                                <div class="decision-buttons">
+                                    <button class="btn" data-decision="d1-a-whatsapp-forensics"><i class="fa-brands fa-whatsapp"></i><div class="btn-text">Option A: Initiate forensic examination of the WhatsApp account.<small>Determine the attacker's information gathering and trust-building tactics.</small></div></button>
+                                    <button class="btn" data-decision="d1-a-vishing-analysis"><i class="fa-solid fa-phone-volume"></i><div class="btn-text">Option B: Analyze phone call recordings.<small>Decipher vishing tactics and investigate the suspicion of an insider information source.</small></div></button>
+                                    <button class="btn critical" data-decision="d1-a-personnel-interviews"><i class="fa-solid fa-user-tie"></i><div class="btn-text">Option C: Conduct one-on-one security interviews with targeted key personnel.<small>Understand the attacker's manipulation techniques and look for signs of insider leakage.</small></div></button>
+                                    <button class="btn" data-decision="d1-a-network-monitoring"><i class="fa-solid fa-chart-network"></i><div class="btn-text">Option D: Begin monitoring internal network traffic and logs.<small>Proactively detect abnormal access to critical folders.</small></div></button>
+                                </div>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Attackers use different channels to gain trust and gather information. Insider information leakage is one of the biggest threats; each channel has its unique detection method.</div>
+                        </div>
+
+                        <div id="day2_morning_ipthreat" class="section" data-max-selections="2">
+                            <h2><i class="fa-solid fa-fingerprint"></i> Day 2: Morning - Intellectual Property Threat and Insider Alert</h2>
+                            <h3>10:00 AM - AI Project in Danger! Cemil Kaan Suspicion!</h3>
+                            <p>If email analysis was performed, the analysis of the malware from the email sent to the CEO is complete. The malware was found to be **attempting to access the 'AI Project' folder**. This indicates that intellectual property is the target. LinkedIn, WhatsApp, and phone calls were attempts to gain personnel trust for this access.</p>
+                            <p>The most alarming development: If you conducted personnel interviews or internal network monitoring, it was revealed that **Cemil Kaan from the Finance Department made abnormal access attempts to a critical folder he normally wouldn't have access to** at the beginning of the crisis. Cemil's financial difficulties and rumors of rival offers are also present.</p>
+                            <img src="risk.png" alt="AI project data leakage risk" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4>What will be your most critical actions to protect intellectual property, stop the attack, and manage the insider threat? (Make 2 Selections)</h4>
+                                <div class="decision-buttons">
+                                    <button class="btn" data-decision="d2-m-malware-full-analysis"><i class="fa-solid fa-bug-slash"></i><div class="btn-text">Option A: Conduct a detailed analysis of the malware's capabilities and C2 servers.<small>Fully understand the attacker's infrastructure and intent.</small></div></button>
+                                    <button class="btn critical" data-decision="d2-m-system-isolation"><i class="fa-solid fa-lock-open"></i><div class="btn-text">Option B: Immediately cut off all external access to the 'AI Project' folder and isolate relevant systems.<small>Take immediate, radical action to stop data leakage.</small></div></button>
+                                    <button class="btn critical" data-decision="d2-m-confront-cemil"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Option C: Arrange a confidential meeting with Cemil Kaan and confront him about suspicious activities.<small>Directly question him to gather information.</small></div></button>
+                                    <button class="btn" data-decision="d2-m-report-insider-threat"><i class="fa-solid fa-gavel"></i><div class="btn-text">Option D: Submit a report to the legal department and senior management regarding suspected insider infiltration.<small>Request legal advice and consult on potential legal proceedings.</small></div></button>
+                                    <button class="btn" data-decision="d2-m-usom-collaboration"><i class="fa-solid fa-shield-halved"></i><div class="btn-text">Option E: Inform the National Cyber Incident Response Center (USOM).<small>Report the situation due to suspicion of nation-state backing and request cooperation.</small></div></button>
+                                </div>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Intellectual property theft and insider threats can be devastating. Fast and accurate response is key. Ethical and legal boundaries are important in insider threats.</div>
+                        </div>
+
+                        <div id="day2_afternoon_crisis_mgmt" class="section" data-max-selections="2">
+                            <h2><i class="fa-solid fa-lightbulb"></i> Day 2: Afternoon - Crisis Management and Decision Making (High Pressure)</h2>
+                            <h3>03:30 PM - Crisis Team Under Pressure</h3>
+                            <p>Attack details are clear: your AI project's intellectual property is under serious threat, and <span id="cemil-status">${game.state.cemilConfronted ? '<strong>Cemil Kaan\'s manipulation or insider information leak confession was obtained.</strong>' : 'there is suspicion of an internal "mole" or a manipulated employee.'}</span> The CEO demands swift action and clear communication. The Finance Director is concerned about legal processes and losses. The HR Director emphasizes employee morale and trust.</p>
+                            <img src="team.png" alt="Crisis management team" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4>At this stage of the crisis, what strategic decisions will you make? (Make 2 Selections)</h4>
+                                <div class="decision-buttons">
+                                    <button class="btn" data-decision="d2-a-crisis-team-meeting"><i class="fa-solid fa-people-group"></i><div class="btn-text">Option A: Convene an urgent crisis meeting with all key stakeholders.<small>Communicate the multi-channel nature of the attack and insider threat status (if any), strengthen coordination.</small></div></button>
+                                    <button class="btn critical" data-decision="d2-a-public-statement-draft"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Option B: Prepare a proactive public statement draft with PR and Legal departments.<small>Draft a transparent statement emphasizing the sophisticated nature of the attack and proactive steps taken to protect reputation.</small></div></button>
+                                    <button class="btn" data-decision="d2-a-external-forensic-legal"><i class="fa-solid fa-gavel"></i><div class="btn-text">Option C: Request urgent assistance from external cyber forensic and legal firms.<small>Accelerate the investigation, prepare for legal proceedings, and ensure impartiality of findings (high cost).</small></div></button>
+                                    <button class="btn" data-decision="d2-a-cemil-management" ${game.state.cemilConfronted ? '' : 'disabled'}><i class="fa-solid fa-user-shield"></i><div class="btn-text">Option D: Manage Cemil Kaan's situation with HR and Legal.<small>Initiate an urgent non-disclosure agreement and psychological support process for Cemil. (Only valid if you confronted Cemil Kaan).</small></div></button>
+                                </div>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Crisis management is not just about technical solutions. Communication, legal compliance, and stakeholder management determine the overall outcome of the crisis.</div>
+                        </div>
+
+                        <div id="day3_morning_resolution" class="section" data-max-selections="2">
+                            <h2><i class="fa-solid fa-check-circle"></i> Day 3: Morning - Recovery and Future Strategies</h2>
+                            <h3>11:00 AM - Post-Crisis Recovery</h3>
+                            <p>The most intense period of the incident is over. The scope and impacts of the attack are understood ${game.state.cemilConfronted ? 'and Cemil Kaan\'s situation has been addressed.' : '.'} ÇOLHAK Teknoloji needs to learn from this experience and become more resilient to future cyber threats. Protecting intellectual property, re-establishing employee trust, and repairing the company's reputation are among the priorities. As Cyber Intelligence Chief, your task is to translate lessons learned into concrete action plans and propose a long-term security strategy.</p>
+                            <img src="kurtarma.png" alt="Recovery and healing efforts image" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4>What long-term strategies will you propose for your company's future cyber resilience? (Make 2 Selections)</h4>
+                                <div class="decision-buttons">
+                                    <button class="btn" data-decision="d3-m-protocol-revision-ai-training"><i class="fa-solid fa-lock"></i><div class="btn-text">Option A: Multi-Channel Security Protocols and AI-Powered Awareness Training.<small>Tighten security protocols across communication channels and make employees resilient with AI-powered phishing simulations.</small></div></button>
+                                    <button class="btn" data-decision="d3-m-ip-security-enhancement"><i class="fa-solid fa-shield-alt"></i><div class="btn-text">Option B: Comprehensive Enhancement of AI Project Intellectual Property Security.<small>Implement additional security layers (DAC, MAC, DLP, IRM) for critical AI project data and establish continuous monitoring systems.</small></div></button>
+                                    <button class="btn critical" data-decision="d3-m-reputation-campaign"><i class="fa-solid fa-handshake-angle"></i><div class="btn-text">Option C: Proactive Reputation Management and Transparency Campaign.<small>Launch a proactive reputation management campaign with full public transparency, emphasizing the attack as an industry-wide issue.</small></div></button>
+                                    <button class="btn" data-decision="d3-m-employee-support"><i class="fa-solid fa-people-robotic"></i><div class="btn-text">Option D: Employee Psychological Support, Trust Rebuilding, and Internal Communication Programs.<small>Initiate comprehensive psychological support and internal communication programs to mitigate negative impacts on employees.</small></div></button>
+                                    <button class="btn" data-decision="d3-m-insider-threat-program"><i class="fa-solid fa-user-check"></i><div class="btn-text">Option E: Establishment of Insider Threat Intelligence Program and Security Culture Integration.<small>Develop advanced behavioral analysis tools, risk assessments, and ethically framed employee monitoring policies to establish an Insider Threat Intelligence Program.</small></div></button>
+                                </div>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Post-crisis recovery doesn't end with technical patches. Enhancing corporate security, boosting employee morale, and managing public reputation are vital for long-term success.</div>
+                        </div>
+
+                        <div id="finalSection" class="section centered-page" style="display: none;">
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Crisis Evaluation Report</h2>
+                            <p>The simulation is complete. Below is a detailed breakdown of your crisis management performance.</p>
+                            <div id="performance-badge-container"><span id="performance-badge"></span></div>
+                            <div class="final-metrics" id="finalMetricsContainer"></div>
+                            <div class="post-crisis-layout">
+                                <div class="event-timeline">
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
+                                    <ul id="decision-timeline-list"></ul>
+                                </div>
+                                <div class="strategic-debrief">
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Evaluation and Lessons Learned</h3>
+                                    <div id="strategic-debrief-content"></div>
+                                </div>
+                            </div>
+                            <div class="decision-buttons" style="margin-top: 40px;">
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                            </div>
+                        </div>
+                    `;
+                    this.elements.gameContent.innerHTML = gameHTMLContent;
+                    this.elements.sections = this.elements.gameContent.querySelectorAll('.section');
+                    hljs.highlightAll();
+                }
+            };
+            window.game.setup();
+        });
+    </script>
+</body>
+</html>

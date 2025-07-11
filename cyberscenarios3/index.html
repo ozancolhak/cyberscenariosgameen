@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V3: Breach of Trust - Insider Threat Simulation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a2e;
+            --container-bg: #2a2a4a;
+            --section-bg: #333355;
+            --interactive-bg: #444466;
+            --accent-blue: #8be9fd;
+            --accent-purple: #bd93f9;
+            --accent-pink: #ff79c6;
+            --accent-green: #50fa7b;
+            --accent-yellow: #f1fa8c;
+            --accent-red: #ff5555;
+            --text-light: #e0e0e0;
+            --text-dark: #282a36;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--dark-bg); color: var(--text-light); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+        .container { background-color: var(--container-bg); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); padding: 20px; max-width: 950px; width: 100%; margin: 40px 0; }
+        @media (min-width: 768px) { .container { padding: 40px; } }
+        .centered-page { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 60vh; animation: fadeIn 0.5s ease-out; }
+        h1 { font-size: 2.5em; color: var(--accent-blue); margin-bottom: 20px; }
+        h2 { font-size: 2em; color: var(--accent-blue); border-bottom: 2px solid var(--interactive-bg); padding-bottom: 15px; margin-bottom: 25px; }
+        h3 { font-size: 1.5em; color: var(--accent-blue); }
+        h4 { font-size: 1.2em; color: var(--accent-purple); text-align: left; margin-top: 0; border-bottom: 1px solid var(--interactive-bg); padding-bottom: 10px; }
+        p { line-height: 1.7; font-size: 1.1em; }
+        .section { display: none; padding: 20px; background-color: var(--section-bg); border-radius: 8px; margin-top: 25px; animation: fadeIn 0.5s ease-out; }
+        @media (min-width: 768px) { .section { padding: 30px; } }
+        .interactive-element { background-color: var(--interactive-bg); border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .decision-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+        .btn { background-color: #6272a4; color: white; border: none; padding: 15px 25px; border-radius: 8px; cursor: pointer; font-size: 1.1em; transition: all 0.3s ease; text-align: left; display: flex; align-items: center; gap: 15px; font-weight: 700; }
+        .btn:hover { background-color: #7a8ab9; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .btn:disabled { background-color: #555 !important; color: #999 !important; cursor: not-allowed; transform: none; box-shadow: none; opacity: 0.7; }
+        .btn .btn-text { flex-grow: 1; }
+        .btn small { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 5px; font-weight: 400; }
+        .btn-start, .btn-continue { font-size: 1.3em; font-weight: bold; text-align: center; background-color: var(--accent-green); color: var(--text-dark); justify-content: center; }
+        .btn.critical { background-color: var(--accent-pink); }
+        #intermissionSection .metric-change { font-size: 1.2em; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
+        .metric-change .positive { color: var(--accent-green); }
+        .metric-change .negative { color: var(--accent-red); }
+        #statusBar { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; background-color: var(--text-dark); padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #6272a4; }
+        #statusBar .metric { text-align: center; font-size: 0.9em; }
+        #statusBar .metric .value { font-size: 1.3em; font-weight: bold; color: var(--accent-yellow); }
+        .final-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; width: 100%; max-width: 850px; }
+        .metric-card { background-color: var(--section-bg); padding: 25px; border-radius: 8px; text-align: center; border: 1px solid var(--interactive-bg); transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 150px; }
+        .metric-card:hover { transform: scale(1.05); border-color: var(--accent-blue); }
+        .metric-card .icon { font-size: 2.5em; color: var(--accent-blue); margin-bottom: 10px; }
+        .metric-card .label { font-size: 1.1em; margin-bottom: 5px; color: var(--text-light); }
+        .metric-card .value { font-size: 1.8em; font-weight: bold; color: var(--accent-yellow); }
+        .code-block, .slack-chat { background-color: var(--text-dark); border: 1px solid #6272a4; border-radius: 8px; padding: 20px; margin-top: 15px; white-space: pre-wrap; word-break: break-all; font-family: 'Consolas', monospace; }
+        .learning-note { background-color: var(--text-dark); border-left: 5px solid var(--accent-blue); padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .scenario-image { width: 100%; max-width: 500px; margin: 25px auto; display: block; border-radius: 8px; border: 1px solid var(--interactive-bg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .slack-chat .message { margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #3f3f5a; }
+        .slack-chat .sender { font-weight: bold; color: var(--accent-pink); }
+        .slack-chat .sender.cfo { color: var(--accent-yellow); }
+        .slack-chat .sender.legal { color: var(--accent-blue); }
+        .suspect-card { background-color: var(--interactive-bg); border-radius: 8px; padding: 15px; margin-bottom: 10px; border-left: 5px solid var(--accent-purple); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .suspect-card h4 { margin-top: 0; margin-bottom: 5px; border-bottom: none; color: var(--accent-purple); }
+
+        /* === NEW FINAL PAGE STYLES === */
+        #finalSection { text-align: center; }
+        #performance-badge-container { margin: 25px 0; }
+        #performance-badge { padding: 12px 30px; font-size: 1.8em; font-weight: bold; border-radius: 50px; display: inline-block; color: var(--text-dark); box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s ease; }
+        #performance-badge:hover { transform: scale(1.05); }
+        .post-crisis-layout { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; margin-top: 40px; width: 100%; }
+        @media (min-width: 800px) { .post-crisis-layout { grid-template-columns: 1fr 1fr; } }
+        .event-timeline, .strategic-debrief, .recommendations { background-color: var(--interactive-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--section-bg); margin-top: 20px; }
+        .event-timeline h3, .strategic-debrief h3, .recommendations h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--section-bg); color: var(--accent-blue); display: flex; align-items: center; gap: 10px; }
+        .event-timeline ul, .recommendations ul { list-style-type: none; padding-left: 0; margin: 15px 0 0 0; }
+        .event-timeline li { position: relative; padding: 5px 0 15px 35px; border-left: 2px solid var(--section-bg); font-size: 0.95em; }
+        .event-timeline li:last-child { border-left: none; }
+        .event-timeline li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-green); position: absolute; left: -12px; top: 5px; background-color: var(--dark-bg); width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.8em; border: 2px solid var(--section-bg); }
+        .event-timeline li.negative::before { content: '\f00d'; color: var(--accent-red); }
+        .event-timeline li.neutral::before { content: '\f05a'; color: var(--accent-blue); }
+        .event-timeline li .decision-title { font-weight: bold; color: var(--accent-purple); display: block; margin-bottom: 4px; }
+        .event-timeline li .decision-impact { font-style: italic; opacity: 0.8; font-size: 0.9em; }
+        #strategic-debrief-content p { font-size: 1em; margin-bottom: 15px; }
+        .recommendations ul li { padding: 8px 0 8px 30px; position: relative; font-size: 1em; }
+        .recommendations ul li::before { content: '\f0a9'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-yellow); position: absolute; left: 0; top: 10px; }
+
+        /* Styles for the new roles section */
+        #rolesInfo {
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+        #rolesInfo h3 {
+            color: var(--accent-green);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--interactive-bg);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #rolesInfo ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        #rolesInfo ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        #rolesInfo ul li:last-child {
+            margin-bottom: 0;
+        }
+        #rolesInfo ul li::before {
+            content: '\f007'; /* User icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-purple);
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+        #rolesInfo ul li.your-role::before {
+            color: var(--accent-yellow); /* Highlight your role */
+        }
+        #rolesInfo ul li strong {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introSection" class="centered-page">
+            <h1><i class="fa-solid fa-user-secret"></i> Breach of Trust Simulation</h1>
+            <p style="max-width: 600px;">Welcome, Director of Cybersecurity! Today you will face a crisis that engulfs your company, a crisis that goes beyond technology: the **Insider Threat**. Leaked data, a falling reputation, and shattered trust... In this simulation, you will not only solve technical problems but also make difficult decisions involving human psychology, corporate culture, and ethical dilemmas. Every choice you make will determine the course of the crisis and the fate of the company. Are you ready?</p>
+            <img src="images/intro_cyber.png" alt="An intro graphic with a cybersecurity theme" class="scenario-image">
+
+            <div id="rolesInfo">
+                <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
+                <ul>
+                    <li class="your-role"><strong>Your Role: Director of Cybersecurity</strong> - You are responsible for leading the investigation, making critical decisions, and managing the company's response to the crisis. Your choices directly impact the outcome.</li>
+                    <li><strong>CEO - Hande</strong> - The company's top executive, focused on overall business continuity and public perception.</li>
+                    <li><strong>CFO - Arda</strong> - Responsible for the financial health of the company, closely monitoring losses and potential impacts on future investments.</li>
+                    <li><strong>Legal Counsel - Zeynep</strong> - Oversees legal compliance and advises on public statements to mitigate legal risks.</li>
+                    <li><strong>Ayşe Sarı - Sales Manager</strong> - Your team member who initially discovered the leak.</li>
+                    <li><strong>Potential Suspects (Elif, Can, Burak, Ayşe Sarı)</strong> - Employees who may be connected to the incident, either as perpetrators or victims.</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
+        </div>
+
+        <div id="intermissionSection" class="centered-page" style="display: none;">
+            <h2 id="intermissionTitle"></h2>
+            <p id="intermissionText" style="max-width: 600px;"></p>
+            <div class="interactive-element" style="width: 100%; max-width: 500px;">
+                <h4>Decision Impact</h4>
+                <div id="intermissionMetrics"></div>
+            </div>
+            <div class="interactive-element" style="width: 100%; max-width: 500px; border-left-color: var(--accent-blue); margin-top: 20px;">
+                <h4>Strategic Assessment</h4>
+                <p id="strategicText" style="font-size: 1em;"></p>
+            </div>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px;"><i class="fa-solid fa-forward"></i> Continue</button>
+        </div>
+
+        <div id="gameContainer" style="display: none;">
+            <div id="statusBar">
+                <div class="metric"><span><i class="fa-solid fa-user-times"></i> Affected Personnel</span><div class="value" id="status-affectedPersonnel">0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">$0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-database"></i> Data Leak</span><div class="value" id="status-dataLeak">0%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+            </div>
+            <div id="game-content">
+                </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.game = {
+                score: { affectedPersonnel: 0, financialLoss: 0, dataLeak: 0, reputation: 100 },
+                state: {
+                    currentSectionId: 'start',
+                    phishingVictimIdentified: false,
+                    elifClueFound: false,
+                    canClueFound: false,
+                    burakClueFound: false,
+                    ayseClueFound: false,
+                    decisionHistory: []
+                },
+                
+                elements: {},
+                
+                decisionInfo: {
+                    's1-notify-ceo': { title: "Swift Notification", text: "You ensured transparency by immediately informing the CEO and the Board. This secured full support from upper management but created some initial panic.", strat: "Informing senior management quickly during critical security incidents is essential for proactive crisis management.", changes: { financialLoss: 5000, reputation: -5 }, impact: 'Positive' },
+                    's1-gather-evidence': { title: "Delayed Response", text: "While you tried to conceal the situation, the leak became public. You lost control and received a harsh reaction from the CEO.", strat: "In cybersecurity crises, secrecy can cause the event to spin out of control. Transparency and swift communication are better for long-term reputation management.", changes: { financialLoss: 150000, reputation: -20, dataLeak: 5 }, impact: 'Negative' },
+                    's2-c-interrogate-elif': { title: "Interrogating Elif", text: "You interrogated Elif. Despite her resistance, she admitted to recently communicating with someone from outside, a 'job seeker'. She voiced some internal 'issues'.", strat: "Dissatisfied employees are potential targets for insider threats. The importance of HR processes becomes evident in such situations.", changes: { reputation: -5, affectedPersonnel: 1 }, clue: 'elifClueFound', impact: 'Neutral' },
+                    's2-d-investigate-can': { title: "Investigating Can", text: "You investigated Can's financial situation. It was discovered he has significant gambling debts and connections to loan sharks. This makes him vulnerable to external manipulation.", strat: "Financial difficulties can increase the risk of employees becoming insider threats. Offering employee assistance programs can mitigate this risk.", changes: { financialLoss: 10000, reputation: -5 }, clue: 'canClueFound', impact: 'Neutral' },
+                    's2-e-block-burak': { title: "Blocking Burak's Access", text: "You blocked Burak's old access credentials and reviewed his digital footprint. No active access was found, but logs show he connected via VPN once after leaving and tried to access an old test server.", strat: "Diligently terminating all access during employee off-boarding is a fundamental security practice to prevent potential insider threats.", changes: { reputation: 5 }, clue: 'burakClueFound', impact: 'Positive' },
+                    's2-f-talk-ayse': { title: "Trust-building Talk with Ayşe", text: "By having a sincere conversation with Ayşe, you realized she was a victim of a phishing attack. She confessed to accidentally clicking a link in a fake internal survey and entering her password. The key to the crisis has been found!", strat: "Empathizing with the victim and providing a safe environment is vital to understanding the root of social engineering attacks. Educating the human factor is the best defense.", changes: { reputation: 10, affectedPersonnel: 1 }, clue: 'ayseClueFound', impact: 'Positive' },
+                    's3-f1-support-ayse': { title: "Supporting the Victim", text: "You treated Ayşe as a victim and provided her with psychological support. This increased trust within the company and encouraged other employees to report similar situations. However, the perception of 'human error' could pose a risk to public opinion.", strat: "Creating an environment of trust plays a vital role in the detection and prevention of insider threats. Employees must be able to report incidents without fear.", changes: { reputation: 5 }, impact: 'Positive' },
+                    's3-f2-punish-ayse': { title: "Punitive Action", text: "You punished Ayşe for violating security protocols. This demonstrated the company's 'zero-tolerance' policy but created fear and mistrust among employees.", strat: "Harsh punishments may provide short-term discipline but can reduce employees' willingness to report suspicious situations in the long run, pushing threats underground.", changes: { reputation: -15, affectedPersonnel: 1 }, impact: 'Negative' },
+                    's3-f3-investigate-ayse': { title: "Detailed Investigation", text: "You thoroughly investigated Ayşe's account to see if the attacker exploited other vulnerabilities. This helped you better understand the scope of the crisis and identify other potential victims.", strat: "A single security incident is often just the tip of the iceberg. Comprehensive investigation to identify other potential vulnerabilities is critical to preventing future attacks.", changes: { financialLoss: 20000, reputation: 5 }, impact: 'Positive' },
+                    's4-full-transparency': { title: "Full Transparency", text: "You disclosed the incident to the public with all its details, even sharing how the phishing attack affected Ayşe. While this caused initial shock, your honesty increased long-term trust in your company.", strat: "In crisis communication, full transparency, though risky, can build a perception of honesty and lead to long-term reputational gains.", changes: { reputation: 15 }, impact: 'Positive' },
+                    's4-limited-disclosure': { title: "Limited Disclosure", text: "You only confirmed that a leak had occurred and that an investigation was underway. Avoiding details prevented initial panic but raised suspicion among the public and failed to fully restore trust.", strat: "Limited information sharing may manage the situation in the short term but can damage the company's perception of transparency and lead to more speculation in the long run.", changes: { reputation: -10, dataLeak: 5 }, impact: 'Neutral' },
+                    's4-downplay-incident': { title: "Downplaying the Incident", text: "You claimed the leak was a minor technical glitch with no sensitive data loss. However, your lie was soon exposed, and your company faced a major reputational disaster. Legal investigations have begun.", strat: "Lying or downplaying a crisis, while seemingly effective in the short term, will lead to irreparable reputational loss and legal consequences when the truth comes out.", changes: { reputation: -50, financialLoss: 1000000, dataLeak: 20 }, impact: 'Negative' }
+                },
+
+                setup() {
+                    this.elements = {
+                        intro: document.getElementById('introSection'), game: document.getElementById('gameContainer'), gameContent: document.getElementById('game-content'),
+                        startButton: document.getElementById('startButton'), intermission: document.getElementById('intermissionSection'),
+                        intermissionTitle: document.getElementById('intermissionTitle'), intermissionText: document.getElementById('intermissionText'),
+                        intermissionMetrics: document.getElementById('intermissionMetrics'), strategicText: document.getElementById('strategicText'),
+                        continueButton: document.getElementById('continueButton'),
+                        statusBar: { affectedPersonnel: document.getElementById('status-affectedPersonnel'), financialLoss: document.getElementById('status-financialLoss'), dataLeak: document.getElementById('status-dataLeak'), reputation: document.getElementById('status-reputation') }
+                    };
+                    this.loadGameHTML();
+                    this.attachListeners();
+                    this.elements.intro.style.display = 'flex';
+                    this.elements.game.style.display = 'none';
+                },
+
+                attachListeners() {
+                    this.elements.startButton.addEventListener('click', () => {
+                        this.elements.intro.style.display = 'none';
+                        this.elements.game.style.display = 'block';
+                        this.showSection('start');
+                    });
+                    
+                    this.elements.gameContent.addEventListener('click', (e) => {
+                        const button = e.target.closest('.btn[data-decision]');
+                        if (!button) return;
+                        
+                        const decisionId = button.dataset.decision;
+                        const nextSection = button.dataset.nextSection;
+
+                        if (decisionId === 's3-combine-clues') {
+                            this.handleCombineClues(button);
+                        } else {
+                            this.handleDecision(decisionId, nextSection, button);
+                        }
+                    });
+
+                    this.elements.continueButton.addEventListener('click', () => {
+                        const nextSectionId = this.elements.continueButton.dataset.nextSection;
+                        this.elements.intermission.style.display = 'none';
+                        
+                        if (nextSectionId === 'finalSection') {
+                             this.showFinalReport();
+                        } else {
+                            this.elements.game.style.display = 'block';
+                            this.showSection(nextSectionId);
+                        }
+                    });
+                },
+                
+                handleDecision(decisionId, nextSectionId, button) {
+                    button.closest('.decision-buttons').querySelectorAll('.btn').forEach(btn => btn.disabled = true);
+                    const info = this.decisionInfo[decisionId];
+                    if (!info) { console.error("Decision info not found for:", decisionId); return; }
+
+                    this.score.financialLoss += info.changes.financialLoss || 0;
+                    this.score.reputation += info.changes.reputation || 0;
+                    this.score.dataLeak += info.changes.dataLeak || 0;
+                    this.score.affectedPersonnel += info.changes.affectedPersonnel || 0;
+                    if (info.clue) {
+                        this.state[info.clue] = true;
+                        if (info.clue === 'ayseClueFound') this.state.phishingVictimIdentified = true;
+                    }
+                    
+                    this.state.decisionHistory.push({ title: info.title, impactText: info.text, impactType: info.impact });
+                    this.updateState();
+                    this.showIntermission(info.title, info.text, info.strat, info.changes, nextSectionId);
+                },
+
+                handleCombineClues(button) {
+                    button.closest('.decision-buttons').querySelectorAll('.btn').forEach(btn => btn.disabled = true);
+                    let nextSection = 'finalSection', outcomeTitle, outcomeText, outcomeStrat, changes = {}, finalDecisionInfo = {};
+
+                     if (this.state.phishingVictimIdentified) {
+                        outcomeTitle = "Investigation Result: Root Cause Identified!";
+                        outcomeText = "It was determined that Ayşe Sarı was the victim of a phishing attack, through which sensitive data was leaked.";
+                        outcomeStrat = "This situation once again demonstrates how vital employee awareness training is.";
+                        changes = { reputation: 10 }; nextSection = 'section4';
+                        finalDecisionInfo = { title: 'Root Cause ID: Phishing', impactText: 'You found the source of the leak by following the right clue.', impactType: 'Positive' };
+                    } else if (this.state.elifClueFound) {
+                        outcomeTitle = "Investigation Result: Root Cause Identified!";
+                        outcomeText = "It was determined that Elif Demir shared sensitive information with an outsider due to her dissatisfaction with the company. This is a malicious insider threat.";
+                        outcomeStrat = "The importance of managing employee dissatisfaction and ethical rules becomes clear in such cases.";
+                        changes = { reputation: -10, affectedPersonnel: 1 }; nextSection = 'section4';
+                        finalDecisionInfo = { title: 'Root Cause ID: Malicious Employee', impactText: 'You identified the disgruntled employee, but this harmed the company.', impactType: 'Neutral' };
+                    } else if (this.state.canClueFound) {
+                        outcomeTitle = "Investigation Result: Root Cause Identified!";
+                        outcomeText = "It was revealed that Can Yılmaz was manipulated by external forces and leaked information due to his financial debts. This is a 'manipulated insider' threat.";
+                        outcomeStrat = "It became clear how employees' personal problems can increase cybersecurity risks.";
+                        changes = { financialLoss: 50000, reputation: -15, affectedPersonnel: 1 }; nextSection = 'section4';
+                        finalDecisionInfo = { title: 'Root Cause ID: Manipulated Employee', impactText: 'You found the employee under financial pressure.', impactType: 'Neutral' };
+                    } else if (this.state.burakClueFound) {
+                        outcomeTitle = "On the Wrong Trail!";
+                        outcomeText = "It was found that former employee Burak Kara tried to steal information using his old access credentials but was unsuccessful. While this is a security vulnerability, it was not the source of the main leak.";
+                        outcomeStrat = "It became clear how critical security protocols are during the off-boarding process.";
+                        changes = { reputation: 5 }; nextSection = 'section4';
+                        finalDecisionInfo = { title: 'Security Gap Identified', impactText: 'You closed the former employee access gap but missed the main source of the leak.', impactType: 'Neutral' };
+                    } else {
+                        outcomeTitle = "Investigation Result: Root Cause Not Identified!";
+                        outcomeText = "Despite all your efforts, the exact cause and source of the leak could not be determined. This creates great uncertainty for the company's future security posture.";
+                        outcomeStrat = "In cybersecurity, you may not always find all the answers. However, managing missing information and planning future security investments is of critical importance.";
+                        changes = { financialLoss: 100000, reputation: -25, dataLeak: 10 };
+                        finalDecisionInfo = { title: 'Conclusion: Failed Investigation', impactText: 'The root cause was not found, leading to uncertainty and additional costs.', impactType: 'Negative' };
+                    }
+                    
+                    this.state.decisionHistory.push(finalDecisionInfo);
+                    this.score.financialLoss += changes.financialLoss || 0;
+                    this.score.reputation += changes.reputation || 0;
+                    this.score.dataLeak += changes.dataLeak || 0;
+                    this.score.affectedPersonnel += changes.affectedPersonnel || 0;
+                    
+                    this.showIntermission(outcomeTitle, outcomeText, outcomeStrat, changes, nextSection);
+                },
+
+                showIntermission(title, text, strat, changes, nextSectionId) {
+                    this.elements.intermissionTitle.textContent = title;
+                    this.elements.intermissionText.textContent = text;
+                    this.elements.strategicText.textContent = strat;
+                    
+                    let metricsHTML = '';
+                    const formatChange = (label, value, unit, icon, isPositive) => `<div class="metric-change ${isPositive ? 'positive' : 'negative'}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${isPositive ? 'up' : 'down'}-long"></i> ${unit}${Math.abs(value).toLocaleString('en-US')}</div>`;
+                    if (changes.financialLoss) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '$', 'fa-sack-xmark', false);
+                    if (changes.dataLeak) metricsHTML += formatChange('Data Leak', changes.dataLeak, '', 'fa-database', false);
+                    if (changes.reputation !== undefined) metricsHTML += formatChange('Reputation Score', Math.abs(changes.reputation), '', 'fa-building-shield', changes.reputation > 0);
+                    if (changes.affectedPersonnel) metricsHTML += formatChange('Affected Personnel', changes.affectedPersonnel, '', 'fa-user-times', false);
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">This decision had no direct impact on metrics.</p>';
+
+                    this.elements.intermissionMetrics.innerHTML = metricsHTML;
+                    this.elements.continueButton.dataset.nextSection = nextSectionId;
+                    this.elements.game.style.display = 'none';
+                    this.elements.intermission.style.display = 'flex';
+                },
+
+                updateStatusBar() {
+                    const s = this.score;
+                    this.elements.statusBar.affectedPersonnel.textContent = s.affectedPersonnel;
+                    this.elements.statusBar.financialLoss.textContent = `$${s.financialLoss.toLocaleString('en-US')}`;
+                    this.elements.statusBar.dataLeak.textContent = `${s.dataLeak}%`;
+                    this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
+                },
+
+                showSection(sectionId) {
+                    this.elements.sections.forEach(section => { section.style.display = 'none'; });
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                        this.state.currentSectionId = sectionId;
+                        this.updateDynamicContent(sectionId);
+                    } else {
+                        console.error('Section not found:', sectionId);
+                        this.showFinalReport();
+                    }
+                    this.updateState();
+                },
+                
+                showFinalReport() {
+                    this.elements.intro.style.display = 'none';
+                    this.elements.intermission.style.display = 'none';
+                    this.elements.game.style.display = 'block'; 
+                    document.getElementById('statusBar').style.display = 'none';
+
+                    this.elements.sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    const finalSection = document.getElementById('finalSection');
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
+
+                    finalSection.style.display = 'flex';
+                    
+                    const badge = document.getElementById('performance-badge');
+                    const metricsContainer = document.getElementById('finalMetricsContainer');
+                    const timelineList = document.getElementById('decision-timeline-list');
+                    const debriefContent = document.getElementById('strategic-debrief-content');
+                    const recommendationsList = document.getElementById('recommendations-list');
+
+                    const finalRep = Math.max(0, this.score.reputation);
+                    let totalScore = finalRep - (this.score.dataLeak * 2) - (this.score.financialLoss / 50000);
+                    
+                    let badgeInfo = {};
+                    if (totalScore >= 80) badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' };
+                    else if (totalScore >= 50) badgeInfo = { text: 'CRISIS MANAGED', color: 'var(--accent-blue)' };
+                    else if (totalScore >= 20) badgeInfo = { text: 'HEAVY DAMAGE', color: 'var(--accent-yellow)' };
+                    else badgeInfo = { text: 'DISASTER', color: 'var(--accent-red)' };
+
+                    badge.textContent = badgeInfo.text;
+                    badge.style.backgroundColor = badgeInfo.color;
+
+                    metricsContainer.innerHTML = `
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Reputation Score</div><div class="value">${finalRep}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value">$${this.score.financialLoss.toLocaleString('en-US')}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Data Leak</div><div class="value">${this.score.dataLeak}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-user-times"></i></div><div class="label">Affected Personnel</div><div class="value">${this.score.affectedPersonnel}</div></div>
+                    `;
+
+                    timelineList.innerHTML = this.state.decisionHistory.map(decision => {
+                        let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
+                        return `<li class="${liClass}"><span class="decision-title">${decision.title}</span><span class="decision-impact">${decision.impactText.split('.')[0]}.</span></li>`;
+                    }).join('');
+
+                    let debriefHTML = '';
+                    if(this.state.phishingVictimIdentified) {
+                        debriefHTML += `<p><strong>Excellent Diagnosis:</strong> By correctly shifting the investigation's focus to the 'human factor,' you successfully identified the phishing attack. This was a critical step that prevented the crisis from escalating further.</p>`;
+                    } else {
+                        debriefHTML += `<p><strong>Missed Opportunity:</strong> The possibility of human factors and social engineering was overlooked during the investigation. This made it difficult to find the root cause and prolonged the process.</p>`;
+                    }
+                    if(finalRep > 80) {
+                            debriefHTML += `<p><strong>Reputation Management Success:</strong> Your transparent and proactive stance in crisis communication played a key role in restoring and even strengthening public trust.</p>`;
+                    } else if (finalRep < 50) {
+                            debriefHTML += `<p><strong>Communication Failure:</strong> Mistakes in crisis communication led to a severe blow to your reputation. Rebuilding trust will be a long and costly process.</p>`;
+                    }
+                    debriefContent.innerHTML = debriefHTML;
+
+                    let recommendationsHTML = new Set();
+                    recommendationsHTML.add(`<li>Organize mandatory and periodic 'Phishing Awareness Training' for all employees.</li>`);
+                    if(!this.state.phishingVictimIdentified || this.score.dataLeak > 0) {
+                        recommendationsHTML.add(`<li>Strengthen technical controls such as Multi-Factor Authentication (MFA).</li>`);
+                    }
+                    if(this.state.burakClueFound) {
+                            recommendationsHTML.add(`<li>Update off-boarding procedures for departing employees to ensure all access is immediately revoked.</li>`);
+                    }
+                    recommendationsHTML.add(`<li>Create a 'Crisis Communication Plan' with clearly defined roles and responsibilities.</li>`);
+                    recommendationsList.innerHTML = Array.from(recommendationsHTML).join('');
+                },
+
+                updateState() { this.updateStatusBar(); this.updateDynamicContent(this.state.currentSectionId); },
+                updateDynamicContent(currentSectionId) { this.updateSlackChat(currentSectionId); },
+                updateSlackChat(currentSection) {
+                    const chatViewer = document.getElementById('slackChat');
+                    if (!chatViewer) return;
+                    let chat = '';
+                    if (['section2', 'section2-1', 'section3', 'section3-ayse', 'section3-ayse-conclusion'].includes(currentSection)) {
+                            chat = `<div class="message"><span class="sender">CEO Hande:</span> This leak is unacceptable! Find who's responsible, quickly!</div><div class="message"><span class="sender cfo">CFO Arda:</span> We are assessing the financial risks. What are the potential legal consequences?</div><div class="message"><span class="sender legal">Legal Zeynep:</span> Let's avoid making any public statements until we fully understand the situation.</div><div class="message"><span class="sender">You:</span> My team and I have launched a detailed internal investigation.</div>`;
+                    } else if (currentSection === 'section4') {
+                        chat = `<div class="message"><span class="sender">CEO Hande:</span> We are preparing the public statement. Let's confirm one last time. How much are we sharing?</div><div class="message"><span class="sender legal">Legal Zeynep:</span> We have legal responsibilities, but we must also protect the company's image. We need to find a delicate balance.</div><div class="message"><span class="sender cfo">CFO Arda:</span> The cost of this crisis is very high. Will our future investments be affected?</div>`;
+                    }
+                    chatViewer.innerHTML = chat;
+                },
+
+                loadGameHTML() {
+                    const gameHTMLContent = `
+                        <div id="start" class="section">
+                            <h2><i class="fa-solid fa-hourglass-start"></i> Crisis Start: Project Phoenix in Jeopardy!</h2>
+                            <p>Date: June 21, 2025. Just one week before the launch of Project Phoenix, you receive an email from your Cybersecurity Analyst, Ayşe: "Boss, this morning while Browse the Dark Web, I came across some documents belonging to Project Phoenix. They're completely unencrypted and bear our company's internal stamps. It was posted on a small forum but seems to be spreading fast. What should we do?"</p>
+                            <img src="images/email_leak.png" alt="Email notification of the leak" class="scenario-image">
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s1-notify-ceo" data-next-section="section2"><i class="fa-solid fa-share-nodes"></i><div class="btn-text">Option A: Immediately inform the CEO and the Board.<small>Act transparently and swiftly by reporting to top management right away.</small></div></button>
+                                <button class="btn critical" data-decision="s1-gather-evidence" data-next-section="section2"><i class="fa-solid fa-eye-slash"></i><div class="btn-text">Option B: First, gather more evidence with Ayşe and keep it quiet.<small>Try to get the situation under control without causing a panic.</small></div></button>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The first moments of a cyber crisis are critical. Your initial response can significantly affect the course of the crisis.</div>
+                        </div>
+
+                        <div id="section2" class="section">
+                            <h2><i class="fa-solid fa-users-line"></i> Chapter 2: The Suspects Emerge</h2>
+                            <p>Initial analysis indicates the leak originated not from an external attack, but from an **internal source** or the **exploitation of a weak link within**. The person who accessed the data appears to have had "high-level access" on the company's internal network.</p>
+                            <img src="images/suspect_board.png" alt="Suspect board" class="scenario-image">
+                            <p>There's a tense atmosphere in the company. Everyone is looking at each other with suspicion. Rumors are spreading. Employee morale is dropping fast.</p>
+                            <div class="interactive-element">
+                                <h4>Potential Suspects:</h4>
+                                <div class="suspect-card"><h4>Elif Demir - Senior Software Engineer</h4><p>Disappointed after being passed over for a promotion last month, she frequently complains about company policies. A very intelligent employee with high technical skills.</p></div>
+                                <div class="suspect-card"><h4>Can Yılmaz - Finance Specialist</h4><p>There are signs in company records that he is experiencing financial difficulties. Rumors of gambling debts are also circulating. He could be an easily manipulated target.</p></div>
+                                <div class="suspect-card"><h4>Burak Kara - Former System Administrator</h4><p>He left the company three months ago, but you suspect some of his old VPN access credentials were not properly revoked. Perhaps he is helping someone on the inside.</p></div>
+                                <div class="suspect-card"><h4>Ayşe Sarı - Sales Manager</h4><p>A manager you trust deeply, who has been with the company for many years. However, suspicious login attempts to her email accounts have recently been detected. Perhaps she was the victim of a phishing attack and unknowingly provided access.</p></div>
+                            </div>
+                            <div class="decision-buttons">
+                                <button class="btn btn-continue" onclick="game.showSection('section2-1');"><i class="fa-solid fa-arrow-right"></i> Start Investigation</button>
+                            </div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Choosing your initial investigation target is a strategy for getting the most effective results with limited resources. Remember that each suspect requires a different approach.</div>
+                        </div>
+
+                        <div id="section2-1" class="section">
+                            <h2><i class="fa-solid fa-magnifying-glass"></i> Chapter 2.1: The Investigation Begins</h2>
+                            <p>You have assessed the suspect profiles. Now it's time to take the first step to uncover the truth behind this crisis. Who will you prioritize?</p>
+                            <img src="images/interrogation.png" alt="Interrogation room or investigation" class="scenario-image">
+                            <h3>What's your first move?</h3>
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s2-c-interrogate-elif" data-next-section="section3"><i class="fa-solid fa-gavel"></i><div class="btn-text">Option C: Interrogate Elif.<small>Her technical skill and dissatisfaction make her a prime suspect. A formal, high-pressure interrogation.</small></div></button>
+                                <button class="btn" data-decision="s2-d-investigate-can" data-next-section="section3"><i class="fa-solid fa-money-bill-transfer"></i><div class="btn-text">Option D: Investigate Can's finances.<small>His financial problems make him vulnerable to manipulation. A discreet inquiry with HR.</small></div></button>
+                                <button class="btn" data-decision="s2-e-block-burak" data-next-section="section3"><i class="fa-solid fa-user-slash"></i><div class="btn-text">Option E: Block Burak's old access and trace his digital footprint.<small>The most logical technical step. Close the system vulnerability and review past activity.</small></div></button>
+                                <button class="btn" data-decision="s2-f-talk-ayse" data-next-section="section3-ayse"><i class="fa-solid fa-comments"></i><div class="btn-text">Option F: Have a sincere talk with Ayşe.<small>You trust Ayşe. Try to understand the situation through a friendly chat.</small></div></button>
+                            </div>
+                        </div>
+
+                        <div id="section3" class="section">
+                            <h2><i class="fa-solid fa-users-viewfinder"></i> Chapter 3: The Investigation Continues</h2>
+                            <p>The investigation is moving forward based on your choice. However, tension is rising within the company as the source of the crisis has not yet been identified. Internal communications are being constantly monitored.</p>
+                            <img src="images/kriz_masasi.png" alt="Crisis room with the management team" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4><i class="fa-solid fa-headset"></i> Crisis Room Chat</h4>
+                                <div class="slack-chat" id="slackChat"></div>
+                            </div>
+                            <h3>It's time to connect the dots.</h3>
+                            <div class="decision-buttons">
+                                <button class="btn btn-continue" data-decision="s3-combine-clues"><i class="fa-solid fa-puzzle-piece"></i> Combine Clues and Decide</button>
+                            </div>
+                        </div>
+
+                        <div id="section3-ayse" class="section">
+                            <h2><i class="fa-solid fa-handshake-angle"></i> Chapter 3.1: Talk with Ayşe - A Phishing Victim!</h2>
+                            <p>You met with Ayşe under the pretext of grabbing coffee. You noticed she was nervous. When you asked if she had received any strange emails or messages lately, her face went pale.</p>
+                            <p>"Actually... yes," Ayşe whispers. "Last week, I received an email I thought was from 'Human Resources'. I was asked to click a link for an internal survey. I clicked it, and it asked for my password. It was very strange, but it looked 'official'..."</p>
+                            <img src="images/phishing_email.png" alt="Example of a phishing email" class="scenario-image">
+                            <p>Ayşe is one of the senior managers with access to Project Phoenix documents. She may have been the victim of a phishing attack. Her password was compromised, and the leaker used her account to access the data.</p>
+                            <h3>What will you do now?</h3>
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s3-f1-support-ayse" data-next-section="section3-ayse-conclusion"><i class="fa-solid fa-hand-holding-heart"></i><div class="btn-text">Option F1: Declare Ayşe a victim and support her.<small>Acknowledge that Ayşe is a victim and provide her with psychological support. This builds trust.</small></div></button>
+                                <button class="btn critical" data-decision="s3-f2-punish-ayse" data-next-section="section3-ayse-conclusion"><i class="fa-solid fa-user-xmark"></i><div class="btn-text">Option F2: Accuse Ayşe of violating security protocols.<small>Punish her, believing her carelessness led to a major crisis. This emphasizes company discipline.</small></div></button>
+                                <button class="btn" data-decision="s3-f3-investigate-ayse" data-next-section="section3-ayse-conclusion"><i class="fa-solid fa-magnifying-glass-plus"></i><div class="btn-text">Option F3: Conduct a detailed review of Ayşe's account.<small>Check if this phishing attack has affected other employees.</small></div></button>
+                            </div>
+                        </div>
+                        
+                        <div id="section3-ayse-conclusion" class="section">
+                            <h2><i class="fa-solid fa-check-circle"></i> Chapter 3.2: Root Cause Identified: Phishing Attack!</h2>
+                            <p>After a detailed investigation and conversations with Ayşe, it has been confirmed that the Project Phoenix documents were stolen via a **phishing attack**. The attackers stole Ayşe's credentials to infiltrate the corporate network and exfiltrate the data.</p>
+                            <img src="images/root_cause.png" alt="Root cause analysis graphic" class="scenario-image">
+                            <div class="decision-buttons">
+                                <button class="btn btn-continue" onclick="game.showSection('section4');"><i class="fa-solid fa-forward"></i> Proceed to Reputation Management</button>
+                            </div>
+                        </div>
+
+                        <div id="section4" class="section">
+                            <h2><i class="fa-solid fa-bullhorn"></i> Chapter 4: Crisis Communication & Reputation Management</h2>
+                            <p>The origin of the crisis is largely understood. Now comes the hardest part: making a public statement and saving the company's reputation. The media, customers, and stakeholders are expecting a transparent statement from the company.</p>
+                            <img src="images/press_conference.png" alt="Press conference graphic" class="scenario-image">
+                            <div class="interactive-element">
+                                <h4><i class="fa-solid fa-newspaper"></i> Media Headlines (Pre-Announcement)</h4>
+                                <div class="code-block" style="font-family: 'Times New Roman', serif;">
+                                    <p style="font-size:1.2em; font-weight:bold; color:var(--accent-red);">BREAKING: Project Phoenix Documents on the Dark Web!</p>
+                                    <p style="font-size:1em; color:var(--text-light); margin-top:5px;">[TECHNEWS] Leaked documents point to an internal security vulnerability.</p>
+                                </div>
+                            </div>
+                            <h3>How will you address the public and stakeholders?</h3>
+                            <div class="decision-buttons">
+                                <button class="btn" data-decision="s4-full-transparency" data-next-section="finalSection"><i class="fa-solid fa-check-double"></i><div class="btn-text">Option A: Full Transparency.<small>Explain the incident in full detail, including the cause and the victim, if any. Risky, but can build trust.</small></div></button>
+                                <button class="btn" data-decision="s4-limited-disclosure" data-next-section="finalSection"><i class="fa-solid fa-file-contract"></i><div class="btn-text">Option B: Limited Disclosure.<small>Only confirm the leak, state that the investigation is ongoing, and necessary measures have been taken. Avoid details.</small></div></button>
+                                <button class="btn critical" data-decision="s4-downplay-incident" data-next-section="finalSection"><i class="fa-solid fa-mask"></i><div class="btn-text">Option C: Downplay the Incident.<small>Claim the leak was a minor technical glitch with no sensitive data loss. Aims to quickly save face but carries a huge risk.</small></div></button>
+                            </div>
+                        </div>
+
+                        <div id="finalSection" class="section centered-page" style="display: none;">
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Crisis Debriefing Report</h2>
+                            <p>The simulation is complete. Below is a detailed breakdown of your crisis management performance.</p>
+                            <div id="performance-badge-container"><span id="performance-badge"></span></div>
+                            <div class="final-metrics" id="finalMetricsContainer"></div>
+                            <div class="post-crisis-layout">
+                                <div class="event-timeline">
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
+                                    <ul id="decision-timeline-list"></ul>
+                                </div>
+                                <div class="strategic-debrief">
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief & Lessons Learned</h3>
+                                    <div id="strategic-debrief-content"></div>
+                                </div>
+                            </div>
+                            <div class="recommendations">
+                                <h3><i class="fa-solid fa-tasks"></i> Action Plan Moving Forward</h3>
+                                <ul id="recommendations-list"></ul>
+                            </div>
+                            <div class="decision-buttons" style="margin-top: 40px;">
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                            </div>
+                        </div>
+                    `;
+                    this.elements.gameContent.innerHTML = gameHTMLContent;
+                    this.elements.sections = this.elements.gameContent.querySelectorAll('.section');
+                    hljs.highlightAll();
+                }
+            };
+            window.game.setup();
+        });
+    </script>
+</body>
+</html>
