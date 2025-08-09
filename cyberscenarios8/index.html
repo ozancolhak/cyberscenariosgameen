@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Scenario v8: TRAFFIC TSUNAMI: A Large-Scale DDoS Crisis</title>
+    <title>Cyber Scenario V8: TRAFFIC TSUNAMI: Large-Scale DDoS Crisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -77,6 +77,7 @@
         .btn .btn-text { flex-grow: 1; }
         .btn small { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 5px; font-weight: 400; }
         .btn-start, .btn-continue { font-size: 1.3em; font-weight: bold; text-align: center; background-color: var(--accent-green); color: var(--text-dark); justify-content: center; }
+        .btn.critical { background-color: var(--accent-pink); }
 
         #intermissionSection .metric-change { font-size: 1.2em; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
         .metric-change .positive { color: var(--accent-green); }
@@ -106,14 +107,13 @@
         .slack-chat .sender.cto { color: var(--accent-green); } 
         .slack-chat .sender.pr { color: var(--accent-pink); } 
         .slack-chat .sender.finance { color: var(--accent-red); } 
-        .slack-chat .sender.vendor { color: var(--accent-blue); } /* New for DDoS vendor */
+        .slack-chat .sender.vendor { color: var(--accent-blue); }
 
         .suspect-card { background-color: var(--interactive-bg); border-radius: 8px; padding: 20px; margin-bottom: 15px; border-left: 5px solid var(--accent-purple); box-shadow: 0 2px 8px rgba(0,0,0,0.2); text-align: left;}
         .suspect-card h4 { margin-top: 0; margin-bottom: 10px; border-bottom: none; color: var(--accent-purple); }
         .suspect-card p {font-size: 0.9em; line-height: 1.6;}
         .suspect-card strong { color: var(--accent-yellow); }
 
-        /* === FINAL PAGE STYLES === */
         #finalSection { text-align: center; }
         #performance-badge-container { margin: 25px 0; }
         #performance-badge { padding: 12px 30px; font-size: 1.8em; font-weight: bold; border-radius: 50px; display: inline-block; color: var(--text-dark); box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s ease; }
@@ -132,91 +132,104 @@
         .event-timeline li .decision-impact { font-style: italic; opacity: 0.8; font-size: 0.9em; }
         #strategic-debrief-content p { font-size: 1em; margin-bottom: 15px; }
 
-        /* Roles Info specific styles */
-        .intro-info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 30px;
-            width: 100%;
-            max-width: 800px;
-            text-align: left;
-        }
-
-        @media (min-width: 768px) {
-            .intro-info-grid {
-                grid-template-columns: 1fr 1fr; 
-            }
-        }
+        .intro-info-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 30px; width: 100%; max-width: 800px; text-align: left; }
+        @media (min-width: 768px) { .intro-info-grid { grid-template-columns: 1fr 1fr; } }
 
         .intro-roles-container, .intro-metrics-container {
             background-color: var(--section-bg);
             border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow adjusted for better visibility */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             border: 1px solid var(--interactive-bg);
         }
-
         .intro-roles-container h3, .intro-metrics-container h3 {
-            margin-top: 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--interactive-bg);
-            color: var(--accent-purple);
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--interactive-bg);
+            color: var(--accent-purple); text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-
-        .intro-roles-container ul, .intro-metrics-container ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
+        .intro-roles-container ul, .intro-metrics-container ul { list-style: none; padding: 0; margin: 0; }
         .intro-roles-container li, .intro-metrics-container li {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--interactive-bg);
-            font-size: 1.05em;
+            display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding: 10px 0; border-bottom: 1px dashed var(--interactive-bg); font-size: 1.05em;
         }
-
-        .intro-roles-container li:last-child, .intro-metrics-container li:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+        .intro-roles-container li:last-child, .intro-metrics-container li:last-child { border-bottom: none; margin-bottom: 0; }
+        .intro-roles-container li .icon, .intro-metrics-container li .icon { font-size: 1.8em; color: var(--accent-blue); flex-shrink: 0; width: 35px; text-align: center; }
+        .intro-roles-container li strong { color: var(--accent-yellow); }
+        .intro-roles-container li small { display: block; font-size: 0.9em; color: var(--text-light); opacity: 0.8; margin-top: 3px; }
+        
+        .lb-overlay{
+            display:none; position:fixed; inset:0;
+            background: rgba(10,10,25,.7);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            z-index:9999; align-items:center; justify-content:center; padding:20px;
         }
-
-        .intro-roles-container li .icon, .intro-metrics-container li .icon {
-            font-size: 1.8em;
-            color: var(--accent-blue);
-            flex-shrink: 0;
-            width: 35px;
-            text-align: center;
-        }
-       
-        .intro-roles-container li strong {
-            color: var(--accent-yellow);
-        }
-
-        .intro-roles-container li small {
-            display: block;
-            font-size: 0.9em;
+        .lb-modal{
+            background: linear-gradient(180deg, #2a2a4a 0%, #1f1f36 100%);
             color: var(--text-light);
-            opacity: 0.8;
-            margin-top: 3px;
+            width:100%; max-width: 760px; border-radius:14px; padding:22px 22px 16px;
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow: 0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+        }
+        .lb-header{
+            display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px;
+        }
+        .lb-title{
+            display:flex; align-items:center; gap:10px;
+            font-size:1.25em; font-weight:800; letter-spacing:.2px; color: var(--accent-yellow);
+        }
+        .lb-title i{ filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+        .lb-sub{ font-size:.92em; opacity:.85; color:#cfd3ff; }
+
+        .lb-tablewrap{
+            margin-top:10px;
+            max-height: 60vh; overflow:auto;
+            border:1px solid var(--interactive-bg); border-radius:10px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+        }
+        table.lb-table{ width:100%; border-collapse:collapse; font-size:.97em; }
+        table.lb-table th, table.lb-table td{ padding:10px 12px; text-align:left; }
+        table.lb-table thead th{
+            position: sticky; top:0; z-index:1;
+            background:#1f1f36; color:#e9e9ff;
+            border-bottom: 1px solid #3b3b66;
+            font-weight:700; letter-spacing:.3px;
+        }
+        table.lb-table tbody td{ border-bottom:1px solid rgba(255,255,255,.06); color:#e9e9f5; }
+        table.lb-table tbody tr:hover{ background-color: rgba(255,255,255,.045); }
+        table.lb-table tbody tr:nth-child(1){
+            background: linear-gradient(90deg, rgba(255,215,0,.18), transparent 65%);
+        }
+        table.lb-table tbody tr:nth-child(1) td:first-child::after{ content:" 🥇"; }
+        table.lb-table tbody tr:nth-child(2){
+            background: linear-gradient(90deg, rgba(192,192,192,.18), transparent 65%);
+        }
+        table.lb-table tbody tr:nth-child(2) td:first-child::after{ content:" 🥈"; }
+        table.lb-table tbody tr:nth-child(3){
+            background: linear-gradient(90deg, rgba(205,127,50,.18), transparent 65%);
+        }
+        table.lb-table tbody tr:nth-child(3) td:first-child::after{ content:" 🥉"; }
+
+        .lb-actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:14px; }
+        .lb-close, .lb-refresh{
+            border:0; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:700;
+            transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        }
+        .lb-refresh{ background: var(--accent-blue); color:#0c1130; }
+        .lb-close{ background: #3d3d60; color:#fff; }
+        .lb-refresh:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(139,233,253,.22); }
+        .lb-close:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.35); }
+
+        @media (max-width: 420px){
+          .lb-title{ font-size:1.05em; }
+          table.lb-table th, table.lb-table td{ padding:9px 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-       
+        
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-water"></i> TRAFFIC TSUNAMI: A Large-Scale DDoS Crisis</h1>
-            <p style="max-width: 600px;">Welcome, **Network Security Specialist** at **ÇOLHAK Technology**! Your mission is critical: you are under a **large-scale DDoS attack** from an international botnet targeting your company's main servers. Websites, services, and even internal network connections are on the verge of collapse. This attack is overloading systems, threatening business continuity, and causing significant reputational damage. Your task: race against time to mitigate the attack, redirect traffic, protect the infrastructure, and ensure business continuity!</p>
+            <h1><i class="fa-solid fa-water"></i> TRAFFIC TSUNAMI: Large-Scale DDoS Crisis</h1>
+            <p style="max-width: 600px;">Welcome, **SOC Analyst** at **CORESEC Technologies**! Your task is critical: your company's main servers are under a **large-scale DDoS attack** from an international botnet. Websites, services, and even internal network connections are on the verge of disruption. This attack threatens business continuity by overloading systems and is causing major damage to your reputation. Your mission: Race against time to mitigate the attack, redirect traffic, protect the infrastructure, and ensure business continuity!</p>
             <img src="intro.png" alt="DDoS attack themed intro image" class="scenario-image">
 
             <div class="intro-info-grid">
@@ -226,12 +239,12 @@
                         <li class="your-role">
                             <span class="icon"><i class="fa-solid fa-network-wired"></i></span>
                             <div>
-                                <strong>Your Role: Network Security Specialist</strong> 
-                                <small>You are responsible for the security of the company's network infrastructure. You take an active role in DDoS mitigation steps. Your choices will directly affect the outcome.</small>
+                                <strong>Your Role: SOC Analyst</strong> 
+                                <small>You are responsible for the security of the company's network infrastructure. You play an active role in DDoS mitigation steps. Your choices will directly affect the outcome.</small>
                             </div>
                         </li>
-                        <li><span class="icon"><i class="fa-solid fa-user-tie"></i></span><div><strong>CISO Melih Kaan</strong> <small>Head of security, expects fast and effective mitigation.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-microchip"></i></span><div><strong>CTO Onur Güngor</strong> <small>Infrastructure performance and business continuity are his priorities.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-tie"></i></span><div><strong>CISO Melih Kaan</strong> <small>Responsible for security, expects fast and effective mitigation.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-microchip"></i></span><div><strong>CTO Onur Güngor</strong> <small>Prioritizes infrastructure performance and business continuity.</small></div></li>
                         <li><span class="icon"><i class="fa-solid fa-users-gear"></i></span><div><strong>CEO Ayfer Yıldız</strong> <small>Wants to minimize reputational and financial losses.</small></div></li>
                         <li><span class="icon"><i class="fa-solid fa-cloud"></i></span><div><strong>CDN/DDoS Protection Provider</strong> <small>Will provide external support, but may not always respond quickly.</small></div></li>
                     </ul>
@@ -240,11 +253,11 @@
                 <div class="intro-metrics-container">
                     <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-gauge-high"></i></span><div><strong>System Load</strong> <small>Resilience of servers against DDoS traffic. (Start: Critical)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-gauge-high"></i></span><div><strong>System Load</strong> <small>Servers' resilience against DDoS traffic. (Start: Overloaded)</small></div></li>
                         <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-shield-virus"></i></span><div><strong>Attack Effectiveness</strong> <small>The power and impact of the DDoS attack. (Start: Full)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-sack-dollar"></i></span><div><strong>Financial Loss</strong> <small>Cost resulting from the outage. (Start: $0)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-hourglass-half"></i></span><div><strong>Downtime</strong> <small>Total duration of the service interruption. (Start: 0 Minutes)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-pink);"><i class="fa-solid fa-heart-crack"></i></span><div><strong>Customer Satisfaction</strong> <small>Satisfaction of customers with service access. (Start: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-sack-dollar"></i></span><div><strong>Financial Loss</strong> <small>Cost resulting from downtime. (Start: $0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-hourglass-half"></i></span><div><strong>Downtime</strong> <small>Total duration of the service outage. (Start: 0 Minutes)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-pink);"><i class="fa-solid fa-heart-crack"></i></span><div><strong>Customer Satisfaction</strong> <small>Satisfaction with service accessibility. (Start: 100)</small></div></li>
                     </ul>
                 </div>
             </div>
@@ -255,7 +268,7 @@
             <h2 id="intermissionTitle"></h2>
             <p id="intermissionText" style="max-width: 600px;"></p>
             <div class="interactive-element" style="width: 100%; max-width: 500px;">
-                <h4>Decision Impacts</h4>
+                <h4>Decision Impact</h4>
                 <div id="intermissionMetrics"></div>
             </div>
             <div class="interactive-element" style="width: 100%; max-width: 500px; border-left-color: var(--accent-blue); margin-top: 20px;">
@@ -267,126 +280,127 @@
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-gauge-high"></i> System Load</span><div class="value" id="status-systemLoad">Critical</div></div>
+                <div class="metric"><span><i class="fa-solid fa-gauge-high"></i> System Load</span><div class="value" id="status-systemLoad">Overloaded</div></div>
                 <div class="metric"><span><i class="fa-solid fa-shield-virus"></i> Attack Effectiveness</span><div class="value" id="status-attackEffectiveness">Full</div></div>
                 <div class="metric"><span><i class="fa-solid fa-sack-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">$0</div></div>
                 <div class="metric"><span><i class="fa-solid fa-hourglass-half"></i> Downtime</span><div class="value" id="status-downtime">0 Minutes</div></div>
                 <div class="metric"><span><i class="fa-solid fa-heart-crack"></i> Customer Satisfaction</span><div class="value" id="status-customerSatisfaction">100</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">04:00</div></div>
             </div>
             <div id="game-content">
 
                 <div id="ddos_phase1_initial_detection" class="section">
-                    <h2><i class="fa-solid fa-wave-square"></i> Phase 1: Initial Detection & Traffic Anomaly</h2>
-                    <h3>Time 0:15 - Traffic Alert!</h3>
-                    <p>At midnight, a series of critical alerts started coming from your network monitoring systems: "Abnormal traffic increase detected!" You quickly realized that a distributed and intense flood of requests, tens of times larger than normal traffic, was directed at your main servers. This is a clear **large-scale DDoS attack**! Your website has started to slow down, and some users are even experiencing access problems.</p>
+                    <h2><i class="fa-solid fa-wave-square"></i> Phase 1: Initial Detection and Traffic Anomaly</h2>
+                    <h3>Time 0:00 - Traffic Alert!</h3>
+                    <p>At midnight, a series of critical alerts start coming from your network monitoring systems: "Anomalous traffic increase detected!" You quickly realize that a distributed and intense flood of requests, tens of times larger than normal traffic, is being directed at your main servers. This is a clear **large-scale DDoS attack**! Your website is starting to slow down, and some users are already experiencing access issues.</p>
                     <img src="spike.png" alt="DDoS traffic spike visual" class="scenario-image">
                     <div class="interactive-element">
                         <div class="decision-buttons">
-                            <button class="btn critical" data-decision="ddos-p1-enable-onprem-mitigation" data-next-section="ddos_phase2_cdn_contact"><i class="fa-solid fa-firewall"></i><div class="btn-text">Option A: Activate Existing On-Prem DDoS Mitigation Systems.<small>Start filtering the traffic with your own infrastructure solutions. It's fast but may have limited capacity.</small></div></button>
-                            <button class="btn" data-decision="ddos-p1-contact-isp" data-next-section="ddos_phase2_cdn_contact"><i class="fa-solid fa-phone-volume"></i><div class="btn-text">Option B: Contact ISP and Request Traffic Filtering.<small>Request filtering of attack traffic before it reaches the company network. There is a risk of external dependency and delay.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p1-enable-onprem-mitigation" data-next-section="ddos_phase2_cdn_contact"><i class="fa-solid fa-firewall"></i><div class="btn-text">Option A: Activate Existing On-Prem DDoS Mitigation Systems.<small>Start filtering traffic with your in-house solutions. Fast, but may have limited capacity.</small></div></button>
+                            <button class="btn" data-decision="ddos-p1-contact-isp" data-next-section="ddos_phase2_cdn_contact"><i class="fa-solid fa-phone-volume"></i><div class="btn-text">Option B: Contact ISP and Request Traffic Filtering.<small>Ask to filter the attack traffic before it reaches the company network. Risk of external dependency and delay.</small></div></button>
                         </div>
                     </div>
-                    <div class="learning-note"><strong>Learning Note:</strong> The speed of initial response is vital in DDoS attacks. While using your own existing capacities can be a quick solution, ISP support is necessary for larger attacks.</div>
+                    <div class="learning-note"><strong>Learning Note:</strong> In DDoS attacks, the speed of the initial response is vital. Using your own existing capacity can be a quick solution, while ISP support is necessary for larger attacks.</div>
                 </div>
 
                 <div id="ddos_phase2_cdn_contact" class="section">
                     <h2><i class="fa-solid fa-cloud-arrow-up"></i> Phase 2: Contacting the CDN/DDoS Protection Provider</h2>
-                    <h3>Time 0:45 - Response from CDN Provider!</h3>
-                    <p>Although your on-prem solutions provided some relief, the magnitude of the attack continues. With the approval of the CISO and CTO, you initiated an emergency call with your CDN and DDoS protection provider (e.g., Cloudflare, Akamai). You explained the situation in detail. The provider stated they could deploy their traffic scrubbing service at full capacity, but full activation and traffic redirection would take **approximately 15-30 minutes**.</p>
+                    <h3>Time 0:45 - Response from the CDN Provider!</h3>
+                    <p>Although your on-prem solutions have provided some relief, the magnitude of the attack persists. With approval from the CISO and CTO, you've initiated an emergency call with your CDN and DDoS protection provider (e.g., Cloudflare, Akamai). You've detailed the situation. The provider states they can fully activate their traffic scrubbing service, but full activation and traffic redirection will take **approximately 15-30 minutes**.</p>
                     <div class="interactive-element">
                     <img src="ddos.png" alt="DDoS attack themed intro image" class="scenario-image">
 
-                        <h4>During this waiting period, what will you do to ensure business continuity?</h4>
+                        <h4>What will you do to ensure business continuity during this waiting period?</h4>
                         <div class="decision-buttons">
-                            <button class="btn critical" data-decision="ddos-p2-temporary-service-degradation" data-next-section="ddos_phase3_traffic_diversion"><i class="fa-solid fa-minus-circle"></i><div class="btn-text">Option A: Temporarily Shut Down Some Non-Critical Services.<small>Reduce resource consumption to decrease system load and keep main services running.</small></div></button>
-                            <button class="btn" data-decision="ddos-p2-scale-up-resources" data-next-section="ddos_phase3_traffic_diversion"><i class="fa-solid fa-arrow-up-right-dots"></i><div class="btn-text">Option B: Rapidly Increase Server Resources (Scale Up/Out).<small>Increase the capacity of existing servers or deploy additional ones. This can be costly.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p2-temporary-service-degradation" data-next-section="ddos_phase3_traffic_diversion"><i class="fa-solid fa-minus-circle"></i><div class="btn-text">Option A: Temporarily Shut Down Some Non-Critical Services.<small>Reduce resource consumption to keep main services online.</small></div></button>
+                            <button class="btn" data-decision="ddos-p2-scale-up-resources" data-next-section="ddos_phase3_traffic_diversion"><i class="fa-solid fa-arrow-up-right-dots"></i><div class="btn-text">Option B: Quickly Scale Up Server Resources (Scale Up/Out).<small>Increase the capacity of existing servers or deploy additional ones. Can be costly.</small></div></button>
                         </div>
                     </div>
-                    <div class="learning-note"><strong>Learning Note:</strong> The deployment time for external mitigation solutions in DDoS attacks is crucial. Managing internal resources during this period is critical to minimizing downtime.</div>
+                    <div class="learning-note"><strong>Learning Note:</strong> The activation time for external DDoS mitigation solutions is important. Managing internal resources during this period is critical to minimizing downtime.</div>
                 </div>
 
                 <div id="ddos_phase3_traffic_diversion" class="section">
                     <h2><i class="fa-solid fa-route"></i> Phase 3: Traffic Diversion and Damage Control</h2>
                     <h3>Time 1:30 - Traffic Scrubbing Has Begun!</h3>
-                    <p>Your CDN provider has intervened and started to clean the attack traffic. The initial signals are positive; the system load is gradually decreasing. However, the attackers seem to have changed tactics; they are focusing on Layer 7 (application layer) attacks, targeting specific API endpoints and session management. This is a smarter type of attack focused on resource exhaustion rather than bandwidth.</p>
-                    <p>CTO Onur Güngor calls: *"The attack intensity has decreased, but we still have access issues! The APIs have slowed down. We continue to receive complaints from our customers. What are we doing about this Layer 7 attack?"*</p>
+                    <p>Your CDN provider has stepped in and started scrubbing the attack traffic. The initial signs are positive; system load is slowly decreasing. However, the attackers seem to have changed tactics, focusing on Layer 7 (application layer) attacks, targeting specific API endpoints and session management. This is a smarter type of attack that focuses on resource exhaustion rather than bandwidth.</p>
+                    <p>CTO Onur Güngor calls: *"The attack volume is down, but we still have access issues! The APIs have slowed down. We're still getting complaints from our customers. What are we doing about this Layer 7 attack?"*</p>
                     <img src="traffic.png" alt="Traffic diversion visual" class="scenario-image">
                     <div class="interactive-element">
                         <div class="decision-buttons">
-                            <button class="btn critical" data-decision="ddos-p3-rate-limiting" data-next-section="ddos_phase4_communication_and_reputation"><i class="fa-solid fa-hand-holding-dollar"></i><div class="btn-text">Option A: Apply Rate Limiting at the Application Layer.<small>Restrict the request rate from specific IP addresses or user sessions. May affect legitimate users.</small></div></button>
-                            <button class="btn" data-decision="ddos-p3-captcha-challenges" data-next-section="ddos_phase4_communication_and_reputation"><i class="fa-solid fa-robot"></i><div class="btn-text">Option B: Implement CAPTCHA Challenges for Suspicious Traffic.<small>Use interactive challenges like CAPTCHA to distinguish bot traffic. May negatively impact user experience.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p3-rate-limiting" data-next-section="ddos_phase4_communication_and_reputation"><i class="fa-solid fa-hand-holding-dollar"></i><div class="btn-text">Option A: Apply Application-Layer Rate Limiting.<small>Restrict the rate of requests from specific IP addresses or user sessions. May affect legitimate users.</small></div></button>
+                            <button class="btn" data-decision="ddos-p3-captcha-challenges" data-next-section="ddos_phase4_communication_and_reputation"><i class="fa-solid fa-robot"></i><div class="btn-text">Option B: Implement CAPTCHA Challenges for Suspicious Traffic.<small>Use interactive challenges like CAPTCHA to distinguish bot traffic. May worsen user experience.</small></div></button>
                         </div>
                     </div>
-                    <div class="learning-note"><strong>Learning Note:</strong> Layer 7 DDoS attacks are more sophisticated and cause service interruptions through resource consumption. Application layer measures like rate limiting and CAPTCHA are important against such attacks.</div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Layer 7 DDoS attacks are more sophisticated and cause service outages through resource exhaustion. Application-layer measures like rate limiting and CAPTCHA are important against such attacks.</div>
                 </div>
 
                 <div id="ddos_phase4_communication_and_reputation" class="section">
                     <h2><i class="fa-solid fa-podcast"></i> Phase 4: Communication and Reputation Management</h2>
                     <h3>Time 2:30 - Media and Customer Pressure!</h3>
-                    <p>The impact of the DDoS attack has spread to the public. Complaints are snowballing on social media, and some news sites are headlining ÇOLHAK Technology's service interruptions. The fact that a major e-commerce launch is scheduled for this week infuriates CEO Ayfer Yıldız: *"This situation is jeopardizing the launch! Our credibility is shaken. What are we going to tell the customers? What will our financial losses be?"*</p>
-                    <p>The PR team and your legal advisors are requesting an urgent meeting regarding the content and timing of the public announcement.</p>
+                    <p>The impact of the DDoS attack has become public. Complaints are soaring on social media, and some news sites are headlining CORESEC Technologies' service outages. With a major e-commerce launch scheduled for this week, CEO Ayfer Yıldız is furious: *"This jeopardizes the launch! Our trust is eroding. What are we going to tell our customers? What will our financial losses be?"*</p>
+                    <p>The PR team and your legal advisors are requesting an emergency meeting on the content and timing of the public statement.</p>
                     <img src="media.png" alt="DDoS public pressure visual" class="scenario-image">
                     <div class="interactive-element">
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="ddos-p4-transparent-apology" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Option A: Disclose the Attack, Apologize, and Share Measures Taken.<small>Be transparent, announce that you are under a DDoS attack and the mitigation steps. Try to regain trust.</small></div></button>
-                            <button class="btn critical" data-decision="ddos-p4-downplay-issue" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-masks-theater"></i><div class="btn-text">Option B: Describe the Issue as 'Heavy Maintenance' or a 'Technical Glitch'.<small>Don't mention the DDoS attack, downplay the situation and present it as an internal technical problem.</small></div></button>
-                            <button class="btn" data-decision="ddos-p4-offer-compensation" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-gift"></i><div class="btn-text">Option C: Offer Compensation to Users for the Service Outage.<small>Provide incentives like discounts or free services to compensate for the financial loss.</small></div></button>
+                            <button class="btn" data-decision="ddos-p4-transparent-apology" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Option A: Disclose the Attack, Apologize, and Share Measures Taken.<small>Be transparent, announce that you are under a DDoS attack, and detail mitigation steps. Try to regain trust.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p4-downplay-issue" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-masks-theater"></i><div class="btn-text">Option B: Frame the Issue as 'Heavy Maintenance' or a 'Technical Glitch'.<small>Don't mention the DDoS attack, downplay the situation, and present it as an internal technical problem.</small></div></button>
+                            <button class="btn" data-decision="ddos-p4-offer-compensation" data-next-section="ddos_phase5_post_attack_recovery"><i class="fa-solid fa-gift"></i><div class="btn-text">Option C: Offer Compensation to Users for the Service Disruption.<small>Provide incentives like discounts or free service to compensate for financial loss.</small></div></button>
                         </div>
                     </div>
-                    <div class="learning-note"><strong>Learning Note:</strong> In cybersecurity incidents, the communication strategy directly affects reputation and customer trust. Transparency is often the best approach.</div>
+                    <div class="learning-note"><strong>Learning Note:</strong> In cybersecurity incidents, the communication strategy directly impacts reputation and customer trust. Transparency is often the best approach.</div>
                 </div>
 
                 <div id="ddos_phase5_post_attack_recovery" class="section">
                     <h2><i class="fa-solid fa-circle-check"></i> Phase 5: Post-Attack Recovery and Lessons Learned</h2>
                     <h3>Time 3:30 - Attack Under Control!</h3>
-                    <p>Thanks to the full support of your CDN provider and your proactive interventions, the DDoS attack is finally under control. Traffic has returned to normal levels, and your services are fully accessible. However, it's time to assess the impacts of the attack and strengthen your infrastructure against future potential attacks. You are holding a post-crisis meeting with the CISO, CTO, and CEO.</p>
+                    <p>Thanks to the full support of your CDN provider and your proactive interventions, the DDoS attack is finally under control. Traffic has returned to normal levels, and your services are fully accessible. However, it's time to assess the impact of the attack and strengthen your infrastructure against potential future attacks. You are holding a post-crisis meeting with the CISO, CTO, and CEO.</p>
                     <div class="interactive-element">
                         <h4>With the lessons learned from this major DDoS attack, how will you strengthen your future defenses?</h4>
                         <div class="slack-chat" id="slackChatDDoS_P5"></div>
                         <div class="decision-buttons">
-                            <button class="btn critical" data-decision="ddos-p5-invest-advanced-mitigation" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-chart-line-up"></i><div class="btn-text">Option A: Invest in Advanced DDoS Mitigation Solutions.<small>Acquire more sophisticated DDoS protection services and hardware to make the infrastructure more resilient.</small></div></button>
-                            <button class="btn" data-decision="ddos-p5-conduct-drills" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-users-medical"></i><div class="btn-text">Option B: Conduct Regular DDoS Simulations and Drills.<small>Organize regular drills to ensure the team acts faster and more coordinated in a crisis.</small></div></button>
-                            <button class="btn" data-decision="ddos-p5-review-network-architecture" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-sitemap"></i><div class="btn-text">Option C: Redesign the Network Architecture for DDoS Resilience.<small>Make the network architecture distributed and redundant to prevent single points of failure.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p5-invest-advanced-mitigation" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-chart-line-up"></i><div class="btn-text">Option A: Invest in Advanced DDoS Mitigation Solutions.<small>Make the infrastructure more resilient by acquiring more sophisticated DDoS protection services and hardware.</small></div></button>
+                            <button class="btn" data-decision="ddos-p5-conduct-drills" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-users-medical"></i><div class="btn-text">Option B: Conduct Regular DDoS Simulations and Drills.<small>Organize regular drills for the team to act faster and more coordinated in a crisis.</small></div></button>
+                            <button class="btn" data-decision="ddos-p5-review-network-architecture" data-next-section="ddos_phase6_investigation"><i class="fa-solid fa-sitemap"></i><div class="btn-text">Option C: Redesign the Network Infrastructure for DDoS Resilience.<small>Make the network architecture distributed and redundant to prevent a single point of failure.</small></div></button>
                         </div>
                     </div>
-                    <div class="learning-note"><strong>Learning Note:</strong> Lessons learned after DDoS attacks are critical for future resilience. Technology investments, training, and architectural changes provide long-term protection.</div>
+                    <div class="learning-note"><strong>Learning Note:</strong> Lessons learned after a DDoS attack are critical for future resilience. Technology investments, training, and architectural changes provide long-term protection.</div>
                 </div>
 
                 <div id="ddos_phase6_investigation" class="section">
                     <h2><i class="fa-solid fa-user-secret"></i> Phase 6: Investigation and Attribution</h2>
                     <h3>Time 4:30 - On the Attacker's Trail</h3>
-                    <p>The attack has been completely stopped, and the systems are stable. CISO Melih Kaan now wants you to focus on finding out who attacked and why. The digital forensics team has analyzed the attack vectors, source IPs, and traffic patterns, identifying three possible suspects.</p>
-                       
+                    <p>The attack is completely stopped, and systems are stable. CISO Melih Kaan now wants you to focus on finding out who attacked and why. The forensic team has analyzed the attack vectors, source IPs, and traffic patterns, identifying three possible suspects.</p>
+                    
                     <div class="suspect-card">
                         <h4>Suspect 1: Disruptor Tech (Rival Company)</h4>
-                        <p><strong>Motive:</strong> To sabotage ÇOLHAK Technology's major e-commerce launch and gain a market advantage.<br>
-                        <strong>Evidence:</strong> The attack was a sophisticated Layer 7 (application layer) attack specifically targeting API endpoints related to the new product. This may indicate they have inside knowledge of your company's operations.</p>
+                        <p><strong>Motive:</strong> To sabotage CORESEC Technologies' major e-commerce launch and gain a market advantage.<br>
+                        <strong>Evidence:</strong> The attack was a sophisticated Layer 7 (application layer) attack specifically targeting API endpoints related to the new product. This might indicate they have inside knowledge of your company's operations.</p>
                     </div>
 
                     <div class="suspect-card">
                         <h4>Suspect 2: Digital Justice Front (Hacktivist Group)</h4>
-                        <p><strong>Motive:</strong> To protest ÇOLHAK Technology's recently announced and publicly debated data policies.<br>
+                        <p><strong>Motive:</strong> To protest CORESEC Technologies' recently announced data policies, which have been controversial.<br>
                         <strong>Evidence:</strong> During the attack, numerous posts criticizing your company were made from social media accounts associated with the group. The attack was high-volume but less complex, focusing on Layer 3/4 (network layer).</p>
                     </div>
 
                     <div class="suspect-card">
-                        <h4>Suspect 3: Crypto-Lock Gang (Ransomware Group)</h4>
+                        <h4>Suspect 3: Crypto-Lock Gang (Ransom Group)</h4>
                         <p><strong>Motive:</strong> Purely financial. To demand a ransom by taking the company's services offline.<br>
-                        <strong>Evidence:</strong> 24 hours before the attack, a low-profile email, which had landed in the spam folder and was overlooked, was found demanding a payment of 5 BTC to "prevent disruptions to your services." The botnet used was also seen in previous attacks associated with this group.</p>
+                        <strong>Evidence:</strong> 24 hours before the attack, a low-profile email, which had been overlooked in the spam folder, demanded a payment of 5 BTC to "prevent disruptions to your services." The botnet used was seen in previous attacks associated with this group.</p>
                     </div>
-                       
+                    
                     <div class="interactive-element">
-                         <h4>Now it's decision time: In light of the evidence gathered, who do you believe is behind the attack? This decision will affect the legal process and future defense priorities.</h4>
+                         <h4>Now is the time to decide: In light of the evidence gathered, who do you believe is behind the attack? This decision will affect the legal process and future defense priorities.</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="ddos-p6-blame-competitor" data-next-section="finalSection"><i class="fa-solid fa-briefcase"></i><div class="btn-text">Option A: Rival Company (Disruptor Tech)<small>Present this information to management to initiate legal action and increase measures against industrial espionage.</small></div></button>
-                            <button class="btn" data-decision="ddos-p6-blame-hacktivists" data-next-section="finalSection"><i class="fa-solid fa-masks-theater"></i><div class="btn-text">Option B: Hacktivist Group (Digital Justice Front)<small>Engage the public relations team to repair the company's public image and focus on reviewing policies.</small></div></button>
-                            <button class="btn critical" data-decision="ddos-p6-blame-gang" data-next-section="finalSection"><i class="fa-solid fa-skull-crossbones"></i><div class="btn-text">Option C: Ransomware Group (Crypto-Lock Gang)<small>Hand over the investigation to cybercrime units and strengthen defense mechanisms against future ransom attacks.</small></div></button>
+                            <button class="btn" data-decision="ddos-p6-blame-competitor" data-next-section="finalSection"><i class="fa-solid fa-briefcase"></i><div class="btn-text">Option A: The Rival Company (Disruptor Tech)<small>Present this information to management to initiate legal action and increase measures against industrial espionage.</small></div></button>
+                            <button class="btn" data-decision="ddos-p6-blame-hacktivists" data-next-section="finalSection"><i class="fa-solid fa-masks-theater"></i><div class="btn-text">Option B: The Hacktivist Group (Digital Justice Front)<small>Engage the public relations team to correct the company's public image and focus on reviewing policies.</small></div></button>
+                            <button class="btn critical" data-decision="ddos-p6-blame-gang" data-next-section="finalSection"><i class="fa-solid fa-skull-crossbones"></i><div class="btn-text">Option C: The Ransom Group (Crypto-Lock Gang)<small>Hand over the investigation to cybercrime units and strengthen defense mechanisms against future ransom attacks.</small></div></button>
                         </div>
                     </div>
                 </div>
                 <div id="finalSection" class="section centered-page" style="display: none;">
-                    <h2><i class="fa-solid fa-chart-line"></i> Post-DDoS Crisis Assessment Report</h2>
-                    <p>The simulation is complete. Below is a detailed breakdown of your DDoS crisis management performance.</p>
+                    <h2><i class="fa-solid fa-chart-line"></i> Post-DDoS Crisis Analysis Report</h2>
+                    <p>Simulation complete. Below is a detailed breakdown of your DDoS attack management performance.</p>
                     <div id="performance-badge-container"><span id="performance-badge"></span></div>
                     <div class="final-metrics" id="finalMetricsContainer"></div>
                     <div class="post-crisis-layout">
@@ -399,10 +413,31 @@
                             <div id="strategic-debrief-content"></div>
                         </div>
                     </div>
-                    <div class="decision-buttons" style="margin-top: 40px;">
+                    <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                         <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                        <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Leaderboard</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+        <div class="lb-modal">
+            <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+            <div class="lb-tablewrap">
+                <table class="lb-table" id="leaderboardTable">
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr><td colspan="4">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lb-actions">
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
             </div>
         </div>
     </div>
@@ -410,120 +445,125 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // DDoS Simulation Logic - HARDENED VERSION
     window.game = {
-        score: { systemLoad: 'Critical', attackEffectiveness: 'Full', financialLoss: 0, downtime: 0, customerSatisfaction: 100 },
+        score: { systemLoad: 'Overloaded', attackEffectiveness: 'Full', financialLoss: 0, downtime: 0, customerSatisfaction: 100 },
         state: {
             currentSectionId: 'start',
             decisionHistory: [],
-            attribution: null
+            attribution: null,
+            totalScore: null
         },
         elements: {},
+        timer: {
+            total: 240,
+            remaining: 240,
+            intervalId: null,
+            running: false
+        },
         
-        // HARDENED DECISION IMPACTS: Every decision now has a cost.
         decisionInfo: {
             'ddos-p1-enable-onprem-mitigation': {
                 title: "Activate On-Prem Mitigation",
-                text: "You deployed your own systems. This was a fast initial response, but it was insufficient against the massive scale of the attack, further stressing your systems and increasing costs.",
-                strat: "Using your own resources is fast, but in large-scale attacks, it usually only buys time and doesn't provide a complete solution. This move introduces financial and operational burdens while protecting systems.",
+                text: "You deployed your own systems. This was a quick initial response, but it was insufficient against the massive scale of the attack, putting more stress on your systems and increasing costs.",
+                strat: "Using your own resources is fast but often only buys time in large-scale attacks and doesn't provide a complete solution. This move brings financial and operational burdens while protecting systems.",
                 changes: { systemLoad: 'High', attackEffectiveness: 'Reduced', financialLoss: 25000, downtime: 30, customerSatisfaction: -15 },
-                impact: 'Neutral' // No longer positive, a neutral start
+                impact: 'Neutral'
             },
             'ddos-p1-contact-isp': {
                 title: "Contact ISP and Request Filtering",
-                text: "Reaching the ISP and convincing them to take action cost valuable minutes. During this delay, the attack continued at full force, deepening the service outage and severely damaging customer trust.",
-                strat: "While ISP support is critical, depending on an external party is a major risk in a crisis. Every minute of delay multiplies the financial and reputational loss.",
-                changes: { systemLoad: 'Critical', attackEffectiveness: 'Full', financialLoss: 60000, downtime: 60, customerSatisfaction: -30 },
+                text: "Reaching the ISP and convincing them to take action cost valuable minutes. During this delay, the attack continued at full strength, deepening the service outage and significantly eroding customer trust.",
+                strat: "ISP support is critical, but dependency on an external party is a major risk in a crisis. Every minute of delay exponentially increases financial and reputational loss.",
+                changes: { systemLoad: 'Overloaded', attackEffectiveness: 'Full', financialLoss: 60000, downtime: 60, customerSatisfaction: -30 },
                 impact: 'Negative'
             },
             'ddos-p2-temporary-service-degradation': {
                 title: "Shut Down Non-Critical Services",
-                text: "You shut down some services to protect the core ones. This gave the servers some breathing room, but it meant a complete outage for customers using those services, creating dissatisfaction.",
-                strat: "Service triage is a smart tactic, but it always comes at a price. The decision of which service to sacrifice should be made considering the impact on different customer segments.",
+                text: "You shut down some services to protect the main ones. This gave the servers some breathing room but meant a complete outage for customers using those services, creating dissatisfaction.",
+                strat: "Service prioritization (triage) is a smart tactic, but it always comes at a cost. The decision of which service to sacrifice must be made considering the impact on customer segments.",
                 changes: { systemLoad: 'Medium', financialLoss: 15000, downtime: 5, customerSatisfaction: -18 },
                 impact: 'Positive'
             },
             'ddos-p2-scale-up-resources': {
-                title: "Increase Server Resources",
-                text: "You tried to counter the attack with brute force by maxing out cloud resources. While this gave the systems some resilience, it just became a bigger target for the attackers and sent costs soaring.",
-                strat: "Throwing money at an attack is rarely an effective solution. Attackers often have more resources than your financial limits. This might be a temporary band-aid, but it won't stop the bleeding.",
+                title: "Scale Up Server Resources",
+                text: "You tried to counter the attack with brute force by maxing out cloud resources. While this gave the systems some resilience, it just made them a bigger target for the attackers and sent costs skyrocketing.",
+                strat: "Throwing money at an attack is rarely an effective solution. Attackers often have more resources than your financial limits. This might be a temporary band-aid but won't stop the bleeding.",
                 changes: { systemLoad: 'High', financialLoss: 70000, downtime: 15, customerSatisfaction: -20 },
                 impact: 'Negative'
             },
             'ddos-p3-rate-limiting': {
-                title: "Apply Rate Limiting at the Application Layer",
-                text: "You implemented aggressive rate limiting. This significantly cut down on Layer 7 bot traffic but also mistakenly blocked some legitimate users and API integrations, leading to new complaints.",
+                title: "Apply Application-Layer Rate Limiting",
+                text: "You introduced aggressive rate limiting. This significantly cut down the Layer 7 bot traffic but also mistakenly blocked some legitimate users and API integrations, leading to new complaints.",
                 strat: "Rate limiting is one of the most effective weapons against L7 attacks, but its settings are very sensitive. Being too aggressive can mean doing the attacker's job for them.",
                 changes: { systemLoad: 'Low', attackEffectiveness: 'Partially Controlled', financialLoss: 10000, downtime: 5, customerSatisfaction: -10 },
                 impact: 'Positive'
             },
             'ddos-p3-captcha-challenges': {
                 title: "Implement CAPTCHA Challenges for Suspicious Traffic",
-                text: "Showing a CAPTCHA for every suspicious request stopped the bots but ruined the user experience. Your customers grew tired of proving they weren't robots every time they accessed the site, causing satisfaction to plummet.",
-                strat: "CAPTCHA is a nuclear option. It effectively stops bots but also punishes legitimate users. It should only be used in the most desperate moments and temporarily.",
+                text: "Showing a CAPTCHA for every suspicious request stopped the bots but ruined the user experience. Your customers got tired of proving they weren't robots every time they visited your site, and satisfaction plummeted.",
+                strat: "CAPTCHA is a nuclear option. It effectively stops bots but also frustrates legitimate users. It should only be used in the most desperate moments and temporarily.",
                 changes: { systemLoad: 'Medium', attackEffectiveness: 'Partially Controlled', financialLoss: 5000, downtime: 5, customerSatisfaction: -35 },
                 impact: 'Neutral'
             },
             'ddos-p4-transparent-apology': {
                 title: "Disclose the Attack, Apologize, and Share Measures",
-                text: "You followed a policy of full transparency. While appreciated by some customers, there was also a large group who felt the company appeared weak, and their trust was shaken. Repairing the reputation will be long and costly.",
+                text: "You followed a policy of full transparency. While this was appreciated by some customers, a large group felt the company looked weak, and their trust was shaken. Repairing the reputation will be long and costly.",
                 strat: "Transparency is usually the best policy, but its timing and tone are critical. Announcements made before the crisis is under control can increase panic and make the company look weak.",
                 changes: { customerSatisfaction: +5, financialLoss: 20000 },
                 impact: 'Positive'
             },
             'ddos-p4-downplay-issue': {
-                title: "Describe the Issue as a 'Technical Glitch'",
-                text: "You brushed off the problem as a 'technical glitch.' However, when cybersecurity reporters uncovered the truth, your company looked both incompetent and dishonest. This created a reputation crisis that is very difficult to recover from.",
-                strat: "Never lie. A lie told during a crisis causes more damage than the crisis itself. Once trust is lost, it's nearly impossible to regain.",
+                title: "Frame the Issue as a 'Technical Glitch'",
+                text: "You dismissed the problem as a 'technical glitch.' However, when cybersecurity reporters uncovered the truth, your company looked both incompetent and dishonest. This created a reputation crisis that is very difficult to recover from.",
+                strat: "Never lie. A lie told during a crisis causes more damage than the crisis itself. Once trust is lost, it's almost impossible to regain.",
                 changes: { customerSatisfaction: -60, financialLoss: 100000 },
                 impact: 'Negative'
             },
             'ddos-p4-offer-compensation': {
-                title: "Offer Compensation for the Service Outage",
-                text: "You offered a generous compensation package to appease customers. While this slightly increased satisfaction, it placed a huge financial burden on the company and created an image of 'a company that solves problems with money.'",
-                strat: "Compensation is a gesture of goodwill but doesn't solve the underlying problem. If your infrastructure is still weak, it just means you're pre-paying for the next crisis.",
+                title: "Offer Compensation for the Service Disruption",
+                text: "You offered a generous compensation package to win back customers. While this increased satisfaction somewhat, it placed a huge financial burden on the company and created an image of a company that 'solves problems with money.'",
+                strat: "Compensation is a gesture of goodwill but doesn't solve the underlying problem. If your infrastructure is still weak, this is just a down payment on the next crisis.",
                 changes: { customerSatisfaction: +15, financialLoss: 80000 },
                 impact: 'Neutral'
             },
             'ddos-p5-invest-advanced-mitigation': {
                 title: "Invest in Advanced DDoS Mitigation Solutions",
-                text: "You decided to invest in the most expensive and advanced protection systems. This will provide protection in the future but opened a huge hole in the budget.",
-                strat: "Technology alone is not enough. Even the best tools can be ineffective without the right people and processes. This investment should only be one part of a holistic strategy.",
+                text: "You decided to invest in the most expensive and advanced protection systems. This will provide future protection but created a huge hole in the budget.",
+                strat: "Technology alone is not enough. Even the best tools can be ineffective without the right people and processes. This investment should be just one part of a holistic strategy.",
                 changes: { financialLoss: 80000, customerSatisfaction: +5 },
                 impact: 'Positive'
             },
             'ddos-p5-conduct-drills': {
                 title: "Conduct Regular DDoS Simulations and Drills",
-                text: "You planned regular drills to increase the team's preparedness. This is one of the most cost-effective solutions for strengthening the human factor.",
+                text: "You planned regular drills to improve the team's readiness. This is one of the most cost-effective solutions for strengthening the human factor.",
                 strat: "Building muscle memory is critical. The more teams practice, the calmer and more effective they will be in a real crisis.",
                 changes: { financialLoss: 20000, customerSatisfaction: +10 },
                 impact: 'Positive'
             },
             'ddos-p5-review-network-architecture': {
-                title: "Redesign Network Architecture for DDoS Resilience",
-                text: "You initiated a project to redesign the architecture to make it more resilient. While this is the most permanent solution in the long run, its implementation will be long and costly.",
-                strat: "Resilience starts with design. It's always better to build a solid foundation from the beginning rather than patching things up during a crisis.",
+                title: "Redesign Network Infrastructure for DDoS Resilience",
+                text: "You initiated a project to redesign the architecture to be more resilient. While this is the most permanent solution in the long run, it will be long and costly to implement.",
+                strat: "Resilience starts with design. It's always better to build a solid foundation from the start rather than patching things up during a crisis.",
                 changes: { financialLoss: 50000, customerSatisfaction: +7 },
                 impact: 'Positive'
             },
-             'ddos-p6-blame-competitor': {
-                title: "Attacker: Rival Company",
+            'ddos-p6-blame-competitor': {
+                title: "Attribution: Rival Company",
                 text: "You blamed the rival company despite weak evidence. This triggered a legal battle and damaged your reputation in the industry. The real culprit is still out there.",
-                strat: "Attribution requires conclusive evidence. A false accusation not only wastes resources but also blinds you to the real threat and has legal consequences.",
+                strat: "Attribution requires definitive proof. A false accusation not only wastes resources but also blinds you to the real threat and has legal consequences.",
                 changes: { financialLoss: 50000, customerSatisfaction: -20 },
                 impact: 'Negative',
                 attribution: 'competitor'
             },
             'ddos-p6-blame-hacktivists': {
-                title: "Attacker: Hacktivist Group",
-                text: "You attributed the attack to hacktivists. This led the company to review its policies, but technical defense mechanisms were sidelined. The real culprit, the ransomware group, is preparing for the next attack.",
-                strat: "Misunderstanding the motive leads to preparing the wrong defense. While focusing on a PR problem, you may overlook your technical debt and vulnerabilities.",
+                title: "Attribution: Hacktivist Group",
+                text: "You attributed the attack to hacktivists. This led the company to review its policies, but technical defense mechanisms were sidelined. The real culprit, a ransom group, is preparing for the next attack.",
+                strat: "Misunderstanding the motive leads to the wrong defense. By focusing on a PR problem, you may be ignoring your technical debt and vulnerabilities.",
                 changes: { financialLoss: 10000, customerSatisfaction: -10 },
                 impact: 'Negative',
                 attribution: 'hacktivist'
             },
             'ddos-p6-blame-gang': {
-                title: "Attacker: Ransomware Group",
+                title: "Attribution: Ransom Group",
                 text: "By correctly analyzing the evidence, you identified that a financially motivated gang was behind the attack. This allowed resources to be focused on the correct threat model and opened the way for collaboration with law enforcement.",
                 strat: "Correct attribution is the foundation of an effective defense. When you know your enemy, you can develop the right weapons and strategies against them.",
                 changes: { financialLoss: 5000, customerSatisfaction: +10 },
@@ -549,7 +589,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     attackEffectiveness: document.getElementById('status-attackEffectiveness'),
                     financialLoss: document.getElementById('status-financialLoss'),
                     downtime: document.getElementById('status-downtime'),
-                    customerSatisfaction: document.getElementById('status-customerSatisfaction')
+                    customerSatisfaction: document.getElementById('status-customerSatisfaction'),
+                    remaining: document.getElementById('status-remaining')
+                },
+                leaderboard: {
+                    overlay: document.getElementById('leaderboardOverlay'),
+                    body: document.getElementById('leaderboardBody'),
+                    table: document.getElementById('leaderboardTable'),
+                    btnOpen: document.getElementById('openLeaderboardBtn'),
+                    btnClose: document.getElementById('lbCloseBtn'),
+                    btnRefresh: document.getElementById('lbRefreshBtn')
                 }
             };
             this.loadGameHTML();
@@ -562,24 +611,18 @@ document.addEventListener('DOMContentLoaded', () => {
             this.elements.startButton.addEventListener('click', () => {
                 this.elements.intro.style.display = 'none';
                 this.elements.game.style.display = 'block';
+                this.startGlobalTimer();
                 this.showSection('ddos_phase1_initial_detection'); 
             });
-           
+            
             this.elements.gameContent.addEventListener('click', (e) => {
                 const button = e.target.closest('.btn[data-decision]');
                 if (!button || button.disabled) {
                     return; 
                 }
-               
+                
                 const decisionId = button.dataset.decision;
                 const nextSection = button.dataset.nextSection;
-
-                const currentSectionElement = document.getElementById(this.state.currentSectionId);
-                currentSectionElement.querySelectorAll('.btn[data-decision]').forEach(btn => {
-                    btn.disabled = true;
-                    btn.style.opacity = 0.6;
-                    btn.style.cursor = 'not-allowed';
-                });
 
                 this.handleDecision(decisionId, nextSection);
             });
@@ -587,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.elements.continueButton.addEventListener('click', () => {
                 const nextSectionId = this.elements.continueButton.dataset.nextSection;
                 this.elements.intermission.style.display = 'none';
-               
+                
                 if (nextSectionId === 'finalSection') {
                     this.showFinalReport();
                 } else {
@@ -595,8 +638,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.showSection(nextSectionId);
                 }
             });
+
+            this.elements.leaderboard.btnOpen?.addEventListener('click', () => this.openLeaderboard());
+            this.elements.leaderboard.btnClose?.addEventListener('click', () => this.closeLeaderboard());
+            this.elements.leaderboard.btnRefresh?.addEventListener('click', () => this.loadLeaderboard());
+            this.elements.leaderboard.overlay.addEventListener('click', (e) => {
+                if (e.target === this.elements.leaderboard.overlay) this.closeLeaderboard();
+            });
         },
-       
+        
         handleDecision(decisionId, nextSectionId) {
             const info = this.decisionInfo[decisionId];
             if (!info) { console.error("Decision info not found:", decisionId); return; }
@@ -611,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             this.state.decisionHistory.push({ id: decisionId, title: info.title, text: info.text, impactType: info.impact, sectionId: this.state.currentSectionId });
-           
+            
             this.updateState();
             this.showIntermission(info.title, info.text, info.strat, info.changes, nextSectionId);
         },
@@ -620,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.elements.intermissionTitle.textContent = title;
             this.elements.intermissionText.textContent = text;
             this.elements.strategicText.textContent = strat;
-           
+            
             let metricsHTML = '';
             const formatChange = (label, value, unit, icon) => {
                 let colorClass = 'neutral';
@@ -639,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     displayValue = `${sign}${value.toLocaleString('en-US')}`;
                 } else {
-                    colorClass = 'neutral'; // For string values
+                    colorClass = 'neutral';
                 }
 
                 return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: ${arrowIcon ? `<i class="fa-solid ${arrowIcon}"></i>` : ''} ${displayValue}${unit}</div>`;
@@ -648,9 +698,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (changes.systemLoad !== undefined) metricsHTML += formatChange('System Load', changes.systemLoad, '', 'fa-gauge-high');
             if (changes.attackEffectiveness !== undefined) metricsHTML += formatChange('Attack Effectiveness', changes.attackEffectiveness, '', 'fa-shield-virus');
             if (changes.financialLoss !== undefined && changes.financialLoss !== 0) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '$', 'fa-sack-dollar');
-            if (changes.downtime !== undefined && changes.downtime !== 0) metricsHTML += formatChange('Downtime', changes.downtime, ' Minutes', 'fa-hourglass-half');
+            if (changes.downtime !== undefined && changes.downtime !== 0) metricsHTML += formatChange('Downtime', changes.downtime, ' Min', 'fa-hourglass-half');
             if (changes.customerSatisfaction !== undefined && changes.customerSatisfaction !== 0) metricsHTML += formatChange('Customer Satisfaction', changes.customerSatisfaction, '', 'fa-heart-crack');
-           
+            
             if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1em; opacity: 0.8;">This decision had no direct impact on the metrics.</p>';
 
             this.elements.intermissionMetrics.innerHTML = metricsHTML;
@@ -681,55 +731,51 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             this.updateState();
         },
-       
-        // HARDENED REPORTING AND SCORING
+        
         showFinalReport() {
+            this.stopGlobalTimer();
+
             this.elements.intro.style.display = 'none';
             this.elements.intermission.style.display = 'none';
             this.elements.game.style.display = 'block'; 
             document.getElementById('statusBar').style.display = 'none';
-            this.elements.sections.forEach(section => { section.style.display = 'none'; });
-           
+
+            this.elements.sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
             const finalSection = document.getElementById('finalSection');
             if (!finalSection) { console.error("Final section not found in HTML!"); return; }
             finalSection.style.display = 'flex';
-           
+            
             const badge = document.getElementById('performance-badge');
             const metricsContainer = document.getElementById('finalMetricsContainer');
             const timelineList = document.getElementById('decision-timeline-list');
             const debriefContent = document.getElementById('strategic-debrief-content');
-           
-            // --- NEW SCORING LOGIC ---
-            let totalScore = 100; // Start at 100 and deduct points
+            
+            let totalScore = 100;
             const correctAttribution = this.state.attribution === 'gang';
 
-            // 1. Financial Loss Penalty (~1.5 points lost for every $10,000)
-            totalScore -= (this.score.financialLoss / 10000) * 1.5;
-
-            // 2. Downtime Penalty (~2 points lost for every 10 minutes)
-            totalScore -= (this.score.downtime / 10) * 2;
-
-            // 3. Customer Satisfaction Penalty (0.5 points lost for each point below 100)
-            totalScore -= (100 - this.score.customerSatisfaction) * 0.5;
-           
-            // 4. Incorrect Attribution Penalty
+            totalScore -= (this.score.financialLoss / 10000) * 2.0;
+            totalScore -= (this.score.downtime / 10) * 2.5;
+            totalScore -= (100 - this.score.customerSatisfaction) * 0.6;
+            
             if (!correctAttribution) {
-                totalScore -= 25; // Very heavy penalty
+                totalScore -= 25;
             }
 
-            // Prevent negative score
             totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
+            this.state.totalScore = totalScore;
 
             let badgeInfo = {};
-            // NEW TITLE THRESHOLDS
-            if (totalScore >= 90 && correctAttribution) { 
+            if (totalScore >= 80 && correctAttribution) { 
                 badgeInfo = { text: 'DDOS MASTER!', color: 'var(--accent-green)' };
-            } else if (totalScore >= 75) { 
-                badgeInfo = { text: 'RESILIENT NETWORK PRO', color: 'var(--accent-blue)' };
-            } else if (totalScore >= 50) { 
-                badgeInfo = { text: 'TOUGH DDoS EXPERIENCE', color: 'var(--accent-yellow)' };
+            } else if (totalScore >= 60) { 
+                badgeInfo = { text: 'RESILIENT NETWORK EXPERT', color: 'var(--accent-blue)' };
+            } else if (totalScore >= 35) { 
+                badgeInfo = { text: 'A TOUGH DDoS EXPERIENCE', color: 'var(--accent-yellow)' };
             } else { 
-                badgeInfo = { text: 'DDOS DISASTER', color: 'var(--accent-red)' };
+                badgeInfo = { text: 'DDoS CATASTROPHE', color: 'var(--accent-red)' };
             }
 
             badge.textContent = badgeInfo.text;
@@ -748,53 +794,158 @@ document.addEventListener('DOMContentLoaded', () => {
             }).join('');
 
             let debriefHTML = `<p><strong>Your Overall Performance Score: ${totalScore}/100.</strong></p>`;
-             if (badgeInfo.text === 'DDOS MASTER!') { 
-                debriefHTML += `<p><strong>Outstanding Success!</strong> You achieved the nearly impossible. You managed the crisis with minimal damage, cost, and downtime. Your decisions were not only technically sound but also strategically brilliant. You've proven yourself a master of cybersecurity.</p>`;
-            } else if (badgeInfo.text === 'RESILIENT NETWORK PRO') { 
-                debriefHTML += `<p><strong>Effective Crisis Management!</strong> You managed to stay afloat in this challenging scenario. Although some losses were incurred, you kept a cool head and made sound strategic decisions, saving the company from a major disaster. This is a well-earned success.</p>`;
-            } else if (badgeInfo.text === 'TOUGH DDoS EXPERIENCE') { 
-                debriefHTML += `<p><strong>Major Lessons Learned.</strong> The crisis was averted, but at a heavy cost. The financial losses and downtime show how critical future preparations are. This experience was a painful but necessary lesson in understanding your vulnerabilities.</p>`;
+            if (badgeInfo.text === 'DDOS MASTER!') { 
+                debriefHTML += `<p><strong>Outstanding Success!</strong> You achieved the nearly impossible. You managed the crisis with minimal damage, cost, and downtime. Your decisions were not only technically sound but also strategically brilliant. You have proven yourself a master in cybersecurity.</p>`;
+            } else if (badgeInfo.text === 'RESILIENT NETWORK EXPERT') { 
+                debriefHTML += `<p><strong>Effective Crisis Management!</strong> You managed to stay afloat in this challenging scenario. Although there were some losses, you kept your cool and made the right strategic decisions, saving the company from a major disaster. This is a hard-won success.</p>`;
+            } else if (badgeInfo.text === 'A TOUGH DDoS EXPERIENCE') { 
+                debriefHTML += `<p><strong>Major Lessons Learned.</strong> The crisis was averted, but at a heavy cost. The financial losses and downtime show how critical future preparations are. This experience was a painful but necessary lesson to understand your vulnerabilities.</p>`;
             } else { 
-                debriefHTML += `<p><strong>DDoS DISASTER.</strong> The crisis management was inadequate, and the consequences were severe. A major blow was dealt financially, operationally, and reputationally. The company needs to rebuild its cybersecurity strategy and incident response plans from the ground up.</p>`;
+                debriefHTML += `<p><strong>DDoS CATASTROPHE.</strong> The crisis management was inadequate, and the consequences are severe. A major blow was dealt in terms of finance, operations, and reputation. The company needs to fundamentally rebuild its cybersecurity strategy and emergency response plans.</p>`;
             }
 
             if (this.state.attribution) {
                 if (correctAttribution) {
-                    debriefHTML += `<p><strong>Investigation Note:</strong> You correctly identified the attacker (Ransomware Group). This critical move saved you from a greater disaster and significantly impacted your score.</p>`;
+                    debriefHTML += `<p><strong>Investigation Note:</strong> You correctly identified the attacker (Ransom Group). This critical move saved you from a larger disaster and significantly impacted your score.</p>`;
                 } else {
-                    debriefHTML += `<p><strong>Investigation Note:</strong> You misidentified the attacker. This major mistake caused resources to be wasted and severely lowered your final score. Correct attribution is vital in a cyber crisis.</p>`;
+                    debriefHTML += `<p><strong>Investigation Note:</strong> You misidentified the attacker. This major mistake led to wasted resources and severely lowered your final score. Correct attribution is vital in a cyber crisis.</p>`;
                 }
             }
             debriefContent.innerHTML = debriefHTML;
+            
+            this.saveLeaderboard(totalScore);
         },
-
+        
         updateState() { 
             this.updateStatusBar(); 
             this.updateSlackChat(this.state.currentSectionId); 
         },
 
         updateSlackChat(currentSection) {
-            const chatViewer = document.getElementById(this.state.currentSectionId)?.querySelector('.slack-chat');
+            const sectionElement = document.getElementById(currentSection);
+            if (!sectionElement) return;
+            const chatViewer = sectionElement.querySelector('.slack-chat');
             if (!chatViewer) return; 
 
             let chat = '';
             if (currentSection === 'ddos_phase5_post_attack_recovery') {
                 chat = `
-                    <div class="message"><span class="sender ciso">CISO Melih Kaan:</span> We survived the attack, but we're wounded. We can't be caught this unprepared again. We must take the right steps, regardless of the budget.</div>
-                    <div class="message"><span class="sender cto">CTO Onur Güngor:</span> Infrastructure or team training? What should be our priority? Our resources aren't limitless.</div>
-                    <div class="message"><span class="sender ceo">CEO Ayfer Yıldız:</span> The financial statement doesn't look good at all. I need to see a return on every investment made. Present me with the most cost-effective solution.</div>
+                    <div class="message"><span class="sender ciso">CISO Melih Kaan:</span> We survived the attack, but we took a hit. We can't be caught this unprepared again. We must take the right steps, regardless of the budget.</div>
+                    <div class="message"><span class="sender cto">CTO Onur Güngor:</span> Infrastructure or team training? What should be our priority? Our resources aren't unlimited.</div>
+                    <div class="message"><span class="sender ceo">CEO Ayfer Yıldız:</span> The financial report doesn't look good. I need to see a return on every investment made. Present me with the most cost-effective solution.</div>
                 `;
             }
             chatViewer.innerHTML = chat;
         },
-       
+        
         updateDynamicContent(sectionId) {},
 
         loadGameHTML() {
-            this.elements.sections = document.querySelectorAll('#game-content .section');
+            this.elements.sections = document.querySelectorAll('.section');
+            this.elements.leaderboard.btnOpen = document.getElementById('openLeaderboardBtn');
             if (typeof hljs !== 'undefined') {
                 hljs.highlightAll();
             }
+        },
+
+        startGlobalTimer() {
+            if (this.timer.running) return;
+            this.timer.running = true;
+            this.timer.remaining = this.timer.total;
+            this.updateTimerUI();
+            this.timer.intervalId = setInterval(() => {
+                this.timer.remaining--;
+                this.updateTimerUI();
+                if (this.timer.remaining <= 0) {
+                    this.stopGlobalTimer();
+                    this.showFinalReport();
+                }
+            }, 1000);
+        },
+
+        stopGlobalTimer() {
+            if (this.timer.intervalId) clearInterval(this.timer.intervalId);
+            this.timer.intervalId = null;
+            this.timer.running = false;
+        },
+
+        updateTimerUI() {
+            const m = String(Math.floor(this.timer.remaining / 60)).padStart(2,'0');
+            const s = String(this.timer.remaining % 60).padStart(2,'0');
+            if (this.elements.statusBar.remaining) {
+                this.elements.statusBar.remaining.textContent = `${m}:${s}`;
+            }
+        },
+
+        openLeaderboard() {
+            this.elements.leaderboard.overlay.style.display = 'flex';
+            this.loadLeaderboard();
+        },
+
+        closeLeaderboard() {
+            this.elements.leaderboard.overlay.style.display = 'none';
+        },
+
+        async saveLeaderboard(finalScore) {
+            const name = (localStorage.getItem('playerName') || 'Anonymous').toString().slice(0, 40);
+            const payload = {
+                scenario: 'v8-ddos-en',
+                name,
+                score: finalScore,
+                details: {
+                    financialLoss: this.score.financialLoss,
+                    downtime: this.score.downtime,
+                    customerSatisfaction: this.score.customerSatisfaction,
+                    attribution: this.state.attribution,
+                    decisions: this.state.decisionHistory.map(d => d.id)
+                },
+                timeSpentSec: this.timer.total - this.timer.remaining,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const res = await fetch('/api/score', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+            } catch(e) {
+                const key = 'leaderboard-v8-ddos-en';
+                const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                arr.push(payload);
+                arr.sort((a,b)=> b.score - a.score);
+                localStorage.setItem(key, JSON.stringify(arr.slice(0,100)));
+            }
+        },
+        async loadLeaderboard() {
+            const tbody = this.elements.leaderboard.body;
+            const key = 'leaderboard-v8-ddos-en';
+            tbody.innerHTML = `<tr><td colspan="4">Loading...</td></tr>`;
+            let rows = [];
+            try {
+                const res = await fetch('/api/leaderboard?scenario=v8-ddos-en', { method:'GET' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                rows = Array.isArray(data) ? data : [];
+            } catch(e) {
+                const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                rows = arr.map(x => ({ name: x.name, score: x.score, timestamp: x.timestamp }));
+            }
+
+            if (!rows.length) {
+                tbody.innerHTML = `<tr><td colspan="4">No entries yet.</td></tr>`;
+                return;
+            }
+            rows.sort((a,b)=> b.score - a.score);
+            tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
+                <tr>
+                    <td>${i+1}</td>
+                    <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
+                    <td>${r.score}</td>
+                    <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('en-US') : '-'}</td>
+                </tr>
+            `).join('');
         }
     };
 
