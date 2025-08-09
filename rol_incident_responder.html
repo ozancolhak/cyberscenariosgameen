@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Olay Müdahale Uzmanı | Senaryo Seçimi</title>
+<title>Incident Responder | Scenario Selection</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
@@ -11,8 +11,8 @@
         --dark-blue-bg: #0A0A1E; --main-accent: #00E6FF; --text-color-light: #E0E0E0; --text-color-medium: #A0A0A0;
         --card-bg: rgba(20, 20, 40, 0.85); --border-glow: rgba(0, 230, 255, 0.5); --card-hover-bg: rgba(30, 30, 60, 0.95);
         --card-hover-border: rgba(0, 230, 255, 0.8); --shadow-strong: rgba(0, 230, 255, 0.4); --title-glow-color: rgba(0, 230, 255, 0.4);
-        --difficulty-high: #ff5555;   /* Kırmızı */
-        --difficulty-very-high: #ff79c6; /* Pembe */
+        --difficulty-high: #ff5555;
+        --difficulty-very-high: #ff79c6;
         --focus-color: var(--main-accent);
     }
     body {
@@ -70,43 +70,43 @@
 <body>
     <div class="grid-bg"></div>
     <div class="container">
-        <h1>Simülasyonu Seç</h1>
-        <p class="subtitle">Olay Müdahale Uzmanı olarak, aktif bir krizin kalbine ineceksin. Baskı altında doğru kararları ver, kanıtları topla ve şirketi felaketten kurtar.</p>
+        <h1>Select Simulation</h1>
+        <p class="subtitle">As an Incident Responder, you'll dive into the heart of an active crisis. Make the right decisions under pressure, gather evidence, and save the company from disaster.</p>
 
         <div class="scenarios-grid">
             <a href="cyberscenarios2/index.html" class="scenario-card">
-                <img src="ransomware_card.png" alt="Fidye Yazılımı Saldırısı">
+                <img src="ransomware_card.png" alt="Ransomware Attack">
                 <div class="content">
-                    <h2>Fidye Yazılımı Krizi</h2>
-                    <p>Sistemler birer birer kilitleniyor ve fidye notu ekranlarda beliriyor. Zamana karşı yarışarak saldırının yayılmasını durdurmalı ve verileri kurtarmalısın.</p>
+                    <h2>Ransomware Crisis</h2>
+                    <p>Systems are being locked one by one, and a ransom note appears on the screens. You must race against time to stop the spread and recover the data.</p>
                     
                     <div class="card-info">
                         <span class="difficulty-high">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Yüksek
+                            Difficulty: High
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-undo-alt"></i>
-                            Odak: Kurtarma
+                            Focus: Recovery
                         </span>
                     </div>
                 </div>
             </a>
 
             <a href="cyberscenarios3/index.html" class="scenario-card">
-                <img src="insider_card.png" alt="İç Tehdit Saldırısı">
+                <img src="insider_card.png" alt="Insider Threat Attack">
                 <div class="content">
-                    <h2>İç Tehdit Krizi</h2>
-                    <p>Saldırı dışarıdan değil, içeriden geliyor. Güvendiğin bir meslektaşın şüpheli. Dijital delilleri topla, doğru kişiyi bul ve hassas veriler sızdırılmadan krizi çöz.</p>
+                    <h2>Insider Threat Crisis</h2>
+                    <p>The attack isn't coming from outside, but from within. A trusted colleague is a suspect. Gather digital evidence, find the right person, and resolve the crisis before sensitive data is leaked.</p>
 
                     <div class="card-info">
                         <span class="difficulty-very-high">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Çok Yüksek
+                            Difficulty: Very High
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-user-secret"></i>
-                            Odak: Soruşturma
+                            Focus: Investigation
                         </span>
                     </div>
                 </div>
