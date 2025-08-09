@@ -42,7 +42,6 @@
         .btn .btn-text { flex-grow: 1; }
         .btn small { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 5px; font-weight: 400; }
         .btn-start, .btn-continue { font-size: 1.3em; font-weight: bold; text-align: center; background-color: var(--accent-green); color: var(--text-dark); justify-content: center; }
-        .btn.critical { background-color: var(--accent-pink); }
         #intermissionSection .metric-change { font-size: 1.2em; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
         .metric-change .positive { color: var(--accent-green); }
         .metric-change .negative { color: var(--accent-red); }
@@ -67,16 +66,15 @@
         .suspect-card { background-color: var(--interactive-bg); border-radius: 8px; padding: 15px; margin-bottom: 10px; border-left: 5px solid var(--accent-purple); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .suspect-card h4 { margin-top: 0; margin-bottom: 5px; border-bottom: none; color: var(--accent-purple); }
 
-        /* === NEW FINAL PAGE STYLES === */
         #finalSection { text-align: center; }
         #performance-badge-container { margin: 25px 0; }
         #performance-badge { padding: 12px 30px; font-size: 1.8em; font-weight: bold; border-radius: 50px; display: inline-block; color: var(--text-dark); box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s ease; }
         #performance-badge:hover { transform: scale(1.05); }
         .post-crisis-layout { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: left; margin-top: 40px; width: 100%; }
         @media (min-width: 800px) { .post-crisis-layout { grid-template-columns: 1fr 1fr; } }
-        .event-timeline, .strategic-debrief, .recommendations { background-color: var(--interactive-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--section-bg); margin-top: 20px; }
-        .event-timeline h3, .strategic-debrief h3, .recommendations h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--section-bg); color: var(--accent-blue); display: flex; align-items: center; gap: 10px; }
-        .event-timeline ul, .recommendations ul { list-style-type: none; padding-left: 0; margin: 15px 0 0 0; }
+        .event-timeline, .strategic-debrief { background-color: var(--interactive-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--section-bg); margin-top: 20px; }
+        .event-timeline h3, .strategic-debrief h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--section-bg); color: var(--accent-blue); display: flex; align-items: center; gap: 10px; }
+        .event-timeline ul { list-style-type: none; padding-left: 0; margin: 15px 0 0 0; }
         .event-timeline li { position: relative; padding: 5px 0 15px 35px; border-left: 2px solid var(--section-bg); font-size: 0.95em; }
         .event-timeline li:last-child { border-left: none; }
         .event-timeline li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-green); position: absolute; left: -12px; top: 5px; background-color: var(--dark-bg); width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.8em; border: 2px solid var(--section-bg); }
@@ -85,75 +83,64 @@
         .event-timeline li .decision-title { font-weight: bold; color: var(--accent-purple); display: block; margin-bottom: 4px; }
         .event-timeline li .decision-impact { font-style: italic; opacity: 0.8; font-size: 0.9em; }
         #strategic-debrief-content p { font-size: 1em; margin-bottom: 15px; }
-        .recommendations ul li { padding: 8px 0 8px 30px; position: relative; font-size: 1em; }
-        .recommendations ul li::before { content: '\f0a9'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-yellow); position: absolute; left: 0; top: 10px; }
 
-        /* Roles Info specific styles */
-        #rolesInfo {
-            background-color: var(--section-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 30px;
-            text-align: left;
-            width: 100%;
-            max-width: 600px;
-        }
-        #rolesInfo h3 {
-            color: var(--accent-green);
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--interactive-bg);
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        #rolesInfo ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-        #rolesInfo ul li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
-        #rolesInfo ul li:last-child {
-            margin-bottom: 0;
-        }
-        #rolesInfo ul li::before {
-            content: '\f007'; /* User icon */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--accent-purple);
-            position: absolute;
-            left: 0;
-            top: 3px;
-        }
-        #rolesInfo ul li.your-role::before {
-            color: var(--accent-yellow); /* Highlight your role */
-        }
-        #rolesInfo ul li strong {
-            color: var(--accent-blue);
-        }
+        #rolesInfo { background-color: var(--section-bg); border-radius: 8px; padding: 20px; margin-top: 30px; text-align: left; width: 100%; max-width: 600px; }
+        #rolesInfo h3 { color: var(--accent-green); margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid var(--interactive-bg); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        #rolesInfo ul { list-style-type: none; padding-left: 0; margin: 0; }
+        #rolesInfo ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        #rolesInfo ul li:last-child { margin-bottom: 0; }
+        #rolesInfo ul li::before { content: '\f007'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-purple); position: absolute; left: 0; top: 3px; }
+        #rolesInfo ul li.your-role::before { color: var(--accent-yellow); }
+        #rolesInfo ul li strong { color: var(--accent-blue); }
+
+        #score-breakdown { list-style: none; padding: 0; margin-top: 15px; text-align: left; }
+        #score-breakdown li { padding: 8px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 1.05em; display: flex; justify-content: space-between; }
+        #score-breakdown .score-plus { background-color: rgba(80, 250, 123, 0.1); border-left: 3px solid var(--accent-green); }
+        #score-breakdown .score-minus { background-color: rgba(255, 85, 85, 0.1); border-left: 3px solid var(--accent-red); }
+        #score-breakdown .score-neutral { background-color: rgba(139, 233, 253, 0.1); border-left: 3px solid var(--accent-blue); }
+        #score-breakdown .score-value { font-weight: bold; }
+        .lb-overlay{ display:none; position:fixed; inset:0; background: rgba(10,10,25,.7); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); z-index:9999; align-items:center; justify-content:center; padding:20px; animation: fadeIn 0.3s ease-out; }
+        .lb-modal{ background: linear-gradient(180deg, #2a2a4a 0%, #1f1f36 100%); color: var(--text-light); width:100%; max-width: 760px; border-radius:14px; padding:22px 22px 16px; border:1px solid rgba(255,255,255,.08); box-shadow: 0 18px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04); }
+        .lb-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+        .lb-title{ display:flex; align-items:center; gap:10px; font-size:1.25em; font-weight:800; letter-spacing:.2px; color: var(--accent-yellow); }
+        .lb-title i{ filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+        .lb-tablewrap{ margin-top:10px; max-height: 60vh; overflow:auto; border:1px solid var(--interactive-bg); border-radius:10px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.02); }
+        table.lb-table{ width:100%; border-collapse:collapse; font-size:.97em; }
+        table.lb-table th, table.lb-table td{ padding:10px 12px; text-align:left; }
+        table.lb-table thead th{ position: sticky; top:0; z-index:1; background:#1f1f36; color:#e9e9ff; border-bottom: 1px solid #3b3b66; font-weight:700; letter-spacing:.3px; }
+        table.lb-table tbody td{ border-bottom:1px solid rgba(255,255,255,.06); color:#e9e9f5; }
+        table.lb-table tbody tr:hover{ background-color: rgba(255,255,255,.045); }
+        table.lb-table tbody tr:nth-child(1){ background: linear-gradient(90deg, rgba(255,215,0,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(1) td:first-child::after{ content:" 🥇"; }
+        table.lb-table tbody tr:nth-child(2){ background: linear-gradient(90deg, rgba(192,192,192,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(2) td:first-child::after{ content:" 🥈"; }
+        table.lb-table tbody tr:nth-child(3){ background: linear-gradient(90deg, rgba(205,127,50,.18), transparent 65%); }
+        table.lb-table tbody tr:nth-child(3) td:first-child::after{ content:" 🥉"; }
+        .lb-actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:14px; }
+        .lb-close, .lb-refresh{ border:0; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:700; transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease; }
+        .lb-refresh{ background: var(--accent-blue); color:#0c1130; }
+        .lb-close{ background: #3d3d60; color:#fff; }
+        .lb-refresh:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(139,233,253,.22); }
+        .lb-close:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.35); }
+        @media (max-width: 420px){ .lb-title{ font-size:1.05em; } table.lb-table th, table.lb-table td{ padding:9px 10px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
             <h1><i class="fa-solid fa-user-secret"></i> Supply Chain Attack Simulation</h1>
-            <p style="max-width: 600px;">Welcome, Cyber Threat Intelligence (CTI) Specialist! Today, you will face a global supply chain disaster engulfing your company, **ÇOLHAK Teknoloji**. Hidden backdoors, leaked data, and shaken customer trust... In this simulation, you will not only solve technical issues but also manage a complex cyber war by leveraging the power of strategic intelligence and determine the fate of the company. Are you ready?</p>
-            <img src="images/intro_cyber.png" alt="A cyber security themed intro image" class="scenario-image">
+            <p style="max-width: 600px;">Welcome, Cybersecurity Manager! Today, you will confront a global supply chain disaster engulfing your company, **CORESEC Technologies**. Hidden backdoors, leaking data, and shaken customer trust... In this simulation, you won't just be solving technical problems; you'll wield the power of strategic intelligence to manage a complex cyber war and determine the fate of the company. Are you ready?</p>
+            <img src="images/intro_cyber.png" alt="A cybersecurity themed intro visual" class="scenario-image">
 
             <div id="rolesInfo">
                 <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
                 <ul>
-                    <li class="your-role"><strong>Your Role: CTI Specialist</strong> - You are responsible for collecting, analyzing, and interpreting cyber threat intelligence, and guiding the crisis team. Your choices will directly affect the outcome.</li>
-                    <li><strong>CEO Elara Yılmaz</strong> - The company's highest-level executive, focused on overall business continuity and public perception.</li>
-                    <li><strong>CSO Can Demir</strong> - Responsible for cyber security operations and defense strategies.</li>
-                    <li><strong>Legal Advisor Zeynep Kaya</strong> - Oversees legal compliance and advises on public statements to mitigate legal risks.</li>
+                    <li class="your-role"><strong>Your Role: Cybersecurity Manager</strong> - You are responsible for gathering, analyzing, and interpreting cyber threat intelligence, and guiding the crisis team. Your choices will directly impact the outcome.</li>
+                    <li><strong>CEO Elara Yilmaz</strong> - The company's top executive, focused on overall business continuity and public perception.</li>
+                    <li><strong>CSO Can Demir</strong> - Responsible for cybersecurity operations and defense strategies.</li>
+                    <li><strong>Legal Counsel Zeynep Kaya</strong> - Oversees legal compliance and advises on public statements to mitigate legal risks.</li>
                     <li><strong>Operations Director Levent Akın</strong> - Concerned about customer service and business continuity.</li>
-                    <li><strong>Supplier Relations Manager Dr. Aylin Güneş</strong> - Manages relationships with suppliers and evaluates their reliability.</li>
+                    <li><strong>Supplier Relations Manager Dr. Aylin Günes</strong> - Manages relationships with suppliers and assesses their reliability.</li>
                 </ul>
             </div>
 
@@ -164,11 +151,11 @@
             <h2 id="intermissionTitle"></h2>
             <p id="intermissionText" style="max-width: 600px;"></p>
             <div class="interactive-element" style="width: 100%; max-width: 500px;">
-                <h4>Decision Impacts</h4>
+                <h4>Decision Impact</h4>
                 <div id="intermissionMetrics"></div>
             </div>
             <div class="interactive-element" style="width: 100%; max-width: 500px; border-left-color: var(--accent-blue); margin-top: 20px;">
-                <h4>Strategic Evaluation</h4>
+                <h4>Strategic Assessment</h4>
                 <p id="strategicText" style="font-size: 1em;"></p>
             </div>
             <button class="btn btn-continue" id="continueButton" style="margin-top: 30px;"><i class="fa-solid fa-forward"></i> Continue</button>
@@ -177,12 +164,36 @@
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
                 <div class="metric"><span><i class="fa-solid fa-triangle-exclamation"></i> Affected Systems</span><div class="value" id="status-affectedSystems">0</div></div>
-                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">₺0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">$0</div></div>
                 <div class="metric"><span><i class="fa-solid fa-database"></i> Data Leak</span><div class="value" id="status-dataLeak">0%</div></div>
                 <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-clock"></i> Time Remaining</span><div class="value" id="status-timer">05:00</div></div>
             </div>
             <div id="game-content">
-                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+        <div class="lb-modal">
+            <div class="lb-header">
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+                <span class="lb-sub">Supply Chain Simulation Top Scores</span>
+            </div>
+            <div class="lb-tablewrap">
+                <table class="lb-table" id="leaderboardTable">
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr><td colspan="4">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lb-actions">
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
+            </div>
         </div>
     </div>
 
@@ -207,146 +218,141 @@
                     decisionHistory: []
                 },
                 elements: {},
+                timer: {
+                    total: 300,
+                    remaining: 300,
+                    intervalId: null,
+                    running: false
+                },
                 
                 decisionInfo: {
-                    // Day 1 - Morning: First Signals
-                    'g1-s-bilgilendir-ust-yonetim': { 
-                        title: "Rapid Executive Briefing", 
-                        text: "Although there was no definitive evidence yet, you informed the CEO and CSO about the potential threat. This activated the crisis team early but raised some questions.", 
-                        strat: "Rapidly informing top management in critical security incidents is essential for proactive crisis management, but the accuracy of information is critical.", 
-                        changes: { financialLoss: 10000, reputation: -2 }, 
-                        impact: 'Neutral' 
+                    'g1-s-bilgilendir-ust-yonetim': {
+                        title: "Swift Executive Briefing",
+                        text: "Although there was no definitive proof, you informed the CEO and CSO about the potential threat. This mobilized the crisis team early but also raised some questions.",
+                        strat: "In critical security incidents, quickly informing senior management is essential for proactive crisis management, but the accuracy of the information is critically important.",
+                        changes: { financialLoss: 10000, reputation: -2 },
+                        impact: 'Neutral'
                     },
-                    'g1-s-istihbarat-dogrula': { 
-                        title: "In-depth Intelligence Verification", 
-                        text: "You initiated a comprehensive investigation to confirm the reliability of the dark web whisper. This provided valuable information but risked losing time.", 
-                        strat: "The accuracy of intelligence is vital. However, finding the right balance between speed and accuracy during a crisis is one of the most difficult decisions.", 
-                        changes: { financialLoss: 5000, reputation: -1 }, 
-                        clue: 'synapseTechInfoGathered', 
-                        impact: 'Positive' 
+                    'g1-s-istihbarat-dogrula': {
+                        title: "In-depth Intelligence Verification",
+                        text: "You initiated a comprehensive investigation to confirm the credibility of the dark web whisper. This provided valuable information but risked losing time.",
+                        strat: "The accuracy of intelligence is vital. However, finding the right balance between speed and accuracy in a crisis is one of the toughest decisions.",
+                        changes: { financialLoss: 5000, reputation: -1 },
+                        clue: 'synapseTechInfoGathered',
+                        impact: 'Positive'
                     },
-
-                    // Day 1 - Afternoon: Unconfirmed Suspicions
                     'g1-o-teknik-tarama': {
-                        title: "Emergency Technical Scan Initiated",
-                        text: "You provided CSO Can Demir's team with the IOC/TTPs from the TAL report and instructed an urgent scan. This aimed to quickly identify potential vulnerabilities.",
-                        strat: "Early and technically focused intervention is vital to limit damage. Scans with accurate IOCs can quickly reveal the extent of the attack.",
-                        changes: { financialLoss: 30000, reputation: -3, affectedSystems: 5 }, 
+                        title: "Urgent Technical Scan Initiated",
+                        text: "You provided the IOCs/TTPs from the TAL report to CSO Can Demir's team and ordered an urgent scan. This aimed to quickly identify potential vulnerabilities.",
+                        strat: "Early and technically focused intervention is vital to limit damage. Scans with the correct IOCs can quickly reveal the scope of the attack.",
+                        changes: { financialLoss: 30000, reputation: -3, affectedSystems: 5 },
                         clue: 'techScanInitiated',
                         impact: 'Positive'
                     },
                     'g1-o-tedarikci-iletisim': {
-                        title: "Contact Made with Smart Teknoloji",
-                        text: "Smart Teknoloji was contacted through Supplier Relations Manager Dr. Aylin Güneş. Your request for a joint investigation caused some discomfort with the supplier.",
-                        strat: "Supplier cooperation is critical in supply chain attacks. However, managing relationships and the sensitivity of information sharing requires a careful approach.",
-                        changes: { financialLoss: 15000, reputation: -7 }, 
+                        title: "Contact Established with SmartTech Solutions",
+                        text: "Contact was made with SmartTech Solutions through Supplier Relations Manager Dr. Aylin Günes. Your request for a joint investigation caused some unease with the supplier.",
+                        strat: "Supplier collaboration is critical in supply chain attacks. However, managing relationships and the sensitivity of information sharing requires a careful approach.",
+                        changes: { financialLoss: 15000, reputation: -7 },
                         clue: 'supplierContacted',
                         impact: 'Neutral'
                     },
                     'g1-o-hukuki-degerlendirme': {
                         title: "Legal Assessment and Communication Plan",
-                        text: "You worked with Legal Advisor Zeynep Kaya on legal obligations and crisis communication strategy. This established a solid foundation for public communication but risked delaying technical intervention.",
-                        strat: "Crisis communication and legal compliance are important, but acting hastily before technical investigation and intervention are complete can complicate the situation further.",
-                        changes: { financialLoss: 25000, dataLeak: 2 }, 
+                        text: "You worked with Legal Counsel Zeynep Kaya on legal obligations and a crisis communication strategy. This established a solid foundation for public communication but risked delaying the technical response.",
+                        strat: "Crisis communication and legal compliance are important, but acting hastily before the technical investigation and response are complete can further complicate the situation.",
+                        changes: { financialLoss: 25000, dataLeak: 2 },
                         clue: 'legalReviewInitiated',
                         impact: 'Neutral'
                     },
-
-                    // Day 2 - Morning: Crisis Erupts
                     'g2-s-tersine-muhendislik': {
                         title: "Malware Reverse Engineering",
-                        text: "You urgently tasked the reverse engineering team to understand the malware's capabilities. This revealed the full extent of the attacker's capabilities, but damage continued during the analysis period.",
-                        strat: "In-depth understanding of the attack is vital for long-term defense. However, balancing quick action with comprehensive analysis is essential for managing the crisis.",
-                        changes: { financialLoss: 50000, dataLeak: 5, reputation: -10 }, 
+                        text: "You urgently tasked the reverse engineering team with understanding the malware's capabilities. This revealed the attacker's full capacity, but the damage continued during the analysis.",
+                        strat: "A deep understanding of the attack is vital for long-term defense. However, balancing swift action with comprehensive analysis is essential to managing the crisis.",
+                        changes: { financialLoss: 50000, dataLeak: 5, reputation: -10 },
                         clue: 'malwareAnalysisComplete',
                         impact: 'Negative'
                     },
                     'g2-s-modul-yalıtma': {
                         title: "Urgent Isolation of Critical Modules",
-                        text: "You recommended urgently disabling or isolating the core software infrastructure of all affected customers. This stopped the attacker's spread but caused major disruptions to customer operations.",
-                        strat: "Fast and radical decisions can halt immediate damage but may have significant long-term operational and financial consequences.",
-                        changes: { financialLoss: 250000, affectedSystems: 20, reputation: -25 }, 
+                        text: "You recommended immediately disabling or isolating the Core Software Infrastructure for all affected customers. This halted the attacker's spread but caused major disruptions to customer operations.",
+                        strat: "Swift and radical decisions can stop immediate damage but may have significant long-term operational and financial consequences.",
+                        changes: { financialLoss: 250000, affectedSystems: 20, reputation: -25 },
                         clue: 'criticalModulesIsolated',
                         impact: 'Negative'
                     },
                     'g2-s-motivasyon-analizi': {
                         title: "Black Typhoon Motivation Analysis",
-                        text: "You analyzed the motivations and objectives of the Black Typhoon group and provided a strategic briefing to the crisis team. This provided a broader context for the incident but delayed technical intervention.",
-                        strat: "Understanding the threat actor's intent is vital for long-term defense and countermeasures. However, in an immediate crisis, the speed of technical intervention is often more decisive.",
-                        changes: { financialLoss: 75000, dataLeak: 10, reputation: -15 }, 
+                        text: "You analyzed the motivations and objectives of the Black Typhoon group and provided a strategic briefing to the crisis team. This helped understand the broader context of the event but delayed the technical response.",
+                        strat: "Understanding the threat actor's intent is vital for long-term defense and countermeasures. However, in an immediate crisis, the speed of the technical response is often more decisive.",
+                        changes: { financialLoss: 75000, dataLeak: 10, reputation: -15 },
                         clue: 'motivationAnalyzed',
                         impact: 'Negative'
                     },
-
-                    // Day 2 - Afternoon: In-depth Investigation and Root Cause Analysis (Previously Day 3 Morning)
-                    'g2-o-synapsetech-arastirma': { // ID updated
+                    'g2-o-synapsetech-arastirma': {
                         title: "SynapseTech Vulnerability Analysis",
-                        text: "You thoroughly investigated the vulnerability in the SynapseTech library and documented its exploitation methods. This allowed you to fully understand the root cause of the attack and provided strategic information to prevent similar attacks in the future.",
-                        strat: "Root cause analysis is critical for eliminating not only the symptoms of an attack but also the underlying security vulnerabilities.",
-                        changes: { financialLoss: 100000, reputation: +10, dataLeak: -5 }, 
-                        clue: 'synapseTechVulnerabilityAnalyzed', 
+                        text: "You conducted an in-depth investigation of the vulnerability in the SynapseTech library and documented its exploitation methods. This allowed you to fully understand the attack's root cause and provide strategic insights to prevent similar attacks in the future.",
+                        strat: "Root cause analysis is critical to eliminating not just the symptoms of an attack, but also the underlying security vulnerabilities.",
+                        changes: { financialLoss: 100000, reputation: +10, dataLeak: -5 },
+                        clue: 'synapseTechVulnerabilityAnalyzed',
                         impact: 'Positive'
                     },
-                    'g2-o-sucu-resmi-makamlara-bildir': { // ID updated
-                        title: "Official Notification to Authorities",
-                        text: "You officially reported the attack to national cyber security units and law enforcement. This initiated legal proceedings and demonstrated your company's responsibility to the public, but increased the workload of the investigation process.",
-                        strat: "Reporting cyber crimes to official authorities is important for legal compliance and contributing to national cybersecurity. However, this may incur operational and legal overhead.",
-                        changes: { financialLoss: 50000, reputation: +5 }, 
+                    'g2-o-sucu-resmi-makamlara-bildir': {
+                        title: "Official Reporting to Authorities",
+                        text: "You officially reported the attack to national cybersecurity units and law enforcement. This initiated the legal process and demonstrated your company's responsibility to the public, but the investigation processes increased the workload.",
+                        strat: "Reporting cybercrimes to official authorities is important for legal compliance and contributing to national cybersecurity. However, this can bring additional operational and legal burdens.",
+                        changes: { financialLoss: 50000, reputation: +5 },
                         clue: 'officialReportMade',
                         impact: 'Neutral'
                     },
-                    'g2-o-daha-fazla-istihbarat': { // New option
+                    'g2-o-daha-fazla-istihbarat': {
                         title: "Gather More Threat Intelligence",
-                        text: "You investigated other supply chain attacks by the group behind the attack and tried to understand potential future targets. This provided valuable information for proactive defense but slightly slowed down on-site incident response.",
+                        text: "You investigated other supply chain attacks by the group behind the incident and tried to understand their potential future targets. This provided valuable information for proactive defense but slightly slowed down the response at the current incident scene.",
                         strat: "Continuously feeding threat intelligence is critical not only for understanding past attacks but also for predicting future threats.",
-                        changes: { financialLoss: 30000, reputation: -5, dataLeak: +3 }, 
+                        changes: { financialLoss: 30000, reputation: -5, dataLeak: +3 },
                         clue: 'moreThreatIntelGathered',
                         impact: 'Neutral'
                     },
-
-                    // Day 3 - Morning: Damage Control and Communication (Previously Day 2 Afternoon)
-                    'g3-s-tam-seffaflık': { // ID updated
+                    'g3-s-tam-seffaflık': {
                         title: "Full Transparency Policy",
-                        text: "You openly disclosed the attack details, the Black Typhoon group, and the supply chain vulnerability to the public and customers. While initially shocking, this increased long-term trust in your company.",
-                        strat: "Full transparency in crisis communication, while risky, can create a perception of honesty, leading to long-term reputational gains and setting an industry example.",
-                        changes: { financialLoss: 200000, reputation: +20, dataLeak: -5 }, 
+                        text: "You explained the details of the attack, the Black Typhoon group, and the supply chain vulnerability in detail to the public and customers. Although this caused initial shock, it increased trust in your company in the long run.",
+                        strat: "Full transparency in crisis communication, while risky, can create a perception of honesty, leading to long-term reputational gain and setting an industry example.",
+                        changes: { financialLoss: 200000, reputation: +20, dataLeak: -5 },
                         impact: 'Positive'
                     },
-                    'g3-s-sınırlı-acıklama': { // ID updated
-                        title: "Limited Public Statement",
-                        text: "You avoided details, stating only that it was a 'technical problem'. While this initially prevented panic, it raised public suspicion and did not fully build trust.",
-                        strat: "Limited information sharing, while managing the situation in the short term, can damage the company's transparency perception in the long run and lead to more speculation.",
-                        changes: { financialLoss: 500000, reputation: -15, dataLeak: 10 }, 
+                    'g3-s-sınırlı-acıklama': {
+                        title: "Limited Public Disclosure",
+                        text: "You only stated that there was a 'technical problem,' avoiding details. While this initially prevented panic, it raised suspicion among the public and failed to fully restore trust.",
+                        strat: "Limited information sharing may manage the situation in the short term, but it can damage the company's perception of transparency in the long run and lead to more speculation.",
+                        changes: { financialLoss: 500000, reputation: -15, dataLeak: 10 },
                         impact: 'Negative'
                     },
-                    'g3-s-sucu-disari-atma': { // ID updated
+                    'g3-s-sucu-disari-atma': {
                         title: "Blame the Supplier",
-                        text: "You completely blamed Smart Teknoloji for the incident. While this provided internal relief, it damaged supplier relations and left a poor public impression. Legal proceedings were triggered.",
-                        strat: "Shifting blame, while offering short-term relief, poisons inter-company relationships in the long run, increases legal risks, and fundamentally erodes public trust.",
-                        changes: { financialLoss: 750000, reputation: -30, affectedSystems: 10 }, 
+                        text: "You placed the responsibility entirely on SmartTech Solutions. While this provided internal relief, it damaged supplier relations and left a poor impression on the public. Legal proceedings were triggered.",
+                        strat: "Blaming others may provide short-term relief, but it poisons inter-company relationships, increases legal risks, and fundamentally erodes public trust in the long term.",
+                        changes: { financialLoss: 750000, reputation: -30, affectedSystems: 10 },
                         impact: 'Negative'
                     },
-
-                    // Day 3 - Afternoon: Long-Term Strategy and Recovery (Final decisions)
-                    'g3-o-kapsamlı-guvenlik-programı': { // ID updated
+                    'g3-o-kapsamlı-guvenlik-programı': {
                         title: "Comprehensive Supply Chain Security Program",
-                        text: "You proposed a comprehensive program including mandatory audits for all suppliers, SBOM, SCA, and TPRM integration. Your request for increased CTI resources was positively received. The company significantly enhanced its cyber resilience.",
-                        strat: "Establishing a strong security posture post-crisis is key to preventing future attacks and gaining reputation. This requires significant resources and management support but is the best long-term investment.",
-                        changes: { financialLoss: 500000, reputation: +30, dataLeak: -15, affectedSystems: -10 }, 
+                        text: "You proposed a comprehensive program for all suppliers, including mandatory audits, SBOM, SCA, and TPRM integration. Your request to increase CTI resources was well-received. The company significantly enhanced its cyber resilience.",
+                        strat: "Establishing a strong post-crisis security posture is key to preventing future attacks and rebuilding reputation. This requires significant resources and management support but is the best long-term investment.",
+                        changes: { financialLoss: 500000, reputation: +30, dataLeak: -15, affectedSystems: -10 },
                         impact: 'Positive'
                     },
-                    'g3-o-odaklı-iyilestirme': { // ID updated
-                        title: "Focused Remediation and Immediate Measures",
-                        text: "You focused only on addressing vulnerabilities in the core software infrastructure. Short-term solutions were implemented, but other potential risks were ignored. The company recovered in the short term but remains vulnerable to similar attacks in the future.",
-                        strat: "Focused remediation can be effective for solving immediate problems but may not offer a long-term solution against the constantly evolving nature of cybersecurity. This creates hidden risks.",
-                        changes: { financialLoss: 100000, reputation: +5, dataLeak: +5, affectedSystems: +5 }, 
+                    'g3-o-odaklı-iyilestirme': {
+                        title: "Focused Remediation and Emergency Measures",
+                        text: "You focused only on fixing the vulnerabilities in the core software infrastructure. Short-term solutions were implemented, but other potential risks were ignored. The company recovered in the short term but remains vulnerable to similar attacks in the future.",
+                        strat: "Focused remediation can be effective for solving immediate problems but may not offer a long-term solution against the evolving nature of cybersecurity. This creates hidden risks.",
+                        changes: { financialLoss: 100000, reputation: +5, dataLeak: +5, affectedSystems: +5 },
                         impact: 'Neutral'
                     },
-                    'g3-o-degerlendirmeyi-geciktir': { // ID updated
+                    'g3-o-degerlendirmeyi-geciktir': {
                         title: "Delay Post-Crisis Assessment",
-                        text: "Due to crisis fatigue and costs, you postponed comprehensive assessment and investments. While the company focused on 'returning to normal,' the risk of a similar future crisis increased, and reputational loss continued.",
-                        strat: "Failing to learn from crises reduces a company's cybersecurity maturity and leaves it vulnerable to future risks. This is one of the worst-case scenarios.",
-                        changes: { financialLoss: 1500000, reputation: -40, affectedSystems: 20, dataLeak: +15 }, 
+                        text: "Due to crisis fatigue and costs, you postponed a comprehensive assessment and investments. Although the company focused on 'returning to normal,' the risk of a similar future crisis increased, and reputational damage continued.",
+                        strat: "Failing to learn from crises lowers a company's cybersecurity maturity and leaves it vulnerable to future risks. This is one of the worst scenarios.",
+                        changes: { financialLoss: 1500000, reputation: -40, affectedSystems: 20, dataLeak: +15 },
                         impact: 'Negative'
                     }
                 },
@@ -358,7 +364,20 @@
                         intermissionTitle: document.getElementById('intermissionTitle'), intermissionText: document.getElementById('intermissionText'),
                         intermissionMetrics: document.getElementById('intermissionMetrics'), strategicText: document.getElementById('strategicText'),
                         continueButton: document.getElementById('continueButton'),
-                        statusBar: { affectedSystems: document.getElementById('status-affectedSystems'), financialLoss: document.getElementById('status-financialLoss'), dataLeak: document.getElementById('status-dataLeak'), reputation: document.getElementById('status-reputation') }
+                        statusBar: { 
+                            affectedSystems: document.getElementById('status-affectedSystems'), 
+                            financialLoss: document.getElementById('status-financialLoss'), 
+                            dataLeak: document.getElementById('status-dataLeak'), 
+                            reputation: document.getElementById('status-reputation'),
+                            timer: document.getElementById('status-timer') ? document.getElementById('status-timer').querySelector('.value') : null
+                        },
+                        leaderboard: {
+                            overlay: document.getElementById('leaderboardOverlay'),
+                            body: document.getElementById('leaderboardBody'),
+                            btnClose: document.getElementById('lbCloseBtn'),
+                            btnRefresh: document.getElementById('lbRefreshBtn'),
+                            btnOpen: null
+                        }
                     };
                     this.loadGameHTML();
                     this.attachListeners();
@@ -370,7 +389,8 @@
                     this.elements.startButton.addEventListener('click', () => {
                         this.elements.intro.style.display = 'none';
                         this.elements.game.style.display = 'block';
-                        this.showSection('day1_morning'); // First section of the scenario
+                        this.startGlobalTimer();
+                        this.showSection('day1_morning');
                     });
                     
                     this.elements.gameContent.addEventListener('click', (e) => {
@@ -394,12 +414,18 @@
                             this.showSection(nextSectionId);
                         }
                     });
+                    
+                    this.elements.leaderboard.btnClose?.addEventListener('click', () => this.closeLeaderboard());
+                    this.elements.leaderboard.btnRefresh?.addEventListener('click', () => this.loadLeaderboard());
+                    this.elements.leaderboard.overlay.addEventListener('click', (e) => {
+                        if (e.target === this.elements.leaderboard.overlay) this.closeLeaderboard();
+                    });
                 },
                 
                 handleDecision(decisionId, nextSectionId, button) {
                     button.closest('.decision-buttons').querySelectorAll('.btn').forEach(btn => btn.disabled = true);
                     const info = this.decisionInfo[decisionId];
-                    if (!info) { console.error("Decision information not found:", decisionId); return; }
+                    if (!info) { console.error("Decision info not found:", decisionId); return; }
 
                     this.score.financialLoss += info.changes.financialLoss || 0;
                     this.score.reputation += info.changes.reputation || 0;
@@ -427,10 +453,10 @@
                         return `<div class="metric-change ${isPositive ? 'positive' : 'negative'}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('en-US')}${unit}</div>`;
                     };
 
-                    if (changes.financialLoss) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '₺', 'fa-sack-xmark', false);
-                    if (changes.dataLeak) metricsHTML += formatChange('Data Leak', changes.dataLeak, '%', 'fa-database', false);
+                    if (changes.financialLoss) metricsHTML += formatChange('Financial Loss', changes.financialLoss, '$', 'fa-sack-xmark', false);
+                    if (changes.dataLeak) metricsHTML += formatChange('Data Leak', changes.dataLeak, '%', 'fa-database', changes.dataLeak < 0);
                     if (changes.reputation !== undefined) metricsHTML += formatChange('Reputation Score', changes.reputation, '', 'fa-building-shield', changes.reputation > 0);
-                    if (changes.affectedSystems) metricsHTML += formatChange('Affected Systems', changes.affectedSystems, '', 'fa-triangle-exclamation', false);
+                    if (changes.affectedSystems) metricsHTML += formatChange('Affected Systems', changes.affectedSystems, '', 'fa-triangle-exclamation', changes.affectedSystems < 0);
                     
                     if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">This decision had no direct impact on metrics.</p>';
 
@@ -443,7 +469,7 @@
                 updateStatusBar() {
                     const s = this.score;
                     this.elements.statusBar.affectedSystems.textContent = s.affectedSystems;
-                    this.elements.statusBar.financialLoss.textContent = `₺${s.financialLoss.toLocaleString('en-US')}`;
+                    this.elements.statusBar.financialLoss.textContent = `$${s.financialLoss.toLocaleString('en-US')}`;
                     this.elements.statusBar.dataLeak.textContent = `${s.dataLeak}%`;
                     this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
                 },
@@ -463,6 +489,7 @@
                 },
                 
                 showFinalReport() {
+                    this.stopGlobalTimer();
                     this.elements.intro.style.display = 'none';
                     this.elements.intermission.style.display = 'none';
                     this.elements.game.style.display = 'block'; 
@@ -476,209 +503,235 @@
                     if (!finalSection) { console.error("Final section not found in HTML!"); return; }
 
                     finalSection.style.display = 'flex';
+                    finalSection.style.flexDirection = 'column';
+                    finalSection.style.alignItems = 'center';
                     
                     const badge = document.getElementById('performance-badge');
                     const metricsContainer = document.getElementById('finalMetricsContainer');
                     const timelineList = document.getElementById('decision-timeline-list');
                     const debriefContent = document.getElementById('strategic-debrief-content');
-                    const recommendationsList = document.getElementById('recommendations-list');
+                    const scoreBreakdownList = document.getElementById('score-breakdown');
 
+                    let scoreBreakdown = {};
+                    let totalScore = 35; 
+                    scoreBreakdown['Base Score'] = { value: 35, class: 'score-neutral' };
+
+                    let decisionQualityScore = 0;
+                    this.state.decisionHistory.forEach(decision => {
+                        if (decision.impactType === 'Negative') {
+                            decisionQualityScore -= 7;
+                        } else if (decision.impactType === 'Positive') {
+                            decisionQualityScore += 3;
+                        }
+                    });
+                     if (decisionQualityScore !== 0) {
+                        totalScore += decisionQualityScore;
+                        scoreBreakdown['Decision Quality (Penalty/Reward)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
+                    }
+                    
                     const finalRep = Math.max(0, this.score.reputation);
-                    let totalScore = finalRep - (this.score.dataLeak * 2) - (this.score.financialLoss / 50000);
+                    let repScore = 0;
+                    if (finalRep >= 90) { repScore = 20; }
+                    else if (finalRep >= 70) { repScore = 10; }
+                    else if (finalRep < 40) { repScore = -20; }
+                    totalScore += repScore;
+                    scoreBreakdown['Reputation Management'] = { value: repScore, class: repScore > 0 ? 'score-plus' : repScore < 0 ? 'score-minus' : 'score-neutral' };
+
+                    let financialScore = 0;
+                    if (this.score.financialLoss <= 500000) { financialScore = 15; }
+                    else if (this.score.financialLoss <= 1000000) { financialScore = 5; }
+                    else { financialScore = -20; }
+                    totalScore += financialScore;
+                    scoreBreakdown['Financial Management'] = { value: financialScore, class: financialScore > 0 ? 'score-plus' : financialScore < 0 ? 'score-minus' : 'score-neutral' };
+
+                    let dataLeakScore = 0;
+                    if (this.score.dataLeak <= 5) { dataLeakScore = 15; }
+                    else if (this.score.dataLeak <= 15) { dataLeakScore = 0; }
+                    else { dataLeakScore = -20; }
+                    totalScore += dataLeakScore;
+                    scoreBreakdown['Data Leak Control'] = { value: dataLeakScore, class: dataLeakScore > 0 ? 'score-plus' : dataLeakScore < 0 ? 'score-minus' : 'score-neutral' };
+
+                    if (this.timer.remaining >= 180) {
+                        totalScore += 5;
+                        scoreBreakdown['Swift Response Bonus'] = { value: 5, class: 'score-plus' };
+                    }
+
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
 
                     let badgeInfo = {};
-                    if (totalScore >= 80) badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' };
-                    else if (totalScore >= 50) badgeInfo = { text: 'CRISIS MANAGED', color: 'var(--accent-blue)' };
-                    else if (totalScore >= 20) badgeInfo = { text: 'HEAVILY DAMAGED', color: 'var(--accent-yellow)' };
-                    else badgeInfo = { text: 'DISASTER', color: 'var(--accent-red)' };
+                    if (totalScore >= 90) badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' };
+                    else if (totalScore >= 70) badgeInfo = { text: 'EXPERT STRATEGIST', color: 'var(--accent-blue)' };
+                    else if (totalScore >= 40) badgeInfo = { text: 'INCIDENT MANAGER', color: 'var(--accent-yellow)' };
+                    else badgeInfo = { text: 'CATASTROPHE', color: 'var(--accent-red)' };
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
                     metricsContainer.innerHTML = `
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Reputation Score</div><div class="value">${finalRep}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value">₺${this.score.financialLoss.toLocaleString('en-US')}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Loss</div><div class="value">$${this.score.financialLoss.toLocaleString('en-US')}</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Data Leak</div><div class="value">${this.score.dataLeak}%</div></div>
                         <div class="metric-card"><div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="label">Affected Systems</div><div class="value">${this.score.affectedSystems}</div></div>
                     `;
 
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
-                        let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
-                        return `<li class="${liClass}"><span class="decision-title">${decision.title}</span><span class="decision-impact">${decision.text.split('.')[0]}.</span></li>`;
+                        let liClass = decision.impactType.toLowerCase();
+                        return `<li class="${liClass}"><span class="decision-title">${decision.title}</span></li>`;
+                    }).join('');
+                    
+                    scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
+                        const sign = item.value >= 0 ? '+' : '';
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
-                    if (finalRep > 80 && this.score.dataLeak < 10 && this.score.financialLoss < 1500000) { 
-                        debriefHTML += `<p><strong>Leadership in Crisis Management:</strong> Thanks to your quick, accurate, and transparent decisions, ÇOLHAK Teknoloji emerged from this global supply chain crisis with minimal damage. Your CTI expertise enabled us to understand the attacker's motivations and methods early on. Our reputation has strengthened, and we have set an example in the industry.</p>`;
-                    } else if (finalRep >= 50 && this.score.financialLoss < 2000000) { 
-                        debriefHTML += `<p><strong>A Challenging Battle:</strong> You successfully managed the crisis, but some decisions had long-term effects. We must solidify our future security posture with lessons learned. CTI activities provided critical information, but we could have acted faster at certain points.</p>`;
+                    if (badgeInfo.text === 'CYBER HERO' || badgeInfo.text === 'EXPERT STRATEGIST') { 
+                        debriefHTML += `<p><strong>Leadership in Crisis Management:</strong> Thanks to your swift, accurate, and transparent decisions, CORESEC Technologies emerged from this global supply chain crisis with minimal damage. Your CTI expertise enabled us to understand the attacker's motives and methods early on. Our reputation has been strengthened, and we have set an example for the industry.</p>`;
+                    } else if (badgeInfo.text === 'INCIDENT MANAGER') { 
+                        debriefHTML += `<p><strong>A Challenging Battle:</strong> You successfully managed the crisis, but some decisions had long-term consequences. We must further strengthen our future security posture with the lessons learned. CTI activities provided critical information, but we could have acted faster at certain points.</p>`;
                     } else { 
-                        debriefHTML += `<p><strong>Serious Consequences:</strong> Some decisions made during the crisis management process increased the company's financial losses and severely damaged its reputation. Data leaks and system outages eroded customer trust. We must urgently learn from this experience and fundamentally change our security strategies.</p>`;
+                        debriefHTML += `<p><strong>Serious Consequences:</strong> Some decisions made during the crisis management process increased the company's financial losses and severely damaged its reputation. Data leaks and system outages have shaken customer confidence. We must urgently learn from this experience and fundamentally change our security strategies.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
-
-                    let recommendationsHTML = new Set();
-                    recommendationsHTML.add(`<li><strong>Supplier Risk Management:</strong> Regular security audits and stricter security clauses in contracts should be implemented for all suppliers.</li>`);
-                    recommendationsHTML.add(`<li><strong>Software Supply Chain Security:</strong> Use of SBOM (Software Bill of Materials) and SCA (Software Composition Analysis) tools should be made mandatory.</li>`);
-                    recommendationsHTML.add(`<li><strong>CTI Integration:</strong> Resources should be increased for the CTI team to integrate threat intelligence more closely with security operations (SOC) and business units.</li>`);
-                    recommendationsHTML.add(`<li><strong>Threat Hunting:</strong> Proactive threat hunting capabilities should be developed to search for undetected threats within our networks.</li>`);
-                    recommendationsHTML.add(`<li><strong>Crisis Communication Plan Update:</strong> An updated crisis communication plan, including scenarios specific to supply chain attacks, should be created and regularly rehearsed.</li>`);
                     
-                    recommendationsHTML.add(`<li><strong>Cybersecurity Awareness Training:</strong> Regular and up-to-date cybersecurity awareness training should be provided for all employees, especially against social engineering and phishing attacks.</li>`);
-                    recommendationsHTML.add(`<li><strong>Incident Response Plan Update:</strong> The incident response plan should be updated to include scenarios specific to supply chain attacks and software supply chain vulnerabilities, and regularly tested.</li>`);
-                    if (this.state.synapseTechVulnerabilityAnalyzed) {
-                        recommendationsHTML.add(`<li><strong>Open Source Code Security:</strong> Automated security scans (SCA) and license compliance checks should be made mandatory for all open-source libraries used.</li>`);
-                    }
-                    if (this.score.affectedSystems > 10) {
-                        recommendationsHTML.add(`<li><strong>Business Continuity and Disaster Recovery Enhancement:</strong> Comprehensive business continuity and disaster recovery plans for critical business functions should be reviewed and exercises increased.</li>`);
-                    }
-                    if (this.score.financialLoss > 1000000) {
-                        recommendationsHTML.add(`<li><strong>Cyber Insurance Policy Review:</strong> The existing cyber insurance policy should be expanded to cover supply chain attacks and data breaches.</li>`);
-                    }
-                    if (this.state.officialReportMade) {
-                        recommendationsHTML.add(`<li><strong>Legal and Regulatory Compliance Processes:</strong> Legal notification and compliance processes in cyber security breaches should be strengthened.</li>`);
-                    }
-
-
-                    recommendationsList.innerHTML = Array.from(recommendationsHTML).map(rec => `<li><i class="fa-solid fa-angle-right"></i> ${rec.substring(4)}</li>`).join(''); 
-
-                    document.getElementById('finalSection').insertAdjacentHTML('beforeend', `
-                        <p style="margin-top: 30px; font-size: 1.2em; color: var(--accent-yellow);">This simulation demonstrated how vital proactive intelligence and correct decisions are in cyber security crises. As ÇOLHAK Teknoloji, we must continue to work to emerge stronger from this crisis.</p>
-                    `);
+                    this.saveLeaderboard(totalScore);
                 },
 
                 updateState() { this.updateStatusBar(); this.updateSlackChat(this.state.currentSectionId); },
 
                 updateSlackChat(currentSection) {
-                    const chatViewer = document.getElementById('slackChat');
+                    const sectionElement = document.getElementById(currentSection);
+                    if (!sectionElement) return;
+                    const chatViewer = sectionElement.querySelector('.slack-chat');
                     if (!chatViewer) return; 
 
                     let chat = '';
-                    if (currentSection === 'day1_afternoon' || currentSection === 'day2_morning' || currentSection === 'day2_afternoon') {
+                    if (currentSection === 'day2_morning' || currentSection === 'day2_afternoon_investigation') {
                         chat = `
-                            <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> I'm closely monitoring the situation. Our shares are falling, I expect a quick resolution!</div>
-                            <div class="message"><span class="sender legal">Legal Advisor Zeynep Kaya:</span> We must carefully assess our legal responsibilities. Hasty statements could cause problems later.</div>
-                            <div class="message"><span class="sender ops">Operations Director Levent Akın:</span> We're receiving intense complaints from our customers. When will the systems return to normal? Our business continuity is at risk!</div>
-                            <div class="message"><span class="sender cso">CSO Can Demir:</span> Our teams are working 24/7. Information from CTI is vital for us to take the right steps.</div>
-                            <div class="message"><span class="sender">You (CTI Specialist):</span> We are rapidly analyzing the current data. Understanding Black Typhoon's TTPs is critical for countermeasures.</div>
+                            <div class="message"><span class="sender ceo">CEO Elara Yilmaz:</span> I'm following the situation closely. Our stock is down, I expect a quick resolution!</div>
+                            <div class="message"><span class="sender legal">Legal Counsel Zeynep Kaya:</span> We must carefully consider our legal liabilities. Hasty statements could cause problems later.</div>
+                            <div class="message"><span class="sender ops">Operations Director Levent Akın:</span> We are receiving numerous complaints from our customers. When will systems be back to normal? Our business continuity is at risk!</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> Our teams are working 24/7. The intel from CTI is vital for us to take the right steps.</div>
+                            <div class="message"><span class="sender">You (Cybersecurity Manager):</span> We are analyzing the available data rapidly. Understanding Black Typhoon's TTPs is critical for countermeasures.</div>
                         `;
-                    } else if (currentSection === 'day3_morning' || currentSection === 'day3_afternoon') { 
-                                chat = `
-                                    <div class="message"><span class="sender ceo">CEO Elara Yılmaz:</span> We've weathered the initial shock. What are our future plans now? How will we learn from this crisis?</div>
-                                    <div class="message"><span class="sender ops">Operations Director Levent Akın:</span> We need concrete steps to regain customer trust. Compensation for outages is important.</div>
-                                    <div class="message"><span class="sender legal">Legal Advisor Zeynep Kaya:</span> This incident showed that the security clauses in our contracts need to be reviewed.</div>
-                                    <div class="message"><span class="sender cso">CSO Can Demir:</span> We must strengthen our defense mechanisms even further. The CTI team's role will be key in this process.</div>
-                                    <div class="message"><span class="sender">You (CTI Specialist):</span> Root cause analysis sheds light on preventing future attacks. The intelligence we've gathered is very valuable.</div>
-                                `;
+                    } else if (currentSection === 'day3_morning_communication' || currentSection === 'day3_afternoon_strategy') { 
+                        chat = `
+                            <div class="message"><span class="sender ceo">CEO Elara Yilmaz:</span> We've weathered the initial shock. What are our plans for the future? How will we learn from this crisis?</div>
+                            <div class="message"><span class="sender ops">Operations Director Levent Akın:</span> We need concrete steps to regain customer trust. Compensating for the disruptions is important.</div>
+                            <div class="message"><span class="sender legal">Legal Counsel Zeynep Kaya:</span> This incident has shown that the security clauses in our contracts need to be reviewed.</div>
+                            <div class="message"><span class="sender cso">CSO Can Demir:</span> We must further strengthen our defense mechanisms. The CTI team's role will be key in this process.</div>
+                            <div class="message"><span class="sender">You (Cybersecurity Manager):</span> The root cause analysis sheds light on preventing future attacks. The intelligence we gathered is invaluable.</div>
+                        `;
                     }
                     chatViewer.innerHTML = chat;
                 },
-
+                updateDynamicContent(sectionId) {},
+                
                 loadGameHTML() {
                     const gameHTMLContent = `
                         <div id="day1_morning" class="section">
                             <h2><i class="fa-solid fa-hourglass-start"></i> Day 1: First Signals and Whispers</h2>
-                            <h3>Morning 08:30 - Coffee and a Bad Feeling</h3>
-                            <p>While doing your morning routine, you noticed a sudden surge of activity on one of your private CTI channels. A cryptic post appeared on a dark web forum, usually sharing leak intelligence, related to **Smart Teknoloji**, one of ÇOLHAK's critical suppliers. Smart Teknoloji provides Çolhak with its **core software infrastructure**.</p>
-                            <p>The post contains vague but worrying implications that the core software infrastructure might have a "hidden backdoor." There's no concrete evidence yet, just a whisper.</p>
-                            <img src="images/darkweb_forum.png" alt="Cryptic post on a dark web forum" class="scenario-image">
+                            <h3>08:30 AM - Coffee and a Bad Feeling</h3>
+                            <p>While going through your morning routine, you notice a sudden spike in activity on one of your private CTI channels. On a dark web forum usually sharing breach intelligence, an encrypted post has appeared concerning <strong>SmartTech Solutions</strong>, one of CORESEC's critical suppliers. SmartTech provides the <strong>core software infrastructure</strong> for CORESEC.</p>
+                            <p>The post contains vague but alarming hints that the Core Software Infrastructure might have a "secret door." There's no proof yet, just a whisper.</p>
+                            <img src="images/darkweb_forum.png" alt="Encrypted post on a Dark Web forum" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>As a CTI Specialist, what will be your first step?</h4>
+                                <h4>As the Cybersecurity Manager, what is your first step?</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g1-s-bilgilendir-ust-yonetim" data-next-section="day1_afternoon"><i class="fa-solid fa-share-nodes"></i><div class="btn-text">Option A: Immediately Inform CEO Elara Yılmaz and CSO Can Demir.<small>Report the situation to top management immediately, taking a proactive approach.</small></div></button>
-                                    <button class="btn" data-decision="g1-s-istihbarat-dogrula" data-next-section="day1_afternoon"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Option B: First Verify Your Own Intelligence and Gather Additional Information from Reliable Sources.<small>Conduct further research to confirm the reliability of the dark web post.</small></div></button>
+                                    <button class="btn" data-decision="g1-s-bilgilendir-ust-yonetim" data-next-section="day1_afternoon"><i class="fa-solid fa-share-nodes"></i><div class="btn-text">Option A: Immediately brief CEO Elara Yilmaz and CSO Can Demir.<small>Exhibit a proactive approach by reporting the situation to top management instantly.</small></div></button>
+                                    <button class="btn" data-decision="g1-s-istihbarat-dogrula" data-next-section="day1_afternoon"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Option B: First, verify your intelligence and gather additional information from reliable sources.<small>Conduct more research to confirm the credibility of the dark web post.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> The initial moments of a cyber crisis are critically important. Your first reaction can significantly impact the course of the crisis. It's important to balance information sharing and verification.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The initial moments of a cyber crisis are crucial. Your first reaction can significantly influence the course of the crisis. Balancing information sharing and verification is key.</div>
                         </div>
 
                         <div id="day1_afternoon" class="section">
                             <h2><i class="fa-solid fa-bell"></i> Day 1: Afternoon - Unconfirmed Suspicions</h2>
-                            <h3>Afternoon 15:00 - Industry Alert</h3>
-                            <p>Threat Analysis Laboratory (TAL), a leading cybersecurity research firm, issued an alert regarding "Black Typhoon" group using a new vector in supply chain attacks. The alert specifically states that software signing processes were infiltrated, and malicious code was secretly added to legitimate software. ÇOLHAK or Smart Teknoloji are not mentioned yet, but there are striking similarities with the technical details regarding the structure of the core software infrastructure.</p>
+                            <h3>03:00 PM - Industry Alert</h3>
+                            <p>A leading cybersecurity research firm, "Threat Analysis Labs" (TAL), has issued an alert that the "Black Typhoon" group is using a new vector in its supply chain attacks. The alert specifies that software signing processes have been infiltrated, and malicious code is being secretly added to legitimate software. Neither CORESEC nor SmartTech is mentioned yet, but there are striking similarities to the technical details of the core software infrastructure.</p>
                             <img src="images/sector_alert.png" alt="Industry alert screenshot" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>As a CTI Specialist, which step will you take?</h4>
+                                <h4>As the Cybersecurity Manager, what step will you take?</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g1-o-teknik-tarama" data-next-section="day2_morning"><i class="fa-solid fa-bug-slash"></i><div class="btn-text">Option A: Provide CSO Can Demir's Team with a Detailed IOC/TTP List and Request an Emergency Technical Scan.<small>Direct the technical team to quickly identify potential vulnerabilities.</small></div></button>
-                                    <button class="btn" data-decision="g1-o-tedarikci-iletisim" data-next-section="day2_morning"><i class="fa-solid fa-handshake"></i><div class="btn-text">Option B: Immediately Contact Smart Teknoloji Through Supplier Relations Manager Dr. Aylin Güneş.<small>Reach out to the supplier to initiate a joint investigation.</small></div></button>
-                                    <button class="btn critical" data-decision="g1-o-hukuki-degerlendirme" data-next-section="day2_morning"><i class="fa-solid fa-gavel"></i><div class="btn-text">Option C: Request a Legal Assessment from Legal Advisor Zeynep Kaya and Prepare a Crisis Communication Plan.<small>Evaluate potential legal liabilities and public statements.</small></div></button>
+                                    <button class="btn" data-decision="g1-o-teknik-tarama" data-next-section="day2_morning"><i class="fa-solid fa-bug-slash"></i><div class="btn-text">Option A: Provide a detailed IOC/TTP list to CSO Can Demir's team and request an urgent technical scan.<small>Direct the technical team to quickly identify potential vulnerabilities.</small></div></button>
+                                    <button class="btn" data-decision="g1-o-tedarikci-iletisim" data-next-section="day2_morning"><i class="fa-solid fa-handshake"></i><div class="btn-text">Option B: Immediately contact SmartTech Solutions through Supplier Relations Manager Dr. Aylin Günes.<small>Get in touch with the supplier to initiate a joint investigation.</small></div></button>
+                                    <button class="btn" data-decision="g1-o-hukuki-degerlendirme" data-next-section="day2_morning"><i class="fa-solid fa-gavel"></i><div class="btn-text">Option C: Request a legal assessment from Legal Counsel Zeynep Kaya and prepare a crisis communication plan.<small>Evaluate potential legal liabilities and the public statement.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> In times of crisis, correct prioritization is vital for efficient use of resources. You must balance technical intervention, cooperation, and legal preparation.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In a crisis, correct prioritization is vital for the efficient use of resources. You must strike a good balance between technical intervention, collaboration, and legal preparation.</div>
                         </div>
 
                         <div id="day2_morning" class="section">
-                            <h2><i class="fa-solid fa-burst"></i> Day 2: Crisis Erupts</h2>
-                            <h3>Morning 09:30 - Disaster Scenario Unfolds!</h3>
-                            <p>Several critical ÇOLHAK customers (a large financial institution and an energy distribution network) began reporting abnormal behavior in their authentication systems after the latest update to the core software infrastructure. Random account lockouts, unauthorized access attempts, and unexpected log movements are being detected.</p>
-                            <p>You received a panicked call from CSO Can Demir: <em>"In the telemetry data from Smart Teknoloji's core software infrastructure, we've found signatures matching the software signing anomalies you previously mentioned. I think **Black Typhoon is inside!**"</em></p>
+                            <h2><i class="fa-solid fa-burst"></i> Day 2: The Crisis Erupts</h2>
+                            <h3>09:30 AM - The Disaster Scenario Unfolds!</h3>
+                            <p>Several critical CORESEC customers (a major financial institution and an energy distribution network) have begun reporting abnormal behavior in their authentication systems following the latest update to the core software infrastructure. Random user account lockouts, unauthorized access attempts, and unexpected log activities are being detected.</p>
+                            <p>You receive a frantic call from CSO Can Demir: <em>"We've found signatures in the telemetry data from SmartTech's core software infrastructure that match the software signing anomalies you mentioned. I think <strong>Black Typhoon is inside!</strong>"</em></p>
                             <img src="images/crisis_desk.png" alt="Emergency crisis desk" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>What urgent CTI-based recommendation would you make to the crisis team?</h4>
-                                <div class="slack-chat" id="slackChat"></div>
+                                <h4>What CTI-based recommendation do you urgently provide to the crisis team?</h4>
+                                <div class="slack-chat"></div>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g2-s-tersine-muhendislik" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-code-branch"></i><div class="btn-text">Option A: Immediately Refer Malware Capabilities to the Reverse Engineering Team.<small>Conduct a detailed analysis to fully understand the scope and potential impacts of the attack.</small></div></button>
-                                    <button class="btn critical" data-decision="g2-s-modul-yalıtma" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-unlink"></i><div class="btn-text">Option B: Recommend Urgently Disabling or Isolating the Core Software Infrastructure of All Affected Customers.<small>Take radical and swift action to stop the attack's spread.</small></div></button>
-                                    <button class="btn" data-decision="g2-s-motivasyon-analizi" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-chart-network"></i><div class="btn-text">Option C: Analyze the Motivations and Objectives of the Black Typhoon Group and Provide an Intelligence Briefing to the Crisis Team.<small>Uncover the intent behind the attack and its long-term goals.</small></div></button>
+                                    <button class="btn" data-decision="g2-s-tersine-muhendislik" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-code-branch"></i><div class="btn-text">Option A: Immediately send the malware to the reverse engineering team to understand its capabilities.<small>Conduct a detailed analysis to fully understand the scope and potential impact of the attack.</small></div></button>
+                                    <button class="btn" data-decision="g2-s-modul-yalıtma" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-unlink"></i><div class="btn-text">Option B: Recommend immediately disabling or isolating the Core Software Infrastructure for all affected customers.<small>Take radical and swift action to stop the spread of the attack.</small></div></button>
+                                    <button class="btn" data-decision="g2-s-motivasyon-analizi" data-next-section="day2_afternoon_investigation"><i class="fa-solid fa-chart-network"></i><div class="btn-text">Option C: Analyze the motivations and objectives of the Black Typhoon group and provide an intelligence briefing to the crisis team.<small>Reveal the intent behind the attack and its long-term goals.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> Once an attack is confirmed, speed and proper intervention are critically important. Your decisions will have both technical and operational consequences.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Once an attack is confirmed, speed and correct intervention are critical. Your decisions will have both technical and operational consequences.</div>
                         </div>
 
                         <div id="day2_afternoon_investigation" class="section">
                             <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Day 2: Afternoon - In-depth Investigation and Root Cause Analysis</h2>
-                            <h3>Afternoon 14:00 - Looking into the Black Box</h3>
-                            <p>Initial findings are starting to emerge on how Black Typhoon infiltrated Smart Teknoloji's software. Early reverse engineering analyses show that the malicious code is not just a backdoor, but specifically targets a certain supply chain component: **one of SynapseTech's open-source libraries.** This library is part of Smart Teknoloji's core software infrastructure.</p>
-                            <p>Furthermore, new, encrypted messages related to "SynapseTech" and "supply chain vulnerability" keywords have started circulating in your dark web intelligence channels. These messages may indicate that other cybercriminal groups are also attempting to exploit this vulnerability for their own gain.</p>
-                            <img src="images/synapse_tech_analysis.png" alt="SynapseTech analysis image" class="scenario-image">
+                            <h3>02:00 PM - A Look Inside the Black Box</h3>
+                            <p>The first findings on how Black Typhoon infiltrated SmartTech's software are beginning to emerge. Initial reverse engineering analysis shows that the malicious code is not just a backdoor, but also targets a specific supply chain component: <strong>one of SynapseTech's open-source libraries.</strong> This library is part of SmartTech's core software infrastructure.</p>
+                            <p>Furthermore, new encrypted messages related to "SynapseTech" and "supply chain vulnerability" have started circulating on your dark web intelligence channels. These messages may indicate that other cybercriminal groups are also trying to exploit this vulnerability for their own gain.</p>
+                            <img src="images/synapse_tech_analysis.png" alt="SynapseTech analysis visual" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>As a CTI Specialist, what will be your next critical step?</h4>
+                                <h4>As the Cybersecurity Manager, what is your next critical step?</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g2-o-synapsetech-arastirma" data-next-section="day3_morning_communication"><i class="fa-solid fa-search"></i><div class="btn-text">Option A: Thoroughly Investigate the Vulnerability in the SynapseTech Library and Document Its Exploitation Methods.<small>This will enable you to fully understand the attacker's entry vector and prevent similar attacks.</small></div></button>
-                                    <button class="btn critical" data-decision="g2-o-sucu-resmi-makamlara-bildir" data-next-section="day3_morning_communication"><i class="fa-solid fa-building-columns"></i><div class="btn-text">Option B: Make an Official Notification to National Cyber Security Units (CERT/CSIRT) and Law Enforcement.<small>Initiate legal proceedings and official investigation, emphasizing the attack's potential impact on national security.</small></div></button>
-                                    <button class="btn" data-decision="g2-o-daha-fazla-istihbarat" data-next-section="day3_morning_communication"><i class="fa-solid fa-eye"></i><div class="btn-text">Option C: Gather More Threat Intelligence Related to Black Typhoon.<small>Focus on understanding the potential for the attack to spread to other supply chain components or other targets.</small></div></button>
+                                    <button class="btn" data-decision="g2-o-synapsetech-arastirma" data-next-section="day3_morning_communication"><i class="fa-solid fa-search"></i><div class="btn-text">Option A: Conduct an in-depth investigation of the vulnerability in the SynapseTech Library and document its exploitation methods.<small>This will allow you to understand the attacker's exact entry vector and prevent similar attacks.</small></div></button>
+                                    <button class="btn" data-decision="g2-o-sucu-resmi-makamlara-bildir" data-next-section="day3_morning_communication"><i class="fa-solid fa-building-columns"></i><div class="btn-text">Option B: Make an official report to national cybersecurity units (CERT/CSIRT) and law enforcement.<small>Initiate the legal process and official investigation, emphasizing that the attack could affect national security.</small></div></button>
+                                    <button class="btn" data-decision="g2-o-daha-fazla-istihbarat" data-next-section="day3_morning_communication"><i class="fa-solid fa-eye"></i><div class="btn-text">Option C: Gather more threat intelligence related to Black Typhoon.<small>Focus on understanding the potential for the attack to spread to other supply chain components or other targets.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> Root cause analysis is critical for preventing future attacks. At the same time, actions taken in the legal and public relations dimensions affect the overall perception of the crisis.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Root cause analysis is critical for preventing future attacks. At the same time, the steps you take in the legal and public relations dimensions will affect the overall perception of the crisis.</div>
                         </div>
 
                         <div id="day3_morning_communication" class="section">
                             <h2><i class="fa-solid fa-bullhorn"></i> Day 3: Morning - Damage Control and Communication</h2>
-                            <h3>Morning 09:30 - Time is Ticking</h3>
-                            <p>It has been confirmed that Black Typhoon has deeply infiltrated your customers' networks and caused data leaks due to the backdoor in the core software infrastructure and the SynapseTech vulnerability. News is growing exponentially in the media: <strong>"ÇOLHAK Teknoloji and Its Supplier's Crisis Deepens!"</strong> The public expects a clear statement from your company.</p>
-                            <img src="images/press_conference.png" alt="Press conference image" class="scenario-image">
+                            <h3>09:30 AM - Crunch Time</h3>
+                            <p>Due to the backdoor in the core software infrastructure and the SynapseTech vulnerability, it is now certain that Black Typhoon has deeply infiltrated your customers' networks and data leaks have occurred. The news is spreading like wildfire in the media: <strong>"Crisis Deepens Between CORESEC Technologies and Its Supplier!"</strong> The public is expecting a clear statement from your company.</p>
+                            <img src="images/press_conference.png" alt="Press conference visual" class="scenario-image">
                             <div class="interactive-element">
                                 <h4>What kind of statement will you make to the public and stakeholders?</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g3-s-tam-seffaflık" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-check-double"></i><div class="btn-text">Option A: Full Transparency.<small>Explain the incident in full detail, including the cause of the leak, the Black Typhoon group, and the supply chain vulnerability.</small></div></button>
-                                    <button class="btn" data-decision="g3-s-sınırlı-acıklama" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-file-contract"></i><div class="btn-text">Option B: Limited Disclosure.<small>State only that it's a 'technical problem,' avoid details, and say the investigation is ongoing.</small></div></button>
-                                    <button class="btn critical" data-decision="g3-s-sucu-disari-atma" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-mask"></i><div class="btn-text">Option C: Shift Blame to External Party.<small>Claim that the attack is entirely the responsibility of supplier Smart Teknoloji and that ÇOLHAK is a victim.</small></div></button>
+                                    <button class="btn" data-decision="g3-s-tam-seffaflık" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-check-double"></i><div class="btn-text">Option A: Full Transparency.<small>Explain the incident in full detail, including the cause of the breach, the Black Typhoon group, and the supply chain vulnerability.</small></div></button>
+                                    <button class="btn" data-decision="g3-s-sınırlı-acıklama" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-file-contract"></i><div class="btn-text">Option B: Limited Disclosure.<small>State only that there is a 'technical problem,' avoid details, and say the investigation is ongoing.</small></div></button>
+                                    <button class="btn" data-decision="g3-s-sucu-disari-atma" data-next-section="day3_afternoon_strategy"><i class="fa-solid fa-mask"></i><div class="btn-text">Option C: Shift the Blame.<small>Claim that the attack is entirely the responsibility of the supplier, SmartTech Solutions, and that CORESEC is a victim.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> Crisis communication is the backbone of reputation management. You must strike a delicate balance between transparency, trust, accountability, and legal obligations.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Crisis communication is the backbone of reputation management. You must strike a delicate balance between transparency, trust, responsibility, and legal obligations.</div>
                         </div>
 
                         <div id="day3_afternoon_strategy" class="section">
                             <h2><i class="fa-solid fa-shield-alt"></i> Day 3: Afternoon - Long-Term Strategy and Recovery</h2>
-                            <h3>Afternoon 14:00 - Time to Heal the Wounds</h3>
-                            <p>The causes and extent of the attack are now largely clear. You need to make important decisions for your company's future cyber resilience. CEO Elara Yılmaz and CSO Can Demir state that internal security protocols and supplier audits need to be urgently reviewed. Legal Advisor Zeynep Kaya is working on legal defense strategies against potential lawsuits. Financial losses continue to mount.</p>
-                            <img src="images/recovery_efforts.png" alt="Recovery and remediation efforts image" class="scenario-image">
+                            <h3>02:00 PM - Time to Heal the Wounds</h3>
+                            <p>The causes and scope of the attack are now largely clear. You need to make important decisions for your company's future cyber resilience. CEO Elara Yilmaz and CSO Can Demir state that the company's internal security protocols and supplier audits must be urgently reviewed. Legal Counsel Zeynep Kaya is working on legal defense strategies against potential lawsuits. Financial losses continue to mount.</p>
+                            <img src="images/recovery_efforts.png" alt="Recovery and healing efforts visual" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>What long-term strategy would you recommend for your company's future cyber resilience?</h4>
+                                <h4>What long-term strategy do you recommend for your company's future cyber resilience?</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="g3-o-kapsamlı-guvenlik-programı" data-next-section="finalSection"><i class="fa-solid fa-lock"></i><div class="btn-text">Option A: Initiate a Comprehensive Supply Chain Security Program.<small>Demand mandatory audits for all suppliers, SBOM (Software Bill of Materials), and SCA (Software Composition Analysis) integration. Increase CTI resources.</small></div></button>
-                                    <button class="btn" data-decision="g3-o-odaklı-iyilestirme" data-next-section="finalSection"><i class="fa-solid fa-screwdriver-wrench"></i><div class="btn-text">Option B: Only Address Vulnerabilities in Core Software Infrastructure and Apply Emergency Patches.<small>Quickly solve the most critical issues, but postpone broader supply chain security concerns.</small></div></button>
-                                    <button class="btn critical" data-decision="g3-o-degerlendirmeyi-geciktir" data-next-section="finalSection"><i class="fa-solid fa-clock-rotate-left"></i><div class="btn-text">Option C: Delay Comprehensive Post-Crisis Assessment and Investments.<small>Cite budget constraints and personnel fatigue to focus on stabilizing the situation and postpone long-term plans.</small></div></button>
+                                    <button class="btn" data-decision="g3-o-kapsamlı-guvenlik-programı" data-next-section="finalSection"><i class="fa-solid fa-lock"></i><div class="btn-text">Option A: Launch a Comprehensive Supply Chain Security Program.<small>Require mandatory audits for all suppliers, and integrate SBOM, SCA, and TPRM. Increase CTI resources.</small></div></button>
+                                    <button class="btn" data-decision="g3-o-odaklı-iyilestirme" data-next-section="finalSection"><i class="fa-solid fa-screwdriver-wrench"></i><div class="btn-text">Option B: Only fix the vulnerabilities in the Core Software Infrastructure and apply an emergency patch.<small>Quickly resolve the most critical issues, but postpone broader supply chain security matters.</small></div></button>
+                                    <button class="btn" data-decision="g3-o-degerlendirmeyi-geciktir" data-next-section="finalSection"><i class="fa-solid fa-clock-rotate-left"></i><div class="btn-text">Option C: Delay the post-crisis comprehensive assessment and investments.<small>Citing budget constraints and staff fatigue, focus on stabilizing the situation and postpone long-term plans.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Learning Note:</strong> Long-term decisions made after a crisis determine not only the company's short-term recovery but also its future resilience and reputation.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The long-term decisions made after a crisis determine not only the company's short-term recovery but also its future resilience and reputation.</div>
                         </div>
 
                         <div id="finalSection" class="section centered-page" style="display: none;">
-                            <h2><i class="fa-solid fa-chart-line"></i> Post-Crisis Assessment Report</h2>
-                            <p>Simulation complete. A detailed breakdown of your crisis management performance is below.</p>
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Incident Analysis Report</h2>
+                            <p>Simulation complete. Below is a detailed breakdown of your crisis management performance.</p>
                             <div id="performance-badge-container"><span id="performance-badge"></span></div>
                             <div class="final-metrics" id="finalMetricsContainer"></div>
                             <div class="post-crisis-layout">
@@ -687,22 +740,122 @@
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Evaluation and Lessons Learned</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                                     <div id="strategic-debrief-content"></div>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
+                                    <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
-                            <div class="recommendations">
-                                <h3><i class="fa-solid fa-tasks"></i> Forward Action Plan</h3>
-                                <ul id="recommendations-list"></ul>
-                            </div>
-                            <div class="decision-buttons" style="margin-top: 40px;">
+                            <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                                 <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Leaderboard</button>
                             </div>
                         </div>
                     `;
                     this.elements.gameContent.innerHTML = gameHTMLContent;
                     this.elements.sections = this.elements.gameContent.querySelectorAll('.section');
+                    this.elements.leaderboard.btnOpen = document.getElementById('openLeaderboardBtn');
+                    this.elements.leaderboard.btnOpen?.addEventListener('click', () => this.openLeaderboard());
                     hljs.highlightAll();
+                },
+                
+                startGlobalTimer() {
+                    if (this.timer.running) return;
+                    this.timer.running = true;
+                    this.timer.remaining = this.timer.total;
+                    this.updateTimerUI();
+                    this.timer.intervalId = setInterval(() => {
+                        this.timer.remaining--;
+                        this.updateTimerUI();
+                        if (this.timer.remaining <= 0) {
+                            this.stopGlobalTimer();
+                            alert("Time is up! Generating the report.");
+                            this.showFinalReport();
+                        }
+                    }, 1000);
+                },
+
+                stopGlobalTimer() {
+                    if (this.timer.intervalId) clearInterval(this.timer.intervalId);
+                    this.timer.intervalId = null;
+                    this.timer.running = false;
+                },
+
+                updateTimerUI() {
+                    const m = String(Math.floor(this.timer.remaining / 60)).padStart(2,'0');
+                    const s = String(this.timer.remaining % 60).padStart(2,'0');
+                    if (this.elements.statusBar.timer) {
+                        this.elements.statusBar.timer.textContent = `${m}:${s}`;
+                    }
+                },
+
+                openLeaderboard() {
+                    this.elements.leaderboard.overlay.style.display = 'flex';
+                    this.loadLeaderboard();
+                },
+
+                closeLeaderboard() {
+                    this.elements.leaderboard.overlay.style.display = 'none';
+                },
+
+                async saveLeaderboard(finalScore) {
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
+                    const payload = {
+                        scenario: 'v4-supplychain-en',
+                        name: name.toString().slice(0, 40),
+                        score: finalScore,
+                        details: this.score,
+                        timeSpentSec: this.timer.total - this.timer.remaining,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    try {
+                        const res = await fetch('/api/score', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (!res.ok) throw new Error('API request failed');
+                    } catch(e) {
+                        console.warn("API unavailable. Saving score locally.");
+                        const key = 'leaderboard-v4-supplychain-en';
+                        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                        arr.push(payload);
+                        arr.sort((a,b)=> b.score - a.score);
+                        localStorage.setItem(key, JSON.stringify(arr.slice(0,100)));
+                    }
+                },
+
+                async loadLeaderboard() {
+                    const tbody = this.elements.leaderboard.body;
+                    const key = 'leaderboard-v4-supplychain-en';
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
+                    let rows = [];
+                    try {
+                        const res = await fetch('/api/leaderboard?scenario=v4-supplychain-en');
+                        if (!res.ok) throw new Error('API request failed');
+                        const data = await res.json();
+                        rows = Array.isArray(data) ? data : [];
+                    } catch(e) {
+                        console.warn("API unavailable. Loading leaderboard from local storage.");
+                        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+                        rows = arr.map(x => ({ name: x.name, score: x.score, timestamp: x.timestamp }));
+                    }
+
+                    if (!rows.length) {
+                        tbody.innerHTML = `<tr><td colspan="4">No entries yet.</td></tr>`;
+                        return;
+                    }
+                    
+                    rows.sort((a,b)=> b.score - a.score);
+                    tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
+                            <td>${r.score}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('en-US') : '-'}</td>
+                        </tr>
+                    `).join('');
                 }
             };
             window.game.setup();
