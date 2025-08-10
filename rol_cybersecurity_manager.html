@@ -11,8 +11,8 @@
         --dark-blue-bg: #0A0A1E; --main-accent: #00E6FF; --text-color-light: #E0E0E0; --text-color-medium: #A0A0E0;
         --card-bg: rgba(20, 20, 40, 0.85); --border-glow: rgba(0, 230, 255, 0.5); --card-hover-bg: rgba(30, 30, 60, 0.95);
         --card-hover-border: rgba(0, 230, 255, 0.8); --shadow-strong: rgba(0, 230, 255, 0.4); --title-glow-color: rgba(0, 230, 255, 0.4);
-        --difficulty-very-high: #ff79c6;
-        --difficulty-critical: #ffb86c;
+        --difficulty-very-high: #ff79c6; /* Pink */
+        --difficulty-critical: #ffb86c;  /* Orange */
         --focus-color: var(--main-accent);
     }
     body {
@@ -27,7 +27,7 @@
         background-size: 50px 50px; animation: grid-move 60s linear infinite; transform-origin: 0 0; opacity: 0.2;
     }
     @keyframes grid-move { from { transform: translate(0, 0); } to { transform: translate(-50px, -50px); } }
-    .container { width: 100%; max-width: 1000px; z-index: 1; animation: fadeIn 1s ease-out; }
+    .container { width: 100%; max-width: 1200px; z-index: 1; animation: fadeIn 1s ease-out; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     h1 {
         font-family: 'Orbitron', sans-serif; font-size: 2.8em; margin-bottom: 15px; color: var(--main-accent);
@@ -41,7 +41,7 @@
     
     @media (min-width: 768px) {
         .scenarios-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
     }
 
@@ -70,7 +70,7 @@
 <body>
     <div class="grid-bg"></div>
     <div class="container">
-        <h1>Select Simulation</h1>
+        <h1>Select a Simulation</h1>
         <p class="subtitle">As a Cybersecurity Manager, your decisions will have not only technical, but also strategic, financial, and legal consequences. Lead the board and secure the future of the company.</p>
 
         <div class="scenarios-grid">
@@ -78,7 +78,7 @@
                 <img src="supplychain_card.png" alt="Supply Chain Network">
                 <div class="content">
                     <h2>Supply Chain Crisis</h2>
-                    <p>The attack doesn't originate from your systems, but from a trusted software vendor. How will you handle this breach of trust and limit the damage?</p>
+                    <p>The attack isn't coming from your own systems, but from a software supplier you trust. How will you handle this betrayal of trust and limit the damage?</p>
                     
                     <div class="card-info">
                         <span class="difficulty-very-high">
@@ -97,7 +97,7 @@
                 <img src="zeroday_card.png" alt="Unknown Vulnerability">
                 <div class="content">
                     <h2>Zero-Day Crisis</h2>
-                    <p>A previously unknown vulnerability has been found in critical software used worldwide, and attackers are exploiting it. There is no patch yet. How will you protect the company?</p>
+                    <p>A previously unknown vulnerability has been found in critical software used worldwide, and attackers are exploiting it. There's no patch yet. How will you protect the company?</p>
 
                     <div class="card-info">
                         <span class="difficulty-critical">
@@ -107,6 +107,25 @@
                         <span class="focus-color">
                             <i class="fas fa-balance-scale-right"></i>
                             Focus: Risk Management
+                        </span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="cyberscenarios12/index.html" class="scenario-card">
+                <img src="apt_card.png" alt="State-Sponsored Cyber Attack">
+                <div class="content">
+                    <h2>APT Crisis Simulation</h2>
+                    <p>The company is under a multi-layered (physical, cyber, disinformation) attack from a state-sponsored group. Can you save the company amidst technical recovery, media management, and geopolitical pressure?</p>
+
+                    <div class="card-info">
+                        <span class="difficulty-very-high">
+                            <i class="fas fa-signal"></i>
+                            Difficulty: Very High
+                        </span>
+                        <span class="focus-color">
+                            <i class="fas fa-globe"></i>
+                            Focus: Crisis Mgmt & Geopolitics
                         </span>
                     </div>
                 </div>
