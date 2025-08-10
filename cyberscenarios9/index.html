@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v7.3: Şüpheli VPN Simülasyonu</title>
+    <title>CyberScenario v7.3: Suspicious VPN Simulation</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -625,46 +625,46 @@
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-server"></i> Şüpheli VPN Simülasyonu</h1>
-            <p style="max-width: 600px;">Hoş geldiniz, Finansal Teknolojiler (FinTech) sektöründe lider olan Zirve Holding'in yeni SOC Analisti. Göreviniz, bir yöneticinin hesabından gelen şüpheli bir VPN bağlantısını derinlemesine incelemek, riskleri analiz etmek ve doğru müdahale adımlarını atmak. Hızlı ve doğru kararlar, şirketi potansiyel bir veri sızıntısından kurtarabilir.</p>
-            <img src="intro.png" alt="Siber güvenlik temalı bir giriş görseli" class="scenario-image">
+            <h1><i class="fa-solid fa-server"></i> Suspicious VPN Simulation</h1>
+            <p style="max-width: 600px;">Welcome, you are the new SOC Analyst at Zirve Holding, a leader in the FinTech sector. Your mission is to thoroughly investigate a suspicious VPN connection from an executive's account, analyze the risks, and take the correct response actions. Quick and accurate decisions can save the company from a potential data breach.</p>
+            <img src="https://i.imgur.com/fL39v3M.png" alt="A cybersecurity-themed introductory visual" class="scenario-image">
 
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
-                    <h3><i class="fa-solid fa-people-arrows"></i> Simülasyon Rolleri</h3>
+                    <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
                     <ul>
-                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Sizin Rolünüz: SOC Analisti</strong> <small>VPN erişim uyarısını inceleyecek, logları analiz edecek ve tehdidi yönetecek kişisiniz.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-user-gear"></i></span><div><strong>Burak Mert</strong> <small>Finans Direktörü, hesabı üzerinden şüpheli erişim gerçekleşen kullanıcı.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-headset"></i></span><div><strong>Can Demir</strong> <small>SOC Ekip Lideri, olayları eskalasyon için size danışır ve kararlarınızı denetler.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Your Role: SOC Analyst</strong> <small>You will investigate the VPN access alert, analyze logs, and manage the threat.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-gear"></i></span><div><strong>Burak Mert</strong> <small>Finance Director, the user whose account is exhibiting suspicious access.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-headset"></i></span><div><strong>Can Demir</strong> <small>SOC Team Lead, consults with you for escalations and oversees your decisions.</small></div></li>
                     </ul>
                 </div>
                 <div class="intro-metrics-container">
-                    <h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3>
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-database"></i></span><div><strong>Veri Güvenliği</strong> <small>Hassas finansal verilerin korunma durumu. (Başlangıç: 100%)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Finansal Etki</strong> <small>Olayın şirkete getireceği mali yük. (Başlangıç: ₺0)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-business-time"></i></span><div><strong>Operasyonel Kesinti</strong> <small>İş süreçlerinin ne kadar etkilendiği. (Başlangıç: 100)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-building-shield"></i></span><div><strong>Şirket İtibarı</strong> <small>Şirketinizin kamuoyu ve sektördeki imajı. (Başlangıç: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-database"></i></span><div><strong>Data Security</strong> <small>The protection status of sensitive financial data. (Start: 100%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Financial Impact</strong> <small>The financial cost of the incident to the company. (Start: $0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-business-time"></i></span><div><strong>Operational Disruption</strong> <small>The extent to which business processes are affected. (Start: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-building-shield"></i></span><div><strong>Company Reputation</strong> <small>Your company's image in the public and industry. (Start: 100)</small></div></li>
                     </ul>
                 </div>
             </div>
-            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
         </div>
 
         <div id="intermissionSection" class="centered-page" style="display: none;">
             <h2 id="intermissionTitle"></h2>
             <div id="intermissionDetails">
             </div>
-            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
         </div>
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-database"></i> Veri Güvenliği</span><div class="value" id="status-dataSecurity">100%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Finansal Etki</span><div class="value" id="status-financialImpact">₺0</div></div>
-                <div class="metric"><span><i class="fa-solid fa-business-time"></i> Operasyonel Kesinti</span><div class="value" id="status-operationalDisruption">100</div></div>
-                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Şirket İtibarı</span><div class="value" id="status-reputation">100</div></div>
-                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">04:00</div></div>
+                <div class="metric"><span><i class="fa-solid fa-database"></i> Data Security</span><div class="value" id="status-dataSecurity">100%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Impact</span><div class="value" id="status-financialImpact">$0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-business-time"></i> Operational Disruption</span><div class="value" id="status-operationalDisruption">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-building-shield"></i> Company Reputation</span><div class="value" id="status-reputation">100</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">04:00</div></div>
             </div>
             <div id="game-content">
             </div>
@@ -674,22 +674,22 @@
     <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
         <div class="lb-modal">
             <div class="lb-header">
-                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</h2>
-                <span class="lb-sub">VPN Simülasyonu En İyileri</span>
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+                <span class="lb-sub">VPN Simulation Top Players</span>
             </div>
             <div class="lb-tablewrap">
                 <table class="lb-table" id="leaderboardTable">
                     <thead>
-                        <tr><th>#</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
                     </thead>
                     <tbody id="leaderboardBody">
-                        <tr><td colspan="4">Yükleniyor…</td></tr>
+                        <tr><td colspan="4">Loading…</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="lb-actions">
-                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Yenile</button>
-                <button class="lb-close" id="lbCloseBtn">Kapat</button>
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
             </div>
         </div>
     </div>
@@ -704,7 +704,6 @@
                     decisionHistory: [],
                     currentTurnDecisions: [],
                     totalScore: null,
-                    // Clues to track progress
                     isInvestigating: false,
                     isFalsePositive: false,
                     vpnLogsAnalyzed: false,
@@ -729,26 +728,22 @@
                 },
                 
                 decisionInfo: {
-                    // Phase 1: Triage
-                    'd1-investigate': { title: "İnceleme Başlat", text: "Uyarının gerçek bir tehdit olabileceğini varsayarak derhal inceleme başlattınız. Bu proaktif adım, olası bir saldırının erken tespit edilmesini sağlayarak zaman kazandırdı.", strat: "Yüksek profilli bir yöneticiden gelen ve coğrafi olarak anormal bir uyarı her zaman ciddiye alınmalıdır. Hızlı triyaj, müdahale süresini (MTTR) kısaltır.", changes: { financialImpact: 1000, reputation: 0, operationalDisruption: -1 }, clue: 'isInvestigating', impact: 'Positive' },
-                    'd1-false-positive': { title: "Yanlış Pozitif Olarak Kapat", text: "Uyarıyı, yöneticinin olası bir seyahati olarak değerlendirip kapattınız. Bu karar, analist zamanından tasarruf sağladı ancak gerçek bir saldırıysa şirketi büyük bir riske attı.", strat: "Bir uyarıyı doğrulamadan kapatmak tehlikelidir. En azından kullanıcıyla veya İK ile hızlı bir teyit, bu riski ortadan kaldırabilirdi.", changes: { financialImpact: 25000, dataSecurity: -25, reputation: -20 }, clue: 'isFalsePositive', impact: 'Negative' },
+                    'd1-investigate': { title: "Start Investigation", text: "Assuming the alert could be a real threat, you immediately began an investigation. This proactive step saved time by allowing for early detection of a potential attack.", strat: "An alert from a high-profile executive's account from a geographically anomalous location should always be taken seriously. Rapid triage shortens the Mean Time To Respond (MTTR).", changes: { financialImpact: 1000, reputation: 0, operationalDisruption: -1 }, clue: 'isInvestigating', impact: 'Positive' },
+                    'd1-false-positive': { title: "Close as False Positive", text: "You dismissed the alert as a likely business trip. This decision saved analyst time but exposed the company to significant risk if it were a real attack.", strat: "Closing an alert without verification is dangerous. A quick confirmation with the user or HR could have eliminated this risk.", changes: { financialImpact: 25000, dataSecurity: -25, reputation: -20 }, clue: 'isFalsePositive', impact: 'Negative' },
                     
-                    // Phase 2: Analysis (2 choices)
-                    'd2-vpn-logs': { title: "VPN Loglarını İncele", text: "VPN logları, 'Burak Mert' kullanıcısının Çin'den (211.95.8.12) bağlandığını, 15 dakika boyunca aktif kaldığını ve doğrudan Finans Sunucusu'na (192.168.10.5) eriştiğini doğruladı.", strat: "VPN logları, bir erişim olayının temelini oluşturur. Kaynak IP, oturum süresi ve erişilen iç kaynaklar, tehdidin ilk resmini çizer.", changes: { financialImpact: 2000, dataSecurity: -2 }, clue: 'vpnLogsAnalyzed', impact: 'Positive' },
-                    'd2-edr-logs': { title: "EDR Loglarını İncele", text: "Burak Mert'in makinesindeki EDR logları, VPN bağlantısıyla aynı zaman diliminde 'powershell.exe' kullanılarak 'Get-Credential' komutunun çalıştırıldığını ve kimlik bilgilerinin geçici bir dosyaya kaydedildiğini gösterdi.", strat: "EDR verileri, saldırganın cihaz üzerinde ne yaptığını ortaya koyar. Kimlik bilgisi hırsızlığı (Credential Dumping), genellikle yatay hareketin (Lateral Movement) bir öncüsüdür.", changes: { financialImpact: 5000, dataSecurity: -5 }, clue: 'edrLogsAnalyzed', impact: 'Positive' },
-                    'd2-proxy-logs': { title: "Proxy Loglarını İncele", text: "Proxy logları, Finans Sunucusu'ndan (192.168.10.5) kaynaklanan bir trafiğin, popüler bir bulut depolama sitesine 150 MB'lık bir veri yüklediğini ortaya çıkardı. Bu, veri sızıntısı için güçlü bir kanıttır.", strat: "Veri sızıntısını (Exfiltration) tespit etmek için giden trafik analizi kritiktir. Yüksek boyutlu veri transferleri ve hedef URL'ler önemli ipuçlarıdır.", changes: { financialImpact: 3000, dataSecurity: -15 }, clue: 'proxyLogsAnalyzed', impact: 'Negative' },
-                    'd2-contact-user': { title: "Kullanıcı Burak Mert ile İletişime Geç", text: "Burak Bey ile acil bir telefon görüşmesi yaptınız. Kendisi Çin'e seyahat etmediğini ve o saatlerde bilgisayarının başında olmadığını teyit etti. Bu, hesabının ele geçirildiğini (Account Takeover) kesinleştirdi.", strat: "Kullanıcıyla doğrudan iletişim, bir olayın bağlamını anlamak için en hızlı yoldur. Yanlış pozitifleri elemek ve gerçek tehditleri doğrulamak için paha biçilmezdir.", changes: { financialImpact: 500, operationalDisruption: -2 }, clue: 'userContacted', impact: 'Positive' },
+                    'd2-vpn-logs': { title: "Analyze VPN Logs", text: "VPN logs confirmed that the user 'Burak Mert' connected from China (211.95.8.12), remained active for 15 minutes, and directly accessed the Finance Server (192.168.10.5).", strat: "VPN logs form the basis of an access investigation. Source IP, session duration, and accessed internal resources paint the initial picture of the threat.", changes: { financialImpact: 2000, dataSecurity: -2 }, clue: 'vpnLogsAnalyzed', impact: 'Positive' },
+                    'd2-edr-logs': { title: "Analyze EDR Logs", text: "EDR logs from Burak Mert's machine showed that during the same time as the VPN connection, 'powershell.exe' was used to run a 'Get-Credential' command, and credentials were saved to a temporary file.", strat: "EDR data reveals what an attacker does on a device. Credential Dumping is often a precursor to Lateral Movement.", changes: { financialImpact: 5000, dataSecurity: -5 }, clue: 'edrLogsAnalyzed', impact: 'Positive' },
+                    'd2-proxy-logs': { title: "Analyze Proxy Logs", text: "Proxy logs revealed traffic originating from the Finance Server (192.168.10.5) uploading 150 MB of data to a popular cloud storage site. This is strong evidence of data exfiltration.", strat: "Analyzing outbound traffic is critical for detecting data exfiltration. Large data transfers and their destination URLs are significant clues.", changes: { financialImpact: 3000, dataSecurity: -15 }, clue: 'proxyLogsAnalyzed', impact: 'Negative' },
+                    'd2-contact-user': { title: "Contact the User, Burak Mert", text: "You made an urgent phone call to Mr. Mert. He confirmed he had not traveled to China and was not at his computer at that time. This definitively proves his account was compromised (Account Takeover).", strat: "Direct communication with the user is the fastest way to understand the context of an event. It's invaluable for eliminating false positives and confirming real threats.", changes: { financialImpact: 500, operationalDisruption: -2 }, clue: 'userContacted', impact: 'Positive' },
                     
-                    // Phase 3: Response (2 choices)
-                    'd3-mitre-map': { title: "Bulguları MITRE ATT&CK ile Eşleştir", text: "Topladığınız kanıtları MITRE ATT&CK çerçevesiyle eşleştirdiniz: T1133 (External Remote Services), T1059.001 (PowerShell), T1003 (OS Credential Dumping), T1567.002 (Exfiltration to Cloud Storage). Bu, saldırının yapısını netleştirdi ve raporlamayı güçlendirdi.", strat: "MITRE ATT&CK, dağınık teknik bulguları standart bir dilde ifade etmeyi sağlar. Bu, hem yönetime raporlama hem de savunma stratejileri geliştirme için temel bir adımdır.", changes: { financialImpact: 1000, reputation: +2 }, clue: 'isMitreMapped', impact: 'Positive' },
-                    'd3-isolate-account': { title: "Burak Mert'in Hesabını Derhal İzole Et", text: "Kanıtların ciddiyetini görerek Burak Mert'in Active Directory hesabını derhal devre dışı bıraktınız ve tüm aktif oturumlarını sonlandırdınız. Bu, saldırganın daha fazla zarar vermesini anında engelledi ancak Finans Direktörü'nün işlerini geçici olarak durdurdu.", strat: "Bir tehdidi kontrol altına almak (Containment) için en etkili yol, saldırganın erişimini kesmektir. Bu karar, operasyonel etki ile güvenlik riski arasında bir denge gerektirir.", changes: { financialImpact: 5000, dataSecurity: +20, operationalDisruption: -15 }, clue: 'isIsolated', impact: 'Positive' },
-                    'd3-block-ip': { title: "Saldırgan IP Adresini Güvenlik Duvarından Engelle", text: "Saldırganın kaynak IP adresi olan 211.95.8.12'yi güvenlik duvarından engellediniz. Bu, o adresten gelebilecek yeni saldırıları durdurur ancak saldırgan farklı bir IP kullanırsa etkisiz kalır.", strat: "IP engelleme, basit ve hızlı bir savunma yöntemidir ancak sofistike saldırganlar tarafından kolayca aşılabilir. Katmanlı bir savunmanın sadece bir parçasıdır.", changes: { financialImpact: 500, dataSecurity: +5 }, clue: 'ipBlocked', impact: 'Neutral' },
-                    'd3-escalate': { title: "Bulguları SOC Ekip Liderine Eskale Et", text: "Tüm bulgularınızı, kanıtları ve potansiyel etkiyi içeren bir ön raporla SOC Ekip Lideri Can Demir'e sundunuz. Bu, olayın daha üst seviyede yönetilmesi için süreci başlattı.", strat: "Zamanında ve doğru bilgiyle yapılan eskalasyon, bir SOC'un etkinliğinin temelidir. Analistin görevi, karar vericilere doğru veriyi sağlamaktır.", changes: { financialImpact: 1000, reputation: +5 }, clue: 'isEscalated', impact: 'Positive' },
+                    'd3-mitre-map': { title: "Map Findings to MITRE ATT&CK", text: "You mapped the evidence to the MITRE ATT&CK framework: T1133 (External Remote Services), T1059.001 (PowerShell), T1003 (OS Credential Dumping), T1567.002 (Exfiltration to Cloud Storage). This clarified the attack's structure and strengthened your report.", strat: "MITRE ATT&CK allows you to articulate scattered technical findings in a standardized language. It's a fundamental step for reporting to management and developing defense strategies.", changes: { financialImpact: 1000, reputation: +2 }, clue: 'isMitreMapped', impact: 'Positive' },
+                    'd3-isolate-account': { title: "Immediately Isolate Burak Mert's Account", text: "Seeing the severity of the evidence, you immediately disabled Burak Mert's Active Directory account and terminated all active sessions. This instantly prevented the attacker from causing further damage but temporarily halted the Finance Director's work.", strat: "The most effective way to contain a threat is to cut off the attacker's access. This decision requires balancing the security risk against the operational impact.", changes: { financialImpact: 5000, dataSecurity: +20, operationalDisruption: -15 }, clue: 'isIsolated', impact: 'Positive' },
+                    'd3-block-ip': { title: "Block the Attacker's IP Address", text: "You blocked the attacker's source IP address, 211.95.8.12, at the firewall. This prevents new attacks from that address but is ineffective if the attacker uses a different IP.", strat: "IP blocking is a simple and fast defense method but can be easily bypassed by sophisticated attackers. It is only one part of a layered defense.", changes: { financialImpact: 500, dataSecurity: +5 }, clue: 'ipBlocked', impact: 'Neutral' },
+                    'd3-escalate': { title: "Escalate Findings to SOC Team Lead", text: "You presented all your findings, evidence, and a potential impact assessment in a preliminary report to your SOC Team Lead, Can Demir. This initiated the process for managing the incident at a higher level.", strat: "Timely escalation with accurate information is fundamental to an effective SOC. The analyst's job is to provide decision-makers with the right data.", changes: { financialImpact: 1000, reputation: +5 }, clue: 'isEscalated', impact: 'Positive' },
 
-                    // Phase 4: Communication & Strategy (1 choice)
-                    'd4-forensic-report': { title: "Detaylı Adli Bilişim Raporu Öner", text: "Olayın kök nedenini bulmak ve saldırganın ağ içinde başka bir yerde olup olmadığını anlamak için derinlemesine bir adli bilişim analizi yapılmasını önerdiniz. Bu, gelecekteki güvenliği artırır ancak maliyetlidir.", strat: "Kök neden analizi (RCA), bir olayın 'nasıl' olduğunu anlamak ve gelecekte tekrarlanmasını önlemek için kritiktir. Kapsamlı bir müdahalenin önemli bir parçasıdır.", changes: { financialImpact: 15000, dataSecurity: +5, reputation: +2 }, clue: 'forensicsProposed', impact: 'Positive' },
-                    'd4-security-briefing': { title: "Şirket Genelinde Güvenlik Bilgilendirmesi Yap", text: "Tüm çalışanlara yönelik, olayın (detayları gizleyerek) bir örneğini içeren ve benzer sosyal mühendislik taktiklerine karşı uyaran bir güvenlik bülteni yayınlanmasını sağladınız. Bu, genel farkındalığı artırdı.", strat: "Bir kriz anı, aynı zamanda bir eğitim fırsatıdır. Çalışanları bilgilendirmek, onları en güçlü savunma hattınız haline getirebilir.", changes: { financialImpact: 2000, reputation: +5, operationalDisruption: -2 }, clue: 'briefingDone', impact: 'Positive' },
-                    'd4-revise-policies': { title: "VPN Erişim Politikalarını Gözden Geçir", text: "Bu olayı bir ders olarak kullanarak, VPN erişim politikalarının sıkılaştırılmasını önerdiniz. Coğrafi tabanlı erişim kısıtlamaları ve daha güçlü MFA yöntemleri gibi öneriler sundunuz.", strat: "Her olay, güvenlik politikalarınızı ve kontrollerinizi gözden geçirmek için bir fırsattır. Savunmayı güçlendirmek, sadece anlık müdahaleden ibaret değildir.", changes: { financialImpact: 7500, dataSecurity: +10 }, clue: 'policiesRevised', impact: 'Positive' }
+                    'd4-forensic-report': { title: "Propose a Detailed Forensic Report", text: "You recommended a deep-dive forensic analysis to find the root cause of the incident and determine if the attacker had a presence elsewhere on the network. This improves future security but is costly.", strat: "Root cause analysis (RCA) is critical to understanding 'how' an incident occurred and preventing it from happening again. It's a key part of a comprehensive response.", changes: { financialImpact: 15000, dataSecurity: +5, reputation: +2 }, clue: 'forensicsProposed', impact: 'Positive' },
+                    'd4-security-briefing': { title: "Conduct a Company-Wide Security Briefing", text: "You initiated a security bulletin for all employees, using the incident (with details redacted) as an example to warn against similar social engineering tactics. This raised general awareness.", strat: "A crisis is also a teaching moment. Informing employees can turn them into your strongest line of defense.", changes: { financialImpact: 2000, reputation: +5, operationalDisruption: -2 }, clue: 'briefingDone', impact: 'Positive' },
+                    'd4-revise-policies': { title: "Review VPN Access Policies", text: "Using this incident as a lesson, you recommended tightening VPN access policies. You proposed new rules like geo-based access restrictions and stronger MFA methods.", strat: "Every incident is an opportunity to review your security policies and controls. Strengthening defenses is not just about immediate response.", changes: { financialImpact: 7500, dataSecurity: +10 }, clue: 'policiesRevised', impact: 'Positive' }
                 },
 
                 setup() {
@@ -858,7 +853,7 @@
                     });
 
                     let nextSectionToGo;
-                    let intermissionTitle = "Bu Aşamanın Sonuçları";
+                    let intermissionTitle = "Results of This Phase";
 
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
@@ -869,22 +864,22 @@
                     `);
 
                     if (this.state.currentSectionId === 'phase1_triage' && this.state.isFalsePositive) {
-                        intermissionTitle = "KRİTİK HATA: Yanlış Değerlendirme!";
+                        intermissionTitle = "CRITICAL ERROR: Incorrect Assessment!";
                         const errorDetailsHTML = `
                             <div class="interactive-element" style="border-left: 5px solid var(--accent-red); margin-top: 30px;">
-                                <h4><i class="fa-solid fa-triangle-exclamation"></i> Sonuç</h4>
-                                <p>Uyarının yanlış pozitif olduğuna karar verdiniz ancak bu büyük bir hataydı. <strong>Siz olayı kapatırken, saldırganlar sistemde kalarak veri sızdırmaya devam etti.</strong></p>
-                                <p>Bu gecikme, şirkete ciddi zarar verdi. Sistem sizi otomatik olarak doğru yola, yani <strong>inceleme senaryosuna</strong> yönlendiriyor. Ancak unutmayın, bu hata hanenize yazıldı.</p>
+                                <h4><i class="fa-solid fa-triangle-exclamation"></i> Outcome</h4>
+                                <p>You decided the alert was a false positive, but this was a major mistake. <strong>While you were closing the case, the attackers remained on the system and continued to exfiltrate data.</strong></p>
+                                <p>This delay caused serious damage to the company. The system is now automatically redirecting you to the correct path, the <strong>investigation scenario</strong>. But remember, this mistake has been recorded.</p>
                             </div>
                         `;
                         this.elements.intermissionDetails.insertAdjacentHTML('beforeend', errorDetailsHTML);
                     } else {
                          this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                             <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                                <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
+                                <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
                                 <p>${combinedDecisionTexts.join('<br><br>')}</p>
                                 <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                                    <h4>Stratejik Değerlendirme</h4>
+                                    <h4>Strategic Assessment</h4>
                                     <p>${combinedStrategicNotes.join('<br><br>')}</p>
                                 </div>
                             </div>
@@ -921,22 +916,22 @@
                             colorClass = value > 0 ? 'positive' : 'negative';
                         }
 
-                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString()}${unit}</div>`;
                     };
 
-                    metricsHTML += formatChange('Finansal Etki', changes.financialImpact, '₺', 'fa-sack-xmark', true);
-                    metricsHTML += formatChange('Veri Güvenliği', changes.dataSecurity, '%', 'fa-database');
-                    metricsHTML += formatChange('Operasyonel Kesinti', changes.operationalDisruption, '', 'fa-business-time');
-                    metricsHTML += formatChange('Şirket İtibarı', changes.reputation, '', 'fa-building-shield');
+                    metricsHTML += formatChange('Financial Impact', changes.financialImpact, '$', 'fa-sack-xmark', true);
+                    metricsHTML += formatChange('Data Security', changes.dataSecurity, '%', 'fa-database');
+                    metricsHTML += formatChange('Operational Disruption', changes.operationalDisruption, '', 'fa-business-time');
+                    metricsHTML += formatChange('Company Reputation', changes.reputation, '', 'fa-building-shield');
                     
-                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">Bu kararların metriklere doğrudan bir etkisi olmadı.</p>';
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on the metrics.</p>';
                     return metricsHTML;
                 },
 
                 updateStatusBar() {
                     const s = this.score;
                     this.elements.statusBar.dataSecurity.textContent = `${Math.max(0, s.dataSecurity)}%`;
-                    this.elements.statusBar.financialImpact.textContent = `₺${s.financialImpact.toLocaleString('tr-TR')}`;
+                    this.elements.statusBar.financialImpact.textContent = `$${s.financialImpact.toLocaleString()}`;
                     this.elements.statusBar.operationalDisruption.textContent = Math.max(0, s.operationalDisruption);
                     this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
                 },
@@ -950,7 +945,7 @@
                         this.updateButtonStates(sectionId);
                         this.state.currentTurnDecisions = [];
                     } else {
-                        console.error('Bölüm bulunamadı:', sectionId);
+                        console.error('Section not found:', sectionId);
                         this.showFinalReport();
                     }
                 },
@@ -977,7 +972,7 @@
                     this.elements.sections.forEach(section => section.style.display = 'none');
                     
                     const finalSection = document.getElementById('finalSection');
-                    if (!finalSection) { console.error("Final bölümü HTML'de bulunamadı!"); return; }
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
                     finalSection.style.display = 'flex';
                     
                     const badge = document.getElementById('performance-badge');
@@ -989,37 +984,37 @@
                     // --- SCORING SYSTEM ---
                     let scoreBreakdown = {};
                     let totalScore = 50; 
-                    scoreBreakdown['Başlangıç Puanı'] = { value: 50, class: 'score-neutral' };
+                    scoreBreakdown['Starting Score'] = { value: 50, class: 'score-neutral' };
 
                     const finalDataSecurity = Math.max(0, this.score.dataSecurity);
                     if (finalDataSecurity >= 95) { 
                         totalScore += 25; 
-                        scoreBreakdown['Veri Güvenliği (Mükemmel)'] = { value: 25, class: 'score-plus' }; 
+                        scoreBreakdown['Data Security (Excellent)'] = { value: 25, class: 'score-plus' }; 
                     } else if (finalDataSecurity >= 80) { 
                         totalScore += 15;
-                        scoreBreakdown['Veri Güvenliği (İyi)'] = { value: 15, class: 'score-plus' }; 
+                        scoreBreakdown['Data Security (Good)'] = { value: 15, class: 'score-plus' }; 
                     } else if (finalDataSecurity < 60) { 
                         totalScore -= 25; 
-                        scoreBreakdown['Veri Güvenliği (Zayıf)'] = { value: -25, class: 'score-minus' }; 
+                        scoreBreakdown['Data Security (Weak)'] = { value: -25, class: 'score-minus' }; 
                     }
                 
                     const finalReputation = Math.max(0, this.score.reputation);
                     if (finalReputation >= 95) {
                         totalScore += 10; 
-                        scoreBreakdown['İtibar Yönetimi (Güçlü)'] = { value: 10, class: 'score-plus' }; 
+                        scoreBreakdown['Reputation Management (Strong)'] = { value: 10, class: 'score-plus' }; 
                     } else if (finalReputation < 70) {
                         totalScore -= 10; 
-                        scoreBreakdown['İtibar Kaybı (Yüksek)'] = { value: -10, class: 'score-minus' }; 
+                        scoreBreakdown['Reputation Damage (High)'] = { value: -10, class: 'score-minus' }; 
                     }
 
                     if (this.state.isFalsePositive) {
                         totalScore -= 40;
-                        scoreBreakdown['Kritik Hata: Gerçek Tehdidi Göz Ardı Etme'] = { value: -40, class: 'score-minus' };
+                        scoreBreakdown['Critical Error: Ignored Real Threat'] = { value: -40, class: 'score-minus' };
                     } else {
-                        if (this.state.isIsolated) { totalScore += 15; scoreBreakdown['Kritik Karar: İzolasyon'] = { value: 15, class: 'score-plus' }; }
-                        if (this.state.isEscalated) { totalScore += 5; scoreBreakdown['Doğru Adım: Eskalasyon'] = { value: 5, class: 'score-plus' }; }
-                        if (this.state.isMitreMapped) { totalScore += 5; scoreBreakdown['Stratejik Adım: MITRE'] = { value: 5, class: 'score-plus' }; }
-                        if (this.state.policiesRevised) { totalScore += 10; scoreBreakdown['Stratejik Takip: Politikaları Güçlendirme'] = { value: 10, class: 'score-plus' }; }
+                        if (this.state.isIsolated) { totalScore += 15; scoreBreakdown['Critical Decision: Isolation'] = { value: 15, class: 'score-plus' }; }
+                        if (this.state.isEscalated) { totalScore += 5; scoreBreakdown['Correct Step: Escalation'] = { value: 5, class: 'score-plus' }; }
+                        if (this.state.isMitreMapped) { totalScore += 5; scoreBreakdown['Strategic Step: MITRE'] = { value: 5, class: 'score-plus' }; }
+                        if (this.state.policiesRevised) { totalScore += 10; scoreBreakdown['Strategic Follow-up: Policy Hardening'] = { value: 10, class: 'score-plus' }; }
                     }
 
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
@@ -1027,20 +1022,20 @@
                     // --- SCORING SYSTEM END ---
 
                     let badgeInfo = {};
-                    if (this.state.isFalsePositive) { badgeInfo = { text: 'KRİTİK HATA', color: 'var(--accent-red)' }; }
-                    else if (totalScore >= 90) { badgeInfo = { text: 'UZMAN ANALİST', color: 'var(--accent-green)' }; } 
-                    else if (totalScore >= 70) { badgeInfo = { text: 'ETKİN MÜDAHALE', color: 'var(--accent-blue)' }; } 
-                    else if (totalScore >= 50) { badgeInfo = { text: 'YETERLİ PERFORMANS', color: 'var(--accent-yellow)' }; } 
-                    else { badgeInfo = { text: 'GELİŞTİRİLMELİ', color: '#ff5555' }; }
+                    if (this.state.isFalsePositive) { badgeInfo = { text: 'CRITICAL ERROR', color: 'var(--accent-red)' }; }
+                    else if (totalScore >= 90) { badgeInfo = { text: 'EXPERT ANALYST', color: 'var(--accent-green)' }; } 
+                    else if (totalScore >= 70) { badgeInfo = { text: 'EFFECTIVE RESPONSE', color: 'var(--accent-blue)' }; } 
+                    else if (totalScore >= 50) { badgeInfo = { text: 'ADEQUATE PERFORMANCE', color: 'var(--accent-yellow)' }; } 
+                    else { badgeInfo = { text: 'NEEDS IMPROVEMENT', color: '#ff5555' }; }
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
                     metricsContainer.innerHTML = `
-                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Veri Güvenliği</div><div class="value">${finalDataSecurity}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Finansal Etki</div><div class="value">₺${this.score.financialImpact.toLocaleString('tr-TR')}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Şirket İtibarı</div><div class="value">${finalReputation}/100</div></div>
+                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Data Security</div><div class="value">${finalDataSecurity}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Impact</div><div class="value">$${this.score.financialImpact.toLocaleString()}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-building-shield"></i></div><div class="label">Company Reputation</div><div class="value">${finalReputation}/100</div></div>
                     `;
 
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
@@ -1050,18 +1045,18 @@
 
                     scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
                         const sign = item.value > 0 ? '+' : '';
-                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
                     if (this.state.isFalsePositive) {
-                        debriefHTML = `<p><strong>Kritik Hata:</strong> Simülasyonun başında uyarıyı yanlış pozitif olarak değerlendirdiniz. Bu gecikme, saldırganlara değerli zaman kazandırdı ve olayın etkisini artırdı. Sonraki adımlarda doğru kararlar vermiş olsanız bile, bu başlangıç hatası şirketi ciddi bir riske attı ve nihai puanınızı önemli ölçüde düşürdü. Bu, şüpheli aktivitenin asla hafife alınmaması gerektiğini gösteren önemli bir derstir.</p>`;
+                        debriefHTML = `<p><strong>Critical Error:</strong> You dismissed the alert as a false positive at the start of the simulation. This delay gave the attackers valuable time and increased the incident's impact. Even though you may have made correct decisions later, this initial mistake put the company at serious risk and significantly lowered your final score. This is a crucial lesson that suspicious activity should never be taken lightly.</p>`;
                     } else if (totalScore >= 90) { 
-                        debriefHTML = `<p><strong>Olağanüstü Başarı!</strong> Uyarının ciddiyetini hızla kavradınız, doğru log kaynaklarını analiz ettiniz, tehdidi etkili bir şekilde kontrol altına aldınız ve olayı stratejik bir bakış açısıyla sonlandırdınız. Özellikle kritik sistemleri zamanında izole etme ve geleceğe yönelik politika önerileri getirme kararınız, şirketi hem anlık bir felaketten kurtardı hem de gelecekteki güvenliğini artırdı.</p>`;
+                        debriefHTML = `<p><strong>Outstanding Success!</strong> You quickly grasped the severity of the alert, analyzed the correct log sources, effectively contained the threat, and concluded the incident with a strategic perspective. Your decisions to isolate critical systems in a timely manner and to propose future policy enhancements not only saved the company from an immediate disaster but also improved its future security.</p>`;
                     } else if (totalScore >= 70) { 
-                        debriefHTML = `<p><strong>Etkin Müdahale:</strong> Doğru adımları atarak ve kanıtları toplayarak tehdidi başarılı bir şekilde yönettiniz. Bazı kararlarınız operasyonel kesintiye yol açsa da, veri güvenliğini önceliklendirerek doğru olanı yaptınız. Eskalasyon süreciniz ve tehdit analizi yeteneğiniz, olayın kontrol altında tutulmasını sağladı. Son aşamadaki stratejik kararlarınızla şirkete değer kattınız.</p>`;
+                        debriefHTML = `<p><strong>Effective Response:</strong> You successfully managed the threat by taking the right steps and gathering evidence. While some of your decisions may have caused operational disruption, you correctly prioritized data security. Your escalation process and threat analysis skills ensured the incident was kept under control. Your strategic decisions in the final phase added value to the company.</p>`;
                     } else { 
-                        debriefHTML = `<p><strong>Öğrenim Fırsatı:</strong> Tehdidi tespit ettiniz ancak müdahale sürecinde daha hızlı veya etkili olabilecek bazı adımları atlamış olabilirsiniz. Belki de kanıtları toplarken harcanan zaman, saldırganın daha fazla ilerlemesine olanak tanıdı veya alınan önlemler yetersiz kaldı. Bu simülasyon, log korelasyonu ve hızlı müdahale kararlarının ne kadar kritik olduğunu gösteren önemli bir deneyim oldu.</p>`;
+                        debriefHTML = `<p><strong>Learning Opportunity:</strong> You identified the threat, but you may have missed some steps that could have been faster or more effective during the response process. Perhaps the time spent gathering evidence allowed the attacker to advance further, or the measures taken were insufficient. This simulation has been a valuable experience demonstrating how critical log correlation and swift response decisions are.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
                     this.saveLeaderboard(totalScore);
@@ -1070,88 +1065,88 @@
                 loadGameHTML() {
                     const gameHTMLContent = `
                         <div id="phase1_triage" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-bell"></i> Aşama 1: SIEM Uyarısı ve Triage</h2>
-                            <p>Bir SOC Analisti olarak, ekibinizin Slack kanalına düşen yüksek öncelikli bir uyarı ile güne başlıyorsunuz.</p>
+                            <h2><i class="fa-solid fa-bell"></i> Phase 1: SIEM Alert and Triage</h2>
+                            <p>As a SOC Analyst, you start your day with a high-priority alert popping up in your team's Slack channel.</p>
                             <div class="slack-chat">
-                                <div class="message"><span class="sender siem">SIEM-BOT:</span> @channel **[YÜKSEK ÖNCELİK] Şüpheli VPN Bağlantısı Tespit Edildi!**</div>
-                                <div class="message"><span class="sender siem">SIEM-BOT:</span> Kullanıcı: <strong>Burak Mert (Finans Direktörü)</strong><br>Kaynak IP: <code>211.95.8.12</code> (Coğrafi Konum: Çin)<br>Durum: Başarılı<br>Açıklama: Bilinen normal erişim lokasyonları dışında bir yerden VPN bağlantısı yapıldı.</div>
+                                <div class="message"><span class="sender siem">SIEM-BOT:</span> @channel **[HIGH PRIORITY] Suspicious VPN Connection Detected!**</div>
+                                <div class="message"><span class="sender siem">SIEM-BOT:</span> User: <strong>Burak Mert (Finance Director)</strong><br>Source IP: <code>211.95.8.12</code> (Geo-location: China)<br>Status: Success<br>Description: A VPN connection was made from outside of known normal access locations.</div>
                             </div>
                             <div class="interactive-element">
-                                <h4>Bu kritik uyarıyı nasıl ele alacaksınız? (1 Seçim Yapın)</h4>
+                                <h4>How will you handle this critical alert? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d1-investigate"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">İnceleme Başlat<small>Olayın gerçek bir tehdit olduğunu varsayarak derhal log toplamaya ve analize başla.</small></div></button>
-                                    <button class="btn critical" data-decision="d1-false-positive"><i class="fa-solid fa-ban"></i><div class="btn-text">Yanlış Pozitif Olarak Kapat<small>Muhtemelen bir iş seyahatidir. Kullanıcıyı rahatsız etmeden olayı kapat.</small></div></button>
+                                    <button class="btn" data-decision="d1-investigate"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Start Investigation<small>Assume the event is a real threat and immediately begin collecting and analyzing logs.</small></div></button>
+                                    <button class="btn critical" data-decision="d1-false-positive"><i class="fa-solid fa-ban"></i><div class="btn-text">Close as False Positive<small>It's probably a business trip. Close the case without disturbing the user.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Bir C-seviye yöneticinin hesabından, coğrafi olarak imkansız bir yerden gelen başarılı bir bağlantı uyarısı, en yüksek öncelikli olaylardan biridir. İlk tepkiniz, tüm olayın seyrini belirleyebilir.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> A successful connection alert from a C-level executive's account, originating from a geographically impossible location, is one of the highest priority incidents. Your initial reaction can determine the course of the entire event.</div>
                         </div>
 
                         <div id="phase2_analysis" class="section" data-max-selections="2">
-                             <h2><i class="fa-solid fa-search-plus"></i> Aşama 2: Kanıt Toplama ve Analiz</h2>
-                            <p>Uyarının peşine düşmeye karar verdiniz. Şimdi tehdidin doğasını ve kapsamını anlamak için elinizdeki araçları kullanarak kanıt toplamanız gerekiyor. Seçeceğiniz her analiz adımı zaman ve kaynak gerektirecek.</p>
-                            <img src="analiz.png" alt="Log analizi ve siber güvenlik araçları" class="scenario-image">
+                             <h2><i class="fa-solid fa-search-plus"></i> Phase 2: Evidence Gathering and Analysis</h2>
+                            <p>You've decided to pursue the alert. Now you need to gather evidence using the tools at your disposal to understand the nature and scope of the threat. Each analysis step you choose will require time and resources.</p>
+                            <img src="analiz.png" alt="Log analysis and cybersecurity tools" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Kanıtları toplamak için hangi iki adımı atacaksınız? (2 Seçim Yapın)</h4>
+                                <h4>Which two steps will you take to gather evidence? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d2-vpn-logs"><i class="fa-solid fa-network-wired"></i><div class="btn-text">VPN Loglarını İncele<small>Bağlantının detaylarını, süresini ve erişilen iç ağ kaynaklarını doğrula.</small></div></button>
-                                    <button class="btn" data-decision="d2-edr-logs"><i class="fa-solid fa-desktop"></i><div class="btn-text">EDR Loglarını İncele<small>Burak Mert'in bilgisayarında bağlantı sırasında çalışan anormal işlemleri kontrol et.</small></div></button>
-                                    <button class="btn" data-decision="d2-proxy-logs"><i class="fa-solid fa-globe"></i><div class="btn-text">Proxy Loglarını İncele<small>VPN bağlantısı üzerinden giden şüpheli web trafiğini, özellikle veri sızıntısı olabilecek siteleri ara.</small></div></button>
-                                    <button class="btn critical" data-decision="d2-contact-user"><i class="fa-solid fa-phone"></i><div class="btn-text">Kullanıcı Burak Mert ile İletişime Geç<small>Durumu teyit etmek için Finans Direktörü'nü doğrudan ara.</small></div></button>
+                                    <button class="btn" data-decision="d2-vpn-logs"><i class="fa-solid fa-network-wired"></i><div class="btn-text">Analyze VPN Logs<small>Verify the connection details, duration, and accessed internal network resources.</small></div></button>
+                                    <button class="btn" data-decision="d2-edr-logs"><i class="fa-solid fa-desktop"></i><div class="btn-text">Analyze EDR Logs<small>Check for anomalous processes running on Burak Mert's computer during the connection.</small></div></button>
+                                    <button class="btn" data-decision="d2-proxy-logs"><i class="fa-solid fa-globe"></i><div class="btn-text">Analyze Proxy Logs<small>Look for suspicious web traffic over the VPN, especially to potential data exfiltration sites.</small></div></button>
+                                    <button class="btn critical" data-decision="d2-contact-user"><i class="fa-solid fa-phone"></i><div class="btn-text">Contact the User, Burak Mert<small>Call the Finance Director directly to confirm the situation.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Etkili bir olay müdahalesi için farklı veri kaynaklarını (ağ, uç nokta, kullanıcı) birleştirmek (korelasyon) hayati önem taşır. Tek bir log kaynağı nadiren tüm hikayeyi anlatır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Correlating different data sources (network, endpoint, user) is vital for an effective incident response. A single log source rarely tells the whole story.</div>
                         </div>
                         
                         <div id="phase3_response" class="section" data-max-selections="2">
-                            <h2><i class="fa-solid fa-fire-extinguisher"></i> Aşama 3: Müdahale ve Kontrol Altına Alma</h2>
-                            <p>Topladığınız kanıtlar durumu netleştirdi: Finans Direktörü'nün hesabı ele geçirilmiş ve hassas verilere erişilmiş. Saldırgan hala aktif olabilir. Şimdi hasarı sınırlamak ve tehdidi ortadan kaldırmak için kritik kararlar almalısınız.</p>
+                            <h2><i class="fa-solid fa-fire-extinguisher"></i> Phase 3: Containment and Response</h2>
+                            <p>The evidence you've gathered has clarified the situation: the Finance Director's account has been compromised, and sensitive data has been accessed. The attacker may still be active. You must now make critical decisions to limit the damage and eliminate the threat.</p>
                             <div class="interactive-element">
-                                <h4>Tehdidi kontrol altına almak ve raporlamak için hangi iki adımı atacaksınız? (2 Seçim Yapın)</h4>
+                                <h4>Which two steps will you take to contain and report the threat? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d3-mitre-map"><i class="fa-solid fa-sitemap"></i><div class="btn-text">Bulguları MITRE ATT&CK ile Eşleştir<small>Saldırganın kullandığı taktik ve teknikleri standart bir çerçeveye oturtarak raporlamayı güçlendir.</small></div></button>
-                                    <button class="btn critical" data-decision="d3-isolate-account"><i class="fa-solid fa-user-lock"></i><div class="btn-text">Burak Mert'in Hesabını Derhal İzole Et<small>Saldırganın daha fazla ilerlemesini önlemek için hesabın tüm erişimini anında kes.</small></div></button>
-                                    <button class="btn" data-decision="d3-block-ip"><i class="fa-solid fa-ban"></i><div class="btn-text">Saldırgan IP Adresini Engelle<small>Kaynak IP'yi güvenlik duvarından engelleyerek basit ama hızlı bir önlem al.</small></div></button>
-                                    <button class="btn" data-decision="d3-escalate"><i class="fa-solid fa-upload"></i><div class="btn-text">Bulguları SOC Ekip Liderine Eskale Et<small>Topladığın tüm kanıtları içeren kapsamlı bir raporla olayı bir üst seviyeye taşı.</small></div></button>
+                                    <button class="btn" data-decision="d3-mitre-map"><i class="fa-solid fa-sitemap"></i><div class="btn-text">Map Findings to MITRE ATT&CK<small>Strengthen your report by framing the attacker's tactics and techniques within a standard framework.</small></div></button>
+                                    <button class="btn critical" data-decision="d3-isolate-account"><i class="fa-solid fa-user-lock"></i><div class="btn-text">Immediately Isolate Burak Mert's Account<small>Instantly cut off all access for the account to prevent the attacker from advancing further.</small></div></button>
+                                    <button class="btn" data-decision="d3-block-ip"><i class="fa-solid fa-ban"></i><div class="btn-text">Block the Attacker's IP Address<small>Take a simple but quick precaution by blocking the source IP at the firewall.</small></div></button>
+                                    <button class="btn" data-decision="d3-escalate"><i class="fa-solid fa-upload"></i><div class="btn-text">Escalate Findings to SOC Team Lead<small>Elevate the incident to the next level with a comprehensive report of all evidence.</small></div></button>
                                 </div>
                             </div>
-                             <div class="learning-note"><strong>Öğrenme Notu:</strong> Müdahale aşaması, hız ve kararlılık gerektirir. Güvenlik riski ile operasyonel etki arasındaki dengeyi doğru kurmak, bir analistin en önemli yeteneklerinden biridir.</div>
+                             <div class="learning-note"><strong>Learning Note:</strong> The response phase requires speed and decisiveness. Correctly balancing security risk against operational impact is one of an analyst's most important skills.</div>
                         </div>
 
                         <div id="phase4_communication_strategy" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-bullhorn"></i> Aşama 4: İletişim ve Stratejik Takip</h2>
-                            <p>Anlık tehdit kontrol altına alındı. SOC Ekip Lideriniz Can Demir, müdahalenizden memnun ancak şimdi olayın yankılarını yönetmek ve geleceğe yönelik adımları planlamak gerekiyor. Bu, sadece teknik bir olay değil, aynı zamanda bir iş riskidir.</p>
-                            <img src="strateji.png" alt="Strateji ve planlama toplantısı" class="scenario-image">
+                            <h2><i class="fa-solid fa-bullhorn"></i> Phase 4: Communication and Strategic Follow-up</h2>
+                            <p>The immediate threat has been contained. Your SOC Team Lead, Can Demir, is pleased with your response, but now it's time to manage the incident's aftermath and plan for the future. This is not just a technical incident, but a business risk.</p>
+                            <img src="strateji.png" alt="Strategy and planning meeting" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Olay sonrası atılacak en önemli stratejik adım nedir? (1 Seçim Yapın)</h4>
+                                <h4>What is the most important strategic step to take after the incident? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d4-forensic-report"><i class="fa-solid fa-magnifying-glass-chart"></i><div class="btn-text">Detaylı Adli Bilişim Raporu Öner<small>Olayın kök nedenini bulmak ve başka sızıntı olup olmadığını kesinleştirmek için derinlemesine analiz talep et.</small></div></button>
-                                    <button class="btn" data-decision="d4-security-briefing"><i class="fa-solid fa-users-viewfinder"></i><div class="btn-text">Şirket Genelinde Güvenlik Bilgilendirmesi Yap<small>Tüm çalışanları benzer tehditlere karşı uyarmak ve farkındalığı artırmak için bir bülten yayınla.</small></div></button>
-                                    <button class="btn critical" data-decision="d4-revise-policies"><i class="fa-solid fa-file-signature"></i><div class="btn-text">VPN Erişim Politikalarını Gözden Geçir<small>Benzer olayları önlemek için coğrafi kısıtlamalar ve daha güçlü MFA gibi yeni politika önerileri sun.</small></div></button>
+                                    <button class="btn" data-decision="d4-forensic-report"><i class="fa-solid fa-magnifying-glass-chart"></i><div class="btn-text">Propose a Detailed Forensic Report<small>Request a deep-dive analysis to find the root cause and confirm there are no other breaches.</small></div></button>
+                                    <button class="btn" data-decision="d4-security-briefing"><i class="fa-solid fa-users-viewfinder"></i><div class="btn-text">Conduct a Company-Wide Security Briefing<small>Publish a bulletin to warn all employees about similar threats and raise awareness.</small></div></button>
+                                    <button class="btn critical" data-decision="d4-revise-policies"><i class="fa-solid fa-file-signature"></i><div class="btn-text">Review VPN Access Policies<small>Propose new policy recommendations, like geo-restrictions and stronger MFA, to prevent similar incidents.</small></div></button>
                                 </div>
                             </div>
-                             <div class="learning-note"><strong>Öğrenme Notu:</strong> Bir siber olayı kapatmak, sadece tehdidi durdurmakla bitmez. Olaydan ders çıkarmak ve güvenlik duruşunu güçlendirmek, proaktif bir siber güvenlik anlayışının temelidir.</div>
+                             <div class="learning-note"><strong>Learning Note:</strong> Closing a cyber incident doesn't end with stopping the threat. Learning from the event and strengthening the security posture is fundamental to a proactive cybersecurity mindset.</div>
                         </div>
 
                         <div id="finalSection" class="section centered-page" style="display: none;">
-                            <h2><i class="fa-solid fa-chart-line"></i> Kriz Sonrası Değerlendirme Raporu</h2>
-                            <p>Simülasyon tamamlandı. Kriz yönetimi performansınızın detaylı dökümü aşağıdadır.</p>
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Incident Review Report</h2>
+                            <p>The simulation is complete. Below is a detailed breakdown of your crisis management performance.</p>
                             <div id="performance-badge-container"><span id="performance-badge"></span></div>
                             <div class="final-metrics" id="finalMetricsContainer"></div>
                             <div class="post-crisis-layout">
                                 <div class="event-timeline">
-                                    <h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3>
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                                     <div id="strategic-debrief-content"></div>
-                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
                                     <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
                             <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
-                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</button>
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Leaderboard</button>
                             </div>
                         </div>
                     `;
@@ -1172,7 +1167,7 @@
                         this.updateTimerUI();
                         if (this.timer.remaining <= 0) {
                             this.stopGlobalTimer();
-                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            alert("Time is up! Generating report.");
                             this.showFinalReport();
                         }
                     }, 1000);
@@ -1202,7 +1197,7 @@
                 },
 
                 saveLeaderboard(finalScore) {
-                    const name = localStorage.getItem('playerName') || 'Anonim';
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
                     const payload = {
                         scenario: 'v7.3-vpn-revised',
                         name: name.toString().slice(0, 40),
@@ -1225,12 +1220,12 @@
                 loadLeaderboard() {
                     const tbody = this.elements.leaderboard.body;
                     const key = 'leaderboard-v7-vpn-revised';
-                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
                     
                     const rows = JSON.parse(localStorage.getItem(key) || '[]');
                     
                     if (!rows.length) {
-                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="4">No records yet.</td></tr>`;
                         return;
                     }
                     
@@ -1238,9 +1233,9 @@
                     tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
                         <tr>
                             <td>${i+1}</td>
-                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
                             <td>${r.score}</td>
-                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString() : '-'}</td>
                         </tr>
                     `).join('');
                 }
