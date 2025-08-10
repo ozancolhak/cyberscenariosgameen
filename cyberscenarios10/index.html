@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v9: Fiziksel Güvenlik İhlali</title>
+    <title>CyberScenario v9.1: Physical Security Breach</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -609,46 +609,46 @@
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-door-open"></i> Fiziksel Güvenlik İhlali Simülasyonu</h1>
-            <p style="max-width: 600px;">VeriCore Analytics'e hoş geldin, Olay Müdahale Uzmanı! Bu sabah şirketin birincil veri merkezi fiziksel bir saldırıya uğradı. Güvenlik kayıtları zorla girildiğini gösteriyor ancak olay sırasında birkaç CCTV kamera çevrimdışıydı. Bazı depolama sürücülerinin söküldüğü ve kritik ağ anahtarlarının kapatıldığı görülüyor. Görevin: Hasarı kontrol altına almak, adli kanıtları toplamak ve soruşturmadan ödün vermeden operasyonları yeniden başlatmak.</p>
-            <img src="intro.png" alt="Saldırıya uğramış veri merkezi sunucu odası" class="scenario-image">
+            <h1><i class="fa-solid fa-door-open"></i> Physical Breach Simulation</h1>
+            <p style="max-width: 600px;">Welcome, Incident Response Specialist at VeriCore Analytics! Early this morning, the company’s primary data center suffered a physical intrusion. Security logs indicate forced entry, but several CCTV cameras were offline. Some storage drives are missing, and critical switches were powered off. Your mission: Contain the damage, collect forensic evidence, and restore operations.</p>
+            <img src="intro.png" alt="Compromised data center server room" class="scenario-image">
 
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
-                    <h3><i class="fa-solid fa-people-arrows"></i> Simülasyon Rolleri</h3>
+                    <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
                     <ul>
-                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Senin Rolün: Olay Müdahale Uzmanı</strong> <small>Adli bilişimden kurtarmaya ve iletişime kadar tüm müdahale sürecinden sorumlusun.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-server"></i></span><div><strong>BT Operasyon Lideri</strong> <small>Önceliği, servisleri mümkün olan en kısa sürede yeniden çevrimiçi hale getirmek.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-gavel"></i></span><div><strong>Hukuk Departmanı Lideri</strong> <small>Kanıtların korunması ve yasal yükümlülükler konusunda endişeli.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Your Role: Incident Responder</strong> <small>You are in charge of the entire response, from forensics to recovery and communication.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-server"></i></span><div><strong>Head of IT Operations</strong> <small>Their priority is to get services back online as soon as possible.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-gavel"></i></span><div><strong>Head of Legal</strong> <small>They are concerned with evidence preservation and legal liabilities.</small></div></li>
                     </ul>
                 </div>
                 <div class="intro-metrics-container">
-                    <h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3>
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-database"></i></span><div><strong>Veri Bütünlüğü</strong> <small>Verilerin ve kanıtların güvenliği. (Başlangıç: 100%)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Finansal Kayıp</strong> <small>Kesinti ve kurtarma maliyeti. (Başlangıç: ₺0)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-power-off"></i></span><div><strong>Hizmet Sürekliliği</strong> <small>Servislerin aktif olma yüzdesi. (Başlangıç: 0%)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>Müşteri Güveni</strong> <small>Müşterilerin şirketinizin güvenliğine olan inancı. (Başlangıç: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-database"></i></span><div><strong>Data Integrity</strong> <small>Security of the data and evidence. (Start: 100%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Financial Loss</strong> <small>Cost of downtime and recovery. (Start: $0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-power-off"></i></span><div><strong>Service Uptime</strong> <small>Percentage of services currently online. (Start: 0%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>Customer Trust</strong> <small>Client confidence in your company's security. (Start: 100)</small></div></li>
                     </ul>
                 </div>
             </div>
-            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
         </div>
 
         <div id="intermissionSection" class="centered-page" style="display: none;">
             <h2 id="intermissionTitle"></h2>
             <div id="intermissionDetails">
             </div>
-            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
         </div>
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-database"></i> Veri Bütünlüğü</span><div class="value" id="status-dataIntegrity">100%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Finansal Kayıp</span><div class="value" id="status-financialLoss">₺0</div></div>
-                <div class="metric"><span><i class="fa-solid fa-power-off"></i> Hizmet Sürekliliği</span><div class="value" id="status-serviceUptime">0%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-users"></i> Müşteri Güveni</span><div class="value" id="status-customerTrust">100</div></div>
-                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">04:00</div></div>
+                <div class="metric"><span><i class="fa-solid fa-database"></i> Data Integrity</span><div class="value" id="status-dataIntegrity">100%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Loss</span><div class="value" id="status-financialLoss">$0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-power-off"></i> Service Uptime</span><div class="value" id="status-serviceUptime">0%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> Customer Trust</span><div class="value" id="status-customerTrust">100</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">04:00</div></div>
             </div>
             <div id="game-content">
             </div>
@@ -658,22 +658,22 @@
     <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
         <div class="lb-modal">
             <div class="lb-header">
-                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</h2>
-                <span class="lb-sub">Fiziksel İhlal Simülasyonu En İyileri</span>
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+                <span class="lb-sub">Physical Breach Simulation Top Players</span>
             </div>
             <div class="lb-tablewrap">
                 <table class="lb-table" id="leaderboardTable">
                     <thead>
-                        <tr><th>#</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
                     </thead>
                     <tbody id="leaderboardBody">
-                        <tr><td colspan="4">Yükleniyor…</td></tr>
+                        <tr><td colspan="4">Loading…</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="lb-actions">
-                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Yenile</button>
-                <button class="lb-close" id="lbCloseBtn">Kapat</button>
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
             </div>
         </div>
     </div>
@@ -704,37 +704,32 @@
                 elements: {},
                 
                 timer: {
-                    total: 240, // 4 dakika
+                    total: 240, // 4 minutes
                     remaining: 240,
                     intervalId: null,
                     running: false
                 },
                 
                 decisionInfo: {
-                    // Aşama 1
-                    'd1-secure-scene': { title: "Olay Yerini Güvence Altına Al", text: "Sunucu odasını derhal bir olay yeri ilan ettiniz ve kimsenin girip bir şeye dokunmasına izin vermediniz. Bu, kritik fiziksel kanıtları korur ancak ilk dijital analizi geciktirir.", strat: "Fiziksel bir ihlalde, olayın bütünlüğünü korumak, yasal süreçler ve iç soruşturma için her şeyden önemlidir. Bu, standart ilk adımdır.", changes: { dataIntegrity: +5, financialLoss: 5000, serviceUptime: 0 }, clue: 'sceneSecured', impact: 'Positive' },
-                    'd1-check-backups': { title: "Şirket Dışı Yedekleri Kontrol Et", text: "İlk iş olarak şirket dışı yedeklerin durumunu ve bütünlüğünü doğruladınız. Yedeklerin sağlam ve saldırıdan etkilenmemiş olduğunu teyit ettiniz, bu kurtarma stratejisi için kritik bir bilgidir.", strat: "Kurtarma seçeneklerinizi erken bilmek, tüm olay müdahalesini şekillendirir. Sağlam bir yedek, en iyi güvenlik ağınızdır.", changes: { dataIntegrity: 0, financialLoss: 2000 }, clue: 'backupsChecked', impact: 'Positive' },
-                    'd1-check-logs': { title: "Sunucu Loglarını Kontrol Et", text: "Sunucu loglarına uzaktan erişmeye çalıştınız ancak kapatılan anahtarlar nedeniyle çoğu sistemin çevrimdışı olduğunu gördünüz. Fiziksel kanıtlara harcanabilecek değerli zamanı kaybettiniz.", strat: "Fiziksel bir kesintide, dijital adli bilişim anında ilk adım olmayabilir. Dijitale dalmadan önce fiziksel durumu değerlendirmek daha verimli olabilir.", changes: { financialLoss: 8000, customerTrust: -2 }, clue: 'logsChecked', impact: 'Negative' },
+                    'd1-secure-scene': { title: "Secure the Crime Scene", text: "You immediately declared the server room a crime scene, prohibiting anyone from entering or touching anything. This preserves crucial physical evidence but delays initial digital analysis.", strat: "In a physical breach, preserving the integrity of the scene is paramount for law enforcement and internal investigation. This is the standard first step.", changes: { dataIntegrity: +5, financialLoss: 5000, serviceUptime: 0 }, clue: 'sceneSecured', impact: 'Positive' },
+                    'd1-check-backups': { title: "Check Off-site Backups", text: "Your first action was to verify the status and integrity of the off-site backups. You confirmed they are intact and uncompromised, which is a critical piece of information for the recovery strategy.", strat: "Knowing your recovery options early on helps frame the entire incident response. A viable backup is your best safety net.", changes: { dataIntegrity: 0, financialLoss: 2000 }, clue: 'backupsChecked', impact: 'Positive' },
+                    'd1-check-logs': { title: "Check Server Logs", text: "You tried to remotely access server logs but found most systems are offline due to the powered-off switches. You've lost valuable time that could have been spent on physical evidence.", strat: "In a physical outage, digital forensics may not be the immediate first step. Assessing the physical state before diving into digital can be more efficient.", changes: { financialLoss: 8000, customerTrust: -2 }, clue: 'logsChecked', impact: 'Negative' },
                     
-                    // Aşama 2
-                    'd2-image-drives': { title: "Diskleri İmajlamaya Başla", text: "Kalan sabit disklerin adli kopyalarını (imajlarını) oluşturma gibi zaman alıcı bir sürece başladınız. Bu, derin bir soruşturma için gereklidir ancak kesinti süresini önemli ölçüde uzatır.", strat: "Adli imajlama, orijinal kanıtı değiştirmeden derinlemesine analiz için depolama ortamının birebir kopyasını oluşturur.", changes: { dataIntegrity: +15, financialLoss: 20000, serviceUptime: -5 }, clue: 'drivesImaged', impact: 'Positive' },
-                    'd2-assess-impact': { title: "İş Etki Analizi Yap", text: "BT Operasyon ile çalışarak, çalınan disklerin kritik müşteri veritabanlarını ve ana finansal işlem sunucusunu içerdiğini hızla belirlediniz. Potansiyel iş etkisi çok ciddi.", strat: "Neyin çalındığını veya etkilendiğini anlamak, kurtarmayı önceliklendirmek ve paydaşlarla iletişim kurmak için çok önemlidir. Bu, iş sürekliliğinin kilit bir adımıdır.", changes: { financialLoss: 1000, customerTrust: -5 }, clue: 'impactAssessed', impact: 'Neutral' },
-                    'd2-find-cctv': { title: "Alternatif CCTV Görüntüleri Bul", text: "İlgisiz olduğu düşünülen bir koridor kamerasının, ihlalden dakikalar önce veri merkezi koridoruna giren bakım üniformalı iki kimliği belirsiz kişiyi yakaladığını keşfettiniz. Bu çok büyük bir ipucu.", strat: "Kapsamlı bir soruşturma bariz olanın ötesine bakar. Kanıt toplama kapsamını genişletmek genellikle çığır açan ipuçları verir.", changes: { dataIntegrity: +10, financialLoss: 5000 }, clue: 'cctvFound', impact: 'Positive' },
+                    'd2-image-drives': { title: "Begin Imaging Drives", text: "You started the time-consuming process of creating forensic images of the remaining hard drives. This is essential for a deep investigation but significantly extends the downtime.", strat: "Forensic imaging creates a bit-by-bit copy of storage media, allowing for in-depth analysis without altering the original evidence.", changes: { dataIntegrity: +15, financialLoss: 20000, serviceUptime: -5 }, clue: 'drivesImaged', impact: 'Positive' },
+                    'd2-assess-impact': { title: "Assess Business Impact", text: "Working with IT Ops, you quickly identified that the missing drives contained critical customer databases and a primary financial transaction server. The potential business impact is severe.", strat: "Understanding what was stolen or affected is crucial for prioritizing recovery and communicating with stakeholders. This is a key step in business continuity.", changes: { financialLoss: 1000, customerTrust: -5 }, clue: 'impactAssessed', impact: 'Neutral' },
+                    'd2-find-cctv': { title: "Find Alternative CCTV Footage", text: "You discovered that a hallway camera, thought to be irrelevant, captured two unidentified individuals in maintenance uniforms entering the data center corridor minutes before the breach. This is a major lead.", strat: "A thorough investigation looks beyond the obvious. Expanding the scope of evidence collection can often yield breakthrough clues.", changes: { dataIntegrity: +10, financialLoss: 5000 }, clue: 'cctvFound', impact: 'Positive' },
 
-                    // Aşama 3 (Yeni)
-                    'd3-scan-malware': { title: "Kalan Sistemleri Zararlı Yazılıma Karşı Tara", text: "Saldırganların sadece diskleri çalmakla kalmayıp, geride bir arka kapı veya zararlı yazılım bırakmış olabileceği şüphesiyle kalan sunucularda derinlemesine bir tarama başlattınız.", strat: "Fiziksel bir ihlal, genellikle daha büyük bir dijital saldırının parçasıdır. Saldırganların geride kalıcı erişim sağlamak için bir dayanak noktası bırakıp bırakmadığını kontrol etmek esastır.", changes: { dataIntegrity: +10, financialLoss: 15000 }, clue: 'malwareScanned', impact: 'Positive' },
-                    'd3-profile-actor': { title: "Tehdit Aktörü Profili Oluştur", text: "Mevcut kanıtlara (profesyonel giriş, belirli sürücülerin hedeflenmesi) dayanarak, bunun rastgele bir hırsızlık değil, muhtemelen bir rakip veya endüstriyel casusluk tarafından yönlendirilen hedefli bir operasyon olduğu sonucuna vardınız.", strat: "Saldırganın kim olduğunu ve ne istediğini anlamak (tehdit modellemesi), müdahalenin sonraki adımlarını ve gelecekteki savunma stratejilerini belirlemeye yardımcı olur.", changes: { customerTrust: +2, financialLoss: 5000 }, clue: 'actorProfiled', impact: 'Neutral' },
-                    'd3-check-tampering': { title: "Veri Manipülasyonu Kontrolü Yap", text: "Sadece veri hırsızlığına değil, aynı zamanda veri manipülasyonuna karşı da tetikte olmalısınız. Kalan kritik veritabanlarında bütünlük karması (hash) kontrolleri çalıştırarak verilerin değiştirilip değiştirilmediğini kontrol ettiniz.", strat: "Bir saldırganın en sinsi eylemlerinden biri, verileri çalmak yerine sessizce değiştirmektir. Veri bütünlüğünü doğrulamak, özellikle finansal sistemlerde göz ardı edilemez.", changes: { dataIntegrity: +15, financialLoss: 12000 }, clue: 'tamperingChecked', impact: 'Positive' },
+                    'd3-scan-malware': { title: "Scan Remaining Systems for Malware", text: "Suspecting the intruders did more than just steal drives, you initiated a deep scan of the remaining servers for any backdoors or malware they might have left behind.", strat: "A physical breach is often part of a larger digital attack. It's essential to check if the attackers left a persistent foothold to maintain access.", changes: { dataIntegrity: +10, financialLoss: 15000 }, clue: 'malwareScanned', impact: 'Positive' },
+                    'd3-profile-actor': { title: "Create a Threat Actor Profile", text: "Based on the evidence (professional entry, specific drives targeted), you concluded this was not a random theft but a targeted operation, likely by a competitor or for industrial espionage.", strat: "Understanding who the attacker is and what they want (threat modeling) helps to determine the next steps of the response and future defense strategies.", changes: { customerTrust: +2, financialLoss: 5000 }, clue: 'actorProfiled', impact: 'Neutral' },
+                    'd3-check-tampering': { title: "Check for Data Tampering", text: "You must be vigilant not just for data theft, but also for data manipulation. You ran integrity hash checks on the remaining critical databases to see if any data was altered.", strat: "One of an attacker's most insidious actions is to silently change data rather than steal it. Verifying data integrity is non-negotiable, especially in financial systems.", changes: { dataIntegrity: +15, financialLoss: 12000 }, clue: 'tamperingChecked', impact: 'Positive' },
                     
-                    // Aşama 4 (Eski 3)
-                    'd4-restore-now': { title: "Hizmetleri Derhal Geri Yükle", text: "Hizmet sürekliliğini her şeyin üzerinde tuttunuz ve yedekleri kullanarak servisleri yeni donanımlarda hemen geri yüklediniz. Servisler saatler içinde çevrimiçi olmaya başladı ve müşteriler memnun oldu, ancak bu aceleci süreç kalan sistemlerdeki dijital adli kanıtların çoğunu yok etti.", strat: "Bu 'önce kurtarma' yaklaşımı, kesintiden kaynaklanan finansal kayıpları en aza indirir ancak soruşturma ve kovuşturma yeteneğini ciddi şekilde tehlikeye atar ve kök nedenin bilinmemesine yol açabilir.", changes: { dataIntegrity: -40, financialLoss: 50000, serviceUptime: +80, customerTrust: +10 }, clue: 'restoredNow', impact: 'Negative' },
-                    'd4-forensics-first': { title: "Önce Adli Bilişim Yaklaşımı", text: "Veri merkezinin tam bir adli imajı alınana kadar hiçbir sistemin çevrimiçi hale getirilmemesi konusunda ısrar ettiniz. Bu, yasal işlem için maksimum kanıt korunmasını sağlar ancak çok günlü bir kesintiye neden olarak büyük finansal kayıplara ve müşteri hayal kırıklığına yol açar.", strat: "Bu 'önce kanıt' yaklaşımı yasal olarak sağlamdır ancak iş için yıkıcı olabilir. Hukuki hazırlığı operasyonel hayatta kalma ile karşı karşıya getiren zor bir seçimdir.", changes: { dataIntegrity: +25, financialLoss: 250000, serviceUptime: 0, customerTrust: -30 }, clue: 'forensicsFirst', impact: 'Negative' },
-                    'd4-hybrid': { title: "Hibrit Yaklaşım", text: "Paralel bir süreç başlattınız: en kritik servisleri yedeklerden yalıtılmış bir bulut ortamında geri yüklerken, yerindeki adli bilişim ekibi çalışmalarına kesintisiz devam etti. Bu yaklaşım karmaşık ve maliyetlidir ancak hem işin hem de soruşturmanın ihtiyaçlarını dengeler.", strat: "Hibrit yaklaşım genellikle modern olay müdahalesinde en iyi uygulamadır. Kaynak yoğundur ancak hem kanıt kaybını hem de iş etkisini en aza indirir.", changes: { dataIntegrity: +10, financialLoss: 120000, serviceUptime: +50, customerTrust: -5 }, clue: 'hybridDone', impact: 'Positive' },
+                    'd4-restore-now': { title: "Immediate Service Restoration", text: "You prioritized uptime above all else, using backups to restore services on new hardware immediately. Services began coming online within hours, pleasing customers, but the rushed process destroyed most of the digital forensic evidence on the remaining systems.", strat: "This 'recovery-first' approach minimizes financial losses from downtime but severely compromises the ability to investigate and prosecute, potentially leaving the root cause unknown.", changes: { dataIntegrity: -40, financialLoss: 50000, serviceUptime: +80, customerTrust: +10 }, clue: 'restoredNow', impact: 'Negative' },
+                    'd4-forensics-first': { title: "Forensic-First Approach", text: "You insisted that no systems be brought online until a full forensic imaging of the data center is complete. This ensures maximum evidence preservation for legal action but means a multi-day outage, causing massive financial losses and customer frustration.", strat: "This 'evidence-first' approach is legally sound but can be devastating to the business. It's a hard choice that pits legal preparedness against operational survival.", changes: { dataIntegrity: +25, financialLoss: 250000, serviceUptime: 0, customerTrust: -30 }, clue: 'forensicsFirst', impact: 'Negative' },
+                    'd4-hybrid': { title: "Hybrid Approach", text: "You initiated a parallel process: restoring the most critical services in an isolated cloud environment from backups, while the on-site forensic team continued their work without interruption. This approach is complex and costly but balances the needs of the business and the investigation.", strat: "The hybrid approach is often the best practice in modern incident response. It's resource-intensive but minimizes both evidence loss and business impact.", changes: { dataIntegrity: +10, financialLoss: 120000, serviceUptime: +50, customerTrust: -5 }, clue: 'hybridDone', impact: 'Positive' },
                     
-                    // Aşama 5 (Eski 4)
-                    'd5-overhaul-security': { title: "Fiziksel Güvenliği Güçlendir", text: "Biyometrik erişim, 7/24 güvenlik görevlisi ve yedekli kamera sistemleri de dahil olmak üzere veri merkezi güvenliğinin tamamen elden geçirilmesini önerdiniz ve onay aldınız. Bu, tesisi gelecekteki saldırılara karşı önemli ölçüde güçlendirir.", strat: "Bir olaydan ders çıkararak savunmayı iyileştirmek, müdahale yaşam döngüsünün son ve en önemli adımıdır. Bu, aynı ihlalin tekrar yaşanmasını önler.", changes: { financialLoss: 150000, dataIntegrity: +10, customerTrust: +5 }, clue: 'securityOverhauled', impact: 'Positive' },
-                    'd5-client-postmortem': { title: "Şeffaf Müşteri Raporu Hazırla", text: "Yönetimle birlikte, etkilenen müşteriler için ihlalin doğasını, atılan adımları ve uygulanmakta olan güvenlik iyileştirmelerini özetleyen şeffaf (ancak dikkatle yazılmış) bir rapor hazırladınız. Bu, güveni yeniden inşa etmeye yardımcı oldu.", strat: "Bir krizde, şeffaf iletişim bir felaketi müşterilere yetkinlik ve bağlılık gösterme fırsatına dönüştürebilir.", changes: { financialLoss: 10000, customerTrust: +15 }, clue: 'clientsInformed', impact: 'Positive' },
-                    'd5-implement-encryption': { title: "Duran Veri Şifrelemesini Uygula", text: "Tüm veriler için tam duran veri şifrelemesini zorunlu kılan yeni bir politika için bastırdınız. Gelecekte diskler çalınsa bile, üzerlerindeki veriler anahtarlar olmadan işe yaramaz olacaktır. Bu güçlü bir uzun vadeli teknik kontroldür.", strat: "Bir ihlalin olacağını varsayın. Güçlü şifreleme, fiziksel kontroller başarısız olsa bile verinin kendisinin güvende kalmasını sağlar.", changes: { financialLoss: 80000, dataIntegrity: +15 }, clue: 'encryptionImplemented', impact: 'Positive' }
+                    'd5-overhaul-security': { title: "Overhaul Physical Security", text: "You recommended and got approval for a complete overhaul of data center security, including biometric access, 24/7 guard presence, and redundant camera systems. This significantly hardens the facility against future attacks.", strat: "Learning from an incident to improve defenses is the final, crucial step of the response lifecycle. This prevents the same breach from happening again.", changes: { financialLoss: 150000, dataIntegrity: +10, customerTrust: +5 }, clue: 'securityOverhauled', impact: 'Positive' },
+                    'd5-client-postmortem': { title: "Prepare Transparent Client Post-Mortem", text: "You worked with management to prepare a transparent (but carefully worded) report for affected clients, outlining the nature of the breach, the steps taken, and the security improvements being implemented. This helped rebuild trust.", strat: "In a crisis, transparent communication can turn a disaster into an opportunity to demonstrate competence and commitment to customers.", changes: { financialLoss: 10000, customerTrust: +15 }, clue: 'clientsInformed', impact: 'Positive' },
+                    'd5-implement-encryption': { title: "Implement Data-at-Rest Encryption", text: "You pushed for a new policy to enforce full encryption-at-rest for all data. Even if drives are stolen in the future, the data on them will be useless without the keys. This is a powerful long-term technical control.", strat: "Assume a breach will happen. Strong encryption ensures that even if physical controls fail, the data itself remains secure.", changes: { financialLoss: 80000, dataIntegrity: +15 }, clue: 'encryptionImplemented', impact: 'Positive' }
                 },
 
                 setup() {
@@ -844,7 +839,7 @@
                     });
 
                     let nextSectionToGo;
-                    this.elements.intermissionTitle.textContent = "Bu Aşamanın Sonuçları";
+                    this.elements.intermissionTitle.textContent = "Results of This Phase";
 
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
@@ -856,10 +851,10 @@
 
                     this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                         <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                            <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
+                            <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
                             <p>${combinedDecisionTexts.join('<br><br>')}</p>
                             <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                                <h4>Stratejik Değerlendirme</h4>
+                                <h4>Strategic Assessment</h4>
                                 <p>${combinedStrategicNotes.join('<br><br>')}</p>
                             </div>
                         </div>
@@ -893,22 +888,22 @@
                             colorClass = value > 0 ? 'positive' : 'negative';
                         }
 
-                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString()}${unit}</div>`;
                     };
 
-                    metricsHTML += formatChange('Finansal Kayıp', changes.financialLoss, '₺', 'fa-sack-xmark', true);
-                    metricsHTML += formatChange('Veri Bütünlüğü', changes.dataIntegrity, '%', 'fa-database');
-                    metricsHTML += formatChange('Hizmet Sürekliliği', changes.serviceUptime, '%', 'fa-power-off', false);
-                    metricsHTML += formatChange('Müşteri Güveni', changes.customerTrust, '', 'fa-users');
+                    metricsHTML += formatChange('Financial Loss', changes.financialLoss, '$', 'fa-sack-xmark', true);
+                    metricsHTML += formatChange('Data Integrity', changes.dataIntegrity, '%', 'fa-database');
+                    metricsHTML += formatChange('Service Uptime', changes.serviceUptime, '%', 'fa-power-off', false);
+                    metricsHTML += formatChange('Customer Trust', changes.customerTrust, '', 'fa-users');
                     
-                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">Bu kararların metriklere doğrudan bir etkisi olmadı.</p>';
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on the metrics.</p>';
                     return metricsHTML;
                 },
 
                 updateStatusBar() {
                     const s = this.score;
                     this.elements.statusBar.dataIntegrity.textContent = `${Math.max(0, s.dataIntegrity)}%`;
-                    this.elements.statusBar.financialLoss.textContent = `₺${s.financialLoss.toLocaleString('tr-TR')}`;
+                    this.elements.statusBar.financialLoss.textContent = `$${s.financialLoss.toLocaleString()}`;
                     this.elements.statusBar.serviceUptime.textContent = `${Math.max(0, s.serviceUptime)}%`;
                     this.elements.statusBar.customerTrust.textContent = Math.max(0, s.customerTrust);
                 },
@@ -922,7 +917,7 @@
                         this.updateButtonStates(sectionId);
                         this.state.currentTurnDecisions = [];
                     } else {
-                        console.error('Bölüm bulunamadı:', sectionId);
+                        console.error('Section not found:', sectionId);
                         this.showFinalReport();
                     }
                 },
@@ -949,7 +944,7 @@
                     this.elements.sections.forEach(section => section.style.display = 'none');
                     
                     const finalSection = document.getElementById('finalSection');
-                    if (!finalSection) { console.error("Final bölümü HTML'de bulunamadı!"); return; }
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
                     finalSection.style.display = 'flex';
                     
                     const badge = document.getElementById('performance-badge');
@@ -958,66 +953,66 @@
                     const debriefContent = document.getElementById('strategic-debrief-content');
                     const scoreBreakdownList = document.getElementById('score-breakdown');
 
-                    // --- PUANLAMA SİSTEMİ ---
+                    // --- SCORING SYSTEM ---
                     let scoreBreakdown = {};
                     let totalScore = 50; 
-                    scoreBreakdown['Başlangıç Puanı'] = { value: 50, class: 'score-neutral' };
+                    scoreBreakdown['Starting Score'] = { value: 50, class: 'score-neutral' };
 
                     if (this.state.hybridDone) {
                         totalScore += 25;
-                        scoreBreakdown['Kritik Karar: Hibrit Yaklaşım'] = { value: 25, class: 'score-plus' };
+                        scoreBreakdown['Critical Decision: Hybrid Approach'] = { value: 25, class: 'score-plus' };
                     } else if (this.state.restoredNow) {
                         totalScore -= 20;
-                        scoreBreakdown['Riskli Karar: Anında Geri Yükleme'] = { value: -20, class: 'score-minus' };
+                        scoreBreakdown['Risky Decision: Restore Immediately'] = { value: -20, class: 'score-minus' };
                     } else if (this.state.forensicsFirst) {
                         totalScore -= 20;
-                        scoreBreakdown['Maliyetli Karar: Önce Adli Bilişim'] = { value: -20, class: 'score-minus' };
+                        scoreBreakdown['Costly Decision: Forensics First'] = { value: -20, class: 'score-minus' };
                     }
                     
                     if (this.state.securityOverhauled || this.state.encryptionImplemented) {
                         totalScore += 15;
-                        scoreBreakdown['Stratejik İyileştirme'] = { value: 15, class: 'score-plus' };
+                        scoreBreakdown['Strategic Improvement'] = { value: 15, class: 'score-plus' };
                     }
                     
                     if (this.state.clientsInformed) {
                         totalScore += 10;
-                        scoreBreakdown['Mükemmel İletişim'] = { value: 10, class: 'score-plus' };
+                        scoreBreakdown['Excellent Communication'] = { value: 10, class: 'score-plus' };
                     }
                     
                     if(this.state.malwareScanned){
                         totalScore += 5;
-                        scoreBreakdown['Detaylı Analiz Bonusu'] = { value: 5, class: 'score-plus'};
+                        scoreBreakdown['Detailed Analysis Bonus'] = { value: 5, class: 'score-plus'};
                     }
 
                     if (this.score.financialLoss > 200000) {
                         totalScore -= 15;
-                        scoreBreakdown['Yüksek Finansal Kayıp'] = { value: -15, class: 'score-minus' };
+                        scoreBreakdown['High Financial Loss'] = { value: -15, class: 'score-minus' };
                     }
 
                     if (this.score.dataIntegrity < 75) {
                         totalScore -= 20;
-                        scoreBreakdown['Kanıt/Veri Bütünlüğü Kaybı'] = { value: -20, class: 'score-minus' };
+                        scoreBreakdown['Evidence/Data Integrity Loss'] = { value: -20, class: 'score-minus' };
                     }
 
 
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
                     this.state.totalScore = totalScore;
-                    // --- PUANLAMA SİSTEMİ SONU ---
+                    // --- SCORING SYSTEM END ---
 
                     let badgeInfo = {};
-                    if (totalScore >= 90) { badgeInfo = { text: 'UZMAN MÜDAHALE YÖNETİCİSİ', color: 'var(--accent-green)' }; } 
-                    else if (totalScore >= 70) { badgeInfo = { text: 'MÜKEMMEL STRATEJİST', color: 'var(--accent-blue)' }; } 
-                    else if (totalScore >= 50) { badgeInfo = { text: 'ETKİN OPERATÖR', color: 'var(--accent-yellow)' }; } 
-                    else { badgeInfo = { text: 'OLAY KONTROLDEN ÇIKTI', color: '#ff5555' }; }
+                    if (totalScore >= 90) { badgeInfo = { text: 'MASTER RESPONDER', color: 'var(--accent-green)' }; } 
+                    else if (totalScore >= 70) { badgeInfo = { text: 'EXCELLENT STRATEGIST', color: 'var(--accent-blue)' }; } 
+                    else if (totalScore >= 50) { badgeInfo = { text: 'EFFECTIVE OPERATOR', color: 'var(--accent-yellow)' }; } 
+                    else { badgeInfo = { text: 'INCIDENT ESCALATED', color: '#ff5555' }; }
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
                     metricsContainer.innerHTML = `
-                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Veri Bütünlüğü</div><div class="value">${this.score.dataIntegrity}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-power-off"></i></div><div class="label">Hizmet Sürekliliği</div><div class="value">${this.score.serviceUptime}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Müşteri Güveni</div><div class="value">${this.score.customerTrust}/100</div></div>
+                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-database"></i></div><div class="label">Data Integrity</div><div class="value">${this.score.dataIntegrity}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-power-off"></i></div><div class="label">Service Uptime</div><div class="value">${this.score.serviceUptime}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Customer Trust</div><div class="value">${this.score.customerTrust}/100</div></div>
                     `;
 
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
@@ -1027,16 +1022,16 @@
 
                     scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
                         const sign = item.value > 0 ? '+' : '';
-                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
                     if (totalScore >= 85) { 
-                        debriefHTML = `<p><strong>Mükemmel Performans!</strong> Fiziksel bir ihlalin karmaşık zorluklarını ustalıkla yönettiniz. Hibrit yaklaşımı seçerek kanıt koruma ve iş sürekliliği gibi kritik ihtiyaçları dengeleme yeteneğiniz örnek teşkil etti. Sadece olayı kontrol altına almakla kalmadınız, aynı zamanda daha güçlü ve dirençli bir güvenlik duruşu için zemin hazırladınız.</p>`;
+                        debriefHTML = `<p><strong>Excellent Performance!</strong> You expertly navigated the complex challenges of a physical breach. Your ability to balance the critical needs of evidence preservation with business continuity by choosing the hybrid approach was exemplary. You not only contained the incident but also laid the groundwork for a stronger, more resilient security posture.</p>`;
                     } else if (totalScore >= 60) { 
-                        debriefHTML = `<p><strong>İyi Müdahale:</strong> Zorlu bir krizi başarıyla yönettiniz. Önemli maliyetler ve müşteri güveninde bir düşüş yaşansa da, doğru önceliklendirme yaptınız ve feci bir veri kaybını önlediniz. Kararlarınız, olay müdahale prensiplerini sağlam bir şekilde anladığınızı gösteriyor; hız ve titizlik arasındaki dengeyi optimize etme potansiyeliniz var.</p>`;
+                        debriefHTML = `<p><strong>Good Response:</strong> You successfully managed a difficult crisis. While there were significant financial costs and a dip in customer trust, you prioritized correctly and prevented a catastrophic data loss. Your decisions show a solid understanding of incident response principles, with room to optimize the balance between speed and thoroughness.</p>`;
                     } else { 
-                        debriefHTML = `<p><strong>Zorlu Sonuç:</strong> Fiziksel ihlale müdahale zordu ve önemli sonuçlar doğurdu. Aşırı bir yol seçmek - ya kanıt pahasına hizmetleri hemen geri yüklemek ya da aşırı kesinti pahasına kanıtları korumak - büyük kayıplara yol açtı. Bu senaryo, karmaşık krizlerde dengeli, hibrit bir yaklaşım bulmanın ne kadar kritik olduğunu vurgulamaktadır.</p>`;
+                        debriefHTML = `<p><strong>Challenging Outcome:</strong> The response to the physical breach was difficult and resulted in significant consequences. Choosing an extreme path—either rushing to restore services at the cost of evidence, or preserving evidence at the cost of extreme downtime—led to major losses. This scenario highlights the critical importance of finding a balanced, hybrid approach in complex crises.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
                     this.saveLeaderboard(totalScore);
@@ -1045,100 +1040,100 @@
                 loadGameHTML() {
                     const gameHTMLContent = `
                         <div id="phase1_triage" class="section" data-max-selections="2">
-                            <h2><i class="fa-solid fa-person-burst"></i> Aşama 1: İlk Uyarı ve Olay Yeri Triyajı</h2>
-                            <p>Veri merkezine yeni vardın. Fiziksel güvenlik ekibi çevreyi güvence altına almış. Zorlanmış kapıyı, çevrimdışı anahtarları ve boş disk yuvalarını görüyorsun. Yönetim şimdiden cevaplar talep ediyor. İlk hamlelerin ne olacak?</p>
-                            <img src="intro.png" alt="Veri merkezindeki olay yeri" class="scenario-image">
+                            <h2><i class="fa-solid fa-person-burst"></i> Phase 1: Initial Alert & On-Site Triage</h2>
+                            <p>You've just arrived at the data center. Physical security has secured the perimeter. You see the forced door, offline switches, and empty drive bays. Management is already demanding answers. What are your first moves?</p>
+                            <img src="scene_triage.png" alt="Crime scene at the data center" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>İlk iki önceliğin nedir? (2 Seçim Yap)</h4>
+                                <h4>What are your first two priorities? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d1-secure-scene"><i class="fa-solid fa-tape"></i><div class="btn-text">Olay Yerini Güvence Altına Al<small>Sunucu odasını bir olay yeri ilan et. Adli bilişim ekibi gelene kadar kimse hiçbir şeye dokunmasın.</small></div></button>
-                                    <button class="btn" data-decision="d1-check-backups"><i class="fa-solid fa-database"></i><div class="btn-text">Şirket Dışı Yedekleri Kontrol Et<small>Kurtarma seçenekleri için en son şirket dışı yedeklerin bütünlüğünü derhal doğrula.</small></div></button>
-                                    <button class="btn" data-decision="d1-check-logs"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">Sunucu Loglarını Kontrol Et<small>Kapatılmadan önce neye erişildiğini görmek için çevrimiçi olan yönetim sunucularına uzaktan erişmeye çalış.</small></div></button>
+                                    <button class="btn critical" data-decision="d1-secure-scene"><i class="fa-solid fa-tape"></i><div class="btn-text">Secure the Crime Scene<small>Declare the server room a crime scene. Nobody touches anything until forensics arrives.</small></div></button>
+                                    <button class="btn" data-decision="d1-check-backups"><i class="fa-solid fa-database"></i><div class="btn-text">Check Off-site Backups<small>Immediately verify the integrity of the latest off-site backups for recovery options.</small></div></button>
+                                    <button class="btn" data-decision="d1-check-logs"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">Check Server Logs<small>Attempt to remotely access any online management servers to see what was accessed before shutdown.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Fiziksel bir ihlalde, fiziksel kanıtlar da dijital loglar kadar geçicidir. "Değişkenlik sırası" artık olay yerinin kendisini de içerir.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In a physical breach, the physical evidence is just as volatile as digital logs. The "order of volatility" now includes the crime scene itself.</div>
                         </div>
 
                         <div id="phase2_evidence" class="section" data-max-selections="2">
-                             <h2><i class="fa-solid fa-magnifying-glass"></i> Aşama 2: Kanıt Toplama ve Etki Değerlendirmesi</h2>
-                            <p>İlk hamlelerini yaptın. Şimdi herhangi bir kurtarma kararı vermeden önce ihlalin tam kapsamını anlaman gerekiyor. Ne alındı? Geride ne bırakıldı? Potansiyel hasar ne?</p>
-                            <img src="datacenter_forensics.png" alt="Bir veri merkezinde adli bilişim incelemesi" class="scenario-image">
+                             <h2><i class="fa-solid fa-magnifying-glass"></i> Phase 2: Evidence Collection & Impact Assessment</h2>
+                            <p>You've made your initial moves. Now you need to understand the full scope of the breach before making any recovery decisions. What was taken? What was left behind? What's the potential damage?</p>
+                            <img src="datacenter_forensics.png" alt="Forensic investigation in a data center" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Şimdi hangi iki alana odaklanacaksın? (2 Seçim Yap)</h4>
+                                <h4>Which two areas will you focus on now? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d2-image-drives"><i class="fa-solid fa-hdd"></i><div class="btn-text">Diskleri İmajlamaya Başla<small>Kalan disklerin adli kopyalarını oluşturma gibi zaman alıcı bir sürece başla.</small></div></button>
-                                    <button class="btn critical" data-decision="d2-assess-impact"><i class="fa-solid fa-business-time"></i><div class="btn-text">İş Etki Analizi Yap<small>Çalınan disklerde hangi servislerin ve müşterilerin barındırıldığını belirlemek için BT ile çalış.</small></div></button>
-                                    <button class="btn" data-decision="d2-find-cctv"><i class="fa-solid fa-video"></i><div class="btn-text">Alternatif CCTV Görüntüleri Bul<small>Yakın bölgelerde bir şeyler görmüş olabilecek çalışan kameraları araştır.</small></div></button>
+                                    <button class="btn" data-decision="d2-image-drives"><i class="fa-solid fa-hdd"></i><div class="btn-text">Begin Imaging Drives<small>Start the time-consuming process of creating forensic images of remaining drives.</small></div></button>
+                                    <button class="btn critical" data-decision="d2-assess-impact"><i class="fa-solid fa-business-time"></i><div class="btn-text">Assess Business Impact<small>Work with IT to identify which services and clients were hosted on the stolen drives.</small></div></button>
+                                    <button class="btn" data-decision="d2-find-cctv"><i class="fa-solid fa-video"></i><div class="btn-text">Find Alternative CCTV Footage<small>Canvass for any working cameras in adjacent areas that might have seen something.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Etkilenen varlıkların iş üzerindeki etkisini anlamak, teknik adli bilişim kadar önemlidir. Müdahale ve kurtarma çabalarınızın önceliğini bu belirler.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Understanding the business impact of the compromised assets is just as important as the technical forensics. It dictates the priority of your response and recovery efforts.</div>
                         </div>
                         
                         <div id="phase3_analysis" class="section" data-max-selections="1">
-                             <h2><i class="fa-solid fa-brain"></i> Aşama 3: Derinlemesine Analiz ve Tehdit Modelleme</h2>
-                            <p>İlk kanıtlar elinde. Saldırganların sadece diskleri çalmaktan daha fazlasını yapmış olabileceğini düşünüyorsun. Geri dönmeden önce, geride ne bıraktıklarını ve asıl amaçlarının ne olduğunu anlamalısın.</p>
-                            <img src="deep_analysis.png" alt="Veri ve ağ bağlantılarının derinlemesine analizi" class="scenario-image">
+                             <h2><i class="fa-solid fa-brain"></i> Phase 3: In-depth Analysis and Threat Modeling</h2>
+                            <p>You have the initial evidence. You suspect the intruders may have done more than just steal drives. Before restoring, you must understand what they left behind and what their true objective was.</p>
+                            <img src="deep_analysis.png" alt="In-depth analysis of data and network connections" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Soruşturmayı derinleştirmek için hangi adımı atacaksın? (1 Seçim Yap)</h4>
+                                <h4>What step will you take to deepen the investigation? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d3-scan-malware"><i class="fa-solid fa-shield-virus"></i><div class="btn-text">Kalan Sistemleri Zararlı Yazılıma Karşı Tara<small>Saldırganların geride bir arka kapı veya casus yazılım bırakıp bırakmadığını kontrol et.</small></div></button>
-                                    <button class="btn" data-decision="d3-profile-actor"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Tehdit Aktörü Profili Oluştur<small>Kanıtlara dayanarak saldırganların kim olabileceğini (rakip, aktivist vb.) ve motivasyonlarını modelle.</small></div></button>
-                                    <button class="btn" data-decision="d3-check-tampering"><i class="fa-solid fa-file-circle-check"></i><div class="btn-text">Veri Manipülasyonu Kontrolü Yap<small>Kalan kritik veritabanlarında verilerin çalınmak yerine değiştirilip değiştirilmediğini kontrol et.</small></div></button>
+                                    <button class="btn critical" data-decision="d3-scan-malware"><i class="fa-solid fa-shield-virus"></i><div class="btn-text">Scan Remaining Systems for Malware<small>Check if the attackers left a backdoor or spyware on the systems they didn't steal.</small></div></button>
+                                    <button class="btn" data-decision="d3-profile-actor"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Create a Threat Actor Profile<small>Based on the evidence, model who the attackers might be (competitor, activist, etc.) and their motives.</small></div></button>
+                                    <button class="btn" data-decision="d3-check-tampering"><i class="fa-solid fa-file-circle-check"></i><div class="btn-text">Check for Data Tampering<small>Verify if data on the remaining critical databases was altered, not just stolen.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Usta bir müdahaleci, sadece görünen hasarı onarmakla kalmaz, aynı zamanda görünmeyen tehditleri de arar ve saldırganın bir sonraki hamlesini tahmin etmeye çalışır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> A skilled responder not only fixes the visible damage but also hunts for unseen threats and tries to predict the attacker's next move.</div>
                         </div>
 
                         <div id="phase4_dilemma" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-scale-balanced"></i> Aşama 4: Geri Yükleme İkilemi</h2>
-                            <p>Analizin ilerledi ama tamamlanmadı. BT Operasyon Lideri, finansal kayıpları durdurmak için servislerin derhal geri yüklenmesini talep ediyor. Hukuk Lideri ise acele etmenin kanıtları yok edebileceği konusunda uyarıyor. Karar senin.</p>
-                            <img src="dilemma_balance.png" alt="Hız ve kanıt arasındaki ikilem" class="scenario-image">
+                            <h2><i class="fa-solid fa-scale-balanced"></i> Phase 4: The Restoration Dilemma</h2>
+                            <p>Your analysis is progressing but incomplete. The Head of IT Operations is demanding that services be restored immediately to stop financial losses. The Head of Legal is warning that restoring services too quickly could destroy evidence. The decision is yours.</p>
+                            <img src="dilemma_balance.png" alt="The dilemma between speed and evidence" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Geri yükleme stratejin nedir? (1 Seçim Yap)</h4>
+                                <h4>What is your restoration strategy? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d4-restore-now"><i class="fa-solid fa-forward-fast"></i><div class="btn-text">Hizmetleri Derhal Geri Yükle<small>Yedekleri kullanarak her şeyi yeni donanımlarda hemen çevrimiçi yap. Öncelik hizmet sürekliliği.</small></div></button>
-                                    <button class="btn critical" data-decision="d4-forensics-first"><i class="fa-solid fa-hourglass-start"></i><div class="btn-text">Önce Adli Bilişim Yaklaşımı<small>Herhangi bir geri yükleme başlamadan önce tam bir adli imaj alımının tamamlanması konusunda ısrar et. Öncelik kanıtlar.</small></div></button>
-                                    <button class="btn" data-decision="d4-hybrid"><i class="fa-solid fa-sync-alt"></i><div class="btn-text">Hibrit Yaklaşım<small>Yerindeki soruşturma devam ederken, kritik servisleri yalıtılmış bir bulut ortamında geri yükle.</small></div></button>
+                                    <button class="btn critical" data-decision="d4-restore-now"><i class="fa-solid fa-forward-fast"></i><div class="btn-text">Immediate Service Restoration<small>Use backups to bring everything online on new hardware now. Uptime is the priority.</small></div></button>
+                                    <button class="btn critical" data-decision="d4-forensics-first"><i class="fa-solid fa-hourglass-start"></i><div class="btn-text">Forensic-First Approach<small>Insist that all evidence collection must be completed before any restoration begins. Evidence is the priority.</small></div></button>
+                                    <button class="btn" data-decision="d4-hybrid"><i class="fa-solid fa-sync-alt"></i><div class="btn-text">Hybrid Approach<small>Restore critical services in an isolated cloud environment while the on-site investigation continues.</small></div></button>
                                 </div>
                             </div>
-                             <div class="learning-note"><strong>Öğrenme Notu:</strong> Bu, klasik bir olay müdahale ikilemidir: hız ve titizlik. En iyi seçim genellikle hem iş hem de güvenlik ihtiyaçlarını karşılayan yaratıcı, hibrit bir çözümde yatar.</div>
+                             <div class="learning-note"><strong>Learning Note:</strong> This is the classic IR dilemma: speed versus thoroughness. The best choice often lies in a creative, hybrid solution that satisfies both business and security needs.</div>
                         </div>
 
                         <div id="phase5_strategy" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-lightbulb"></i> Aşama 5: İletişim ve Uzun Vadeli Çözümler</h2>
-                            <p>Geri yükleme stratejinize bağlı olarak ilk kriz yatışıyor. Şimdi, olayın sonuçlarını yönetmeli ve bu felaketin tekrar yaşanmasını önlemek için eylemler önermelisin. Rolün teknik müdahaleciden stratejik danışmana dönüşüyor.</p>
-                            <img src="post_crisis_strategy.png" alt="Kriz sonrası strateji ve iletişim toplantısı" class="scenario-image">
+                            <h2><i class="fa-solid fa-lightbulb"></i> Phase 5: Communication & Long-Term Fixes</h2>
+                            <p>Depending on your restoration strategy, the initial crisis is stabilizing. Now, you must manage the fallout and recommend actions to prevent this catastrophe from happening again. Your role shifts from technical responder to strategic advisor.</p>
+                            <img src="post_crisis_strategy.png" alt="Post-crisis strategy and communication meeting" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Yönetime birincil tavsiyen nedir? (1 Seçim Yap)</h4>
+                                <h4>What is your primary recommendation to management? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d5-overhaul-security"><i class="fa-solid fa-shield-halved"></i><div class="btn-text">Fiziksel Güvenliği Güçlendir<small>Veri merkezi güvenliğinin tamamen yükseltilmesini onayla: biyometrik, yeni kameralar vb.</small></div></button>
-                                    <button class="btn" data-decision="d5-client-postmortem"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Şeffaf Müşteri Raporu Hazırla<small>İtibarı yönetmek ve güveni yeniden inşa etmek için etkilenen müşterilere yönelik bir rapor taslağı hazırla.</small></div></button>
-                                    <button class="btn" data-decision="d5-implement-encryption"><i class="fa-solid fa-lock"></i><div class="btn-text">Duran Veri Şifrelemesini Uygula<small>Gelecekteki disk hırsızlıklarını anlamsız kılmak için tüm verileri şifreleyen yeni bir politika talep et.</small></div></button>
+                                    <button class="btn critical" data-decision="d5-overhaul-security"><i class="fa-solid fa-shield-halved"></i><div class="btn-text">Overhaul Physical Security<small>Authorize a complete upgrade of data center security: biometrics, new cameras, etc.</small></div></button>
+                                    <button class="btn" data-decision="d5-client-postmortem"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Prepare Transparent Client Post-Mortem<small>Draft a report for affected clients to manage reputation and rebuild trust.</small></div></button>
+                                    <button class="btn" data-decision="d5-implement-encryption"><i class="fa-solid fa-lock"></i><div class="btn-text">Implement Data-at-Rest Encryption<small>Push for a new policy to encrypt all data, making future drive thefts useless.</small></div></button>
                                 </div>
                             </div>
-                             <div class="learning-note"><strong>Öğrenme Notu:</strong> Başarılı bir olay müdahalesi kurtarma ile bitmez. Saldırıdan ders çıkararak savunmayı güçlendirdiğiniz "alınan dersler" aşaması, uzun vadeli dayanıklılık yaratır.</div>
+                             <div class="learning-note"><strong>Learning Note:</strong> A successful incident response doesn't end at recovery. The "lessons learned" phase, where you harden your defenses based on the attack, is what creates long-term resilience.</div>
                         </div>
 
                         <div id="finalSection" class="section centered-page" style="display: none;">
-                            <h2><i class="fa-solid fa-chart-line"></i> Olay Sonu Değerlendirme Raporu</h2>
-                            <p>Simülasyon tamamlandı. Kriz yönetimi performansınızın detaylı dökümü aşağıdadır.</p>
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Incident Review Report</h2>
+                            <p>The simulation is complete. Below is a detailed breakdown of your crisis management performance.</p>
                             <div id="performance-badge-container"><span id="performance-badge"></span></div>
                             <div class="final-metrics" id="finalMetricsContainer"></div>
                             <div class="post-crisis-layout">
                                 <div class="event-timeline">
-                                    <h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3>
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                                     <div id="strategic-debrief-content"></div>
-                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
                                     <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
                             <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
-                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</button>
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Leaderboard</button>
                             </div>
                         </div>
                     `;
@@ -1159,7 +1154,7 @@
                         this.updateTimerUI();
                         if (this.timer.remaining <= 0) {
                             this.stopGlobalTimer();
-                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            alert("Time is up! Generating report.");
                             this.showFinalReport();
                         }
                     }, 1000);
@@ -1189,7 +1184,7 @@
                 },
 
                 saveLeaderboard(finalScore) {
-                    const name = localStorage.getItem('playerName') || 'Anonim';
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
                     const payload = {
                         scenario: 'v9.1-physical-breach',
                         name: name.toString().slice(0, 40),
@@ -1212,12 +1207,12 @@
                 loadLeaderboard() {
                     const tbody = this.elements.leaderboard.body;
                     const key = 'leaderboard-v9.1-physical-breach';
-                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
                     
                     const rows = JSON.parse(localStorage.getItem(key) || '[]');
                     
                     if (!rows.length) {
-                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="4">No records yet.</td></tr>`;
                         return;
                     }
                     
@@ -1225,9 +1220,9 @@
                     tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
                         <tr>
                             <td>${i+1}</td>
-                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
                             <td>${r.score}</td>
-                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString() : '-'}</td>
                         </tr>
                     `).join('');
                 }
