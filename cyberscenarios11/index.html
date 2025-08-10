@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v10.2: Kimlik ve Erişim Krizi</title>
+    <title>CyberScenario v10.2: Identity & Access Crisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -527,45 +527,45 @@
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-id-card"></i> Kimlik ve Erişim Krizi</h1>
-            <p style="max-width: 600px;">ConnectSphere'e hoş geldin, Siber Güvenlik Mühendisi! Müşteri portalını SSO (Tek Oturum Açma) ile entegre ettikten sonra alarm zilleri çalmaya başladı. Yardım masası, kullanıcıların beklenmedik yetkilere sahip olduğuna ve bazı hesapların ele geçirildiğine dair şikayetlerle dolup taşıyor. Görevin: Bu karmaşık kimlik krizinin kök nedenini bulmak, güvenlik açıklarını kapatmak ve sistem mimarisini güçlendirmek.</p>
-            <img src="intro.png" alt="Kimlik ve Erişim Yönetimi Konsepti" class="scenario-image">
+            <h1><i class="fa-solid fa-id-card"></i> Identity & Access Crisis</h1>
+            <p style="max-width: 600px;">Welcome to ConnectSphere, Cyber Security Engineer! After integrating the customer portal with SSO (Single Sign-On), the alarms started ringing. The help desk is flooded with complaints about users having unexpected privileges and some accounts being taken over. Your mission: find the root cause of this complex identity crisis, close the security holes, and harden the system architecture.</p>
+            <img src="intro.png" alt="Identity and Access Management Concept" class="scenario-image">
 
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
-                    <h3><i class="fa-solid fa-people-arrows"></i> Simülasyon Rolleri</h3>
+                    <h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3>
                     <ul>
-                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Senin Rolün: Siber Güvenlik Mühendisi</strong> <small>SSO/OIDC yapılandırmasını derinlemesine inceleyecek, açıkları düzeltecek ve gelecekteki riskleri azaltacaksın.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-cogs"></i></span><div><strong>DevOps Ekibi</strong> <small>Uygulamanın çalışır durumda kalmasından sorumlu ve yapılacak değişikliklerin operasyonel etkisinden endişeli.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-balance-scale"></i></span><div><strong>Uyum Departmanı</strong> <small>Veri gizliliği düzenlemeleri ve olası yasal sonuçlar konusunda endişeli.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-shield"></i></span><div><strong>Your Role: Cyber Security Engineer</strong> <small>You will deeply inspect the SSO/OIDC configuration, fix the vulnerabilities, and mitigate future risks.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-cogs"></i></span><div><strong>DevOps Team</strong> <small>Responsible for keeping the application running and concerned about the operational impact of your changes.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-balance-scale"></i></span><div><strong>Compliance Department</strong> <small>Concerned about data privacy regulations and potential legal consequences.</small></div></li>
                     </ul>
                 </div>
                 <div class="intro-metrics-container">
-                    <h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3>
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-user-lock"></i></span><div><strong>Risk Altındaki Hesaplar</strong> <small>Yanlış yetkilendirilmiş veya ele geçirilmiş hesap sayısı. (Başlangıç: 50)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-tasks"></i></span><div><strong>Sistem Bütünlüğü</strong> <small>Kimlik altyapısının güvenlik seviyesi. (Başlangıç: 20%)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-business-time"></i></span><div><strong>Operasyonel Etki</strong> <small>Kullanıcıları ve işleyişi etkileyen kesintiler. (Başlangıç: 0)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>Kullanıcı Güveni</strong> <small>Müşterilerin platformun güvenliğine olan inancı. (Başlangıç: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-user-lock"></i></span><div><strong>Accounts at Risk</strong> <small>Number of improperly authorized or compromised accounts. (Start: 50)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-tasks"></i></span><div><strong>System Integrity</strong> <small>The security level of the identity infrastructure. (Start: 20%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-business-time"></i></span><div><strong>Operational Impact</strong> <small>Disruptions affecting users and business operations. (Start: 0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>User Trust</strong> <small>Customers' confidence in the platform's security. (Start: 100)</small></div></li>
                     </ul>
                 </div>
             </div>
-            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
         </div>
 
         <div id="intermissionSection" class="centered-page" style="display: none;">
             <h2 id="intermissionTitle"></h2>
             <div id="intermissionDetails"></div>
-            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
         </div>
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-user-lock"></i> Riskli Hesaplar</span><div class="value" id="status-compromisedAccounts">50</div></div>
-                <div class="metric"><span><i class="fa-solid fa-tasks"></i> Sistem Bütünlüğü</span><div class="value" id="status-systemIntegrity">20%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-business-time"></i> Operasyonel Etki</span><div class="value" id="status-operationalImpact">0</div></div>
-                <div class="metric"><span><i class="fa-solid fa-users"></i> Kullanıcı Güveni</span><div class="value" id="status-userTrust">100</div></div>
-                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">04:00</div></div>
+                <div class="metric"><span><i class="fa-solid fa-user-lock"></i> Accounts at Risk</span><div class="value" id="status-compromisedAccounts">50</div></div>
+                <div class="metric"><span><i class="fa-solid fa-tasks"></i> System Integrity</span><div class="value" id="status-systemIntegrity">20%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-business-time"></i> Operational Impact</span><div class="value" id="status-operationalImpact">0</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> User Trust</span><div class="value" id="status-userTrust">100</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">04:00</div></div>
             </div>
             <div id="game-content">
             </div>
@@ -597,36 +597,34 @@
                 elements: {},
                 
                 timer: {
-                    total: 240, // 4 dakika
+                    total: 240, // 4 minutes
                     remaining: 240,
                     intervalId: null,
                     running: false
                 },
                 
                 decisionInfo: {
-                    // Aşama 1: Triyaj ve Kapsam Belirleme
-                    'd1-review-idp-logs': { title: "IdP Oturum Açma Loglarını İncele", text: "Kimlik Sağlayıcı (IdP) loglarını inceledin ve anormal derecede yüksek sayıda token yenileme isteği tespit ettin. Bu, saldırganların uzun ömürlü refresh token'ları kötüye kullandığını gösteriyor.", strat: "Bir kimlik krizinde ilk bakılacak yer, kimliğin kaynağıdır. IdP logları, kimin, ne zaman ve nasıl kimlik doğruladığını gösteren en temel kanıttır.", changes: { operationalImpact: 2, compromisedAccounts: -5 }, clue: 'logsReviewed', impact: 'Positive' },
-                    'd1-interview-helpdesk': { title: "Yardım Masası ve SOC ile Görüş", text: "Gelen şikayetlerin ortak noktasını bulmak için yardım masasıyla görüştün. Etkilenen tüm kullanıcıların 'Destek Aracı' entegrasyonunu yeni kullananlar olduğunu öğrendin. Bu, sorunun kaynağını daraltmanı sağladı.", strat: "İnsan istihbaratı (HUMINT) genellikle en hızlı sonuçları verir. Olayın 'iş' tarafını anlamak, teknik analizi doğru yere yönlendirir.", changes: { operationalImpact: 1, userTrust: -2 }, clue: 'helpdeskInterviewed', impact: 'Positive' },
+                    // Phase 1: Triage & Scoping
+                    'd1-review-idp-logs': { title: "Review IdP Sign-in Logs", text: "You analyzed the Identity Provider (IdP) logs and detected an abnormally high number of token refresh requests. This indicates that attackers are abusing long-lived refresh tokens.", strat: "In an identity crisis, the first place to look is the source of identity. IdP logs are the primary evidence showing who authenticated, when, and how.", changes: { operationalImpact: 2, compromisedAccounts: -5 }, clue: 'logsReviewed', impact: 'Positive' },
+                    'd1-interview-helpdesk': { title: "Consult with Help Desk and SOC", text: "You spoke with the help desk to find a common thread among the complaints. You learned that all affected users had recently used the 'Support Tool' integration. This helps narrow down the source of the problem.", strat: "Human intelligence (HUMINT) often yields the quickest results. Understanding the 'business' side of the incident helps direct the technical analysis correctly.", changes: { operationalImpact: 1, userTrust: -2 }, clue: 'helpdeskInterviewed', impact: 'Positive' },
 
-                    // Aşama 2: Derinlemesine Kök Neden Analizi
-                    'd2-introspect-tokens': { title: "JWT Token'ları Detaylı İncele", text: "Ele geçirilen bir access token'ı inceledin ve 'aud' (audience) ile 'iss' (issuer) alanlarının beklendiği gibi doğrulanmadığını, ayrıca 'scope' alanında 'admin:read/write' gibi aşırı geniş bir yetki içerdiğini keşfettin.", strat: "Token'ın kendisi, saldırının anatomisini barındırır. Alanlarını (claims) dikkatlice incelemek, hem yetki yükseltme hem de atlatma zafiyetlerini ortaya çıkarır.", changes: { systemIntegrity: 5, compromisedAccounts: -5 }, clue: 'tokensIntrospected', impact: 'Positive' },
-                    'd2-test-redirect': { title: "Redirect URI Zafiyetini Test Et", text: "Uygulamanın OIDC akışını test ettin ve istemcinin herhangi bir alt alan adına (wildcard) yönlendirmeye izin verdiğini buldun. Bu, yetkilendirme kodunun çalınmasına olanak tanıyan kritik bir 'açık yönlendirme' zafiyetidir.", strat: "OAuth/OIDC'deki en yaygın ve tehlikeli zafiyetlerden biri açık yönlendirmelerdir. Bunu manuel olarak test etmek, yapılandırma dosyalarında gözden kaçan hataları bulur.", changes: { systemIntegrity: 5 }, clue: 'redirectTested', impact: 'Positive' },
-                    'd2-check-firewall': { title: "Ağ Güvenlik Duvarı Kurallarını Gözden Geçir", text: "Saldırının ağ seviyesinde bir zafiyetten kaynaklanıp kaynaklanmadığını anlamak için veri merkezi ve uygulama güvenlik duvarı kurallarını inceledin. Anormal bir kural bulamadın; bu, sorunun büyük olasılıkla uygulama katmanında olduğunu gösteriyor.", strat: "Ağ katmanı her zaman kontrol edilmesi gereken bir yer olsa da, kimlik doğrulama akışlarındaki hatalar genellikle uygulama veya IdP yapılandırmasındadır. Bu adım, bir olasılığı elemek için yararlıdır ancak zaman kaybettirebilir.", changes: { operationalImpact: 5, systemIntegrity: 0 }, clue: 'firewallChecked', impact: 'Negative' },
+                    // Phase 2: In-depth Root Cause Analysis
+                    'd2-introspect-tokens': { title: "Introspect JWT Tokens", text: "You examined a captured access token and discovered that the 'aud' (audience) and 'iss' (issuer) claims were not being properly validated, and the 'scope' claim contained overly broad permissions like 'admin:read/write'.", strat: "The token itself contains the anatomy of the attack. Carefully examining its claims can reveal both privilege escalation and bypass vulnerabilities.", changes: { systemIntegrity: 5, compromisedAccounts: -5 }, clue: 'tokensIntrospected', impact: 'Positive' },
+                    'd2-test-redirect': { title: "Test for Redirect URI Vulnerability", text: "You tested the application's OIDC flow and found that the client allows redirection to any subdomain (wildcard). This is a critical 'open redirect' vulnerability that allows for authorization code theft.", strat: "Open redirects are one of the most common and dangerous vulnerabilities in OAuth/OIDC. Testing for this manually finds flaws that are often missed in configuration files.", changes: { systemIntegrity: 5 }, clue: 'redirectTested', impact: 'Positive' },
+                    'd2-check-firewall': { title: "Review Network Firewall Rules", text: "To see if the attack originated from a network-level vulnerability, you reviewed the data center and application firewall rules. You found no anomalous rules; this indicates the problem is most likely at the application layer.", strat: "While the network layer is always a place to check, errors in authentication flows are usually in the application or IdP configuration. This step is useful for eliminating a possibility but can be a waste of time.", changes: { operationalImpact: 5, systemIntegrity: 0 }, clue: 'firewallChecked', impact: 'Negative' },
 
-                    // Aşama 3: Kontrol Altına Alma Stratejisi
-                    'd3-disable-client': { title: "Riskli 'Destek Aracı' Entegrasyonunu Devre Dışı Bırak", text: "Sorunun kaynağı olan 'Destek Aracı' istemcisini IdP üzerinden tamamen devre dışı bıraktın. Bu, saldırıyı anında durdurdu ancak bu aracı kullanan tüm destek ekibinin işini tamamen durdurdu.", strat: "En radikal ama en etkili kontrol altına alma yöntemi, kanayan damarı sıkmaktır. Bu, operasyonel maliyeti çok yüksek bir karardır.", changes: { compromisedAccounts: -40, operationalImpact: 25, userTrust: -10 }, clue: 'clientDisabled', impact: 'Negative' },
-                    'd3-revoke-tokens': { title: "Tüm Refresh Token'ları İptal Et", text: "IdP üzerinden, etkilenen uygulama için verilmiş tüm refresh token'ları zorla iptal ettin. Bu, saldırganların mevcut oturumlarını yenilemesini engelledi ancak geçerli tüm kullanıcıların yeniden oturum açmasını gerektirdi.", strat: "Ele geçirilmiş refresh token'lar, kalıcı erişim anahtarlarıdır. Onları iptal etmek, saldırganı sistemden atmanın en etkili yollarından biridir.", changes: { compromisedAccounts: -30, operationalImpact: 10, userTrust: -5 }, clue: 'tokensRevoked', impact: 'Positive' },
+                    // Phase 3: Containment Strategy
+                    'd3-disable-client': { title: "Disable the Risky 'Support Tool' Integration", text: "You completely disabled the 'Support Tool' client via the IdP, which you identified as the source of the problem. This immediately stopped the attack but also completely halted the work of the entire support team that relies on this tool.", strat: "The most radical but effective containment method is to apply pressure to the bleeding wound. Disabling a client contains the damage but comes at a high operational cost.", changes: { compromisedAccounts: -40, operationalImpact: 25, userTrust: -10 }, clue: 'clientDisabled', impact: 'Negative' },
+                    'd3-revoke-tokens': { title: "Revoke All Refresh Tokens", text: "You force-revoked all refresh tokens issued for the affected application via the IdP. This prevents attackers from renewing their sessions but requires all valid users to log in again.", strat: "Compromised refresh tokens are keys to persistent access. Revoking them is one of the most effective ways to evict an attacker from the system.", changes: { compromisedAccounts: -30, operationalImpact: 10, userTrust: -5 }, clue: 'tokensRevoked', impact: 'Positive' },
                     
-                    // Aşama 4: Taktiksel Uygulama ve Düzeltmeler
-                    'd4-fix-redirect': { title: "Redirect URI Beyaz Listesini Uygula", text: "Uygulama ve IdP tarafında, yalnızca tam olarak eşleşen ve önceden tanımlanmış URI'lara izin verecek şekilde katı bir beyaz liste (whitelist) uyguladın.", strat: "Bu, 'açık yönlendirme' saldırı vektörünü kalıcı olarak kapatan temel bir düzeltmedir.", changes: { systemIntegrity: 15 }, clue: 'redirectUriFixed', impact: 'Positive' },
-                    'd4-fix-scopes': { title: "Yetki Kapsamlarını (Scopes) Daralt", text: "'Destek Aracı' istemcisinin istediği 'admin:read/write' kapsamını, yalnızca gereken 'user:read' olarak düzelttin (Least Privilege).", strat: "Asla gereğinden fazla yetki verme. Kapsamları en aza indirmek, bir istemci ele geçirilse bile oluşacak hasarı sınırlar.", changes: { systemIntegrity: 10 }, clue: 'scopesFixed', impact: 'Positive' },
-                    'd4-enforce-pkce': { title: "PKCE Doğrulamasını Zorunlu Kıl", text: "Tüm public istemciler için PKCE (Proof Key for Code Exchange) doğrulanmasını zorunlu hale getirdin. Bu, kod çalma saldırılarını engeller.", strat: "PKCE, modern kimlik güvenliğinin temel taşlarından biridir. Aktif etmek, en yaygın OIDC saldırılarını büyük ölçüde önler.", changes: { systemIntegrity: 15 }, clue: 'pkceEnforced', impact: 'Positive' },
+                    // Phase 4: Tactical Implementation & Fixes
+                    'd4-fix-redirect': { title: "Enforce Redirect URI Whitelisting", text: "On both the application and IdP side, you implemented a strict whitelist that only allows redirection to a pre-defined, exact-match URI.", strat: "This is a fundamental fix that permanently closes the 'open redirect' attack vector.", changes: { systemIntegrity: 15 }, clue: 'redirectUriFixed', impact: 'Positive' },
+                    'd4-fix-scopes': { title: "Narrow Authorization Scopes", text: "You corrected the 'admin:read/write' scope requested by the 'Support Tool' client to only the required 'user:read' (Least Privilege).", strat: "Never grant more permissions than necessary. Minimizing scopes limits the damage that can be done if a client is compromised.", changes: { systemIntegrity: 10 }, clue: 'scopesFixed', impact: 'Positive' },
+                    'd4-enforce-pkce': { title: "Enforce PKCE Verification", text: "You made PKCE (Proof Key for Code Exchange) verification mandatory for all public clients. This prevents the use of a stolen authorization code to obtain a token.", strat: "PKCE is a cornerstone of modern identity security. Enabling it prevents a large class of common OIDC attacks.", changes: { systemIntegrity: 15 }, clue: 'pkceEnforced', impact: 'Positive' },
 
-                    // Aşama 5: Mimariyi Güçlendirme
-                    'd5-shorten-tokens': { title: "Token Ömürlerini Kısalt ve Rotasyon Uygula", text: "Access token ömrünü 15 dakikaya, refresh token ömrünü ise 8 saate indirdin. Ayrıca, her kullanıldığında refresh token'ların da yenilenmesini zorunlu kıldın.", strat: "Kısa ömürlü token'lar, çalınmaları durumunda saldırganın erişim süresini sınırlar. Refresh token rotasyonu, bir token'ın tekrar kullanılmasını önler.", changes: { systemIntegrity: 15, userTrust: -2 }, clue: 'tokensShortened', impact: 'Positive' },
-                    'd5-harden-architecture': { title: "Mimariyi Güçlendir (mTLS/DPoP)", text: "Kritik istemciler için mTLS veya DPoP gibi token bağlama tekniklerini uygulamaya koydun. Bu, token'ların çalınsa bile başka bir yerden kullanılmasını neredeyse imkansız hale getirir.", strat: "Token bağlama, en gelişmiş OIDC güvenlik önlemlerinden biridir. Saldırganın çaldığı bir token'ı kendi makinesinden kullanmasını engeller.", changes: { systemIntegrity: 25, operationalImpact: 5 }, clue: 'architectureHardened', impact: 'Positive' },
-                    
-                    // Aşama 6 ve 7 eklenecek...
+                    // Phase 5: Architectural Hardening
+                    'd5-shorten-tokens': { title: "Shorten Token Lifetimes & Enforce Rotation", text: "You reduced the access token lifetime to 15 minutes and the refresh token lifetime to 8 hours. You also enforced refresh token rotation, where a new refresh token is issued every time one is used.", strat: "Short-lived tokens limit an attacker's window of access if they are stolen. Refresh token rotation prevents a single token from being used repeatedly.", changes: { systemIntegrity: 15, userTrust: -2 }, clue: 'tokensShortened', impact: 'Positive' },
+                    'd5-harden-architecture': { title: "Harden Architecture (mTLS/DPoP)", text: "For critical clients, you implemented advanced token-binding techniques like mTLS or DPoP. This makes it nearly impossible for a stolen token to be used from another machine.", strat: "Token binding is one of the most advanced OIDC security measures. It prevents an attacker from using a stolen token from their own machine.", changes: { systemIntegrity: 25, operationalImpact: 5 }, clue: 'architectureHardened', impact: 'Positive' },
                 },
 
                 setup() {
@@ -734,7 +732,7 @@
                     });
 
                     let nextSectionToGo;
-                    this.elements.intermissionTitle.textContent = "Bu Aşamanın Sonuçları";
+                    this.elements.intermissionTitle.textContent = "Results of This Phase";
 
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
@@ -746,10 +744,10 @@
 
                     this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                         <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                            <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
+                            <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
                             <p>${combinedDecisionTexts.join('<br><br>')}</p>
                             <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                                <h4>Stratejik Değerlendirme</h4>
+                                <h4>Strategic Assessment</h4>
                                 <p>${combinedStrategicNotes.join('<br><br>')}</p>
                             </div>
                         </div>
@@ -760,7 +758,7 @@
                         case 'phase2_analysis': nextSectionToGo = 'phase3_containment'; break;
                         case 'phase3_containment': nextSectionToGo = 'phase4_implementation'; break;
                         case 'phase4_implementation': nextSectionToGo = 'phase5_hardening'; break;
-                        case 'phase5_hardening': nextSectionToGo = 'finalSection'; break; // Bu kısım uzatılacak
+                        case 'phase5_hardening': nextSectionToGo = 'finalSection'; break;
                         default: nextSectionToGo = 'finalSection'; break;
                     }
                     
@@ -783,15 +781,15 @@
                             colorClass = value > 0 ? 'positive' : 'negative';
                         }
 
-                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString()}${unit}</div>`;
                     };
 
-                    metricsHTML += formatChange('Riskli Hesaplar', changes.compromisedAccounts, '', 'fa-user-lock', true);
-                    metricsHTML += formatChange('Sistem Bütünlüğü', changes.systemIntegrity, '%', 'fa-tasks', false);
-                    metricsHTML += formatChange('Operasyonel Etki', changes.operationalImpact, '', 'fa-business-time', true);
-                    metricsHTML += formatChange('Kullanıcı Güveni', changes.userTrust, '', 'fa-users', false);
+                    metricsHTML += formatChange('Accounts at Risk', changes.compromisedAccounts, '', 'fa-user-lock', true);
+                    metricsHTML += formatChange('System Integrity', changes.systemIntegrity, '%', 'fa-tasks', false);
+                    metricsHTML += formatChange('Operational Impact', changes.operationalImpact, '', 'fa-business-time', true);
+                    metricsHTML += formatChange('User Trust', changes.userTrust, '', 'fa-users', false);
                     
-                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">Bu kararların metriklere doğrudan bir etkisi olmadı.</p>';
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on the metrics.</p>';
                     return metricsHTML;
                 },
 
@@ -812,7 +810,7 @@
                         this.updateButtonStates(sectionId);
                         this.state.currentTurnDecisions = [];
                     } else {
-                        console.error('Bölüm bulunamadı:', sectionId);
+                        console.error('Section not found:', sectionId);
                         this.showFinalReport();
                     }
                 },
@@ -839,7 +837,7 @@
                     this.elements.sections.forEach(section => section.style.display = 'none');
                     
                     const finalSection = document.getElementById('finalSection');
-                    if (!finalSection) { console.error("Final bölümü HTML'de bulunamadı!"); return; }
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
                     finalSection.style.display = 'flex';
                     
                     const badge = document.getElementById('performance-badge');
@@ -848,53 +846,53 @@
                     const debriefContent = document.getElementById('strategic-debrief-content');
                     const scoreBreakdownList = document.getElementById('score-breakdown');
 
-                    // --- PUANLAMA SİSTEMİ ---
+                    // --- SCORING SYSTEM ---
                     let scoreBreakdown = {};
                     let totalScore = 100;
-                    scoreBreakdown['Başlangıç Puanı'] = { value: 100, class: 'score-neutral' };
+                    scoreBreakdown['Starting Score'] = { value: 100, class: 'score-neutral' };
                     
                     let compromisedPenalty = this.score.compromisedAccounts * 1.5;
                     totalScore -= compromisedPenalty;
-                    scoreBreakdown['Kalan Riskli Hesap Cezası'] = { value: -Math.round(compromisedPenalty), class: 'score-minus' };
+                    scoreBreakdown['Remaining Accounts at Risk Penalty'] = { value: -Math.round(compromisedPenalty), class: 'score-minus' };
 
                     let impactPenalty = this.score.operationalImpact * 1;
                     totalScore -= impactPenalty;
-                    scoreBreakdown['Operasyonel Etki Cezası'] = { value: -Math.round(impactPenalty), class: 'score-minus' };
+                    scoreBreakdown['Operational Impact Penalty'] = { value: -Math.round(impactPenalty), class: 'score-minus' };
 
                     let trustBonus = (this.score.userTrust - 70) * 0.5;
                     if (trustBonus > 0) {
                         totalScore += trustBonus;
-                        scoreBreakdown['Kullanıcı Güveni Bonusu'] = { value: Math.round(trustBonus), class: 'score-plus' };
+                        scoreBreakdown['User Trust Bonus'] = { value: Math.round(trustBonus), class: 'score-plus' };
                     }
                     
                     if (this.state.architectureHardened) {
                         totalScore += 15;
-                        scoreBreakdown['Mimari Güçlendirme Bonusu'] = { value: 15, class: 'score-plus' };
+                        scoreBreakdown['Architectural Hardening Bonus'] = { value: 15, class: 'score-plus' };
                     }
 
                     if (!this.state.tokensRevoked && !this.state.clientDisabled) {
                         totalScore -= 25;
-                        scoreBreakdown['Kritik Hata: Tehdit Durdurulmadı'] = { value: -25, class: 'score-minus' };
+                        scoreBreakdown['Critical Error: Threat Not Contained'] = { value: -25, class: 'score-minus' };
                     }
 
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
                     this.state.totalScore = totalScore;
-                    // --- PUANLAMA SİSTEMİ SONU ---
+                    // --- SCORING SYSTEM END ---
 
                     let badgeInfo = {};
-                    if (totalScore >= 90) { badgeInfo = { text: 'KİMLİK MİMARI', color: 'var(--accent-green)' }; } 
-                    else if (totalScore >= 70) { badgeInfo = { text: 'UZMAN MÜHENDİS', color: 'var(--accent-blue)' }; } 
-                    else if (totalScore >= 50) { badgeInfo = { text: 'YETKİN PROBLEM ÇÖZÜCÜ', color: 'var(--accent-yellow)' }; } 
-                    else { badgeInfo = { text: 'YAPILANDIRMA HATASI', color: '#ff5555' }; }
+                    if (totalScore >= 90) { badgeInfo = { text: 'IDENTITY ARCHITECT', color: 'var(--accent-green)' }; } 
+                    else if (totalScore >= 70) { badgeInfo = { text: 'EXPERT ENGINEER', color: 'var(--accent-blue)' }; } 
+                    else if (totalScore >= 50) { badgeInfo = { text: 'COMPETENT PROBLEM SOLVER', color: 'var(--accent-yellow)' }; } 
+                    else { badgeInfo = { text: 'CONFIGURATION ERROR', color: '#ff5555' }; }
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
                     metricsContainer.innerHTML = `
-                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-user-lock"></i></div><div class="label">Kalan Riskli Hesap</div><div class="value">${this.score.compromisedAccounts}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-tasks"></i></div><div class="label">Sistem Bütünlüğü</div><div class="value">${this.score.systemIntegrity}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Kullanıcı Güveni</div><div class="value">${this.score.userTrust}/100</div></div>
+                        <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-user-lock"></i></div><div class="label">Remaining Accounts at Risk</div><div class="value">${this.score.compromisedAccounts}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-tasks"></i></div><div class="label">System Integrity</div><div class="value">${this.score.systemIntegrity}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">User Trust</div><div class="value">${this.score.userTrust}/100</div></div>
                     `;
 
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
@@ -904,16 +902,16 @@
 
                     scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
                         const sign = item.value > 0 ? '+' : '';
-                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
                     if (totalScore >= 85) { 
-                        debriefHTML = `<p><strong>Mükemmel Performans!</strong> Sadece mevcut krizi hızla kontrol altına almakla kalmadın, aynı zamanda kimlik altyapısını gelecekteki tehditlere karşı önemli ölçüde güçlendirdin. Teknik derinliğin ve stratejik vizyonun, şirketi büyük bir itibar ve veri kaybından kurtardı.</p>`;
+                        debriefHTML = `<p><strong>Excellent Performance!</strong> Not only did you quickly contain the current crisis, but you also significantly hardened the identity infrastructure against future threats. Your technical depth and strategic vision saved the company from a major loss of reputation and data.</p>`;
                     } else if (totalScore >= 60) { 
-                        debriefHTML = `<p><strong>Başarılı Müdahale:</strong> Tehdidi etkili bir şekilde durdurdun ve en kritik güvenlik açıklarını kapattın. Bazı kullanıcılar süreçten olumsuz etkilense de, ana hedefe ulaştın. Mimariyi daha da güçlendirmek için birkaç fırsatı kaçırmış olabilirsin, ancak genel olarak sağlam bir mühendislik sergiledin.</p>`;
+                        debriefHTML = `<p><strong>Successful Response:</strong> You effectively stopped the threat and closed the most critical security holes. Although some users were negatively impacted by the process, you achieved the main objective. You may have missed a few opportunities to further harden the architecture, but overall you demonstrated solid engineering.</p>`;
                     } else { 
-                        debriefHTML = `<p><strong>Zorlu Sonuç:</strong> Kriz kontrol altına alındı ancak süreç yavaş ve maliyetli oldu. Belki de ilk müdahalede daha agresif adımlar atılabilirdi veya bazı temel yapılandırma hataları gözden kaçırıldı. Bu simülasyon, modern kimlik sistemlerinin ne kadar karmaşık ve hassas dengelere sahip olduğunu gösteren önemli bir ders oldu.</p>`;
+                        debriefHTML = `<p><strong>Challenging Outcome:</strong> The crisis was contained, but the process was slow and costly. Perhaps more aggressive steps could have been taken in the initial response, or some fundamental configuration errors were overlooked. This simulation was an important lesson in how complex and delicately balanced modern identity systems are.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
                 },
@@ -921,98 +919,124 @@
                 loadGameHTML() {
                     const gameHTMLContent = `
                         <div id="phase1_triage" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Aşama 1: Triyaj ve Kapsam Belirleme</h2>
-                            <p>Yardım masasından gelen raporlar artıyor. Durumun ciddiyetini anladın. Nereden başlayacaksın? Sorunun yaygınlığını ve aciliyetini belirlemek için ilk adımın ne olacak?</p>
-                            <img src="phase1_triage.png" alt="Veri akışlarını ve uyarıları gösteren bir ekran" class="scenario-image">
+                            <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Phase 1: Triage & Scoping</h2>
+                            <p>Reports from the help desk are escalating. You understand the seriousness of the situation. Where do you start? What will be your first step to determine the prevalence and urgency of the problem?</p>
+                            <img src="phase1_triage.png" alt="A screen showing data flows and alerts" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>İlk analiz adımın ne olacak? (1 Seçim Yap)</h4>
+                                <h4>What will be your first analysis step? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d1-review-idp-logs"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">IdP Oturum Açma Loglarını İncele<small>Anormal oturum açma desenlerini ve token isteklerini bulmak için ana kimlik sağlayıcı loglarına dal.</small></div></button>
-                                    <button class="btn" data-decision="d1-interview-helpdesk"><i class="fa-solid fa-headset"></i><div class="btn-text">Yardım Masası ve SOC ile Görüş<small>Gelen şikayetlerin ortak noktasını bulmak ve sorunun kapsamını daraltmak için ekiplerle konuş.</small></div></button>
+                                    <button class="btn critical" data-decision="d1-review-idp-logs"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">Review IdP Sign-in Logs<small>Dive into the main identity provider logs to find abnormal sign-in patterns and token requests.</small></div></button>
+                                    <button class="btn" data-decision="d1-interview-helpdesk"><i class="fa-solid fa-headset"></i><div class="btn-text">Consult with Help Desk and SOC<small>Talk to the teams to find a common thread in the complaints and narrow down the scope of the problem.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Bir kimlik krizinde, sorun ya kimliğin doğrulandığı yerdedir (IdP) ya da kimliğin tüketildiği yerdedir (Uygulama). Analize bu iki noktadan başlamak en mantıklısıdır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In an identity crisis, the problem is either where the identity is verified (IdP) or where it is consumed (Application). Starting the analysis from these two points is the most logical approach.</div>
                         </div>
 
                         <div id="phase2_analysis" class="section" data-max-selections="2">
-                             <h2><i class="fa-solid fa-microscope"></i> Aşama 2: Derinlemesine Kök Neden Analizi</h2>
-                            <p>İlk analizlerin sorunun SSO entegrasyonunda olduğunu gösteriyor. Şimdi mühendis şapkanı takıp tam olarak hangi yapılandırma hatalarının bu krize yol açtığını bulmalısın.</p>
-                             <img src="phase2_analysis.png" alt="Kod ve yapılandırma dosyalarını inceleyen bir mühendis" class="scenario-image">
+                             <h2><i class="fa-solid fa-microscope"></i> Phase 2: In-depth Root Cause Analysis</h2>
+                            <p>Your initial analysis indicates the problem lies within the SSO integration. Now, you need to put on your engineer's hat and find out exactly which configuration errors led to this crisis.</p>
+                             <img src="phase2_analysis.png" alt="An engineer reviewing code and configuration files" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Hangi iki teknik detayı araştıracaksın? (2 Seçim Yap)</h4>
+                                <h4>Which two technical details will you investigate? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d2-introspect-tokens"><i class="fa-solid fa-key"></i><div class="btn-text">JWT Token'ları Detaylı İncele<small>Bir token'ın içeriğini ('claims') analiz ederek yetki ve doğrulama alanlarındaki ('aud', 'iss', 'scope') hataları ara.</small></div></button>
-                                    <button class="btn" data-decision="d2-test-redirect"><i class="fa-solid fa-directions"></i><div class="btn-text">Redirect URI Zafiyetini Test Et<small>Uygulamanın yetkilendirme kodunu sızdırabilecek 'açık yönlendirme' (open redirect) zafiyeti olup olmadığını kontrol et.</small></div></button>
-                                    <button class="btn" data-decision="d2-check-firewall"><i class="fa-solid fa-network-wired"></i><div class="btn-text">Ağ Güvenlik Duvarı Kurallarını Gözden Geçir<small>Sorunun ağ katmanından olup olmadığını anlamak için firewall loglarını ve kurallarını incele.</small></div></button>
-
+                                    <button class="btn" data-decision="d2-introspect-tokens"><i class="fa-solid fa-key"></i><div class="btn-text">Introspect JWT Tokens<small>Analyze a token's content ('claims') to look for errors in authorization and validation fields ('aud', 'iss', 'scope').</small></div></button>
+                                    <button class="btn" data-decision="d2-test-redirect"><i class="fa-solid fa-directions"></i><div class="btn-text">Test for Redirect URI Vulnerability<small>Check if the application has an 'open redirect' vulnerability that could leak the authorization code.</small></div></button>
+                                    <button class="btn" data-decision="d2-check-firewall"><i class="fa-solid fa-network-wired"></i><div class="btn-text">Review Network Firewall Rules<small>Review firewall logs and rules to understand if the problem is at the network layer.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> OAuth/OIDC güvenliği detaylarda gizlidir. 'aud', 'iss', 'scope', 'redirect_uri', 'PKCE' gibi alanların her biri potansiyel bir zafiyet vektörüdür.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> OAuth/OIDC security is hidden in the details. Fields like 'aud', 'iss', 'scope', 'redirect_uri', and 'PKCE' are each a potential vulnerability vector.</div>
                         </div>
                         
                         <div id="phase3_containment" class="section" data-max-selections="1">
-                             <h2><i class="fa-solid fa-fire-extinguisher"></i> Aşama 3: Kontrol Altına Alma Stratejisi</h2>
-                            <p>Kök nedenleri buldun: Geniş yetkiler, zayıf doğrulamalar ve sızdırılabilir tokenlar. Saldırganlar hala bu açıkları kullanıyor olabilir. Şimdi kanamayı durdurmak için stratejik bir karar vermelisin.</p>
-                             <img src="phase3_containment.png" alt="Bir acil durum planı üzerinde çalışan ekip" class="scenario-image">
+                             <h2><i class="fa-solid fa-fire-extinguisher"></i> Phase 3: Containment Strategy</h2>
+                            <p>You've found the root causes: broad permissions, weak validations, and leakable tokens. Attackers may still be exploiting these vulnerabilities. You must make a strategic decision to stop the bleeding.</p>
+                             <img src="phase3_containment.png" alt="A team working on an emergency plan" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Acil durum müdahale stratejin ne olacak? (1 Seçim Yap)</h4>
+                                <h4>What will be your emergency response strategy? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d3-disable-client"><i class="fa-solid fa-plug-circle-xmark"></i><div class="btn-text">Riskli Entegrasyonu Tamamen Devre Dışı Bırak<small>En güvenli yol. Saldırıyı anında durdurur ama büyük bir operasyonel kesintiye neden olur.</small></div></button>
-                                    <button class="btn" data-decision="d3-revoke-tokens"><i class="fa-solid fa-user-slash"></i><div class="btn-text">Tüm Kullanıcı Oturumlarını Sonlandır<small>Tüm refresh token'ları iptal ederek saldırganları sistemden at, ancak tüm kullanıcıların yeniden giriş yapması gerekir.</small></div></button>
+                                    <button class="btn critical" data-decision="d3-disable-client"><i class="fa-solid fa-plug-circle-xmark"></i><div class="btn-text">Completely Disable the Risky Integration<small>The safest route. It stops the attack instantly but causes a major operational outage.</small></div></button>
+                                    <button class="btn" data-decision="d3-revoke-tokens"><i class="fa-solid fa-user-slash"></i><div class="btn-text">Terminate All User Sessions<small>Evict attackers by revoking all refresh tokens, but all users will need to log in again.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Olay müdahalesinde güvenlik ile kullanılabilirlik arasında her zaman bir denge vardır. En güvenli seçenek, her zaman iş için en doğru seçenek olmayabilir.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In incident response, there is always a balance between security and usability. The most secure option is not always the right option for the business.</div>
                         </div>
                         
                         <div id="phase4_implementation" class="section" data-max-selections="2">
-                             <h2><i class="fa-solid fa-screwdriver-wrench"></i> Aşama 4: Taktiksel Uygulama ve Düzeltmeler</h2>
-                            <p>Stratejini belirledin. Şimdi kolları sıvayıp en acil teknik düzeltmeleri yapma zamanı. Bu adımlar, bilinen zafiyetleri doğrudan hedef alacak.</p>
-                             <img src="phase4_implementation.png" alt="Kod üzerinde çalışan bir geliştirici" class="scenario-image">
+                             <h2><i class="fa-solid fa-screwdriver-wrench"></i> Phase 4: Tactical Implementation & Fixes</h2>
+                            <p>You have determined your strategy. Now it's time to roll up your sleeves and apply the most urgent technical fixes. These steps will directly target the known vulnerabilities.</p>
+                             <img src="phase4_implementation.png" alt="A developer working on code" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Hangi iki teknik düzeltmeyi hemen uygulayacaksın? (2 Seçim Yap)</h4>
+                                <h4>Which two technical fixes will you apply immediately? (Choose 2)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d4-fix-redirect"><i class="fa-solid fa-location-crosshairs"></i><div class="btn-text">Redirect URI Beyaz Listesini Uygula<small>Yalnızca tam olarak eşleşen URI'lara izin vererek kod çalma saldırılarını engelle.</small></div></button>
-                                    <button class="btn critical" data-decision="d4-fix-scopes"><i class="fa-solid fa-user-check"></i><div class="btn-text">Yetki Kapsamlarını (Scopes) Daralt<small>En Az Yetki Prensibi'ni uygulayarak uygulamaların istediği gereksiz admin yetkilerini kaldır.</small></div></button>
-                                    <button class="btn" data-decision="d4-enforce-pkce"><i class="fa-solid fa-key-skeleton"></i><div class="btn-text">PKCE Doğrulamasını Zorunlu Kıl<small>Modern güvenlik standardı olan PKCE'yi zorunlu kılarak token ele geçirme saldırılarını zorlaştır.</small></div></button>
+                                    <button class="btn" data-decision="d4-fix-redirect"><i class="fa-solid fa-location-crosshairs"></i><div class="btn-text">Enforce Redirect URI Whitelist<small>Prevent code theft attacks by only allowing exact-match URIs.</small></div></button>
+                                    <button class="btn critical" data-decision="d4-fix-scopes"><i class="fa-solid fa-user-check"></i><div class="btn-text">Narrow Authorization Scopes<small>Apply the Principle of Least Privilege and remove unnecessary admin permissions from the app.</small></div></button>
+                                    <button class="btn" data-decision="d4-enforce-pkce"><i class="fa-solid fa-key-skeleton"></i><div class="btn-text">Enforce PKCE Verification<small>Make token theft attacks more difficult by mandating the modern security standard, PKCE.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> "Savunmanın Derinliği" (Defense-in-Depth) ilkesi burada kritiktir. Tek bir güvenlik önlemine güvenmek yerine, birden fazla katmanda (URI, scope, PKCE) savunma yapmak gerekir.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The "Defense-in-Depth" principle is critical here. Instead of relying on a single security measure, it's necessary to defend at multiple layers (URI, scope, PKCE).</div>
                         </div>
 
                         <div id="phase5_hardening" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-shield-halved"></i> Aşama 5: Mimariyi Güçlendirme</h2>
-                            <p>Acil tehdit geçti ve ilk düzeltmeler yapıldı. Şimdi bu tür bir krizin bir daha asla yaşanmamasını sağlamak için kimlik mimarisini temelden güçlendirme zamanı.</p>
-                             <img src="phase5_hardening.png" alt="Güvenlik mimarisi planı çizen mühendisler" class="scenario-image">
+                            <h2><i class="fa-solid fa-shield-halved"></i> Phase 5: Architectural Hardening</h2>
+                            <p>The immediate threat has passed, and the first fixes are in place. Now it's time to fundamentally strengthen the identity architecture to ensure this kind of crisis never happens again.</p>
+                             <img src="phase5_hardening.png" alt="Engineers drawing a security architecture plan" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Altyapıyı kalıcı olarak güçlendirmek için en etkili adım hangisidir? (1 Seçim Yap)</h4>
+                                <h4>What is the most effective step to permanently harden the infrastructure? (Choose 1)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d5-shorten-tokens"><i class="fa-solid fa-hourglass-end"></i><div class="btn-text">Token Ömürlerini Kısalt ve Rotasyon Uygula<small>Token'ların geçerlilik süresini azaltarak çalınmaları durumunda riskleri minimize et.</small></div></button>
-                                    <button class="btn critical" data-decision="d5-harden-architecture"><i class="fa-solid fa-microchip"></i><div class="btn-text">Mimariyi Güçlendir (mTLS/DPoP)<small>Token bağlama gibi gelişmiş tekniklerle token'ların çalınsa bile kullanılamaz hale gelmesini sağla.</small></div></button>
+                                    <button class="btn" data-decision="d5-shorten-tokens"><i class="fa-solid fa-hourglass-end"></i><div class="btn-text">Shorten Token Lifetimes & Enforce Rotation<small>Minimize risks in case of theft by reducing the validity period of tokens.</small></div></button>
+                                    <button class="btn critical" data-decision="d5-harden-architecture"><i class="fa-solid fa-microchip"></i><div class="btn-text">Harden Architecture (mTLS/DPoP)<small>Make stolen tokens unusable with advanced techniques like token binding.</small></div></button>
                                 </div>
                             </div>
-                             <div class="learning-note"><strong>Öğrenme Notu:</strong> Gerçek güvenlik, sadece mevcut açıkları kapatmak değil, gelecekteki bilinmeyen tehditlere karşı da sistemi dirençli hale getirmektir.</div>
+                             <div class="learning-note"><strong>Learning Note:</strong> True security isn't just about patching current vulnerabilities, but about making the system resilient against unknown future threats.</div>
                         </div>
 
+                        <div id="phase6_verification" class="section" data-max-selections="1">
+                             <h2><i class="fa-solid fa-check-double"></i> Phase 6: Verification and Observation</h2>
+                             <p>The fixes have been deployed and the architecture has been strengthened. But is the threat truly gone? You must now verify that your solutions are working and monitor for any residual signs of compromise.</p>
+                             <img src="phase6_verification.png" alt="A dashboard with green, stable metrics" class="scenario-image">
+                             <div class="interactive-element">
+                                 <h4>How will you verify the effectiveness of your fixes? (Choose 1)</h4>
+                                 <div class="decision-buttons">
+                                     <button class="btn critical" data-decision="d6-run-pentest"><i class="fa-solid fa-vial-virus"></i><div class="btn-text">Run a Targeted Penetration Test<small>Hire an internal or external team to specifically try and bypass your new OIDC security controls.</small></div></button>
+                                     <button class="btn" data-decision="d6-monitor-logs"><i class="fa-solid fa-wave-square"></i><div class="btn-text">Monitor Logs for a Week<small>Passively observe IdP and application logs for any anomalies before declaring the incident over.</small></div></button>
+                                 </div>
+                             </div>
+                             <div class="learning-note"><strong>Learning Note:</strong> Never assume a fix is working. "Trust, but verify" is a core tenet of security engineering. Active validation is always stronger than passive observation.</div>
+                        </div>
+
+                        <div id="phase7_postmortem" class="section" data-max-selections="1">
+                             <h2><i class="fa-solid fa-book-medical"></i> Phase 7: Post-Mortem and Lessons Learned</h2>
+                             <p>The crisis is officially over. The systems are stable and secure. Your final responsibility is to ensure the organization learns from this incident to prevent recurrence and improve its overall security posture.</p>
+                             <img src="phase7_postmortem.png" alt="A team in a post-mortem meeting" class="scenario-image">
+                             <div class="interactive-element">
+                                 <h4>What is the final, most crucial step for the organization? (Choose 1)</h4>
+                                 <div class="decision-buttons">
+                                     <button class="btn" data-decision="d7-write-report"><i class="fa-solid fa-file-signature"></i><div class="btn-text">Write a Detailed Post-Mortem Report<small>Document the entire incident timeline, root causes, and actions taken for compliance and future reference.</small></div></button>
+                                     <button class="btn critical" data-decision="d7-train-devs"><i class="fa-solid fa-users-gear"></i><div class="btn-text">Conduct a Mandatory Developer Training<small>Create and deliver a mandatory training session for all developers on secure OIDC/OAuth implementation patterns.</small></div></button>
+                                 </div>
+                             </div>
+                             <div class="learning-note"><strong>Learning Note:</strong> A good incident report documents what happened. A great incident response process prevents it from happening again by educating the people who build the systems.</div>
+                        </div>
                         <div id="finalSection" class="section centered-page" style="display: none;">
-                            <h2><i class="fa-solid fa-chart-line"></i> Olay Sonu Değerlendirme Raporu</h2>
-                            <p>Simülasyon tamamlandı. Kriz yönetimi performansınızın detaylı dökümü aşağıdadır.</p>
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Incident Review Report</h2>
+                            <p>The simulation is complete. Below is a detailed breakdown of your crisis management performance.</p>
                             <div id="performance-badge-container"><span id="performance-badge"></span></div>
                             <div class="final-metrics" id="finalMetricsContainer"></div>
                             <div class="post-crisis-layout">
                                 <div class="event-timeline">
-                                    <h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3>
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                                     <div id="strategic-debrief-content"></div>
-                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
                                     <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
                             <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
-                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</button>
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
+                                <button class="btn" id="openLeaderboardBtn"><i class="fa-solid fa-trophy"></i> Leaderboard</button>
                             </div>
                         </div>
                     `;
@@ -1033,7 +1057,7 @@
                         this.updateTimerUI();
                         if (this.timer.remaining <= 0) {
                             this.stopGlobalTimer();
-                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            alert("Time is up! Generating report.");
                             this.showFinalReport();
                         }
                     }, 1000);
@@ -1063,9 +1087,9 @@
                 },
 
                 saveLeaderboard(finalScore) {
-                    const name = localStorage.getItem('playerName') || 'Anonim';
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
                     const payload = {
-                        scenario: 'v10.1-iam-crisis',
+                        scenario: 'v10.2-iam-crisis',
                         name: name.toString().slice(0, 40),
                         score: finalScore,
                         details: {
@@ -1076,7 +1100,7 @@
                         },
                         timestamp: new Date().toISOString()
                     };
-                    const key = 'leaderboard-v10.1-iam-crisis';
+                    const key = 'leaderboard-v10.2-iam-crisis';
                     const arr = JSON.parse(localStorage.getItem(key) || '[]');
                     arr.push(payload);
                     arr.sort((a,b)=> b.score - a.score);
@@ -1085,13 +1109,13 @@
 
                 loadLeaderboard() {
                     const tbody = this.elements.leaderboard.body;
-                    const key = 'leaderboard-v10.1-iam-crisis';
-                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    const key = 'leaderboard-v10.2-iam-crisis';
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
                     
                     const rows = JSON.parse(localStorage.getItem(key) || '[]');
                     
                     if (!rows.length) {
-                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="4">No records yet.</td></tr>`;
                         return;
                     }
                     
@@ -1099,9 +1123,9 @@
                     tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
                         <tr>
                             <td>${i+1}</td>
-                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
                             <td>${r.score}</td>
-                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString() : '-'}</td>
                         </tr>
                     `).join('');
                 }
