@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Select a Role | Cybersecurity Simulations</title>
+<title>Role Selection | Cybersecurity Simulations</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
@@ -50,7 +50,7 @@
 
     .container {
         width: 100%;
-        max-width: 1524px;
+        max-width: 1200px;
         z-index: 1;
         animation: fadeIn 1s ease-out;
     }
@@ -71,26 +71,30 @@
     .roles-grid {
         display: grid;
         gap: 30px;
+        /* Default: 1 column */
         grid-template-columns: repeat(1, 1fr);
+        align-items: stretch; /* Ensures cards have the same height */
     }
-    
-    @media (min-width: 640px) {
+
+    @media (min-width: 768px) {
         .roles-grid {
+            /* Tablet and up: 2 columns */
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    
-    @media (min-width: 1524px) {
+
+    @media (min-width: 1024px) {
         .roles-grid {
-            grid-template-columns: repeat(4, 1fr);
+            /* Desktop and up: 3 columns */
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 
     .role-card {
         background-color: var(--card-bg);
         border: 1px solid var(--border-glow);
-        border-radius: 50px;
-        padding: 40px 40px;
+        border-radius: 20px;
+        padding: 30px;
         text-align: left;
         text-decoration: none;
         color: var(--text-color-light);
@@ -134,32 +138,44 @@
 <body>
     <div class="grid-bg"></div>
     <div class="container">
-        <h1>Select Your Role</h1>
-        <p class="subtitle">Choose a specialization in your cybersecurity career journey. Each role will lead you to two unique crisis scenarios that will test your different skills. Define your strategy and respond.</p>
+        <h1>Choose Your Role</h1>
+        <p class="subtitle">Select a specialization in your cybersecurity career journey. Each role will lead you to custom crisis scenarios that will test your unique skills. Determine your strategy and respond.</p>
 
         <div class="roles-grid">
             <a href="rol_soc_analyst.html" class="role-card">
                 <div class="icon"><i class="fas fa-binoculars"></i></div>
                 <h2>SOC Analyst</h2>
-                <p>The first line of defense. Monitor alerts, detect anomalies, and be the first to find the real threat signal within the noise.</p>
+                <p>The first line of defense. Monitor alerts, detect anomalies, and be the first to find the true threat signal within the noise.</p>
             </a>
 
             <a href="rol_incident_responder.html" class="role-card">
                 <div class="icon"><i class="fas fa-fire-extinguisher"></i></div>
                 <h2>Incident Responder</h2>
-                <p>The cool-headed professional of the crisis moment. Stop active attacks, gather evidence, and take back the system from the enemy.</p>
+                <p>The cool-headed professional in a moment of crisis. Stop active attacks, gather evidence, and take back the system from the adversary.</p>
             </a>
 
+            <a href="rol_penetration_tester.html" class="role-card">
+                <div class="icon"><i class="fas fa-user-secret"></i></div>
+                <h2>Penetration Tester</h2>
+                <p>An expert who tests systems through an adversary's eyes, finds vulnerabilities, and proves them within ethical boundaries.</p>
+            </a>
+            
             <a href="rol_cybersecurity_engineer.html" class="role-card">
                 <div class="icon"><i class="fas fa-microchip"></i></div>
                 <h2>Cybersecurity Engineer</h2>
-                <p>The protector of systems and technologies. Analyze vulnerabilities in-depth, fortify complex systems, and build proactive defenses.</p>
+                <p>The guardian of systems and technologies. Analyze vulnerabilities in-depth, harden complex systems, and build proactive defenses.</p>
+            </a>
+
+            <a href="rol_network_security_engineer.html" class="role-card">
+                <div class="icon"><i class="fas fa-network-wired"></i></div>
+                <h2>Network Security Engineer</h2>
+                <p>The heart of the network infrastructure. Create secure network designs, monitor traffic flow, and set up defense mechanisms.</p>
             </a>
 
             <a href="rol_cybersecurity_manager.html" class="role-card">
                 <div class="icon"><i class="fas fa-user-tie"></i></div>
                 <h2>Cybersecurity Manager</h2>
-                <p>The strategist and leader. Translate technical crises into business language, manage risk, plan the budget, and lead the board.</p>
+                <p>The strategist and leader. Translate technical crises into business language, manage risk, plan the budget, and lead the executive board.</p>
             </a>
         </div>
     </div>
