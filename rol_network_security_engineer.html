@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ağ Güvenliği Mühendisi | Senaryo Seçimi</title>
+<title>Network Security Engineer | Scenario Selection</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
@@ -11,9 +11,9 @@
         --dark-blue-bg: #0A0A1E; --main-accent: #00E6FF; --text-color-light: #E0E0E0; --text-color-medium: #A0A0A0;
         --card-bg: rgba(20, 20, 40, 0.85); --border-glow: rgba(0, 230, 255, 0.5); --card-hover-bg: rgba(30, 30, 60, 0.95);
         --card-hover-border: rgba(0, 230, 255, 0.8); --shadow-strong: rgba(0, 230, 255, 0.4); --title-glow-color: rgba(0, 230, 255, 0.4);
-        --difficulty-easy: #a7ed89; /* Yeşil */
-        --difficulty-medium: #f1fa8c; /* Sarı */
-        --difficulty-high: #ff5555;   /* Kırmızı */
+        --difficulty-easy: #a7ed89; /* Green */
+        --difficulty-medium: #f1fa8c; /* Yellow */
+        --difficulty-high: #ff5555;   /* Red */
         --focus-color: var(--main-accent);
     }
     body {
@@ -38,7 +38,6 @@
         font-size: 1.2em; line-height: 1.7; margin-bottom: 50px; color: var(--text-color-medium);
         text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;
     }
-    /* Sadece 2 öğe varken ortalamak için Flexbox düzenlemesi */
     .scenarios-grid {
         display: flex;
         justify-content: center;
@@ -50,7 +49,7 @@
         text-decoration: none; color: var(--text-color-light); transition: all 0.3s ease;
         backdrop-filter: blur(8px); display: flex; flex-direction: column; overflow: hidden;
         width: 100%;
-        max-width: 450px; /* Kart genişliğini sabitleme */
+        max-width: 450px;
     }
     .scenario-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px var(--shadow-strong); }
     .scenario-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-glow); }
@@ -66,45 +65,45 @@
     .difficulty-easy { color: var(--difficulty-easy); }
     .difficulty-medium { color: var(--difficulty-medium); }
     .difficulty-high { color: var(--difficulty-high); }
-    .focus-color { color: var(--focus-color); }
+    .focus-color { color: var(--main-accent); }
 </style>
 </head>
 <body>
     <div class="grid-bg"></div>
     <div class="container">
-        <h1>Simülasyonu Seç</h1>
-        <p class="subtitle">Ağ Güvenliği Mühendisi olarak, ağ altyapısının kalbisin. Güvenli ağ tasarımları oluştur, trafik akışını izle ve savunma mekanizmalarını kur.</p>
+        <h1>Select Simulation</h1>
+        <p class="subtitle">As a Network Security Engineer, you are the heart of the network infrastructure. Create secure network designs, monitor traffic flow, and set up defense mechanisms.</p>
         <div class="scenarios-grid">
             <a href="cyberscenarios13/index.html" class="scenario-card">
-                <img src="dnstunnel_card.png" alt="DNS tünelleme şeması">
+                <img src="dnstunnel_card.png" alt="DNS tunneling diagram">
                 <div class="content">
-                    <h2>Gelişmiş DNS Tünelleme Krizi</h2>
-                    <p>Kurum ağı içindeki bir cihaz, DNS sorguları aracılığıyla dışarıya veri sızdırıyor. Bu gizli iletişim kanalını tespit et, analizi yap ve kalıcı olarak engelle.</p>
+                    <h2>Advanced DNS Tunneling Crisis</h2>
+                    <p>A device within the corporate network is exfiltrating data via DNS queries. Detect this covert communication channel, analyze it, and block it permanently.</p>
                     <div class="card-info">
                         <span class="difficulty-easy">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Kolay
+                            Difficulty: Easy
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-network-wired"></i>
-                            Odak: Ağ Analizi
+                            Focus: Network Analysis
                         </span>
                     </div>
                 </div>
             </a>
             <a href="cyberscenarios14/index.html" class="scenario-card">
-                <img src="virtualization_card.png" alt="Sanallaştırma altyapısı">
+                <img src="virtualization_card.png" alt="Virtualization infrastructure">
                 <div class="content">
-                    <h2>Sanallaştırma Ağ Sorunu Krizi</h2>
-                    <p>Şirketin veri merkezindeki sanal sunucular, yüksek gecikme ve paket kaybı yaşıyor. Sorunun kaynağını sanal ağ katmanında bul, 'gürültücü komşuyu' izole et ve altyapıyı sertleştir.</p>
+                    <h2>Virtualization Network Issue Crisis</h2>
+                    <p>Virtual servers in the company's data center are experiencing high latency and packet loss. Find the source of the problem in the virtual network layer, isolate the 'noisy neighbor,' and harden the infrastructure.</p>
                     <div class="card-info">
                         <span class="difficulty-medium">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Orta
+                            Difficulty: Medium
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-server"></i>
-                            Odak: Sanallaştırma
+                            Focus: Virtualization
                         </span>
                     </div>
                 </div>
