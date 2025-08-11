@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v9.0: Gelişmiş DNS Tünelleme Kriz Simülasyonu</title>
+    <title>CyberScenario v9.0: Advanced DNS Tunneling Crisis Simulation</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -37,7 +37,6 @@
         .btn.critical { background-color: var(--accent-pink); } .btn.critical:hover { background-color: #ff6e87; }
         #intermissionSection .metric-change-summary-container { background-color: var(--section-bg); border-radius: 8px; padding: 25px; margin-top: 0; box-shadow: 0 5px 15px var(--shadow-light); width: 100%; max-width: 600px; }
         #intermissionSection .metric-change-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-        #intermissionSection .metric-change { font-size: 1.1em; display: flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 5px; background-color: var(--interactive-bg); box-shadow: inset 0 1px 5px rgba(0,0,0,0.2); justify-content: center; }
         .metric-change .positive { color: var(--accent-green); } .metric-change .negative { color: var(--accent-red); } .metric-change .neutral { color: var(--accent-blue); }
         .intro-info-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 30px; width: 100%; max-width: 800px; text-align: left; }
         @media (min-width: 768px) { .intro-info-grid { grid-template-columns: 1fr 1fr; } }
@@ -98,90 +97,90 @@
         // All text and game logic parameters are stored here for easy editing.
         // =================================================================================
         const scenarioData = {
-            title: "Gelişmiş DNS Tünelleme Simülasyonu",
+            title: "Advanced DNS Tunneling Crisis Simulation",
             icon: "fa-satellite-dish",
-            introText: "Merhabalar, Network Security Engineer. Göreviniz, ÇOLHAK Teknoloji'nin altyapısında tespit edilen sinsi bir veri sızıntısını ortaya çıkarmak. Saldırganlar, en değerli veritabanı sunucusundan, standart güvenlik katmanlarını atlatmak için DNS protokolünü bir tünel olarak kullanıyor. Bu, basit bir log analizinin ötesinde, derin paket ve protokol analizi gerektiren bir kriz. Alacağınız kararlar, şirketin en değerli varlıklarının korunmasını belirleyecek.",
+            introText: "Welcome, Network Security Engineer. Your mission is to uncover a stealthy data exfiltration detected in the company's infrastructure. Attackers are using the DNS protocol as a tunnel to steal valuable database data, bypassing standard security layers. This is a crisis that requires more than simple log analysis; it demands deep packet and protocol analysis. Your decisions will determine the protection of the company's most valuable assets.",
             roles: [
-                { name: "Sizin Rolünüz: Network Security Engineer", desc: "Ağ altyapısını, protokolleri ve trafik akışını analiz ederek sinsi tehditleri tespit edip engellemekle sorumlusunuz.", icon: "fa-user-ninja" },
-                { name: "Threat Intelligence (CTI) Analisti", desc: "Dış tehdit aktörleri, TTP'ler ve IoC'ler hakkında istihbarat sağlar.", icon: "fa-user-secret" },
-                { name: "SOC Müdürü", desc: "Güvenlik operasyonlarının genel koordinasyonunu sağlar ve kaynakları yönetir.", icon: "fa-user-shield" }
+                { name: "Your Role: Network Security Engineer", desc: "You are responsible for analyzing network infrastructure, protocols, and traffic to detect and block stealthy threats.", icon: "fa-user-ninja" },
+                { name: "Threat Intelligence (CTI) Analyst", desc: "Provides intelligence on external threat actors, their TTPs, and IoCs.", icon: "fa-user-secret" },
+                { name: "SOC Manager", desc: "Provides overall coordination for security operations and manages resources.", icon: "fa-user-shield" }
             ],
             metrics: [
-                { id: "dataIntegrity", name: "Veri Bütünlüğü", desc: "Hassas veritabanı verilerinin sızdırılma oranı.", startValue: 100, unit: "%", icon: "fa-database", color: "var(--accent-green)" },
-                { id: "financialImpact", name: "Finansal Etki", desc: "Olayın şirkete getireceği mali yük.", startValue: 0, unit: "₺", icon: "fa-hand-holding-dollar", color: "var(--accent-red)" },
-                { id: "networkPerformance", name: "Ağ Performansı", desc: "Ağ altyapısının stabilitesi ve hızı.", startValue: 100, unit: "", icon: "fa-ethernet", color: "var(--accent-yellow)" },
-                { id: "reputation", name: "Şirket İtibarı", desc: "Şirketinizin kamuoyu ve sektördeki imajı.", startValue: 100, unit: "", icon: "fa-building-shield", color: "var(--accent-blue)" }
+                { id: "dataIntegrity", name: "Data Integrity", desc: "The rate of sensitive database data exfiltration.", startValue: 100, unit: "%", icon: "fa-database", color: "var(--accent-green)" },
+                { id: "financialImpact", name: "Financial Impact", desc: "The financial cost of the incident to the company.", startValue: 0, unit: "₺", icon: "fa-hand-holding-dollar", color: "var(--accent-red)" },
+                { id: "networkPerformance", name: "Network Performance", desc: "The stability and speed of the network infrastructure.", startValue: 100, unit: "", icon: "fa-ethernet", color: "var(--accent-yellow)" },
+                { id: "reputation", name: "Company Reputation", desc: "The company's public and industry image.", startValue: 100, unit: "", icon: "fa-building-shield", color: "var(--accent-blue)" }
             ],
             timer: 300, // 6 minutes
             phases: [
                 {
                     id: 'phase1_triage',
-                    title: "Aşama 1: Anomali Tespiti",
-                    description: "Haftaya sakin bir başlangıç yaparken, ağ performans izleme aracınız (NPM) Nagios'tan, kritik veritabanı sunucusu `DB-PROD-01` için ortalama DNS çözümleme süresinde hafif bir artış olduğuna dair rutin bir uyarı alıyorsunuz. Bu, göz ardı edilebilecek küçük bir performans sorunu mu, yoksa daha derin bir problemin ilk fısıltısı mı?",
+                    title: "Phase 1: Anomaly Detection",
+                    description: "Starting the week calmly, you receive a routine alert from your network performance monitor (NPM) Nagios about a slight increase in the average DNS resolution time for the critical database server `DB-PROD-01`. Is this a minor performance issue that can be ignored, or the first whisper of a deeper problem?",
                     image: "anomali.png",
                     maxChoices: 1,
                     decisions: [
-                        { id: 'd1_investigate', title: "Performans Uyarısını İncele", smallText: "DNS gecikmesinin nedenini anlamak için temel trafik metriklerini ve sunucu loglarını kontrol et.", strat: "Her anormallik bir potansiyel tehdittir. Özellikle kritik bir varlıktan gelen performans uyarısını bile doğrulamak, proaktif güvenliğin ilk adımıdır.", changes: { financialImpact: 1000, networkPerformance: -2 }, impact: 'Positive' },
-                        { id: 'd1_ignore', title: "Uyarıyı Göz Ardı Et", smallText: "Bunun geçici bir ağ yoğunluğu olduğunu varsay ve uyarıyı 'düşük öncelikli' olarak işaretle.", strat: "Küçük sinyalleri göz ardı etmek, gelişmiş ve sinsi saldırganlara en değerli hediyeyi verir: zaman. En küçük anormallikler bile bazen en büyük tehditleri gizler.", changes: { financialImpact: 50000, dataIntegrity: -15, reputation: -5 }, impact: 'Negative' }
+                        { id: 'd1_investigate', title: "Investigate the Performance Alert", smallText: "Check basic traffic metrics and server logs to understand the cause of the DNS delay.", strat: "Every anomaly is a potential threat. Verifying even a performance alert from a critical asset is the first step in proactive security.", changes: { financialImpact: 1000, networkPerformance: -2 }, impact: 'Positive' },
+                        { id: 'd1_ignore', title: "Ignore the Alert", smallText: "Assume it's a temporary network congestion and mark the alert as 'low priority.'", strat: "Ignoring small signals gives advanced and stealthy attackers the most valuable gift: time. Even the smallest anomalies can sometimes hide the biggest threats.", changes: { financialImpact: 50000, dataIntegrity: -15, reputation: -5 }, impact: 'Negative' }
                     ]
                 },
                 {
                     id: 'phase2_datagathering',
-                    title: "Aşama 2: Veri Toplama",
-                    description: "İlk incelemeniz, basit bir gecikmeden daha fazlası olduğunu gösteriyor. `DB-PROD-01` sunucusundan internete doğru şüpheli bir trafik akışı var gibi görünüyor. Şimdi ne olduğunu anlamak için daha fazla kanıt toplamanız gerekiyor.",
+                    title: "Phase 2: Data Collection",
+                    description: "Your initial investigation shows there's more to it than a simple delay. There appears to be a suspicious traffic flow originating from `DB-PROD-01` to the internet. You now need to gather more evidence to understand what is happening.",
                     image: "data.png",
                     maxChoices: 2,
                     decisions: [
-                        { id: 'd2_netflow', title: "NetFlow/IPFIX Trafik Analizi", smallText: "Trafik akış verilerini analiz ederek `DB-PROD-01`'den çıkan UDP/53 trafiğinin hacmini ve hedeflerini doğrula.", strat: "NetFlow, ağın kan akışını gösterir. Büyük resmi görmek ve anormal iletişim kanallarını tespit etmek için ilk adımdır.", changes: { financialImpact: 2000 }, impact: 'Positive' },
-                        { id: 'd2_zeek', title: "Zeek (Bro) Loglarını İncele", smallText: "Zeek'in ürettiği `dns.log` ve `conn.log` dosyalarını inceleyerek anormalliğin protokol seviyesindeki detaylarını ara.", strat: "Zeek, standart logların ötesinde zengin protokol meta verileri sağlar. Bu, 'normal görünen anormal' trafiği tespit etmek için paha biçilmezdir.", changes: { financialImpact: 4000 }, impact: 'Positive' },
-                        { id: 'd2_firewall_logs', title: "Firewall Loglarını Filtrele", smallText: "`DB-PROD-01` kaynaklı tüm DNS isteklerini NGFW loglarından filtreleyerek hedeflenen alan adlarını ve istek sıklığını analiz et.", strat: "Güvenlik duvarı logları, ağın kapı bekçisidir. Kimin girip çıktığını görmek, soruşturmanın yönünü belirler.", changes: { financialImpact: 1000, networkPerformance: -1 }, impact: 'Neutral' },
-                        { id: 'd2_pcap', title: "Anlık Paket Yakalama (PCAP)", smallText: "Sunucunun bağlı olduğu switch portunda mirroring (SPAN) yapılandırıp `tcpdump` ile ham paket analizi için veri topla.", strat: "En kesin kanıt ham paketin kendisidir. Diğer her şey yorumdur, PCAP ise gerçeğin ta kendisidir.", changes: { financialImpact: 5000, networkPerformance: -3 }, impact: 'Positive' }
+                        { id: 'd2_netflow', title: "NetFlow/IPFIX Traffic Analysis", smallText: "Analyze traffic flow data to verify the volume and destinations of UDP/53 traffic from `DB-PROD-01`.", strat: "NetFlow shows the network's blood flow. It's the first step to see the bigger picture and identify abnormal communication channels.", changes: { financialImpact: 2000 }, impact: 'Positive' },
+                        { id: 'd2_zeek', title: "Examine Zeek (Bro) Logs", smallText: "Inspect the `dns.log` and `conn.log` files generated by Zeek to find protocol-level details of the anomaly.", strat: "Zeek provides rich protocol metadata beyond standard logs. This is invaluable for detecting 'normal-looking yet anomalous' traffic.", changes: { financialImpact: 4000 }, impact: 'Positive' },
+                        { id: 'd2_firewall_logs', title: "Filter Firewall Logs", smallText: "Filter NGFW logs for all DNS requests originating from `DB-PROD-01` to analyze the targeted domain names and request frequency.", strat: "Firewall logs are the gatekeeper of the network. Seeing who is entering and leaving determines the direction of the investigation.", changes: { financialImpact: 1000, networkPerformance: -1 }, impact: 'Neutral' },
+                        { id: 'd2_pcap', title: "Live Packet Capture (PCAP)", smallText: "Configure mirroring (SPAN) on the switch port connected to the server and collect data for raw packet analysis with `tcpdump`.", strat: "The most definitive evidence is the raw packet itself. Everything else is an interpretation; PCAP is the truth.", changes: { financialImpact: 5000, networkPerformance: -3 }, impact: 'Positive' }
                     ]
                 },
                 {
                     id: 'phase3_analysis',
-                    title: "Aşama 3: Derinlemesine Analiz",
-                    description: "Topladığınız veriler, `DB-PROD-01`'in sürekli olarak `*.c2-apt41.com` gibi şüpheli bir alan adına anlamsız alt alan adları (subdomain) ile sorgu yaptığını gösteriyor. Eğer PCAP verisi topladıysanız, şimdi paketin içine bakma zamanı.",
+                    title: "Phase 3: In-Depth Analysis",
+                    description: "The data you've collected shows that `DB-PROD-01` is making continuous queries with nonsensical subdomains to a suspicious domain like `*.c2-apt41.com`. If you've collected PCAP data, it's time to look inside the packet.",
                     image: "wireshark.png",
                     maxChoices: 1,
                     decisions: [
-                        { id: 'd3_wireshark', title: "PCAP'i Wireshark ile İncele", smallText: "Yakalanan paketleri Wireshark ile açarak DNS sorgularının içeriğini protokol seviyesinde deşifre et.", strat: "Wireshark, ağ mühendislerinin mikroskobudur. Protokol diseksiyonu, standart dışı davranışları ve gizli kanalları ortaya çıkarmak için en güçlü yöntemdir.", changes: { financialImpact: 3000, dataIntegrity: -15 }, impact: 'Positive' },
-                        { id: 'd3_cti', title: "CTI Ekibinden IoC Kontrolü İste", smallText: "Şüpheli alan adını (`*.c2-apt41.com`) CTI ekibine ileterek bilinen tehdit aktörleriyle bağlantısını sorgula.", strat: "Bir IoC bulduğunuzda, CTI veritabanları bu göstergenin bağlamını (hangi aktör, hangi kampanya) anlamanızı sağlar, bu da tehdidin ciddiyetini ortaya koyar.", changes: { financialImpact: 1000, reputation: -2 }, impact: 'Positive' }
+                        { id: 'd3_wireshark', title: "Examine PCAP with Wireshark", smallText: "Open the captured packets with Wireshark to decipher the content of the DNS queries at the protocol level.", strat: "Wireshark is the network engineer's microscope. Protocol dissection is the most powerful method for uncovering non-standard behaviors and covert channels.", changes: { financialImpact: 3000, dataIntegrity: -15 }, impact: 'Positive' },
+                        { id: 'd3_cti', title: "Request IoC Check from CTI Team", smallText: "Forward the suspicious domain (`*.c2-apt41.com`) to the CTI team to query its connection to known threat actors.", strat: "When you find an IoC, CTI databases help you understand its context (which actor, which campaign), revealing the seriousness of the threat.", changes: { financialImpact: 1000, reputation: -2 }, impact: 'Positive' }
                     ]
                 },
                 {
                     id: 'phase4_containment',
-                    title: "Aşama 4: Sınırlama ve Engelleme",
-                    description: "Analiziniz kesin: DNS Tünelleme yoluyla aktif bir veri sızıntısı yaşanıyor. Saldırganlar, veritabanından bilgi çalmak için DNS protokolünü bir kalkan gibi kullanıyor. Her geçen dakika daha fazla veri kayboluyor. Şimdi, bu sızıntıyı hemen durdurmalısınız.",
+                    title: "Phase 4: Containment and Blocking",
+                    description: "Your analysis is conclusive: an active data exfiltration is underway via DNS Tunneling. Attackers are using the DNS protocol as a shield to steal data from the database. With every passing minute, more data is being lost. You must stop this exfiltration immediately.",
                     image: "firewall.png",
                     maxChoices: 1,
                     decisions: [
-                        { id: 'd4_block_domain', title: "NGFW'de Alan Adını Engelle", smallText: "Hızlı bir çözüm olarak, NGFW üzerinde `*.c2-apt41.com` hedefine giden tüm trafiği engelle.", strat: "Basit domain bloklaması, sofistike saldırganlar için sadece küçük bir hız tümseğidir. Daha dayanıklı bir savunma için taktiğin kendisine odaklanmak gerekir.", changes: { financialImpact: 5000, dataIntegrity: +5, networkPerformance: -5 }, impact: 'Neutral' },
-                        { id: 'd4_dns_firewall', title: "DNS Firewall'da Davranışsal Kural Yaz", smallText: "DNS güvenlik katmanında, tünelleme davranışını (anormal sorgu tipleri/uzunlukları) hedef alan bir politika oluştur.", strat: "Davranışsal ve paterne dayalı kurallar oluşturmak, reaktif IoC bloklamasından çok daha etkilidir. Saldırganın aracını değil, tekniğini (TTP) hedef alır.", changes: { financialImpact: 25000, dataIntegrity: +25, reputation: +10 }, impact: 'Positive' },
-                        { id: 'd4_ips_signature', title: "IPS İçin Özel İmza Geliştir", smallText: "Ağ IPS'i için, tespit ettiğin paket yapısına özel bir imza yazarak benzer tüm trafiği anında blokla.", strat: "Özel IPS imzaları, kuruluşunuza özgü tehditlere karşı en etkili savunma katmanlarından birini oluşturur. Bu, reaktif savunmadan proaktif güvenliğe geçiştir.", changes: { financialImpact: 15000, dataIntegrity: +15, networkPerformance: -3 }, impact: 'Positive' }
+                        { id: 'd4_block_domain', title: "Block the Domain in NGFW", smallText: "As a quick solution, block all traffic going to the target `*.c2-apt41.com` on the NGFW.", strat: "Simple domain blocking is just a small speed bump for sophisticated attackers. To build a more resilient defense, you need to focus on the tactic itself.", changes: { financialImpact: 5000, dataIntegrity: +5, networkPerformance: -5 }, impact: 'Neutral' },
+                        { id: 'd4_dns_firewall', title: "Write a Behavioral Rule in DNS Firewall", smallText: "Create a policy in the DNS security layer that targets tunneling behavior (anomalous query types/lengths).", strat: "Creating behavioral and pattern-based rules is much more effective than reactive IoC blocking. It targets the attacker's technique (TTP) rather than their tool.", changes: { financialImpact: 25000, dataIntegrity: +25, reputation: +10 }, impact: 'Positive' },
+                        { id: 'd4_ips_signature', title: "Develop a Custom Signature for IPS", smallText: "Write a custom signature for the network IPS based on the detected packet structure to instantly block all similar traffic.", strat: "Custom IPS signatures are one of the most effective defense layers against threats specific to your organization. This is a shift from reactive defense to proactive security.", changes: { financialImpact: 15000, dataIntegrity: +15, networkPerformance: -3 }, impact: 'Positive' }
                     ]
                 },
                 {
                     id: 'phase5_eradication',
-                    title: "Aşama 5: Yok Etme ve Doğrulama",
-                    description: "İlk engellemeyi başarıyla uyguladınız. Ancak profesyonel bir mühendis işini şansa bırakmaz. Müdahalenizin gerçekten işe yaradığından emin olmalı ve saldırganın ağda başka bir kalıntısı veya `DB-PROD-01` sunucusunda bir arka kapısı olmadığından emin olmalısınız. Saldırgan hala sizi izliyor olabilir.",
+                    title: "Phase 5: Eradication and Verification",
+                    description: "You have successfully implemented the initial containment. But a professional engineer doesn't leave things to chance. You must ensure your intervention truly worked and that there are no other remnants or backdoors on the `DB-PROD-01` server. The attacker might still be watching.",
                     image: "server.png",
                     maxChoices: 1,
                     decisions: [
-                        { id: 'd5_monitor', title: "Trafik Akışını İzle ve Doğrula", smallText: "Engelleme sonrası DNS ve diğer trafik loglarını izleyerek anormalliğin tamamen durduğunu teyit et.", strat: "Bir engelleme uyguladıktan sonra, işinin bittiğini varsayma. Her zaman doğrulama yap. Saldırganlar genellikle engellendiklerini anladıklarında alternatif yollar denerler.", changes: { financialImpact: 5000, networkPerformance: -1 }, impact: 'Positive' },
-                        { id: 'd5_sinkhole', title: "DNS Sinkholing ile Tehdit İstihbaratı Topla", smallText: "Zararlı alan adını bloklamak yerine, trafiği bir analiz sunucusuna yönlendirerek saldırganın TTP'leri hakkında daha fazla bilgi topla.", strat: "DNS Sinkholing, reaktif savunmadan proaktif istihbarat toplamaya geçişin en ileri adımlarından biridir. Saldırgan hakkında bilgi toplamak, onu engellemek kadar değerlidir.", changes: { financialImpact: 20000, reputation: +5, dataIntegrity: +5 }, impact: 'Positive' },
-                        { id: 'd5_isolate_host', title: "Sunucuyu Ağdan Tamamen İzole Et", smallText: "Riski sıfırlamak için etkilenen sunucuyu ağdan çek ve adli analiz için Olay Müdahale ekibine devret.", strat: "Tam izolasyon, en güvenli yok etme yöntemidir ancak iş sürekliliğine etkisi büyüktür. Risk ve fayda dengesi dikkatle değerlendirilmelidir.", changes: { financialImpact: 50000, networkPerformance: -20, dataIntegrity: +10 }, impact: 'Negative' }
+                        { id: 'd5_monitor', title: "Monitor and Verify Traffic Flow", smallText: "Monitor DNS and other traffic logs after blocking to confirm the anomaly has completely stopped.", strat: "After implementing a block, don't assume the job is done. Always verify. Attackers often try alternative routes when they realize they've been blocked.", changes: { financialImpact: 5000, networkPerformance: -1 }, impact: 'Positive' },
+                        { id: 'd5_sinkhole', title: "Collect Threat Intelligence with DNS Sinkholing", smallText: "Instead of blocking the malicious domain, redirect the traffic to an analysis server to gather more intelligence on the attacker's TTPs.", strat: "DNS Sinkholing is one of the most advanced steps from reactive defense to proactive intelligence gathering. Gathering information on the attacker is as valuable as blocking them.", changes: { financialImpact: 20000, reputation: +5, dataIntegrity: +5 }, impact: 'Positive' },
+                        { id: 'd5_isolate_host', title: "Completely Isolate the Server from the Network", smallText: "To zero out the risk, pull the affected server from the network and hand it over to the Incident Response team for forensic analysis.", strat: "Full isolation is the safest eradication method but has a significant impact on business continuity. The risk-benefit balance must be carefully considered.", changes: { financialImpact: 50000, networkPerformance: -20, dataIntegrity: +10 }, impact: 'Negative' }
                     ]
                 },
                 {
                     id: 'phase6_post_incident',
-                    title: "Aşama 6: Olay Sonrası ve Raporlama",
-                    description: "Tehdit tamamen kontrol altına alındı. Şimdi bu olayın neden yaşandığını raporlamak ve gelecekte benzer olayları önlemek için kalıcı adımlar önermek, bir mühendis olarak en önemli sorumluluklarınızdan biridir. Yönetim, bu olayın tekrar etmeyeceğinden emin olmak istiyor.",
+                    title: "Phase 6: Post-Incident and Reporting",
+                    description: "The threat is now fully contained. Your most important responsibility as an engineer is to report why this incident occurred and to propose permanent steps to prevent similar events in the future. Management wants assurance that this will not happen again.",
                     image: "report.png",
                     maxChoices: 1,
                     decisions: [
-                        { id: 'd6_report', title: "Kök Neden Analizi ve Raporlama", smallText: "Tüm bulguları, atılan adımları ve sonuçları içeren detaylı bir RCA raporu hazırlayıp yönetime sun.", strat: "İyi bir müdahale, iyi bir raporlama ile biter. Ne yaptığınızı, neden yaptığınızı ve sonuçlarını belgelemek, hem öğrenme süreci hem de kurumsal sorumluluk için esastır.", changes: { financialImpact: 1000, reputation: +5 }, impact: 'Positive' },
-                        { id: 'd6_full_mitigation', title: "Kalıcı Çözüm ve Ağ Sertleştirme Önerileri", smallText: "Ağ genelinde DNS denetimini artıracak ve Egress Filtreleme kurallarını sıkılaştıracak bir proje öner.", strat: "Her kriz bir öğrenme fırsatıdır. Olay sonrası sadece yarayı sarmak değil, gelecekteki benzer olayları önleyecek kalıcı iyileştirmeler önermek, kıdemli bir mühendisin en önemli görevlerindendir.", changes: { financialImpact: 30000, dataIntegrity: +5, reputation: +2 }, impact: 'Positive' }
+                        { id: 'd6_report', title: "Root Cause Analysis and Reporting", smallText: "Prepare a detailed RCA report with all findings, actions taken, and results, and present it to management.", strat: "A good response ends with good reporting. Documenting what you did, why you did it, and the results is essential for both the learning process and corporate responsibility.", changes: { financialImpact: 1000, reputation: +5 }, impact: 'Positive' },
+                        { id: 'd6_full_mitigation', title: "Permanent Solution and Network Hardening Proposals", smallText: "Propose a project to increase DNS scrutiny across the network and tighten Egress Filtering rules.", strat: "Every crisis is a learning opportunity. Proposing permanent improvements to prevent similar future events is one of the most important duties of a senior engineer.", changes: { financialImpact: 30000, dataIntegrity: +5, reputation: +2 }, impact: 'Positive' }
                     ]
                 }
             ]
@@ -227,7 +226,7 @@
 
             renderIntro() {
                 const rolesHtml = scenarioData.roles.map(r => `<li><span class="icon"><i class="fa-solid ${r.icon}"></i></span><div><strong>${r.name}</strong> <small>${r.desc}</small></div></li>`).join('');
-                const metricsHtml = scenarioData.metrics.map(m => `<li><span class="icon" style="color: ${m.color};"><i class="fa-solid ${m.icon}"></i></span><div><strong>${m.name}</strong> <small>${m.desc} (Başlangıç: ${m.startValue}${m.unit})</small></div></li>`).join('');
+                const metricsHtml = scenarioData.metrics.map(m => `<li><span class="icon" style="color: ${m.color};"><i class="fa-solid ${m.icon}"></i></span><div><strong>${m.name}</strong> <small>${m.desc} (Starting: ${m.startValue}${m.unit})</small></div></li>`).join('');
 
                 const introHtml = `
                     <div class="container">
@@ -236,10 +235,10 @@
                             <p style="max-width: 700px;">${scenarioData.introText}</p>
                             <img src="network.png" alt="Ağ trafiği analizi temalı bir görsel" class="scenario-image">
                             <div class="intro-info-grid">
-                                <div class="intro-roles-container"><h3><i class="fa-solid fa-people-arrows"></i> Simülasyon Rolleri</h3><ul>${rolesHtml}</ul></div>
-                                <div class="intro-metrics-container"><h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3><ul>${metricsHtml}</ul></div>
+                                <div class="intro-roles-container"><h3><i class="fa-solid fa-people-arrows"></i> Simulation Roles</h3><ul>${rolesHtml}</ul></div>
+                                <div class="intro-metrics-container"><h3><i class="fa-solid fa-chart-line"></i> Core Metrics</h3><ul>${metricsHtml}</ul></div>
                             </div>
-                            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+                            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
                         </div>
                     </div>`;
                 this.render(introHtml);
@@ -259,7 +258,7 @@
                             <div id="statusBar">
                                 ${statusBarMetricsHtml}
                                 <div class="metric" id="status-timer">
-                                    <span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span>
+                                    <span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span>
                                     <div class="value" id="status-remaining">--:--</div>
                                 </div>
                             </div>
@@ -268,7 +267,7 @@
                         <div id="intermissionSection" class="centered-page" style="display: none;">
                             <h2 id="intermissionTitle"></h2>
                             <div id="intermissionDetails"></div>
-                            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+                            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
                         </div>
                     </div>`;
                 this.render(gameHtml);
@@ -298,7 +297,7 @@
 
                     if (d.id === 'd3_wireshark' && !this.state.d2_pcap) {
                         dependencyMet = false;
-                        dependencyText = 'Önce paket yakalama (PCAP) işlemi başlatmalısınız.';
+                        dependencyText = 'You must first start a packet capture (PCAP).';
                     }
 
                     return `<button class="btn ${d.impact === 'Negative' ? 'critical' : ''}" data-decision-id="${d.id}" ${is_disabled || !dependencyMet ? 'disabled' : ''}>
@@ -313,7 +312,7 @@
                         <p>${phase.description}</p>
                         ${phase.image ? `<img src="${phase.image}" alt="${phase.title}" class="scenario-image">` : ''}
                         <div class="interactive-element">
-                            <h4>Ne yapacaksınız? (${phase.maxChoices} Seçim Yapın)</h4>
+                            <h4>What will you do? (${phase.maxChoices} Choices)</h4>
                             <div class="decision-buttons">${decisionsHtml}</div>
                         </div>
                     </div>`;
@@ -382,15 +381,15 @@
                     return `<div class="metric-change ${colorClass}"><i class="fa-solid ${m.icon}"></i> ${m.name}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${change > 0 ? '+' : ''}${change.toLocaleString('tr-TR')}${m.unit}</div>`;
                 }).join('');
 
-                titleEl.textContent = "Aşama Değerlendirmesi";
+                titleEl.textContent = "Phase Summary";
                 detailsEl.innerHTML = `
                     <div class="metric-change-summary-container">
-                        <div class="metric-change-summary">${metricsHtml || '<p>Doğrudan metrik etkisi olmadı.</p>'}</div>
+                        <div class="metric-change-summary">${metricsHtml || '<p>No direct metric impact.</p>'}</div>
                     </div>
                     <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                        <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedTitles.join(' & ')}</h4>
+                        <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedTitles.join(' & ')}</h4>
                         <div class="learning-note" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                            <h4>Stratejik Değerlendirme</h4>
+                            <h4>Strategic Evaluation</h4>
                             <p>${combinedStrats.join('<br><br>')}</p>
                         </div>
                     </div>
@@ -410,30 +409,30 @@
                 };
 
                 if (!nextPhase) {
-                    continueBtn.innerHTML = '<i class="fa-solid fa-flag-checkered"></i> Raporu Görüntüle';
+                    continueBtn.innerHTML = '<i class="fa-solid fa-flag-checkered"></i> View Report';
                 }
             },
 
             renderFinalReport() {
                 this.stopTimer();
                 let totalScore = 100;
-                let scoreBreakdown = { 'Başlangıç Puanı': { value: 100, class: 'score-neutral' } };
+                let scoreBreakdown = { 'Starting Score': { value: 100, class: 'score-neutral' } };
 
-                if (this.state.d1_ignore) { totalScore -= 70; scoreBreakdown['Kritik Hata: Anomaliyi Göz Ardı Etme'] = { value: -70, class: 'score-minus' }; }
-                if (this.state.d3_wireshark) { totalScore += 5; scoreBreakdown['Uzman Analizi: Wireshark Kullanımı'] = { value: 5, class: 'score-plus' }; }
-                if (this.state.d4_dns_firewall || this.state.d4_ips_signature) { totalScore += 20; scoreBreakdown['Proaktif Savunma: Akıllı Engelleme'] = { value: 20, class: 'score-plus' }; }
-                if (this.state.d5_sinkhole) { totalScore += 5; scoreBreakdown['İleri Seviye Taktik: DNS Sinkhole'] = { value: 15, class: 'score-plus' }; }
-                if (this.state.d6_full_mitigation) { totalScore += 10; scoreBreakdown['Stratejik Vizyon: Kalıcı Güçlendirme'] = { value: 10, class: 'score-plus' }; }
-                if (this.score.dataIntegrity < 70) { totalScore -= 25; scoreBreakdown['Yüksek Veri Sızıntısı'] = { value: -25, class: 'score-minus' }; }
+                if (this.state.d1_ignore) { totalScore -= 70; scoreBreakdown['Critical Error: Ignoring Anomaly'] = { value: -70, class: 'score-minus' }; }
+                if (this.state.d3_wireshark) { totalScore += 5; scoreBreakdown['Expert Analysis: Wireshark Usage'] = { value: 5, class: 'score-plus' }; }
+                if (this.state.d4_dns_firewall || this.state.d4_ips_signature) { totalScore += 20; scoreBreakdown['Proactive Defense: Smart Blocking'] = { value: 20, class: 'score-plus' }; }
+                if (this.state.d5_sinkhole) { totalScore += 5; scoreBreakdown['Advanced Tactic: DNS Sinkhole'] = { value: 15, class: 'score-plus' }; }
+                if (this.state.d6_full_mitigation) { totalScore += 10; scoreBreakdown['Strategic Vision: Permanent Hardening'] = { value: 10, class: 'score-plus' }; }
+                if (this.score.dataIntegrity < 70) { totalScore -= 25; scoreBreakdown['High Data Exfiltration'] = { value: -25, class: 'score-minus' }; }
                 
                 totalScore = Math.round(Math.max(0, Math.min(100, totalScore)));
 
                 let badgeInfo = {};
-                if (this.state.d1_ignore) { badgeInfo = { text: 'KRİTİK HATA', color: 'var(--accent-red)' }; }
-                else if (totalScore >= 90) { badgeInfo = { text: 'AĞ USTASI', color: 'var(--accent-green)' }; }
-                else if (totalScore >= 85) { badgeInfo = { text: 'ETKİN SAVUNMA', color: 'var(--accent-blue)' }; }
-                else if (totalScore >= 50) { badgeInfo = { text: 'YETERLİ MÜDAHALE', color: 'var(--accent-yellow)' }; }
-                else { badgeInfo = { text: 'GELİŞTİRİLMELİ', color: '#ff5555' }; }
+                if (this.state.d1_ignore) { badgeInfo = { text: 'CRITICAL FAILURE', color: 'var(--accent-red)' }; }
+                else if (totalScore >= 90) { badgeInfo = { text: 'NETWORK MASTER', color: 'var(--accent-green)' }; }
+                else if (totalScore >= 85) { badgeInfo = { text: 'EFFECTIVE DEFENSE', color: 'var(--accent-blue)' }; }
+                else if (totalScore >= 50) { badgeInfo = { text: 'ADEQUATE RESPONSE', color: 'var(--accent-yellow)' }; }
+                else { badgeInfo = { text: 'IMPROVEMENT NEEDED', color: '#ff5555' }; }
                 
                 const metricsHtml = scenarioData.metrics.map(m => {
                     const value = this.score[m.id];
@@ -445,33 +444,33 @@
                 }).join('');
 
                 const timelineHtml = this.state.decisionHistory.map(d => `<li class="${d.impact.toLowerCase()}"><span class="decision-title">${d.title}</span></li>`).join('');
-                const breakdownHtml = Object.entries(scoreBreakdown).map(([key, item]) => `<li class="${item.class}"><span>${key}</span><span class="score-value">${item.value > 0 ? '+' : ''}${item.value} Puan</span></li>`).join('');
+                const breakdownHtml = Object.entries(scoreBreakdown).map(([key, item]) => `<li class="${item.class}"><span>${key}</span><span class="score-value">${item.value > 0 ? '+' : ''}${item.value} Points</span></li>`).join('');
 
                 let debriefHTML = '';
-                if (totalScore >= 90) { debriefHTML = `<p><strong>Mükemmel Performans!</strong> En ufak bir anormallikten yola çıkarak gelişmiş bir tehdidi ortaya çıkardınız. Doğru araçları metodik bir şekilde kullandınız ve en önemlisi, sadece anlık tehdidi değil, saldırganın tekniğini hedef alan proaktif ve kalıcı çözümler ürettiniz. Bu, kıdemli bir Ağ Güvenlik Mühendisi'nin sergilemesi gereken vizyon ve yetenektir.</p>`; }
-                else if (totalScore >= 70) { debriefHTML = `<p><strong>Etkili Müdahale:</strong> Zorlu bir tehdidi doğru adımlarla ve kanıt toplayarak başarılı bir şekilde yönettiniz. Veri sızıntısını büyük ölçüde durdurdunuz ve ağın güvenliğini sağladınız. Genel olarak krizi yetkin bir şekilde kontrol altına aldınız.</p>`; }
-                else { debriefHTML = `<p><strong>Öğrenim Fırsatı:</strong> Tehdidi yönettiniz ancak müdahale sürecinde daha hızlı veya etkili olabilecek bazı adımları atlamış olabilirsiniz. Bu simülasyon, derinlemesine paket analizi ve proaktif savunma stratejilerinin ne kadar kritik olduğunu gösteren önemli bir deneyim oldu.</p>`; }
-                if (this.state.d1_ignore) { debriefHTML = `<p><strong>Kritik Hata:</strong> Simülasyonun başında uyarıyı göz ardı etmeniz, saldırganlara değerli zaman kazandırdı ve veri sızıntısının boyutunu artırdı. Bu, özellikle kritik varlıklardan gelen en küçük uyarıların bile neden hafife alınmaması gerektiğini gösteren önemli bir derstir.</p>`; }
+                if (totalScore >= 90) { debriefHTML = `<p><strong>Excellent Performance!</strong> Starting from the slightest anomaly, you uncovered a sophisticated threat. You used the right tools methodically and, most importantly, implemented proactive and permanent solutions that targeted the attacker's technique, not just the immediate threat. This is the vision and skill a senior Network Security Engineer must possess.</p>`; }
+                else if (totalScore >= 70) { debriefHTML = `<p><strong>Effective Response:</strong> You successfully managed a difficult threat with the right steps and evidence collection. You largely stopped the data exfiltration and secured the network. Overall, you competently took control of the crisis.</p>`; }
+                else { debriefHTML = `<p><strong>Learning Opportunity:</strong> You managed the threat, but may have skipped some steps that could have been faster or more effective. This simulation was an important experience to show how critical deep packet analysis and proactive defense strategies are.</p>`; }
+                if (this.state.d1_ignore) { debriefHTML = `<p><strong>Critical Failure:</strong> Ignoring the initial alert gave the attackers valuable time and increased the amount of data exfiltrated. This is an important lesson on why even the smallest alerts from critical assets should never be underestimated.</p>`; }
                 
                 const finalHtml = `
                 <div class="container">
                     <div id="finalSection" class="section" style="display: flex; flex-direction: column; align-items: center;">
-                        <h2><i class="fa-solid fa-chart-line"></i> Kriz Sonrası Değerlendirme Raporu</h2>
-                        <p>Simülasyon tamamlandı. Kriz yönetimi performansınızın detaylı dökümü aşağıdadır.</p>
+                        <h2><i class="fa-solid fa-chart-line"></i> Post-Incident Evaluation Report</h2>
+                        <p>The simulation is complete. A detailed breakdown of your crisis management performance is below.</p>
                         <div id="performance-badge-container"><span id="performance-badge" style="background-color: ${badgeInfo.color};">${badgeInfo.text}</span></div>
-                        <div class=final-metrics">
-                             <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                             ${metricsHtml}
+                        <div class="final-metrics">
+                               <div class="metric-card"><div class="icon" style="color:var(--accent-yellow)"><i class="fa-solid fa-star"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                               ${metricsHtml}
                         </div>
                         <div class="post-crisis-layout">
-                            <div class="event-timeline"><h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3><ul id="decision-timeline-list">${timelineHtml}</ul></div>
+                            <div class="event-timeline"><h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3><ul id="decision-timeline-list">${timelineHtml}</ul></div>
                             <div class="strategic-debrief">
-                                <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3><div id="strategic-debrief-content">${debriefHTML}</div>
-                                <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3><ul id="score-breakdown">${breakdownHtml}</ul>
+                                <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3><div id="strategic-debrief-content">${debriefHTML}</div>
+                                <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3><ul id="score-breakdown">${breakdownHtml}</ul>
                             </div>
                         </div>
                         <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                            <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
+                            <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
                         </div>
                     </div>
                 </div>`;
