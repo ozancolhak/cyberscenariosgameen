@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v6: Sızma Testi Simülasyonu</title>
+    <title>CyberScenario v6: Penetration Test Simulation</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -549,170 +549,170 @@
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-bug"></i> Web Uygulaması Sızma Testi Simülasyonu</h1>
-            <p style="max-width: 600px;">Hoş geldiniz, yeni bir sızma testi projesine başlıyorsunuz. Hedefiniz, bir e-ticaret web uygulamasında yaygın zafiyetleri (IDOR, yetki atlama, dosya yükleme bypass) zincirleme bir şekilde keşfetmek ve raporlamak. Göreviniz: Uygulama üzerindeki potansiyel güvenlik açıklarını bulmak ve kanıtlamak, ancak üretim ortamına zarar vermeden ve etik sınırlar içinde kalmak. Kararlarınız, hem projenin başarısını hem de şirketin güvenliğini doğrudan etkileyecek!</p>
-            <img src="giris.png" alt="Sızma testi uzmanı, bir web uygulamasında güvenlik açıklarını arıyor" class="scenario-image">
+            <h1><i class="fa-solid fa-bug"></i> Web Application Penetration Test Simulation</h1>
+            <p style="max-width: 600px;">Welcome, you are starting a new penetration testing project. Your goal is to discover and report common vulnerabilities (IDOR, privilege escalation, file upload bypass) in a chained manner on an e-commerce web application. Your task: to find and prove potential security vulnerabilities on the application, but without harming the production environment and staying within ethical boundaries. Your decisions will directly affect both the success of the project and the company's security!</p>
+            <img src="https://i.imgur.com/uR2Xg7m.png" alt="Penetration tester looking for vulnerabilities in a web application" class="scenario-image">
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
-                    <h3><i class="fa-solid fa-user-lock"></i> Simülasyon Rolünüz</h3>
+                    <h3><i class="fa-solid fa-user-lock"></i> Your Simulation Role</h3>
                     <ul>
-                        <li><span class="icon"><i class="fa-solid fa-user-ninja"></i></span><div><strong>Sizin Rolünüz: Sızma Testi Uzmanı</strong> <small>Verilen web uygulamasında zafiyet bulmak ve bunları etik sınırlar içinde kanıtlamakla sorumlusunuz.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-globe"></i></span><div><strong>Hedef: E-ticaret Web Uygulaması</strong> <small>Giriş, profil, sipariş takibi ve dosya yükleme gibi modülleri olan bir uygulama.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-ninja"></i></span><div><strong>Your Role: Penetration Tester</strong> <small>You are responsible for finding vulnerabilities in the given web application and proving them within ethical limits.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-globe"></i></span><div><strong>Target: E-commerce Web Application</strong> <small>An application with modules such as login, profile, order tracking, and file upload.</small></div></li>
                     </ul>
                 </div>
                 <div class="intro-metrics-container">
-                    <h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3>
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-shield-halved"></i></span><div><strong>Veri Bütünlüğü</strong> <small>Veri sızıntısı veya hasar riski. (Başlangıç: %100)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-network-wired"></i></span><div><strong>Ağ Performansı</strong> <small>Uygulamanın çalışmasına verilen zarar. (Başlangıç: %100)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-users"></i></span><div><strong>İtibar Puanı</strong> <small>Güvenlik ekibinin profesyonelliği ve etik duruşu. (Başlangıç: 100)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Finansal Etki</strong> <small>Onarım ve ceza maliyetleri. (Başlangıç: ₺0)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-shield-halved"></i></span><div><strong>Data Integrity</strong> <small>Risk of data leakage or damage. (Initial: 100%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-network-wired"></i></span><div><strong>Network Performance</strong> <small>Damage to the application's operation. (Initial: 100%)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-users"></i></span><div><strong>Reputation Score</strong> <small>The professionalism and ethical stance of the security team. (Initial: 100)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Financial Impact</strong> <small>Repair and penalty costs. (Initial: $0)</small></div></li>
                     </ul>
                 </div>
             </div>
-            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
         </div>
         
         <div id="intermissionSection" class="centered-page" style="display: none;">
             <h2 id="intermissionTitle"></h2>
             <div id="intermissionDetails"></div>
-            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
         </div>
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-shield-halved"></i> Veri Bütünlüğü</span><div class="value" id="status-dataIntegrity">100%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-network-wired"></i> Ağ Performansı</span><div class="value" id="status-networkPerf">100%</div></div>
-                <div class="metric"><span><i class="fa-solid fa-users"></i> İtibar Puanı</span><div class="value" id="status-reputation">100</div></div>
-                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Finansal Etki</span><div class="value" id="status-financialImpact">₺0</div></div>
-                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">10:00</div></div>
+                <div class="metric"><span><i class="fa-solid fa-shield-halved"></i> Data Integrity</span><div class="value" id="status-dataIntegrity">100%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-network-wired"></i> Network Performance</span><div class="value" id="status-networkPerf">100%</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> Reputation Score</span><div class="value" id="status-reputation">100</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Financial Impact</span><div class="value" id="status-financialImpact">$0</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">05:00</div></div>
             </div>
 
             <div id="game-content">
                 <div id="phase1_recon" class="section">
-                    <h2><i class="fa-solid fa-compass"></i> Faz 1: Pasif Keşif (Recon)</h2>
-                    <h3>Hedef: E-ticaret Uygulaması</h3>
-                    <p>Sızma testinizin ilk aşaması olan pasif keşif ile başlıyorsunuz. Amacınız, hedefe doğrudan saldırmadan, uygulamanın dijital ayak izi hakkında mümkün olduğunca fazla bilgi toplamak. Bu, size sonraki adımlar için değerli ipuçları sağlayacaktır.</p>
-                    <img src="bir.png" alt="Sızma testi uzmanı, bir web uygulamasında güvenlik açıklarını arıyor" class="scenario-image">
+                    <h2><i class="fa-solid fa-compass"></i> Phase 1: Passive Reconnaissance</h2>
+                    <h3>Target: E-commerce Application</h3>
+                    <p>You are starting with the first phase of your penetration test: passive reconnaissance. Your goal is to gather as much information as possible about the application's digital footprint without directly attacking the target. This will provide you with valuable clues for the next steps.</p>
+                    <img src="https://i.imgur.com/gO0w8fH.png" alt="Penetration tester analyzing code and data streams" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>Etik sınırlar içinde kalmak için hangi keşif yöntemini tercih edeceksiniz?</h4>
+                        <h4>Which reconnaissance method will you choose to stay within ethical boundaries?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w1-recon-semi"><i class="fa-solid fa-list-ul"></i><div class="btn-text">Seçenek A: Yarı-Pasif Keşif<small>Sınırlı dizin tarama araçları kullanarak, rate-limit'leri gözetecek şekilde gizli kaynakları keşfedin.</small></div></button>
-                            <button class="btn" data-decision="w1-recon-passive"><i class="fa-solid fa-spider"></i><div class="btn-text">Seçenek B: Pasif Keşif<small>Robots.txt, sitemap ve JS dosyalarını inceleyerek gizli bilgileri toplayın.</small></div></button>
-                            <button class="btn" data-decision="w1-recon-loudscan"><i class="fa-solid fa-bolt"></i><div class="btn-text">Seçenek C: Agresif Tarama<small>Agresif bir tarama aracıyla WAF/NDR'yi tetiklemeyi göze alarak detaylı bir tarama başlatın.</small></div></button>
+                            <button class="btn" data-decision="w1-recon-semi"><i class="fa-solid fa-list-ul"></i><div class="btn-text">Option A: Semi-Passive Reconnaissance<small>Discover hidden resources using limited directory scanning tools, respecting rate-limits.</small></div></button>
+                            <button class="btn" data-decision="w1-recon-passive"><i class="fa-solid fa-spider"></i><div class="btn-text">Option B: Passive Reconnaissance<small>Gather hidden information by examining robots.txt, sitemap, and JS files.</small></div></button>
+                            <button class="btn" data-decision="w1-recon-loudscan"><i class="fa-solid fa-bolt"></i><div class="btn-text">Option C: Aggressive Scanning<small>Initiate a detailed scan with an aggressive tool, risking triggering the WAF/NDR.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase2_idor" class="section">
-                    <h2><i class="fa-solid fa-user-xmark"></i> Faz 2: Parametre Manipülasyonu / IDOR</h2>
-                    <h3>Hedef: Yetkisiz Veri Erişimi</h3>
-                    <p>Pasif keşif sonucunda, uygulamanın sipariş takibi bölümünde <code>?orderid=12345</code> gibi parametreler kullandığını fark ettiniz. Bu, potansiyel bir IDOR (Insecure Direct Object Reference) zafiyetine işaret ediyor. Amacınız, başka bir kullanıcıya ait bir sipariş kaydını görüntüleyebildiğinizi kanıtlamak.</p>
-                    <img src="idor.png" alt="Web uygulamasında IDOR zafiyeti" class="scenario-image">
+                    <h2><i class="fa-solid fa-user-xmark"></i> Phase 2: Parameter Manipulation / IDOR</h2>
+                    <h3>Target: Unauthorized Data Access</h3>
+                    <p>As a result of passive reconnaissance, you noticed that the application's order tracking section uses parameters like <code>?orderid=12345</code>. This indicates a potential IDOR (Insecure Direct Object Reference) vulnerability. Your goal is to prove that you can view an order record belonging to another user.</p>
+                    <img src="https://i.imgur.com/mGHU2iM.png" alt="Web application URL with an ID parameter highlighted" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>IDOR zafiyetini nasıl kanıtlayacaksınız?</h4>
+                        <h4>How will you prove the IDOR vulnerability?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w2-idor-header"><i class="fa-solid fa-file-invoice"></i><div class="btn-text">Seçenek A: HTTP Başlıklarını Kontrol Etmek<small>Referer veya rol gibi HTTP başlıklarını değiştirerek yetki atlamaya çalışın.</small></div></button>
-                            <button class="btn" data-decision="w2-idor-bulk"><i class="fa-solid fa-download"></i><div class="btn-text">Seçenek B: Toplu Veri Çekimi<small>IDOR zafiyetini kullanarak binlerce kullanıcı verisini toplu bir şekilde indirmeye çalışın.</small></div></button>
-                            <button class="btn" data-decision="w2-idor-increment"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Seçenek C: Parametreleri Manipüle Etmek<small>URL'deki <code>orderid</code> parametresini değiştirerek başka bir kullanıcının verisine erişmeyi deneyin.</small></div></button>
+                            <button class="btn" data-decision="w2-idor-header"><i class="fa-solid fa-file-invoice"></i><div class="btn-text">Option A: Check HTTP Headers<small>Try to escalate privileges by changing HTTP headers like Referer or role.</small></div></button>
+                            <button class="btn" data-decision="w2-idor-bulk"><i class="fa-solid fa-download"></i><div class="btn-text">Option B: Mass Data Exfiltration<small>Try to download thousands of user records in bulk using the IDOR vulnerability.</small></div></button>
+                            <button class="btn" data-decision="w2-idor-increment"><i class="fa-solid fa-magnifying-glass"></i><div class="btn-text">Option C: Manipulate Parameters<small>Try to access another user's data by changing the <code>orderid</code> parameter in the URL.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase3_jwt" class="section">
-                    <h2><i class="fa-solid fa-key"></i> Faz 3: Oturum / JWT Zayıflığı</h2>
-                    <h3>Hedef: Rol Yükseltme</h3>
-                    <p>Uygulamanın, oturum yönetimi için JWT (JSON Web Token) kullandığını tespit ettiniz. Token'ın içeriğini incelediğinizde, `role` adında bir alan olduğunu gördünüz. Güvenli olmayan bir token yenileme mekanizması bulursanız, yetkisiz bir şekilde rolünüzü yükseltebilirsiniz.</p>
-                    <img src="jvt.png" alt="Sızma testi uzmanı, bir web uygulamasında güvenlik açıklarını arıyor" class="scenario-image">
+                    <h2><i class="fa-solid fa-key"></i> Phase 3: Session / JWT Weakness</h2>
+                    <h3>Target: Privilege Escalation</h3>
+                    <p>You have determined that the application uses JWT (JSON Web Token) for session management. Upon inspecting the token's content, you saw a field named `role`. If you find an insecure token refresh mechanism, you might be able to escalate your role without authorization.</p>
+                    <img src="https://i.imgur.com/rWv7z9k.png" alt="Decoded JSON Web Token structure" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>JWT zafiyetini kullanarak nasıl yetki atlamayı deneyeceksiniz?</h4>
+                        <h4>How will you attempt to escalate privileges using a potential JWT vulnerability?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w3-login-bruteforce"><i class="fa-solid fa-bomb"></i><div class="btn-text">Seçenek A: Giriş Ekranına Kaba Kuvvet Saldırısı<small>Yönetici (admin) hesabına kaba kuvvet saldırısı başlatın.</small></div></button>
-                            <button class="btn" data-decision="w3-jwt-refresh-misuse"><i class="fa-solid fa-rotate"></i><div class="btn-text">Seçenek B: Refresh Token Analizi<small>Süresi dolmuş bir tokenı refresh ederken rol bilgisini değiştirerek yetki yükseltmeyi deneyin.</small></div></button>
-                            <button class="btn" data-decision="w3-session-fixation"><i class="fa-solid fa-lock"></i><div class="btn-text">Seçenek C: Oturum Sabitleme (Session Fixation)<small>Kullanıcı giriş yapmadan önce bir oturum oluşturup, sonrasında aynı oturumu kullanıp kullanamayacağını kontrol edin.</small></div></button>
+                            <button class="btn" data-decision="w3-login-bruteforce"><i class="fa-solid fa-bomb"></i><div class="btn-text">Option A: Brute Force Attack on Login Page<small>Initiate a brute force attack on the administrator (admin) account.</small></div></button>
+                            <button class="btn" data-decision="w3-jwt-refresh-misuse"><i class="fa-solid fa-rotate"></i><div class="btn-text">Option B: Refresh Token Analysis<small>Try to escalate privileges by changing the role information while refreshing an expired token.</small></div></button>
+                            <button class="btn" data-decision="w3-session-fixation"><i class="fa-solid fa-lock"></i><div class="btn-text">Option C: Session Fixation<small>Create a session before the user logs in, then check if the same session can be used afterward.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase4_privesc" class="section">
-                    <h2><i class="fa-solid fa-users-gear"></i> Faz 4: Yetki Atlama (PrivEsc)</h2>
-                    <h3>Hedef: Yönetici Fonksiyonlarını Keşfetmek</h3>
-                    <p>Daha önceki keşif aşamalarında, uygulamanın '/api/admin/...' gibi bir yönetici endpoint'i kullandığını öğrendiniz. Normal bir kullanıcı olarak bu endpoint'e erişmeye çalıştığınızda, '403 Forbidden' hatası alıyorsunuz. Amacınız, yetkisiz bir şekilde yönetici paneline erişip erişemeyeceğinizi veya hassas bilgileri okuyup okuyamayacağınızı kanıtlamak.</p>
-                    <img src="403.png" alt="Web uygulamasında yetki atlama girişimi" class="scenario-image">
+                    <h2><i class="fa-solid fa-users-gear"></i> Phase 4: Privilege Escalation (PrivEsc)</h2>
+                    <h3>Target: Discovering Admin Functions</h3>
+                    <p>In the earlier reconnaissance phases, you learned that the application uses an admin endpoint like '/api/admin/...'. When you try to access this endpoint as a normal user, you get a '403 Forbidden' error. Your goal is to prove whether you can access the admin panel or read sensitive information without authorization.</p>
+                    <img src="https://i.imgur.com/3n6Kj7d.png" alt="Web browser showing a 403 Forbidden error" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>Yetki atlama zafiyetini nasıl kanıtlayacaksınız?</h4>
+                        <h4>How will you prove the privilege escalation vulnerability?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w4-id-mismatch"><i class="fa-solid fa-code"></i><div class="btn-text">Seçenek A: Rol Bayrağı Sızıntısı<small>Uygulamanın kodunda rol bayrağının yetkisiz erişimlere karşı zayıf olduğunu tespit edin.</small></div></button>
-                            <button class="btn" data-decision="w4-role-edit"><i class="fa-solid fa-user-pen"></i><div class="btn-text">Seçenek B: Üretimde Rol Değiştirme<small>Yetki atlama zafiyetini kullanarak bir kullanıcının rolünü üretim ortamında yönetici olarak değiştirin.</small></div></button>
-                            <button class="btn" data-decision="w4-admin-endpoint"><i class="fa-solid fa-eye"></i><div class="btn-text">Seçenek C: Gizli Yönetici Endpoint'ine Erişim<small>Normal kullanıcı olarak gizli yönetici endpoint'ine salt-okuma erişimi sağlayıp hassas verileri okuyabildiğinizi kanıtlayın.</small></div></button>
+                            <button class="btn" data-decision="w4-id-mismatch"><i class="fa-solid fa-code"></i><div class="btn-text">Option A: Identify Role Flag Leakage<small>Identify that the role flag is weak against unauthorized access in the application's code.</small></div></button>
+                            <button class="btn" data-decision="w4-role-edit"><i class="fa-solid fa-user-pen"></i><div class="btn-text">Option B: Change Role in Production<small>Use the privilege escalation vulnerability to change a user's role to admin in the production environment.</small></div></button>
+                            <button class="btn" data-decision="w4-admin-endpoint"><i class="fa-solid fa-eye"></i><div class="btn-text">Option C: Access Hidden Admin Endpoint<small>Prove you can read sensitive data by gaining read-only access to a hidden admin endpoint as a normal user.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase5_upload" class="section">
-                    <h2><i class="fa-solid fa-upload"></i> Faz 5: Dosya Yükleme Bypass</h2>
-                    <h3>Hedef: Uzak Kod Çalıştırma (RCE) için Hazırlık</h3>
-                    <p>Uygulamanın profil fotoğrafı yükleme özelliği, sadece JPEG ve PNG dosyalarına izin veriyor gibi görünüyor. Ancak, bu filtreleme mekanizmasının atlatılabileceğinden şüpheleniyorsunuz. Amacınız, bir dosya yükleme zafiyetini kullanarak, sisteme zararsız bir test dosyası yükleyebildiğinizi kanıtlamak.</p>
-                    <img src="rce1.png" alt="Dosya yükleme zafiyetini test etme" class="scenario-image">
+                    <h2><i class="fa-solid fa-upload"></i> Phase 5: File Upload Bypass</h2>
+                    <h3>Target: Preparation for Remote Code Execution (RCE)</h3>
+                    <p>The application's profile picture upload feature appears to only allow JPEG and PNG files. However, you suspect that this filtering mechanism can be bypassed. Your goal is to prove that you can upload a harmless test file to the system using a file upload vulnerability.</p>
+                    <img src="https://i.imgur.com/b5i9z7w.png" alt="A web form for file uploading" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>Dosya yükleme filtresini nasıl atlatmaya çalışacaksınız?</h4>
+                        <h4>How will you attempt to bypass the file upload filter?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w5-upload-polyglot"><i class="fa-solid fa-file-circle-exclamation"></i><div class="btn-text">Seçenek A: Poliglot Dosya Yükleme<small>Aynı anda hem resim hem de kod içeren (poliglot) bir dosya yükleyerek filtreyi atlatmaya çalışın.</small></div></button>
-                            <button class="btn" data-decision="w5-upload-exec"><i class="fa-solid fa-virus"></i><div class="btn-text">Seçenek B: Saldırgan Payload'u Yükleme<small>Bir PHP web kabuğu (web shell) yükleyerek sisteme tam kontrol sağlamayı deneyin.</small></div></button>
-                            <button class="btn" data-decision="w5-upload-ct-bypass"><i class="fa-solid fa-file-code"></i><div class="btn-text">Seçenek C: İçerik-Türü (Content-Type) Bypass<small>Dosyanın `Content-Type` başlığını `image/jpeg` olarak değiştirip `.php` uzantılı zararsız bir test dosyası yükleyin.</small></div></button>
+                            <button class="btn" data-decision="w5-upload-polyglot"><i class="fa-solid fa-file-circle-exclamation"></i><div class="btn-text">Option A: Upload a Polyglot File<small>Try to bypass the filter by uploading a file that is both an image and code (a polyglot).</small></div></button>
+                            <button class="btn" data-decision="w5-upload-exec"><i class="fa-solid fa-virus"></i><div class="btn-text">Option B: Upload Malicious Payload<small>Try to gain full control of the system by uploading a PHP web shell.</small></div></button>
+                            <button class="btn" data-decision="w5-upload-ct-bypass"><i class="fa-solid fa-file-code"></i><div class="btn-text">Option C: Content-Type Bypass<small>Change the file's `Content-Type` header to `image/jpeg` and upload a harmless test file with a `.php` extension.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase6_rce" class="section">
-                    <h2><i class="fa-solid fa-terminal"></i> Faz 6: Minimal RCE PoC (Zararsız)</h2>
-                    <h3>Hedef: Uzak Kod Çalıştırma (RCE) Kanıtı</h3>
-                    <p>Önceki aşamada dosya yükleme zafiyetini başarıyla kanıtladınız. Şimdi, bir Uzak Kod Çalıştırma (RCE) zafiyetinin varlığını **etik ve zararsız bir şekilde** kanıtlamanız gerekiyor. Amacınız, sisteme zarar vermeden, komut çalıştırma yeteneğinizin olduğunu göstermek.</p>
-                    <img src="rce2.png" alt="Uzak kod çalıştırma kanıtı" class="scenario-image">
+                    <h2><i class="fa-solid fa-terminal"></i> Phase 6: Minimal RCE PoC (Harmless)</h2>
+                    <h3>Target: Proof of Remote Code Execution (RCE)</h3>
+                    <p>In the previous phase, you successfully proved the file upload vulnerability. Now, you need to prove the existence of a Remote Code Execution (RCE) vulnerability **ethically and harmlessly**. Your goal is to demonstrate your ability to execute commands without harming the system.</p>
+                    <img src="https://i.imgur.com/D4s6J0e.png" alt="Terminal window showing a command being executed" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>RCE zafiyetini etik sınırlar içinde nasıl kanıtlayacaksınız?</h4>
+                        <h4>How will you prove the RCE vulnerability within ethical limits?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w6-rce-time"><i class="fa-solid fa-clock"></i><div class="btn-text">Seçenek A: İz Bırakmayan Kanıt<small><code>touch /tmp/pentest.txt</code> gibi bir komut çalıştırıp, dosyanın varlığını teyit edin.</small></div></button>
-                            <button class="btn" data-decision="w6-db-dump"><i class="fa-solid fa-database"></i><div class="btn-text">Seçenek B: Veri Tabanı Çekme Girişimi<small>Zafiyeti kullanarak veri tabanı dosyalarını veya şifrelerini indirmeye çalışın.</small></div></button>
-                            <button class="btn" data-decision="w6-rce-whoami"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Seçenek C: Zararsız Komut Çalıştırma<small>Yalnızca 'whoami' veya 'uname -a' gibi zararsız bir komut çalıştırıp çıktıyı bir log dosyasına yazdırın.</small></div></button>
+                            <button class="btn" data-decision="w6-rce-time"><i class="fa-solid fa-clock"></i><div class="btn-text">Option A: Traceless Proof<small>Run a command like <code>touch /tmp/pentest.txt</code> and confirm the file's existence.</small></div></button>
+                            <button class="btn" data-decision="w6-db-dump"><i class="fa-solid fa-database"></i><div class="btn-text">Option B: Database Dump Attempt<small>Try to download database files or passwords using the vulnerability.</small></div></button>
+                            <button class="btn" data-decision="w6-rce-whoami"><i class="fa-solid fa-user-secret"></i><div class="btn-text">Option C: Run a Harmless Command<small>Run only a harmless command like 'whoami' or 'uname -a' and write the output to a log file.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="phase7_report" class="section">
-                    <h2><i class="fa-solid fa-clipboard-check"></i> Faz 7: Rapor ve Sertleştirme</h2>
-                    <h3>Hedef: Etkili Raporlama ve İyileştirme</h3>
-                    <p>Tüm zafiyetleri zincirleme bir şekilde buldunuz ve etik sınırlar içinde kanıtladınız. Şimdi, projenin en önemli aşaması olan raporlamayı yapmanız gerekiyor. Amacınız, bulgularınızı yöneticilere ve geliştiricilere net bir şekilde iletmek ve sistemin güvenliğini kalıcı olarak artıracak önerilerde bulunmak.</p>
-                    <img src="rapor.png" alt="Sızma testi raporu oluşturma" class="scenario-image">
+                    <h2><i class="fa-solid fa-clipboard-check"></i> Phase 7: Report and Hardening</h2>
+                    <h3>Target: Effective Reporting and Improvement</h3>
+                    <p>You have found and ethically proven all vulnerabilities in a chain. Now comes the most important phase of the project: reporting. Your goal is to clearly communicate your findings to managers and developers and to provide recommendations that will permanently enhance the system's security.</p>
+                    <img src="https://i.imgur.com/k2L3p5R.png" alt="A professional security report document" class="scenario-image">
                     <div class="interactive-element">
-                        <h4>Projenizi tamamlamak için nasıl bir raporlama stratejisi izleyeceksiniz?</h4>
+                        <h4>What reporting strategy will you follow to complete your project?</h4>
                         <div class="decision-buttons">
-                            <button class="btn" data-decision="w7-public-disclosure"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Seçenek A: Onaysız Kamuoyu Duyurusu<small>Şirketin onayı olmadan, bulduğunuz zafiyetleri kamuoyunda ifşa edin.</small></div></button>
-                            <button class="btn" data-decision="w7-report-fix"><i class="fa-solid fa-file-circle-check"></i><div class="btn-text">Seçenek B: Detaylı Rapor ve Güvenlik Sertleştirme Önerisi<small>Bulgularınızla birlikte zafiyetlerin nasıl giderileceğine dair somut ve teknik öneriler sunun.</small></div></button>
-                            <button class="btn" data-decision="w7-report-min"><i class="fa-solid fa-file-alt"></i><div class="btn-text">Seçenek C: Minimal Rapor<small>Yalnızca zafiyetlerin varlığını belirten kısa bir not yazın ve onarım adımlarını eklemeyin.</small></div></button>
+                            <button class="btn" data-decision="w7-public-disclosure"><i class="fa-solid fa-bullhorn"></i><div class="btn-text">Option A: Unauthorized Public Disclosure<small>Disclose the vulnerabilities you found to the public without the company's consent.</small></div></button>
+                            <button class="btn" data-decision="w7-report-fix"><i class="fa-solid fa-file-circle-check"></i><div class="btn-text">Option B: Detailed Report and Security Hardening Recommendation<small>Provide concrete and technical recommendations on how to fix the vulnerabilities along with your findings.</small></div></button>
+                            <button class="btn" data-decision="w7-report-min"><i class="fa-solid fa-file-alt"></i><div class="btn-text">Option C: Minimal Report<small>Write only a brief note stating the existence of the vulnerabilities and do not include remediation steps.</small></div></button>
                         </div>
                     </div>
                 </div>
 
                 <div id="finalSection" class="section centered-page" style="display: none;">
-                    <h2><i class="fa-solid fa-chart-line"></i> Sızma Testi Değerlendirme Raporu</h2>
-                    <p>Simülasyon tamamlandı. Sızma testi performansınızın detaylı dökümü aşağıdadır.</p>
+                    <h2><i class="fa-solid fa-chart-line"></i> Penetration Test Evaluation Report</h2>
+                    <p>Simulation complete. A detailed breakdown of your penetration testing performance is below.</p>
                     <div id="performance-badge-container"><span id="performance-badge"></span></div>
                     <div class="final-metrics" id="finalMetricsContainer"></div>
                     <div class="post-crisis-layout">
                         <div class="event-timeline">
-                            <h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3>
+                            <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
                             <ul id="decision-timeline-list"></ul>
                         </div>
                         <div class="strategic-debrief">
-                            <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
+                            <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                             <div id="strategic-debrief-content"></div>
-                            <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                            <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
                             <ul id="score-breakdown"></ul>
                         </div>
                     </div>
                     <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                        <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
+                        <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
                     </div>
                 </div>
             </div>
@@ -721,22 +721,22 @@
     <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
         <div class="lb-modal">
             <div class="lb-header">
-                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</h2>
-                <span class="lb-sub">Sızma Testi Simülasyonu En İyileri</span>
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+                <span class="lb-sub">Penetration Test Simulation Top Players</span>
             </div>
             <div class="lb-tablewrap">
                 <table class="lb-table" id="leaderboardTable">
                     <thead>
-                        <tr><th>#</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
                     </thead>
                     <tbody id="leaderboardBody">
-                        <tr><td colspan="4">Yükleniyor…</td></tr>
+                        <tr><td colspan="4">Loading…</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="lb-actions">
-                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Yenile</button>
-                <button class="lb-close" id="lbCloseBtn">Kapat</button>
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
             </div>
         </div>
     </div>
@@ -766,28 +766,27 @@
                     running: false
                 },
                 decisionInfo: {
-                    // Karar sonuçları karıştırıldı ve puanlar zorlaştırıldı
-                    'w1-recon-passive': { title: "Pasif Keşif (robots.txt, sitemap)", text: "robots.txt ve sitemap dosyalarını inceleyerek uygulama haritasını ve hassas olabilecek dizinleri keşfettiniz. JS dosyalarını analiz ederek olası API endpoint'lerini ve parametre adlarını belirlediniz.", strat: "Etik sızma testinde ilk adım, gürültü yapmadan bilgi toplamaktır. Pasif keşif, sizi gizli tutar ve değerli ipuçları sağlar.", changes: { reputation: 1, networkPerf: 0, financialImpact: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w1ReconPassive' },
-                    'w1-recon-semi': { title: "Yarı-Pasif Keşif (sınırlı dizin tarama)", text: "Sınırlı sayıda dizin taraması yaparak, rate-limitlere takılmadan bazı gizli kaynakları buldunuz. Bu, biraz gürültü yapsa da, henüz WAF'ı tetiklemedi.", strat: "Dikkatli bir dizin taraması, gizli kalmış bilgileri ortaya çıkarabilir. Ancak bu, risk ve fayda dengesi gerektirir.", changes: { reputation: 2, networkPerf: 0, financialImpact: 0, dataIntegrity: 0 }, impact: 'Positive', clue: 'w1ReconSemi' },
-                    'w1-recon-loudscan': { title: "Agresif Tarama (WAF/NDR tetikleme)", text: "Agresif bir tarama aracı kullanarak web uygulamasını taradınız. Ancak bu, hemen WAF tarafından tespit edildi ve IP adresiniz kara listeye alındı. Savunma sisteminin kalitesini öğrenseniz de, hedefte şüphe uyandırdınız.", strat: "Agresif tarama, gerçek bir saldırıyı taklit etse de, hedefte alarm zillerini çaldırır ve testin gizliliğini tehlikeye atar.", changes: { reputation: -8, networkPerf: -10, financialImpact: 25000, dataIntegrity: 0 }, impact: 'Negative', clue: 'w1ReconLoudscan' },
-                    'w2-idor-increment': { title: "IDOR Tespiti (?id=123→124)", text: "URL'deki ID parametresini değiştirerek başka bir kullanıcının sipariş kaydını görüntüleyebildiğinizi keşfettiniz. Bu, IDOR zafiyetinin varlığını kanıtladı.", strat: "IDOR tespiti için parametreleri manipüle etmek, en yaygın ve etkili yöntemdir. Tek bir kanıt kaydı almak, zafiyeti doğrulamak için yeterlidir.", changes: { dataIntegrity: 2, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w2IdorIncrement' },
-                    'w2-idor-header': { title: "Header Kontrolü (referer/role)", text: "HTTP başlıklarını (headers) manipüle ederek yetki atlamaya çalıştınız ancak başarılı olamadınız. Bu, uygulamanın bu tür zafiyetlere karşı daha dayanıklı olduğunu gösteriyor.", strat: "HTTP başlıklarını kontrol etmek, yetki atlama için bazen işe yarar ancak her zaman değildir. Bu, pasif bir test olarak kabul edilir.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w2IdorHeader' },
-                    'w2-idor-bulk': { title: "Toplu Veri Çekimi (Mass Download)", text: "IDOR zafiyetini toplu veri çekimi için kullandınız. Bu, sunucuya aşırı yük bindirdi ve kısa süreli kesintilere neden oldu. Müşteri verilerini çektiğiniz için ciddi etik ve hukuki sorunlar yaratabilir.", strat: "Zafiyeti kötüye kullanmak, etik test sınırlarını aşar. Toplu veri çekimi, hem yasal hem de operasyonel riskler taşır.", changes: { dataIntegrity: -25, reputation: -15, financialImpact: 75000, networkPerf: -15 }, impact: 'Negative', clue: 'w2IdorBulk' },
-                    'w3-jwt-refresh-misuse': { title: "JWT Zafiyeti: Hatalı Refresh Token Doğrulaması", text: "Uygulamanın, süresi dolmuş bir JWT'yi yenilerken rol bilgisini doğru doğrulamadığını keşfettiniz. Geçerli bir kullanıcının refresh token'ını kullanarak kendinize yönetici yetkisi verebildiğinizi kanıtladınız.", strat: "Oturum yönetimindeki mantıksal hatalar, ciddi yetki atlama zafiyetlerine yol açabilir. JWT'nin her bileşenini ve akışını test etmek kritik.", changes: { dataIntegrity: 3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w3JwtRefresh' },
-                    'w3-session-fixation': { title: "Oturum Sabitleme (Session Fixation) PoC'u", text: "Oturum sabitleme zafiyetini test ettiniz. Ancak uygulamanın oturum kimliğini giriş işleminden sonra değiştirdiğini tespit ettiniz. Bu, zafiyetin bulunmadığını gösteriyor.", strat: "Her zafiyet türünün test edilmesi önemlidir. Negatif sonuçlar bile uygulamanın güvenliğine dair değerli bilgiler sunar.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w3SessionFixation' },
-                    'w3-login-bruteforce': { title: "Giriş Ekranına Kaba Kuvvet Saldırısı", text: "Giriş ekranına kaba kuvvet saldırısı denemesi yaptınız. Uygulama, bunu hemen tespit etti ve hesabın kilitlenmesine neden oldu. Güvenlik ekibinin dikkatini çektiniz ve WAF'ın eşik değerlerini tetiklediniz.", strat: "Kaba kuvvet saldırıları, genellikle gürültülü ve kolayca tespit edilebilir. Etik testlerde bu tür saldırılardan kaçınmak esastır.", changes: { reputation: -7, networkPerf: -8, financialImpact: 10000, dataIntegrity: 0 }, impact: 'Negative', clue: 'w3LoginBruteforce' },
-                    'w4-admin-endpoint': { title: "Gizli Yönetici Endpoint'ine Salt-Okuma Erişimi", text: "Pasif keşif sırasında bulduğunuz '/api/admin/metrics' gibi gizli bir endpoint'e standart kullanıcı yetkisiyle erişebildiğinizi keşfettiniz. Buradan hassas verileri okuyabildiğinizi kanıtladınız.", strat: "Gizli endpoint'lerin yetki kontrolünden muaf olması ciddi bir yetki atlama zafiyetidir. Kanıtlamak için okuma erişimi yeterlidir.", changes: { dataIntegrity: 3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w4AdminEndpoint' },
-                    'w4-id-mismatch': { title: "Rol Bayrağı Sızıntısı Tespiti", text: "Yetki kontrol mekanizmasında bir mantık hatası olduğunu tespit ettiniz. Ancak bunu sömürmek yerine, sadece bu zafiyetin varlığını kanıtlayacak küçük bir veri sızıntısı gerçekleştirdiniz.", strat: "Yetki atlama zafiyetleri, bazen yetki kontrolündeki basit mantık hatalarından kaynaklanır. Sömürmek yerine sadece varlığını göstermek etik test için yeterlidir.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w4IdMismatch' },
-                    'w4-role-edit': { title: "Üretimde Rol Değiştirme", text: "IDOR veya yetki atlama zafiyetini kullanarak, kendinizin veya başka bir kullanıcının rolünü yönetici (admin) olarak değiştirdiniz. Bu, üretim sisteminde yetkisiz değişikliklere yol açtığı için ciddi bir ihlaldir.", strat: "Üretim ortamında veri veya yetki değişiklikleri yapmak, etik sızma testi kurallarına aykırıdır ve ciddi sonuçlar doğurur.", changes: { reputation: -10, financialImpact: 20000, networkPerf: 0, dataIntegrity: -10 }, impact: 'Negative', clue: 'w4RoleEdit' },
-                    'w5-upload-ct-bypass': { title: "Dosya Yükleme Bypass (Content-Type)", text: "Uygulamanın sadece Content-Type başlığını kontrol ettiğini fark ettiniz. `image/jpeg` olarak belirtip `.php` uzantılı bir dosyayı yükleyebildiniz, ancak dosya zararsız bir 'test' payload'u içeriyordu.", strat: "Dosya yükleme zafiyetlerini test ederken, payload'u zararsız tutmak önemlidir. Bu şekilde hem zafiyeti kanıtlarsınız hem de sisteminize zarar vermezsiniz.", changes: { dataIntegrity: 3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w5UploadCtBypass' },
-                    'w5-upload-polyglot': { title: "Poliglot Dosya Yükleme (PoC)", text: "Bir poliglot dosya (aynı anda birden fazla formatta olan) kullanarak bypass denemesi yaptınız. Zafiyet kanıtlandı ancak dosya kararlı çalışmadığı için yönetim için net bir PoC sunamadınız.", strat: "Poliglot dosyalar, bazı durumlarda etkili olsa da, genellikle karmaşık testler için kullanılır. Kanıtın net olması raporlama için önemlidir.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w5UploadPolyglot' },
-                    'w5-upload-exec': { title: "Saldırgan Payload'u Yükleme", text: "Dosya yükleme zafiyetini kullanarak, zararlı bir PHP kabuğu (web shell) yüklediniz. Bu, sisteme tam kontrol sağladı ancak bu eylem etik sınırları aştı ve ciddi güvenlik ihlali olarak kayda geçti.", strat: "Web kabuğu yüklemek, etik kuralları ihlal eder ve testin niyetini sorgulatır. Uzak komut çalıştırma zafiyetini (RCE) kanıtlamak için daha güvenli yollar vardır.", changes: { dataIntegrity: -15, reputation: -15, financialImpact: 35000, networkPerf: -10 }, impact: 'Negative', clue: 'w5UploadExec' },
-                    'w6-rce-whoami': { title: "Minimal RCE PoC (whoami)", text: "Komut enjeksiyon zafiyetini kullanarak, yalnızca 'whoami' gibi zararsız bir komut çalıştırdınız ve sonucu loglara kaydettiniz. Bu, zafiyetin varlığını kanıtlamak için yeterli oldu ve etik sınırlar içinde kaldınız.", strat: "En düşük yetkiyle ve en zararsız komutla zafiyetin kanıtlanması, etik sızma testinin altın kuralıdır. Güvenliği kanıtlamak, zarara yol açmaktan daha önemlidir.", changes: { dataIntegrity: 2, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w6RceWhoami' },
-                    'w6-rce-time': { title: "İz Bırakmayan RCE PoC", text: "Komut enjeksiyonunu kanıtlamak için `touch /tmp/pentest.txt` gibi bir komut çalıştırdınız. Dosyanın varlığı teyit edildi. Bu da zafiyetin kanıtı oldu.", strat: "İz bırakmayan veya geçici dosyalarla yapılan kanıtlar, sistem yöneticilerinin işini kolaylaştırır ve testin temizliğini artırır.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w6RceTime' },
-                    'w6-db-dump': { title: "Veri Tabanı Çekme Girişimi", text: "Komut enjeksiyonunu kullanarak veri tabanına erişmeye çalıştınız. Uygulama, veri tabanı sunucusunda değil, farklı bir sunucuda çalışıyordu. Girişiminiz başarısız oldu ancak loglarda tehlikeli bir davranış sergilediğiniz görüldü.", strat: "Veri tabanını çekmek etik sınırları aşar. Testin bu noktada durdurulması gerekirdi. Bu tür bir hareket, hem yasal hem de itibar açısından risklidir.", changes: { dataIntegrity: -30, reputation: -20, financialImpact: 150000, networkPerf: 0 }, impact: 'Negative', clue: 'w6DbDump' },
-                    'w7-report-fix': { title: "Detaylı Rapor ve Güvenlik Sertleştirme Önerisi", text: "Bulduğunuz tüm zafiyetleri (IDOR, yetki atlama, dosya yükleme) detaylı bir raporla sundunuz. Raporunuzda zafiyetlerin nasıl giderileceği (IDOR için yetki kontrolü, dosya yükleme için katı doğrulama vb.) ve WAF kurallarının nasıl optimize edileceği gibi somut önerilerde bulundunuz.", strat: "Sızma testinin en önemli kısmı, bulguları net bir şekilde raporlamak ve onarım için somut öneriler sunmaktır. Bu, şirketin güvenliğini artırır.", changes: { reputation: 3, dataIntegrity: 1, financialImpact: -5000, networkPerf: 0 }, impact: 'Positive', clue: 'w7ReportFix' },
-                    'w7-report-min': { title: "Minimal Rapor", text: "Yalnızca zafiyetlerin varlığını belirten kısa bir not yazdınız. Onarım adımları ve iyileştirme önerileri sunmadınız. Bu, sorunun çözümünü yavaşlattı.", strat: "Bir sızma testi uzmanı, sadece sorunları değil, çözümleri de sunmalıdır. Minimalist bir rapor, etik sızma testinin değerini düşürür.", changes: { reputation: 0, financialImpact: 5000, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w7ReportMin' },
-                    'w7-public-disclosure': { title: "Onaysız Kamuoyu Duyurusu", text: "Şirketin onayı olmadan, bulduğunuz zafiyetleri kamuoyunda ifşa ettiniz. Bu, şirketin itibarını ciddi şekilde zedeledi ve yasal süreçleri başlattı. Etik sızma testi kurallarının en önemli ihlallerinden biridir.", strat: "Sorumlu ifşa (responsible disclosure), sızma testi uzmanlarının en temel etik kuralıdır. Onay almadan yapılan ifşa, etik dışı ve zararlıdır.", changes: { reputation: -25, financialImpact: 250000, networkPerf: 0, dataIntegrity: 0 }, impact: 'Negative', clue: 'w7PublicDisclosure' }
+                    'w1-recon-passive': { title: "Passive Recon (robots.txt, sitemap)", text: "By examining robots.txt and sitemap files, you discovered the application map and potentially sensitive directories. By analyzing JS files, you identified possible API endpoints and parameter names.", strat: "The first step in ethical penetration testing is to gather information without making noise. Passive recon keeps you hidden and provides valuable clues.", changes: { reputation: 1, networkPerf: 0, financialImpact: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w1ReconPassive' },
+                    'w1-recon-semi': { title: "Semi-Passive Recon (limited directory scan)", text: "By performing a limited number of directory scans, you found some hidden resources without hitting rate limits. This made a little noise, but hasn't triggered the WAF yet.", strat: "A careful directory scan can reveal hidden information. However, this requires a balance of risk and reward.", changes: { reputation: 2, networkPerf: 0, financialImpact: 0, dataIntegrity: 0 }, impact: 'Positive', clue: 'w1ReconSemi' },
+                    'w1-recon-loudscan': { title: "Aggressive Scan (triggering WAF/NDR)", text: "You scanned the web application using an aggressive scanning tool. However, this was immediately detected by the WAF, and your IP address was blacklisted. Although you learned about the quality of the defense system, you raised suspicion on the target.", strat: "While an aggressive scan mimics a real attack, it rings alarm bells on the target and jeopardizes the stealth of the test.", changes: { reputation: -8, networkPerf: -10, financialImpact: 25000, dataIntegrity: 0 }, impact: 'Negative', clue: 'w1ReconLoudscan' },
+                    'w2-idor-increment': { title: "IDOR Detection (?id=123→124)", text: "By changing the ID parameter in the URL, you discovered that you could view another user's order record. This proved the existence of the IDOR vulnerability.", strat: "Manipulating parameters is the most common and effective method for detecting IDOR. Obtaining a single proof record is sufficient to confirm the vulnerability.", changes: { dataIntegrity: -2, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w2IdorIncrement' },
+                    'w2-idor-header': { title: "Header Check (referer/role)", text: "You tried to bypass authorization by manipulating HTTP headers but were unsuccessful. This shows that the application is more resilient against such vulnerabilities.", strat: "Checking HTTP headers can sometimes work for privilege escalation, but not always. This is considered a passive test.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w2IdorHeader' },
+                    'w2-idor-bulk': { title: "Mass Data Exfiltration (Mass Download)", text: "You used the IDOR vulnerability for mass data exfiltration. This overloaded the server and caused brief outages. Exfiltrating customer data could create serious ethical and legal problems.", strat: "Abusing a vulnerability crosses ethical testing boundaries. Mass data exfiltration carries both legal and operational risks.", changes: { dataIntegrity: -25, reputation: -15, financialImpact: 75000, networkPerf: -15 }, impact: 'Negative', clue: 'w2IdorBulk' },
+                    'w3-jwt-refresh-misuse': { title: "JWT Vulnerability: Flawed Refresh Token Validation", text: "You discovered that the application doesn't correctly validate the role information when refreshing an expired JWT. You proved you could grant yourself admin privileges using a valid user's refresh token.", strat: "Logical flaws in session management can lead to serious privilege escalation vulnerabilities. It's critical to test every component and flow of the JWT.", changes: { dataIntegrity: -3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w3JwtRefresh' },
+                    'w3-session-fixation': { title: "Session Fixation PoC", text: "You tested for session fixation. However, you found that the application changes the session ID after login. This indicates the vulnerability is not present.", strat: "Testing for every type of vulnerability is important. Even negative results provide valuable information about the application's security.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w3SessionFixation' },
+                    'w3-login-bruteforce': { title: "Brute Force Attack on Login Page", text: "You attempted a brute force attack on the login page. The application immediately detected it, causing the account to be locked. You caught the attention of the security team and triggered WAF thresholds.", strat: "Brute force attacks are generally noisy and easily detectable. It is essential to avoid such attacks in ethical tests.", changes: { reputation: -7, networkPerf: -8, financialImpact: 10000, dataIntegrity: 0 }, impact: 'Negative', clue: 'w3LoginBruteforce' },
+                    'w4-admin-endpoint': { title: "Read-Only Access to Hidden Admin Endpoint", text: "You discovered you could access a hidden endpoint like '/api/admin/metrics' with standard user privileges, which you found during passive recon. You proved you could read sensitive data from it.", strat: "Hidden endpoints that are exempt from authorization control are a serious privilege escalation vulnerability. Read access is sufficient to prove it.", changes: { dataIntegrity: -3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w4AdminEndpoint' },
+                    'w4-id-mismatch': { title: "Detecting Role Flag Leakage", text: "You identified a logic flaw in the authorization mechanism. However, instead of exploiting it, you only performed a minor data leak to prove its existence.", strat: "Privilege escalation vulnerabilities sometimes arise from simple logic flaws in authorization control. Merely demonstrating its existence is sufficient for an ethical test.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w4IdMismatch' },
+                    'w4-role-edit': { title: "Changing Role in Production", text: "Using an IDOR or privilege escalation vulnerability, you changed your own or another user's role to admin. This is a serious violation as it led to unauthorized changes in the production system.", strat: "Making data or privilege changes in a production environment is against the rules of ethical penetration testing and has serious consequences.", changes: { reputation: -10, financialImpact: 20000, networkPerf: 0, dataIntegrity: -10 }, impact: 'Negative', clue: 'w4RoleEdit' },
+                    'w5-upload-ct-bypass': { title: "File Upload Bypass (Content-Type)", text: "You noticed the application only checks the Content-Type header. You were able to upload a `.php` file by setting it to `image/jpeg`, but the file contained a harmless 'test' payload.", strat: "When testing file upload vulnerabilities, it's important to keep the payload harmless. This way, you prove the vulnerability without harming the system.", changes: { dataIntegrity: -3, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w5UploadCtBypass' },
+                    'w5-upload-polyglot': { title: "Polyglot File Upload (PoC)", text: "You attempted a bypass using a polyglot file (a file in multiple formats simultaneously). The vulnerability was proven, but since the file did not run stably, you couldn't present a clear PoC for management.", strat: "Although polyglot files can be effective in some cases, they are generally used for complex tests. Clarity of proof is important for reporting.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w5UploadPolyglot' },
+                    'w5-upload-exec': { title: "Uploading Malicious Payload", text: "Using the file upload vulnerability, you uploaded a malicious PHP web shell. This gave you full control over the system, but this action crossed ethical boundaries and was recorded as a serious security breach.", strat: "Uploading a web shell violates ethical rules and calls the intent of the test into question. There are safer ways to prove a Remote Code Execution (RCE) vulnerability.", changes: { dataIntegrity: -15, reputation: -15, financialImpact: 35000, networkPerf: -10 }, impact: 'Negative', clue: 'w5UploadExec' },
+                    'w6-rce-whoami': { title: "Minimal RCE PoC (whoami)", text: "Using the command injection vulnerability, you ran only a harmless command like 'whoami' and saved the result to logs. This was sufficient to prove the vulnerability's existence, and you stayed within ethical limits.", strat: "Proving a vulnerability with the lowest privilege and the most harmless command is the golden rule of ethical penetration testing. Proving security is more important than causing damage.", changes: { dataIntegrity: -2, reputation: 2, financialImpact: 0, networkPerf: 0 }, impact: 'Positive', clue: 'w6RceWhoami' },
+                    'w6-rce-time': { title: "Traceless RCE PoC", text: "To prove command injection, you ran a command like `touch /tmp/pentest.txt`. The existence of the file was confirmed. This also served as proof of the vulnerability.", strat: "Proofs made with traceless or temporary files make the system administrators' job easier and increase the cleanliness of the test.", changes: { reputation: 1, financialImpact: 0, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w6RceTime' },
+                    'w6-db-dump': { title: "Database Exfiltration Attempt", text: "You tried to access the database using command injection. The application was not running on the database server, but on a different server. Your attempt failed, but it was noted in the logs that you exhibited dangerous behavior.", strat: "Dumping the database crosses ethical boundaries. The test should have been stopped at this point. Such an action is risky both legally and reputationally.", changes: { dataIntegrity: -30, reputation: -20, financialImpact: 150000, networkPerf: 0 }, impact: 'Negative', clue: 'w6DbDump' },
+                    'w7-report-fix': { title: "Detailed Report and Hardening Recommendation", text: "You presented all the vulnerabilities you found (IDOR, privilege escalation, file upload) in a detailed report. Your report included concrete suggestions on how to fix the vulnerabilities (e.g., authorization checks for IDOR, strict validation for file uploads) and how to optimize WAF rules.", strat: "The most important part of a penetration test is to clearly report the findings and provide concrete recommendations for remediation. This enhances the company's security.", changes: { reputation: 3, dataIntegrity: 1, financialImpact: -5000, networkPerf: 0 }, impact: 'Positive', clue: 'w7ReportFix' },
+                    'w7-report-min': { title: "Minimal Report", text: "You wrote only a brief note stating the existence of the vulnerabilities. You did not provide remediation steps or improvement suggestions. This slowed down the resolution of the problem.", strat: "A penetration tester should present not only problems but also solutions. A minimalist report diminishes the value of an ethical penetration test.", changes: { reputation: 0, financialImpact: 5000, networkPerf: 0, dataIntegrity: 0 }, impact: 'Neutral', clue: 'w7ReportMin' },
+                    'w7-public-disclosure': { title: "Unauthorized Public Disclosure", text: "Without the company's consent, you publicly disclosed the vulnerabilities you found. This severely damaged the company's reputation and initiated legal proceedings. It is one of the most significant violations of ethical penetration testing rules.", strat: "Responsible disclosure is the most fundamental ethical rule for penetration testers. Disclosure without consent is unethical and harmful.", changes: { reputation: -25, financialImpact: 250000, networkPerf: 0, dataIntegrity: 0 }, impact: 'Negative', clue: 'w7PublicDisclosure' }
                 },
 
                 setup() {
@@ -882,7 +881,7 @@
                         combinedDecisionTexts.push(info.text);
                         combinedStrategicNotes.push(info.strat);
                     });
-                    this.elements.intermissionTitle.textContent = "Bu Seçimlerin Toplam Etkileri";
+                    this.elements.intermissionTitle.textContent = "Total Impact of These Choices";
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
                             <div class="metric-change-summary">
@@ -892,10 +891,10 @@
                     `);
                     this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                         <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                            <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
+                            <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
                             <p>${combinedDecisionTexts.join('<br><br>')}</p>
                             <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                                <h4>Stratejik Değerlendirme</h4>
+                                <h4>Strategic Assessment</h4>
                                 <p>${combinedStrategicNotes.join('<br><br>')}</p>
                             </div>
                         </div>
@@ -918,26 +917,28 @@
                 getMetricsHtml(changes) {
                     let metricsHTML = '';
                     const formatChange = (label, value, unit) => {
-                        const arrow = value >= 0 ? (value > 0 ? 'up' : 'right') : 'down';
+                        const arrow = value > 0 ? 'up' : (value < 0 ? 'down' : 'right');
                         const sign = value >= 0 ? '+' : '';
                         let colorClass = 'neutral';
-                        if (label === 'Finansal Etki' || label === 'Ağ Performansı' || label === 'Veri Bütünlüğü') {
+                        if (label === 'Financial Impact') {
+                            colorClass = value > 0 ? 'negative' : (value < 0 ? 'positive' : 'neutral');
+                        } else if (label === 'Network Performance' || label === 'Data Integrity') {
                             colorClass = value < 0 ? 'negative' : (value > 0 ? 'positive' : 'neutral');
-                        } else if (label === 'İtibar Puanı') {
+                        } else if (label === 'Reputation Score') {
                             colorClass = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
                         }
                         let icon = '';
-                        if (label === 'Finansal Etki') icon = 'fa-hand-holding-dollar';
-                        else if (label === 'Veri Bütünlüğü') icon = 'fa-shield-halved';
-                        else if (label === 'Ağ Performansı') icon = 'fa-network-wired';
-                        else if (label === 'İtibar Puanı') icon = 'fa-users';
-                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
+                        if (label === 'Financial Impact') icon = 'fa-hand-holding-dollar';
+                        else if (label === 'Data Integrity') icon = 'fa-shield-halved';
+                        else if (label === 'Network Performance') icon = 'fa-network-wired';
+                        else if (label === 'Reputation Score') icon = 'fa-users';
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('en-US')}${unit}</div>`;
                     };
-                    if (changes.financialImpact !== undefined && changes.financialImpact !== 0) metricsHTML += formatChange('Finansal Etki', changes.financialImpact, '₺');
-                    if (changes.dataIntegrity !== undefined && changes.dataIntegrity !== 0) metricsHTML += formatChange('Veri Bütünlüğü', changes.dataIntegrity, '%');
-                    if (changes.networkPerf !== undefined && changes.networkPerf !== 0) metricsHTML += formatChange('Ağ Performansı', changes.networkPerf, '%');
-                    if (changes.reputation !== undefined && changes.reputation !== 0) metricsHTML += formatChange('İtibar Puanı', changes.reputation, '');
-                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">Bu kararların metriklere doğrudan bir etkisi olmadı.</p>';
+                    if (changes.financialImpact !== undefined && changes.financialImpact !== 0) metricsHTML += formatChange('Financial Impact', changes.financialImpact, '$');
+                    if (changes.dataIntegrity !== undefined && changes.dataIntegrity !== 0) metricsHTML += formatChange('Data Integrity', changes.dataIntegrity, '%');
+                    if (changes.networkPerf !== undefined && changes.networkPerf !== 0) metricsHTML += formatChange('Network Performance', changes.networkPerf, '%');
+                    if (changes.reputation !== undefined && changes.reputation !== 0) metricsHTML += formatChange('Reputation Score', changes.reputation, '');
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on metrics.</p>';
                     return metricsHTML;
                 },
                 updateStatusBar() {
@@ -945,7 +946,7 @@
                     this.elements.statusBar.dataIntegrity.textContent = `${Math.max(0, s.dataIntegrity)}%`;
                     this.elements.statusBar.networkPerf.textContent = `${Math.max(0, s.networkPerf)}%`;
                     this.elements.statusBar.reputation.textContent = Math.max(0, s.reputation);
-                    this.elements.statusBar.financialImpact.textContent = `₺${s.financialImpact.toLocaleString('tr-TR')}`;
+                    this.elements.statusBar.financialImpact.textContent = `$${s.financialImpact.toLocaleString('en-US')}`;
                 },
                 showSection(sectionId) {
                     this.elements.sections.forEach(section => { section.style.display = 'none'; });
@@ -957,7 +958,7 @@
                         this.state.currentTurnDecisions = [];
                         this.elements.continueButton.style.display = 'none';
                     } else {
-                        console.error('Bölüm bulunamadı:', sectionId);
+                        console.error('Section not found:', sectionId);
                         this.showFinalReport();
                     }
                 },
@@ -970,7 +971,6 @@
                     buttons.forEach(button => {
                         const decisionId = button.dataset.decision;
                         const info = this.decisionInfo[decisionId];
-                        const alreadySelectedInCurrentTurn = this.state.currentTurnDecisions.some(d => d.clue === info.clue);
                         if (info && this.state[info.clue]) {
                             button.disabled = true;
                         } else {
@@ -986,7 +986,7 @@
                     document.getElementById('statusBar').style.display = 'none';
                     this.elements.sections.forEach(section => { section.style.display = 'none'; });
                     const finalSection = document.getElementById('finalSection');
-                    if (!finalSection) { console.error("Final bölümü HTML'de bulunamadı!"); return; }
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
                     finalSection.style.display = 'flex';
                     const badge = document.getElementById('performance-badge');
                     const metricsContainer = document.getElementById('finalMetricsContainer');
@@ -995,7 +995,7 @@
                     const scoreBreakdownList = document.getElementById('score-breakdown');
                     let scoreBreakdown = {};
                     let totalScore = 40;
-                    scoreBreakdown['Başlangıç Puanı'] = { value: 40, class: 'score-neutral' };
+                    scoreBreakdown['Starting Score'] = { value: 40, class: 'score-neutral' };
                     let decisionQualityScore = 0;
                     this.state.decisionHistory.forEach(decision => {
                         if (decision.impactType === 'Negative') { decisionQualityScore -= 10; }
@@ -1003,40 +1003,40 @@
                     });
                     if (decisionQualityScore !== 0) {
                         totalScore += decisionQualityScore;
-                        scoreBreakdown['Karar Kalitesi (Ceza/Ödül)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
+                        scoreBreakdown['Decision Quality (Penalty/Reward)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
                     }
                     const finalDataIntegrity = Math.max(0, this.score.dataIntegrity);
                     const finalNetworkPerf = Math.max(0, this.score.networkPerf);
                     const finalReputation = Math.max(0, this.score.reputation);
                     const finalFinancialImpact = this.score.financialImpact;
-                    if (finalDataIntegrity >= 95) { totalScore += 10; scoreBreakdown['Veri Bütünlüğü Koruması (Mükemmel)'] = { value: 10, class: 'score-plus' }; }
-                    else if (finalDataIntegrity < 80) { totalScore -= 15; scoreBreakdown['Veri Bütünlüğü Kaybı (Ciddi)'] = { value: -15, class: 'score-minus' }; }
-                    if (finalNetworkPerf >= 95) { totalScore += 5; scoreBreakdown['Ağ Performansı (Mükemmel)'] = { value: 5, class: 'score-plus' }; }
-                    else if (finalNetworkPerf < 80) { totalScore -= 10; scoreBreakdown['Ağ Performansı Kaybı (Ciddi)'] = { value: -10, class: 'score-minus' }; }
-                    if (finalReputation >= 90) { totalScore += 10; scoreBreakdown['Etik ve Profesyonellik (Yüksek)'] = { value: 10, class: 'score-plus' }; }
-                    else if (finalReputation < 70) { totalScore -= 20; scoreBreakdown['İtibar Kaybı (Ciddi)'] = { value: -20, class: 'score-minus' }; }
-                    if (finalFinancialImpact <= 10000) { totalScore += 10; scoreBreakdown['Maliyet Yönetimi (Etkili)'] = { value: 10, class: 'score-plus' }; }
-                    else if (finalFinancialImpact > 100000) { totalScore -= 15; scoreBreakdown['Yüksek Finansal Maliyet'] = { value: -15, class: 'score-minus' }; }
-                    if (this.state.w7ReportFix) { totalScore += 10; scoreBreakdown['Kritik Karar: Kapsamlı Raporlama'] = { value: 10, class: 'score-plus' }; }
-                    if (this.state.w6RceWhoami || this.state.w6RceTime) { totalScore += 5; scoreBreakdown['Kritik Kanıt: Zararsız RCE'] = { value: 5, class: 'score-plus' }; }
+                    if (finalDataIntegrity >= 95) { totalScore += 10; scoreBreakdown['Data Integrity Protection (Excellent)'] = { value: 10, class: 'score-plus' }; }
+                    else if (finalDataIntegrity < 80) { totalScore -= 15; scoreBreakdown['Data Integrity Loss (Severe)'] = { value: -15, class: 'score-minus' }; }
+                    if (finalNetworkPerf >= 95) { totalScore += 5; scoreBreakdown['Network Performance (Excellent)'] = { value: 5, class: 'score-plus' }; }
+                    else if (finalNetworkPerf < 80) { totalScore -= 10; scoreBreakdown['Network Performance Loss (Severe)'] = { value: -10, class: 'score-minus' }; }
+                    if (finalReputation >= 90) { totalScore += 10; scoreBreakdown['Ethics & Professionalism (High)'] = { value: 10, class: 'score-plus' }; }
+                    else if (finalReputation < 70) { totalScore -= 20; scoreBreakdown['Reputation Loss (Severe)'] = { value: -20, class: 'score-minus' }; }
+                    if (finalFinancialImpact <= 10000) { totalScore += 10; scoreBreakdown['Cost Management (Effective)'] = { value: 10, class: 'score-plus' }; }
+                    else if (finalFinancialImpact > 100000) { totalScore -= 15; scoreBreakdown['High Financial Cost'] = { value: -15, class: 'score-minus' }; }
+                    if (this.state.w7ReportFix) { totalScore += 10; scoreBreakdown['Critical Decision: Comprehensive Reporting'] = { value: 10, class: 'score-plus' }; }
+                    if (this.state.w6RceWhoami || this.state.w6RceTime) { totalScore += 5; scoreBreakdown['Critical Proof: Harmless RCE'] = { value: 5, class: 'score-plus' }; }
                     const timeSpent = this.timer.total - this.timer.remaining;
-                    if (timeSpent <= 300) { totalScore += 5; scoreBreakdown['Hızlı Müdahale Bonusu'] = { value: 5, class: 'score-plus' }; }
-                    else if (timeSpent > 500) { totalScore -= 5; scoreBreakdown['Zaman Yönetimi Cezası'] = { value: -5, class: 'score-minus' }; }
+                    if (timeSpent <= 180) { totalScore += 5; scoreBreakdown['Fast Completion Bonus'] = { value: 5, class: 'score-plus' }; }
+                    else if (timeSpent > 280) { totalScore -= 5; scoreBreakdown['Time Management Penalty'] = { value: -5, class: 'score-minus' }; }
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore)));
                     this.state.totalScore = totalScore;
                     let badgeInfo = {};
-                    if (totalScore >= 90) { badgeInfo = { text: 'SİBER KAHRAMAN', color: 'var(--accent-green)' }; }
-                    else if (totalScore >= 70) { badgeInfo = { text: 'UZMAN PENETRASYON TEST UZMANI', color: 'var(--accent-blue)' }; }
-                    else if (totalScore >= 40) { badgeInfo = { text: 'DİKKATLİ TESTÇİ', color: 'var(--accent-yellow)' }; }
-                    else { badgeInfo = { text: 'ETİK SINIRLARI AŞAN', color: '#ff5555' }; }
+                    if (totalScore >= 90) { badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' }; }
+                    else if (totalScore >= 70) { badgeInfo = { text: 'EXPERT PENTESTER', color: 'var(--accent-blue)' }; }
+                    else if (totalScore >= 40) { badgeInfo = { text: 'CAREFUL TESTER', color: 'var(--accent-yellow)' }; }
+                    else { badgeInfo = { text: 'ETHICS BREAKER', color: '#ff5555' }; }
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
                     metricsContainer.innerHTML = `
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div><div class="label">Veri Bütünlüğü</div><div class="value">${finalDataIntegrity}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-network-wired"></i></div><div class="label">Ağ Performansı</div><div class="value">${finalNetworkPerf}%</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Finansal Etki</div><div class="value">₺${finalFinancialImpact.toLocaleString('tr-TR')}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">İtibar Puanı</div><div class="value">${finalReputation}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div><div class="label">Data Integrity</div><div class="value">${finalDataIntegrity}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-network-wired"></i></div><div class="label">Network Performance</div><div class="value">${finalNetworkPerf}%</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Financial Impact</div><div class="value">$${finalFinancialImpact.toLocaleString('en-US')}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Reputation Score</div><div class="value">${finalReputation}/100</div></div>
                     `;
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
                         let liClass = decision.impactType === 'Positive' ? 'positive' : (decision.impactType === 'Negative' ? 'negative' : 'neutral');
@@ -1044,17 +1044,17 @@
                     }).join('');
                     scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
                         const sign = item.value > 0 ? '+' : '';
-                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
                     let debriefHTML = '';
-                    if (badgeInfo.text === 'SİBER KAHRAMAN') {
-                        debriefHTML += `<p><strong>Olağanüstü Başarı!</strong> Bir sızma testi uzmanı olarak, web uygulamasındaki tüm zafiyet zincirini (IDOR, yetki atlama, dosya yükleme bypass, RCE) etik sınırlar içinde, sisteme en az zararı vererek tespit edip kanıtladınız. Kapsamlı ve eyleme geçirilebilir raporunuz sayesinde, şirket savunmasını kökten güçlendirdi. Yaptığınız iş, hem teknik beceri hem de etik mükemmelliğin bir örneği olarak kayda geçti.</p>`;
-                    } else if (badgeInfo.text === 'UZMAN PENETRASYON TEST UZMANI') {
-                        debriefHTML += `<p><strong>Başarılı Bir Test!</strong> Uygulamanın en kritik zafiyetlerini (IDOR, yetki atlama vb.) tespit ettiniz ve kanıtladınız. Bazı küçük riskler alsanız da genel olarak etik sınırlar içinde kaldınız ve bulgularınızı etkili bir şekilde raporladınız. Bu rapor, şirketin savunmasını güçlendirmek için çok değerli bir kaynak olacak.</p>`;
-                    } else if (badgeInfo.text === 'DİKKATLİ TESTÇİ') {
-                        debriefHTML += `<p><strong>Öğrenilen Önemli Dersler:</strong> Zafiyetleri bulabilseniz de, bazı aşamalarda gereksiz riskler aldınız veya raporlama sürecinizde eksik kaldınız. Bu, testin değerini bir miktar düşürdü ve itibarınıza zarar verdi. Bu deneyim, gelecekteki testleriniz için daha dikkatli ve kapsamlı bir yaklaşım benimsemeniz gerektiğini gösteriyor.</p>`;
+                    if (badgeInfo.text === 'CYBER HERO') {
+                        debriefHTML += `<p><strong>Outstanding Success!</strong> As a penetration tester, you identified and proved the entire vulnerability chain (IDOR, privilege escalation, file upload bypass, RCE) within ethical limits, causing minimal harm to the system. Your comprehensive and actionable report radically strengthened the company's defenses. Your work is recorded as an example of both technical skill and ethical excellence.</p>`;
+                    } else if (badgeInfo.text === 'EXPERT PENTESTER') {
+                        debriefHTML += `<p><strong>Successful Test!</strong> You identified and proved the application's most critical vulnerabilities (IDOR, privilege escalation, etc.). Although you took some minor risks, you generally stayed within ethical boundaries and reported your findings effectively. This report will be a very valuable resource for strengthening the company's defenses.</p>`;
+                    } else if (badgeInfo.text === 'CAREFUL TESTER') {
+                        debriefHTML += `<p><strong>Important Lessons Learned:</strong> Although you were able to find the vulnerabilities, you took unnecessary risks at some stages or were lacking in your reporting process. This slightly diminished the value of the test and harmed your reputation. This experience shows that you need to adopt a more careful and comprehensive approach in your future tests.</p>`;
                     } else {
-                        debriefHTML += `<p><strong>Etik Sınırlar Aşıldı:</strong> Ne yazık ki, test sırasında etik sınırları aştınız. Agresif taramalar, veri çekme girişimleri veya kamuoyuna açıklama gibi riskli davranışlar, projenin amacını aşarak şirkete ciddi finansal ve itibar kaybına neden oldu. Bir sızma testi uzmanının en önemli görevi, güvenliği iyileştirmek için çalışmaktır, zarar vermek için değil.</p>`;
+                        debriefHTML += `<p><strong>Ethical Boundaries Crossed:</strong> Unfortunately, you crossed ethical boundaries during the test. Risky behaviors such as aggressive scans, data exfiltration attempts, or public disclosure went beyond the project's purpose, causing serious financial and reputational loss to the company. The most important duty of a penetration tester is to work to improve security, not to cause harm.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
                     this.saveLeaderboard(totalScore);
@@ -1069,7 +1069,7 @@
                         this.updateTimerUI();
                         if (this.timer.remaining <= 0) {
                             this.stopGlobalTimer();
-                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            alert("Time's up! Generating report.");
                             this.showFinalReport();
                         }
                     }, 1000);
@@ -1094,7 +1094,7 @@
                     this.elements.leaderboard.overlay.style.display = 'none';
                 },
                 async saveLeaderboard(finalScore) {
-                    const name = localStorage.getItem('playerName') || 'Anonim';
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
                     const payload = {
                         scenario: 'v6-pentest-chain',
                         name: name.toString().slice(0, 40),
@@ -1115,9 +1115,9 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
-                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                        if (!res.ok) throw new Error('API request failed: ' + res.status);
                     } catch(e) {
-                        console.warn("API'ye ulaşılamadı. Puan yerel olarak saklanıyor.");
+                        console.warn("Could not reach API. Score is being saved locally.");
                         const key = 'leaderboard-v6-pentest-chain';
                         const arr = JSON.parse(localStorage.getItem(key) || '[]');
                         arr.push(payload);
@@ -1128,29 +1128,29 @@
                 async loadLeaderboard() {
                     const tbody = this.elements.leaderboard.body;
                     const key = 'leaderboard-v6-pentest-chain';
-                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
                     let rows = [];
                     try {
                         const res = await fetch('/api/leaderboard?scenario=v6-pentest-chain', { method:'GET' });
-                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                        if (!res.ok) throw new Error('API request failed: ' + res.status);
                         const data = await res.json();
                         rows = Array.isArray(data) ? data : [];
                     } catch(e) {
-                        console.warn("API'ye ulaşılamadı. Liderlik tablosu yerelden yükleniyor.");
+                        console.warn("Could not reach API. Leaderboard is being loaded from local storage.");
                         const arr = JSON.parse(localStorage.getItem(key) || '[]');
                         rows = arr.map(x => ({ name: x.name, score: x.score, timestamp: x.timestamp }));
                     }
                     if (!rows.length) {
-                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="4">No records found yet.</td></tr>`;
                         return;
                     }
                     rows.sort((a,b)=> b.score - a.score);
                     tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
                         <tr>
                             <td>${i+1}</td>
-                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
                             <td>${r.score}</td>
-                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('en-US') : '-'}</td>
                         </tr>
                     `).join('');
                 }
