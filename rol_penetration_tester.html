@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sızma Testi Uzmanı | Senaryo Seçimi</title>
+<title>Penetration Tester | Scenario Selection</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
@@ -11,9 +11,9 @@
         --dark-blue-bg: #0A0A1E; --main-accent: #00E6FF; --text-color-light: #E0E0E0; --text-color-medium: #A0A0A0;
         --card-bg: rgba(20, 20, 40, 0.85); --border-glow: rgba(0, 230, 255, 0.5); --card-hover-bg: rgba(30, 30, 60, 0.95);
         --card-hover-border: rgba(0, 230, 255, 0.8); --shadow-strong: rgba(0, 230, 255, 0.4); --title-glow-color: rgba(0, 230, 255, 0.4);
-        --difficulty-easy: #a7ed89; /* Yeşil */
-        --difficulty-medium: #f1fa8c; /* Sarı */
-        --difficulty-high: #ff5555;   /* Kırmızı */
+        --difficulty-easy: #a7ed89; /* Green */
+        --difficulty-medium: #f1fa8c; /* Yellow */
+        --difficulty-high: #ff5555;   /* Red */
         --focus-color: var(--main-accent);
     }
     body {
@@ -71,39 +71,39 @@
 <body>
     <div class="grid-bg"></div>
     <div class="container">
-        <h1>Simülasyonu Seç</h1>
-        <p class="subtitle">Sızma Testi Uzmanı olarak, sistemleri düşman gözüyle test edeceksin. Zafiyetleri bul, bunları istismar et ve güvenliği güçlendirmek için raporla.</p>
+        <h1>Select Simulation</h1>
+        <p class="subtitle">As a Penetration Tester, you will test systems through the eyes of an adversary. Find vulnerabilities, exploit them, and report your findings to strengthen security.</p>
         <div class="scenarios-grid">
             <a href="cyberscenarios15/index.html" class="scenario-card">
-                <img src="pentest_card.png" alt="Bir sızma testi simülasyonu için temsili görsel">
+                <img src="pentest_card.png" alt="Representative image for a penetration test simulation">
                 <div class="content">
-                    <h2>Sızma Testi Simülasyonu</h2>
-                    <p>Web uygulamasında keşfettiğin bir zafiyeti kullanarak sisteme sızmaya çalış. Yetkilerini yükselt ve hedefe ulaşmak için adımları takip et.</p>
+                    <h2>Penetration Test Simulation</h2>
+                    <p>Attempt to infiltrate the system using a vulnerability you discovered in the web application. Escalate your privileges and follow the steps to reach the objective.</p>
                     <div class="card-info">
                         <span class="difficulty-medium">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Orta
+                            Difficulty: Medium
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-search"></i>
-                            Odak: Zafiyet Tespiti
+                            Focus: Vulnerability Discovery
                         </span>
                     </div>
                 </div>
             </a>
             <a href="cyberscenarios16/index.html" class="scenario-card">
-                <img src="vpn_pentest_card.png" alt="VPN ve iç ağ sızma testi için temsili görsel">
+                <img src="vpn_pentest_card.png" alt="Representative image for a VPN and internal network penetration test">
                 <div class="content">
-                    <h2>VPN ve İç Ağ Sızma Testi Simülasyonu</h2>
-                    <p>VPN bağlantısında bulunan bir zafiyeti kullanarak iç ağa sız. Ağdaki diğer cihazları keşfet, yan hareketler yaparak hassas verilere ulaş.</p>
+                    <h2>VPN & Internal Network Pentest Simulation</h2>
+                    <p>Infiltrate the internal network using a vulnerability found in the VPN connection. Discover other devices on the network and perform lateral movements to access sensitive data.</p>
                     <div class="card-info">
                         <span class="difficulty-high">
                             <i class="fas fa-signal"></i>
-                            Zorluk: Yüksek
+                            Difficulty: High
                         </span>
                         <span class="focus-color">
                             <i class="fas fa-network-wired"></i>
-                            Odak: Ağ İhlali
+                            Focus: Network Breach
                         </span>
                     </div>
                 </div>
