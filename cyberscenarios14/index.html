@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberScenario v5: Sanallaştırma Ağ Sorunu Simülasyonu</title>
+    <title>CyberScenario v5: Virtualization Network Issue Simulation</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dracula.min.css">
@@ -622,45 +622,45 @@
 <body>
     <div class="container">
         <div id="introSection" class="centered-page">
-            <h1><i class="fa-solid fa-server"></i> Sanallaştırma Ağ Sorunu Simülasyonu</h1>
-            <p style="max-width: 600px;">Hoş geldiniz! Şirketinizin kritik e-ticaret platformu, sanallaştırma altyapınızda barındırılıyor ve ciddi ağ sorunları yaşıyor. Müşteri şikayetleri artıyor, gecikme ve paket kaybı anormal seviyelerde. Siz, kıdemli bir Network ve Sanallaştırma Mühendisi olarak, bu karmaşık sorunu çözmek ve sistemin kararlılığını sağlamakla görevlisiniz.</p>
-            <img src="https://i.imgur.com/kS942y9.png" alt="Sanallaştırma ortamı ve ağ sorunu görseli" class="scenario-image">
+            <h1><i class="fa-solid fa-server"></i> Virtualization Network Issue Simulation</h1>
+            <p style="max-width: 600px;">Welcome! Your company's critical e-commerce platform, hosted on your virtualization infrastructure, is experiencing severe network issues. Customer complaints are increasing, and latency and packet loss are at abnormal levels. As a senior Network and Virtualization Engineer, you are tasked with solving this complex problem and ensuring system stability.</p>
+            <img src="https://i.imgur.com/kS942y9.png" alt="Virtualization environment and network issue visual" class="scenario-image">
             <div class="intro-info-grid">
                 <div class="intro-roles-container">
-                    <h3><i class="fa-solid fa-people-arrows"></i> Simülasyon Rolünüz</h3>
+                    <h3><i class="fa-solid fa-people-arrows"></i> Your Simulation Role</h3>
                     <ul>
-                        <li><span class="icon"><i class="fa-solid fa-user-gear"></i></span><div><strong>Sizin Rolünüz: Kıdemli Network ve Sanallaştırma Mühendisi</strong> <small>Sanallaştırma altyapısının ağ performansından sorumlu kıdemli mühendis olarak, sorunun kaynağını bulup kalıcı olarak çözmelisiniz.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-cloud"></i></span><div><strong>Sanallaştırma Platformu</strong> <small>VMware ESXi, vCenter, sanal switchler (vSwitch) ve port grupları dahil olmak üzere tüm altyapınız.</small></div></li>
-                        <li><span class="icon"><i class="fa-solid fa-globe"></i></span><div><strong>Fiziksel Ağ Altyapısı</strong> <small>Sunucuların bağlı olduğu fiziksel switchler, kablolama ve routerlar.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-user-gear"></i></span><div><strong>Your Role: Senior Network and Virtualization Engineer</strong> <small>As the senior engineer responsible for the network performance of the virtualization infrastructure, you must find the source of the problem and solve it permanently.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-cloud"></i></span><div><strong>Virtualization Platform</strong> <small>Your entire infrastructure, including VMware ESXi, vCenter, virtual switches (vSwitch), and port groups.</small></div></li>
+                        <li><span class="icon"><i class="fa-solid fa-globe"></i></span><div><strong>Physical Network Infrastructure</strong> <small>The physical switches, cabling, and routers to which the servers are connected.</small></div></li>
                     </ul>
                 </div>
                 <div class="intro-metrics-container">
-                    <h3><i class="fa-solid fa-chart-line"></i> Temel Metrikler</h3>
+                    <h3><i class="fa-solid fa-chart-line"></i> Key Metrics</h3>
                     <ul>
-                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-signal"></i></span><div><strong>Hizmet Kalitesi (QoS)</strong> <small>Müşteri deneyimini etkileyen gecikme ve paket kaybı oranı. (Başlangıç: Kritik)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-microchip"></i></span><div><strong>Kaynak Kullanımı</strong> <small>Fiziksel hostun ağ, CPU, RAM gibi kaynaklarının efektif kullanım oranı. (Başlangıç: Anormal)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>Müşteri İtibarı</strong> <small>Şirketin güvenilirliğine verilen zarar. (Başlangıç: Düşük)</small></div></li>
-                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Maliyet</strong> <small>Hizmet kesintileri ve olası müşteri kaybının finansal karşılığı. (Başlangıç: Artıyor)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-red);"><i class="fa-solid fa-signal"></i></span><div><strong>Quality of Service (QoS)</strong> <small>The rate of latency and packet loss affecting customer experience. (Initial: Critical)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-yellow);"><i class="fa-solid fa-microchip"></i></span><div><strong>Resource Utilization</strong> <small>The effective utilization rate of resources like network, CPU, RAM on the physical host. (Initial: Abnormal)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></span><div><strong>Customer Reputation</strong> <small>Damage to the company's credibility. (Initial: Low)</small></div></li>
+                        <li><span class="icon" style="color: var(--accent-green);"><i class="fa-solid fa-hand-holding-dollar"></i></span><div><strong>Cost</strong> <small>The financial equivalent of service outages and potential customer loss. (Initial: Increasing)</small></div></li>
                     </ul>
                 </div>
             </div>
-            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Simülasyonu Başlat</button>
+            <button class="btn btn-start" id="startButton"><i class="fa-solid fa-play"></i> Start Simulation</button>
         </div>
 
         <div id="intermissionSection" class="centered-page" style="display: none;">
             <h2 id="intermissionTitle"></h2>
             <div id="intermissionDetails">
             </div>
-            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Devam Et</button>
+            <button class="btn btn-continue" id="continueButton" style="margin-top: 30px; display: none;"><i class="fa-solid fa-forward"></i> Continue</button>
         </div>
 
         <div id="gameContainer" style="display: none;">
             <div id="statusBar">
-                <div class="metric"><span><i class="fa-solid fa-signal"></i> Hizmet Kalitesi</span><div class="value" id="status-qos">Kritik</div></div>
-                <div class="metric"><span><i class="fa-solid fa-microchip"></i> Kaynak Kullanımı</span><div class="value" id="status-resource">Anormal</div></div>
-                <div class="metric"><span><i class="fa-solid fa-users"></i> Müşteri İtibarı</span><div class="value" id="status-reputation">Düşük</div></div>
-                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Maliyet</span><div class="value" id="status-cost">Artıyor</div></div>
-                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Kalan Süre</span><div class="value" id="status-remaining">05:00</div></div>
+                <div class="metric"><span><i class="fa-solid fa-signal"></i> Quality of Service</span><div class="value" id="status-qos">Critical</div></div>
+                <div class="metric"><span><i class="fa-solid fa-microchip"></i> Resource Utilization</span><div class="value" id="status-resource">Abnormal</div></div>
+                <div class="metric"><span><i class="fa-solid fa-users"></i> Customer Reputation</span><div class="value" id="status-reputation">Low</div></div>
+                <div class="metric"><span><i class="fa-solid fa-hand-holding-dollar"></i> Cost</span><div class="value" id="status-cost">Increasing</div></div>
+                <div class="metric" id="status-timer"><span><i class="fa-solid fa-stopwatch"></i> Time Remaining</span><div class="value" id="status-remaining">10:00</div></div>
             </div>
             <div id="game-content">
             </div>
@@ -670,22 +670,22 @@
     <div class="lb-overlay" id="leaderboardOverlay" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
         <div class="lb-modal">
             <div class="lb-header">
-                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Liderlik Tablosu</h2>
-                <span class="lb-sub">Ağ Sorunu Simülasyonu En İyileri</span>
+                <h2 id="lbTitle" class="lb-title"><i class="fa-solid fa-trophy"></i> Leaderboard</h2>
+                <span class="lb-sub">Network Issue Simulation Top Players</span>
             </div>
             <div class="lb-tablewrap">
                 <table class="lb-table" id="leaderboardTable">
                     <thead>
-                        <tr><th>#</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Score</th><th>Date</th></tr>
                     </thead>
                     <tbody id="leaderboardBody">
-                        <tr><td colspan="4">Yükleniyor…</td></tr>
+                        <tr><td colspan="4">Loading…</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="lb-actions">
-                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Yenile</button>
-                <button class="lb-close" id="lbCloseBtn">Kapat</button>
+                <button class="lb-refresh" id="lbRefreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+                <button class="lb-close" id="lbCloseBtn">Close</button>
             </div>
         </div>
     </div>
@@ -694,7 +694,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             window.game = {
-                score: { qos: 0, resource: 0, reputation: 0, cost: 0 }, // 0: Kritik/Anormal/Düşük, 1: Orta, 2: Normal/İyi
+                score: { qos: 0, resource: 0, reputation: 0, cost: 0 }, // 0: Critical/Abnormal/Low, 1: Medium, 2: Normal/Good
                 state: {
                     currentSectionId: 'start',
                     basicDiagnosisDone: false,
@@ -722,36 +722,36 @@
                 elements: {},
                 
                 timer: {
-                    total: 600, // 10 dakika
+                    total: 600, // 10 minutes
                     remaining: 600,
                     intervalId: null,
                     running: false
                 },
                 
                 decisionInfo: {
-                    'd1-triage-ping-traceroute': { title: "Temel Tanılama Testleri", text: "Sorunlu VM'in içinden ping ve traceroute komutlarıyla gecikmeyi manuel olarak doğruladınız. Sorunun VM'den dış ağa çıkışta başladığını teyit ettiniz.", strat: "Doğru teşhis için temel komutlar her zaman ilk adımdır.", changes: { qos: 1, resource: 0, reputation: 0, cost: -500 }, impact: 'Positive', clue: 'basicDiagnosisDone' },
-                    'd1-triage-physical-switch': { title: "Fiziksel Switch Kontrolü", text: "VM'in bağlı olduğu fiziksel switch portu üzerindeki istatistikleri (CRC hataları, paket düşüşleri) kontrol ettiniz. Fiziksel katmanda bir sorun olmadığını belirlediniz. Sorun sanallaştırma katmanında olabilir.", strat: "Problemin kapsamını daraltmak için fizikselden mantıksal katmana doğru ilerlemek esastır.", changes: { qos: 0, resource: 0, reputation: 0, cost: -500 }, impact: 'Neutral', clue: 'physicalSwitchChecked' },
-                    'd1-triage-virtual-switch': { title: "Sanal Switch Kontrolü", text: "Sanallaştırma yönetim arayüzünden (vCenter/Hyper-V Manager), sanal anahtarın port gruplarındaki paket düşüşlerini incelediniz ve kritik VM'in bağlı olduğu portta ciddi paket düşüşleri olduğunu tespit ettiniz. Sanal anahtar katmanında bir darboğaz var.", strat: "Sorunun sanallaştırma katmanında olduğunu erken teşhis etmek, doğru yolda ilerlemenizi sağlar.", changes: { qos: -1, resource: -1, reputation: -1, cost: -1000 }, impact: 'Negative', clue: 'virtualSwitchChecked' },
+                    'd1-triage-ping-traceroute': { title: "Basic Diagnostic Tests", text: "You manually verified the latency from within the affected VM using ping and traceroute commands. You confirmed that the problem starts on the egress path from the VM to the external network.", strat: "Basic commands are always the first step for accurate diagnosis.", changes: { qos: 1, resource: 0, reputation: 0, cost: -500 }, impact: 'Positive', clue: 'basicDiagnosisDone' },
+                    'd1-triage-physical-switch': { title: "Physical Switch Check", text: "You checked the statistics (CRC errors, packet drops) on the physical switch port connected to the VM. You determined there is no issue at the physical layer. The problem might be in the virtualization layer.", strat: "To narrow down the problem's scope, it's essential to proceed from the physical to the logical layer.", changes: { qos: 0, resource: 0, reputation: 0, cost: -500 }, impact: 'Neutral', clue: 'physicalSwitchChecked' },
+                    'd1-triage-virtual-switch': { title: "Virtual Switch Check", text: "From the virtualization management interface (vCenter/Hyper-V Manager), you examined packet drops in the virtual switch's port groups and found significant drops on the port connected to the critical VM. There is a bottleneck at the virtual switch layer.", strat: "Diagnosing the problem at the virtualization layer early keeps you on the right track.", changes: { qos: -1, resource: -1, reputation: -1, cost: -1000 }, impact: 'Negative', clue: 'virtualSwitchChecked' },
                     
-                    'd2-analysis-promiscuous': { title: "Sanal Anahtarda Promiscuous Mode ve PCAP", text: "Sanal anahtar üzerinde Promiscuous Mode etkinleştirerek, ilgili fiziksel hosttaki tüm sanal makinelerin trafik paketlerini yakaladınız. Yüksek oranda anormal trafik üreten bir sanal makineyi tespit ettiniz.", strat: "Promiscuous mode, sanal ağ trafiğini detaylı incelemek için güçlü bir tekniktir. Saldırının kaynağını bulmada kritik rol oynar.", changes: { qos: -1, resource: -1, cost: -5000 }, impact: 'Neutral', clue: 'promiscuousModeUsed' },
-                    'd2-analysis-mirroring': { title: "Traffic Mirroring (SPAN)", text: "Sanal anahtarın uplink portunu fiziksel ağdaki bir analiz portuna yansıtıp paketleri Wireshark ile harici bir makinede analiz ettiniz. Yakalanan paketler, aynı sanal makineden gelen yoğun ve anlamsız trafik olduğunu doğruladı.", strat: "Dış ağ analiz araçlarını kullanarak sanal ortam trafiğini gözlemlemek, kör noktaları ortadan kaldırır.", changes: { qos: -1, resource: -1, cost: -7000 }, impact: 'Neutral', clue: 'trafficMirroringUsed' },
-                    'd2-analysis-cpu': { title: "CPU Kaynak Tahsisini İnceleme", text: "Fiziksel sunucunun CPU kullanımının normal görünmesine rağmen, sanal anahtarın ağ trafiğini işlemek için anormal derecede CPU tükettiğini keşfettiniz. Bu, sorunun sanal anahtarın kendisinden değil, üzerine binen yükten kaynaklandığını gösterdi.", strat: "Darboğaz analizi, gizli kaynak tüketimini ortaya çıkarır. Sadece toplam kullanımı değil, bileşenlerin tüketimini de incelemek önemlidir.", changes: { qos: -1, resource: -1, cost: -3000 }, impact: 'Neutral', clue: 'cpuAnalysisDone' },
+                    'd2-analysis-promiscuous': { title: "Promiscuous Mode and PCAP on Virtual Switch", text: "By enabling Promiscuous Mode on the virtual switch, you captured traffic packets from all virtual machines on the respective physical host. You identified a virtual machine generating a high volume of abnormal traffic.", strat: "Promiscuous mode is a powerful technique for detailed inspection of virtual network traffic. It plays a critical role in finding the source of an attack.", changes: { qos: -1, resource: -1, cost: -5000 }, impact: 'Neutral', clue: 'promiscuousModeUsed' },
+                    'd2-analysis-mirroring': { title: "Traffic Mirroring (SPAN)", text: "You mirrored the virtual switch's uplink port to an analysis port on the physical network and analyzed the packets with Wireshark on an external machine. The captured packets confirmed intense and meaningless traffic coming from the same virtual machine.", strat: "Observing virtual environment traffic using external network analysis tools eliminates blind spots.", changes: { qos: -1, resource: -1, cost: -7000 }, impact: 'Neutral', clue: 'trafficMirroringUsed' },
+                    'd2-analysis-cpu': { title: "Reviewing CPU Resource Allocation", text: "Despite the physical server's CPU usage appearing normal, you discovered that the virtual switch was consuming an abnormal amount of CPU to process network traffic. This indicated the problem was not with the virtual switch itself, but the load it was under.", strat: "Bottleneck analysis reveals hidden resource consumption. It's important to examine not just total usage, but the consumption of individual components.", changes: { qos: -1, resource: -1, cost: -3000 }, impact: 'Neutral', clue: 'cpuAnalysisDone' },
                     
-                    'd3-threat-analysis-pcap': { title: "Paket İçeriği Analizi (Wireshark)", text: "Yakaladığınız ağ paketlerini Wireshark'ta filtreler (tcp.flags.syn==1) kullanarak incelediniz. Bir sanal makinenin yoğun bir şekilde anlamsız SYN paketleri gönderdiğini ve ağda DoS benzeri bir durum yarattığını tespit ettiniz.", strat: "Derinlemesine paket analizi, saldırının tipini ve yöntemini kesin olarak belirlemenizi sağlar.", changes: { qos: -2, resource: -2, reputation: -2, cost: -10000 }, impact: 'Negative', clue: 'pcapAnalyzed' },
-                    'd3-threat-analysis-source': { title: "Kaynak Tespiti", text: "Anormal trafiği üreten kaynak IP ve MAC adresini kesin olarak belirlediniz ve bu adresin hangi sanal makineye (VM-Gürültücü) ait olduğunu buldunuz. Saldırının kaynağı artık kesin olarak belli.", strat: "Sorunu çözmek için kaynağı kesin olarak belirlemek hayati önem taşır. Yanlış hedefe müdahale daha büyük sorunlara yol açabilir.", changes: { qos: -1, resource: -1, cost: -2000 }, impact: 'Negative', clue: 'sourceIdentified' },
-                    'd3-threat-analysis-logs': { title: "Log Korelasyonu", text: "Tespit ettiğiniz kaynak IP'sini SIEM sisteminizde aratarak, bu IP'ye ait bir cihazın yakın zamanda bir güvenlik uyarısı tetikleyip tetiklemediğini veya normalin dışında bir davranış sergileyip sergilemediğini kontrol ettiniz. Bu, sorunun sadece bir performans sorunu değil, potansiyel bir güvenlik olayı olduğunu gösterdi.", strat: "Farklı sistem loglarını ilişkilendirmek, olayın tam resmini görmenizi sağlar ve olası bir siber saldırıya işaret edebilir.", changes: { qos: -1, reputation: -2, cost: -5000 }, impact: 'Negative', clue: 'logCorrelated' },
+                    'd3-threat-analysis-pcap': { title: "Packet Content Analysis (Wireshark)", text: "You examined the captured network packets in Wireshark using filters (like tcp.flags.syn==1). You identified a virtual machine sending a high volume of meaningless SYN packets, creating a DoS-like situation on the network.", strat: "In-depth packet analysis allows you to precisely determine the type and method of the attack.", changes: { qos: -2, resource: -2, reputation: -2, cost: -10000 }, impact: 'Negative', clue: 'pcapAnalyzed' },
+                    'd3-threat-analysis-source': { title: "Source Identification", text: "You definitively identified the source IP and MAC address generating the abnormal traffic and found which virtual machine (VM-Noisy) it belongs to. The source of the attack is now certain.", strat: "To solve the problem, definitively identifying the source is vital. Intervening on the wrong target can lead to bigger problems.", changes: { qos: -1, resource: -1, cost: -2000 }, impact: 'Negative', clue: 'sourceIdentified' },
+                    'd3-threat-analysis-logs': { title: "Log Correlation", text: "You searched for the identified source IP in your SIEM system to check if a device with this IP recently triggered a security alert or exhibited unusual behavior. This indicated the issue is not just a performance problem, but a potential security incident.", strat: "Correlating logs from different systems provides a complete picture of the event and can point to a possible cyber attack.", changes: { qos: -1, reputation: -2, cost: -5000 }, impact: 'Negative', clue: 'logCorrelated' },
                     
-                    'd4-mitigation-isolate-vm': { title: "Sanal İzolasyon", text: "Anormal trafiği üreten sanal makineyi, sanal anahtarda bir kural yazarak diğer tüm sanal makinelere erişimini engellediniz. Böylece gürültücü komşu sorununu anında durdurdunuz. Diğer VM'lerin performansı hızla normale döndü.", strat: "Acil durumlarda, diğer sistemleri korumak için zararlı kaynağı izole etmek en etkili ilk adımdır. Hız, zararı sınırlar.", changes: { qos: 2, resource: 2, reputation: 1, cost: 2000 }, impact: 'Positive', clue: 'vmIsolated' },
-                    'd4-mitigation-traffic-shape': { title: "Trafik Hız Sınırlaması", text: "Sorunlu VM'nin vNIC'ine acil durum hız sınırlaması (traffic shaping) uygulayarak, ağ kaynaklarını tekeline almasını engellediniz. Bu, sorunu kısmen çözse de, VM hala ağda kaldı ve potansiyel risk devam etti.", strat: "Traffic shaping, sorunu geçici olarak hafifletebilir ancak kök nedenini ortadan kaldırmaz.", changes: { qos: 1, resource: 1, cost: 1000 }, impact: 'Neutral', clue: 'trafficShaped' },
-                    'd4-mitigation-firewall': { title: "Güvenlik Duvarı Kuralı Yazma", text: "Kaynak IP adresinden çıkan tüm trafiği güvenlik duvarında engellediniz. Bu, VM'in dış ağa erişimini kesti ancak iç ağdaki diğer VM'ler üzerindeki olumsuz etkisi devam etti.", strat: "Dış güvenlik duvarı, içeriden gelen tehditlere karşı sınırlı koruma sağlar. İç ağ güvenliği için sanallaştırma katmanında önlem almak daha etkilidir.", changes: { qos: 0, reputation: -1, cost: 500 }, impact: 'Negative', clue: 'firewallRuleApplied' },
+                    'd4-mitigation-isolate-vm': { title: "Virtual Isolation", text: "By writing a rule on the virtual switch, you blocked the traffic-generating virtual machine's access to all other VMs. This immediately stopped the noisy neighbor problem. The performance of other VMs quickly returned to normal.", strat: "In emergencies, isolating the harmful source to protect other systems is the most effective first step. Speed limits the damage.", changes: { qos: 2, resource: 2, reputation: 1, cost: 2000 }, impact: 'Positive', clue: 'vmIsolated' },
+                    'd4-mitigation-traffic-shape': { title: "Traffic Rate Limiting", text: "You applied emergency rate limiting (traffic shaping) to the problematic VM's vNIC, preventing it from monopolizing network resources. This partially resolved the issue, but the VM remained on the network, and the potential risk persisted.", strat: "Traffic shaping can temporarily alleviate the problem but does not eliminate the root cause.", changes: { qos: 1, resource: 1, cost: 1000 }, impact: 'Neutral', clue: 'trafficShaped' },
+                    'd4-mitigation-firewall': { title: "Creating a Firewall Rule", text: "You blocked all traffic from the source IP address at the firewall. This cut off the VM's external network access, but its negative impact on other VMs on the internal network continued.", strat: "An external firewall provides limited protection against internal threats. Taking measures at the virtualization layer is more effective for internal network security.", changes: { qos: 0, reputation: -1, cost: 500 }, impact: 'Negative', clue: 'firewallRuleApplied' },
                     
-                    'd5-optimization-qos': { title: "Ağ Kaynak Yönetimi (QoS)", text: "Sanal anahtar üzerinde Network I/O Control gibi bir mekanizma kullanarak, kritik VM'ler için ağ kaynaklarını garanti altına aldınız. Böylece gelecekte benzer 'gürültücü komşu' sorunlarının önüne geçtiniz.", strat: "QoS, kritik hizmetlerin performansını garanti altına almak için en iyi yöntemdir.", changes: { qos: 2, resource: 1, reputation: 1, cost: -5000 }, impact: 'Positive', clue: 'qosConfigured' },
-                    'd5-optimization-micro-segmentation': { title: "Mikro-Segmentasyon", text: "Kritik sunucuları, sadece gerekli erişimlere izin veren sanal güvenlik duvarı (vFirewall) kurallarıyla mikro-segmentasyon politikasıyla korudunuz. Bu, içeriden gelebilecek yatay saldırıların riskini minimuma indirdi.", strat: "Mikro-segmentasyon, modern veri merkezi güvenliği için temel bir yaklaşımdır. Enine (lateral) saldırıları engeller.", changes: { qos: 1, reputation: 1, cost: -10000 }, impact: 'Positive', clue: 'microSegmented' },
-                    'd5-optimization-driver-update': { title: "Ağ Kartı Sürücü Güncellemesi", text: "Fiziksel sunucunun ağ kartı sürücülerinin ve sanallaştırma platformu yamalarının en son sürümde olduğunu kontrol edip güncellediniz. Bu, olası yazılım tabanlı hataları ve performans sorunlarını ortadan kaldırdı.", strat: "Altyapının temel bileşenlerini güncel tutmak, stabilite ve güvenlik için vazgeçilmezdir.", changes: { qos: 1, resource: 1, cost: -2000 }, impact: 'Positive', clue: 'driverUpdated' },
+                    'd5-optimization-qos': { title: "Network Resource Management (QoS)", text: "Using a mechanism like Network I/O Control on the virtual switch, you guaranteed network resources for critical VMs. This prevents similar 'noisy neighbor' issues in the future.", strat: "QoS is the best practice for guaranteeing the performance of critical services.", changes: { qos: 2, resource: 1, reputation: 1, cost: -5000 }, impact: 'Positive', clue: 'qosConfigured' },
+                    'd5-optimization-micro-segmentation': { title: "Micro-segmentation", text: "You protected critical servers with a micro-segmentation policy using virtual firewall (vFirewall) rules that allow only necessary access. This minimized the risk of lateral attacks from within.", strat: "Micro-segmentation is a fundamental approach for modern data center security. It prevents lateral attacks.", changes: { qos: 1, reputation: 1, cost: -10000 }, impact: 'Positive', clue: 'microSegmented' },
+                    'd5-optimization-driver-update': { title: "Network Card Driver Update", text: "You checked and updated the physical server's network card drivers and virtualization platform patches to the latest versions. This eliminated potential software-based errors and performance issues.", strat: "Keeping the core components of the infrastructure up-to-date is essential for stability and security.", changes: { qos: 1, resource: 1, cost: -2000 }, impact: 'Positive', clue: 'driverUpdated' },
                     
-                    'd6-reporting-report': { title: "Olay Sonrası Rapor (Post-Incident Report)", text: "Olayın detaylarını, kullandığınız araçları, çözümü ve maliyet etkilerini kapsayan kapsamlı bir rapor hazırladınız. Yönetim, şeffaflığınızdan memnun kaldı.", strat: "Olay sonrası raporlama, öğrenilen dersleri belgelemek ve gelecekteki olaylara hazırlıklı olmak için önemlidir.", changes: { reputation: 2, cost: -1000 }, impact: 'Positive', clue: 'reportPrepared' },
-                    'd6-reporting-dvs': { title: "Yatırım Önerisi: Dağıtık Sanal Anahtar", text: "Mevcut sanal anahtarların sınırlamalarını göz önünde bulundurarak, daha gelişmiş özellikler sunan (merkezi yönetim, gelişmiş trafik analizi) Dağıtık Sanal Anahtar (DVS) gibi bir çözüme geçiş için yönetime bir öneri sundunuz. Bu öneri, gelecekteki ağ yönetimini kolaylaştıracak.", strat: "Bir kriz, mevcut altyapıdaki eksiklikleri ortaya çıkarır. Bu durumu, ileriye dönük stratejik yatırımlar için fırsata çevirmek akıllıca bir yaklaşımdır.", changes: { reputation: 1, cost: -15000 }, impact: 'Positive', clue: 'dvsProposed' },
-                    'd6-reporting-training': { title: "Personel Eğitimi", text: "Ağ ve sanallaştırma ekiplerinin, sanal ağ yönetimi, Promiscuous Mode ve paket analizi gibi konularda eğitim alması için bir plan hazırladınız. Ekibinizin teknik yetkinliğini artırarak gelecekteki olaylara daha hızlı ve etkili müdahale edebilmesini sağladınız.", strat: "Ekip yetkinliğini artırmak, uzun vadede şirketinizin siber dayanıklılığını güçlendirir.", changes: { resource: 1, cost: -8000 }, impact: 'Positive', clue: 'trainingPlanned' },
+                    'd6-reporting-report': { title: "Post-Incident Report", text: "You prepared a comprehensive report covering the details of the incident, the tools you used, the solution, and the cost implications. Management was pleased with your transparency.", strat: "Post-incident reporting is important for documenting lessons learned and preparing for future incidents.", changes: { reputation: 2, cost: -1000 }, impact: 'Positive', clue: 'reportPrepared' },
+                    'd6-reporting-dvs': { title: "Investment Proposal: Distributed Virtual Switch", text: "Considering the limitations of the current virtual switches, you submitted a proposal to management to switch to a solution like a Distributed Virtual Switch (DVS), which offers more advanced features (centralized management, advanced traffic analysis). This proposal will simplify future network management.", strat: "A crisis reveals the shortcomings of the existing infrastructure. Turning this situation into an opportunity for forward-looking strategic investments is a smart approach.", changes: { reputation: 1, cost: -15000 }, impact: 'Positive', clue: 'dvsProposed' },
+                    'd6-reporting-training': { title: "Staff Training", text: "You prepared a plan for the network and virtualization teams to receive training on topics like virtual network management, Promiscuous Mode, and packet analysis. By increasing your team's technical competence, you enabled them to respond more quickly and effectively to future incidents.", strat: "Increasing team competence strengthens your company's cyber resilience in the long run.", changes: { resource: 1, cost: -8000 }, impact: 'Positive', clue: 'trainingPlanned' },
                 },
 
                 setup() {
@@ -798,7 +798,7 @@
                         button.disabled = true;
                         this.state.currentTurnDecisions.push(info);
                         
-                        // Metrikleri güncelle
+                        // Update metrics
                         this.score.qos += info.changes.qos || 0;
                         this.score.resource += info.changes.resource || 0;
                         this.score.reputation += info.changes.reputation || 0;
@@ -863,7 +863,7 @@
                         combinedStrategicNotes.push(info.strat);
                     });
 
-                    this.elements.intermissionTitle.textContent = "Bu Seçimlerin Toplam Etkileri"; 
+                    this.elements.intermissionTitle.textContent = "Total Effects of These Choices"; 
                     
                     this.elements.intermissionDetails.insertAdjacentHTML('afterbegin', `
                         <div class="metric-change-summary-container">
@@ -875,10 +875,10 @@
 
                     this.elements.intermissionDetails.insertAdjacentHTML('beforeend', `
                         <div class="interactive-element" style="width: 100%; max-width: 600px; margin-top: 30px;">
-                            <h4><i class="fa-solid fa-check-circle"></i> Seçimlerinizin Detayları: ${combinedDecisionTitles.join(' & ')}</h4>
+                            <h4><i class="fa-solid fa-check-circle"></i> Details of Your Choices: ${combinedDecisionTitles.join(' & ')}</h4>
                             <p>${combinedDecisionTexts.join('<br><br>')}</p>
                             <div class="interactive-element" style="border-left-color: var(--accent-blue); margin-top: 20px;">
-                                <h4>Stratejik Değerlendirme</h4>
+                                <h4>Strategic Assessment</h4>
                                 <p>${combinedStrategicNotes.join('<br><br>')}</p>
                             </div>
                         </div>
@@ -906,40 +906,40 @@
                         const arrow = value >= 0 ? (value > 0 ? 'up' : 'right') : 'down'; 
                         const sign = value >= 0 ? '+' : ''; 
                         let colorClass = 'neutral'; 
-                        if (label === 'Maliyet') {
+                        if (label === 'Cost') {
                             colorClass = value > 0 ? 'negative' : (value < 0 ? 'positive' : 'neutral');
                         } else {
                             colorClass = value > 0 ? 'positive' : (value < 0 ? 'negative' : 'neutral');
                         }
                         
                         let icon = '';
-                        if (label === 'Hizmet Kalitesi') icon = 'fa-signal';
-                        else if (label === 'Kaynak Kullanımı') icon = 'fa-microchip';
-                        else if (label === 'Müşteri İtibarı') icon = 'fa-users';
-                        else if (label === 'Maliyet') icon = 'fa-hand-holding-dollar';
-                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('tr-TR')}${unit}</div>`;
+                        if (label === 'Quality of Service') icon = 'fa-signal';
+                        else if (label === 'Resource Utilization') icon = 'fa-microchip';
+                        else if (label === 'Customer Reputation') icon = 'fa-users';
+                        else if (label === 'Cost') icon = 'fa-hand-holding-dollar';
+                        return `<div class="metric-change ${colorClass}"><i class="fa-solid ${icon}"></i> ${label}: <i class="fa-solid fa-arrow-${arrow}-long"></i> ${sign}${Math.abs(value).toLocaleString('en-US')}${unit}</div>`;
                     };
 
-                    if (changes.qos !== undefined && changes.qos !== 0) metricsHTML += formatChange('Hizmet Kalitesi', changes.qos, '');
-                    if (changes.resource !== undefined && changes.resource !== 0) metricsHTML += formatChange('Kaynak Kullanımı', changes.resource, '');
-                    if (changes.reputation !== undefined && changes.reputation !== 0) metricsHTML += formatChange('Müşteri İtibarı', changes.reputation, '');
-                    if (changes.cost !== undefined && changes.cost !== 0) metricsHTML += formatChange('Maliyet', changes.cost, '₺');
+                    if (changes.qos !== undefined && changes.qos !== 0) metricsHTML += formatChange('Quality of Service', changes.qos, '');
+                    if (changes.resource !== undefined && changes.resource !== 0) metricsHTML += formatChange('Resource Utilization', changes.resource, '');
+                    if (changes.reputation !== undefined && changes.reputation !== 0) metricsHTML += formatChange('Customer Reputation', changes.reputation, '');
+                    if (changes.cost !== undefined && changes.cost !== 0) metricsHTML += formatChange('Cost', changes.cost, '$');
                     
-                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">Bu kararların metriklere doğrudan bir etkisi olmadı.</p>';
+                    if (metricsHTML === '') metricsHTML = '<p style="text-align: center; font-size: 1.1em; opacity: 0.8;">These decisions had no direct impact on the metrics.</p>';
                     return metricsHTML;
                 },
 
                 updateStatusBar() {
                     const s = this.score;
-                    const qosMap = ['Kritik', 'Anormal', 'Orta', 'İyi'];
-                    const resourceMap = ['Anormal', 'Yüksek', 'Normal'];
-                    const reputationMap = ['Düşük', 'Düşük', 'Orta', 'İyi', 'Çok İyi'];
-                    const costMap = ['Artıyor', 'Düşüyor', 'Stabil', 'Kontrol Altında'];
+                    const qosMap = ['Critical', 'Abnormal', 'Medium', 'Good'];
+                    const resourceMap = ['Abnormal', 'High', 'Normal'];
+                    const reputationMap = ['Very Low', 'Low', 'Medium', 'Good', 'Very Good'];
+                    const costMap = ['Increasing', 'Decreasing', 'Stable', 'Under Control'];
 
-                    this.elements.statusBar.qos.textContent = qosMap[Math.min(3, Math.max(0, s.qos + 1))] || 'Kritik';
-                    this.elements.statusBar.resource.textContent = resourceMap[Math.min(2, Math.max(0, s.resource + 1))] || 'Anormal';
-                    this.elements.statusBar.reputation.textContent = reputationMap[Math.min(4, Math.max(0, s.reputation + 2))] || 'Düşük';
-                    this.elements.statusBar.cost.textContent = costMap[Math.min(3, Math.max(0, s.cost / 10000 + 1))] || 'Artıyor';
+                    this.elements.statusBar.qos.textContent = qosMap[Math.min(3, Math.max(0, s.qos + 1))] || 'Critical';
+                    this.elements.statusBar.resource.textContent = resourceMap[Math.min(2, Math.max(0, s.resource + 1))] || 'Abnormal';
+                    this.elements.statusBar.reputation.textContent = reputationMap[Math.min(4, Math.max(0, s.reputation + 2))] || 'Low';
+                    this.elements.statusBar.cost.textContent = costMap[Math.min(3, Math.max(0, s.cost / 10000 + 1))] || 'Increasing';
                 },
 
                 showSection(sectionId) {
@@ -953,7 +953,7 @@
                         this.state.currentTurnDecisions = [];
                         this.elements.continueButton.style.display = 'none'; 
                     } else {
-                        console.error('Bölüm bulunamadı:', sectionId);
+                        console.error('Section not found:', sectionId);
                         this.showFinalReport();
                     }
                 },
@@ -994,7 +994,7 @@
                     });
                     
                     const finalSection = document.getElementById('finalSection');
-                    if (!finalSection) { console.error("Final bölümü HTML'de bulunamadı!"); return; }
+                    if (!finalSection) { console.error("Final section not found in HTML!"); return; }
 
                     finalSection.style.display = 'flex';
                     
@@ -1004,10 +1004,10 @@
                     const debriefContent = document.getElementById('strategic-debrief-content');
                     const scoreBreakdownList = document.getElementById('score-breakdown');
 
-                    // --- PUANLAMA SİSTEMİ ---
+                    // --- SCORING SYSTEM ---
                     let scoreBreakdown = {};
                     let totalScore = 40; 
-                    scoreBreakdown['Başlangıç Puanı'] = { value: 40, class: 'score-neutral' };
+                    scoreBreakdown['Starting Score'] = { value: 40, class: 'score-neutral' };
 
                     let decisionQualityScore = 0;
                     this.state.decisionHistory.forEach(decision => {
@@ -1019,74 +1019,74 @@
                     });
                     if (decisionQualityScore !== 0) {
                         totalScore += decisionQualityScore;
-                        scoreBreakdown['Karar Kalitesi (Ceza/Ödül)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
+                        scoreBreakdown['Decision Quality (Penalty/Reward)'] = { value: decisionQualityScore, class: decisionQualityScore >= 0 ? 'score-plus' : 'score-minus' };
                     }
                     
                     if (this.state.vmIsolated && this.state.qosConfigured) {
                         totalScore += 20;
-                        scoreBreakdown['Kritik Müdahale & Optimizasyon'] = { value: 20, class: 'score-plus' };
+                        scoreBreakdown['Critical Intervention & Optimization'] = { value: 20, class: 'score-plus' };
                     } else if (this.state.vmIsolated || this.state.qosConfigured) {
                         totalScore += 10;
-                        scoreBreakdown['Kısmi Müdahale & Optimizasyon'] = { value: 10, class: 'score-plus' };
+                        scoreBreakdown['Partial Intervention & Optimization'] = { value: 10, class: 'score-plus' };
                     }
 
                     if (this.state.promiscuousModeUsed && this.state.pcapAnalyzed && this.state.sourceIdentified) {
                         totalScore += 15;
-                        scoreBreakdown['Kök Neden Analizi Başarısı'] = { value: 15, class: 'score-plus' };
+                        scoreBreakdown['Root Cause Analysis Success'] = { value: 15, class: 'score-plus' };
                     } else if (this.state.promiscuousModeUsed || this.state.pcapAnalyzed || this.state.sourceIdentified) {
                         totalScore += 5;
-                        scoreBreakdown['Kısmi Kök Neden Analizi'] = { value: 5, class: 'score-plus' };
+                        scoreBreakdown['Partial Root Cause Analysis'] = { value: 5, class: 'score-plus' };
                     } else {
                         totalScore -= 10;
-                        scoreBreakdown['Kök Neden Tespiti Başarısızlığı'] = { value: -10, class: 'score-minus' };
+                        scoreBreakdown['Root Cause Detection Failure'] = { value: -10, class: 'score-minus' };
                     }
 
                     if (this.state.dvsProposed) {
                         totalScore += 5;
-                        scoreBreakdown['Stratejik İyileştirme (DVS Önerisi)'] = { value: 5, class: 'score-plus' };
+                        scoreBreakdown['Strategic Improvement (DVS Proposal)'] = { value: 5, class: 'score-plus' };
                     }
 
                     if (this.timer.remaining >= 300) {
                         totalScore += 10;
-                        scoreBreakdown['Hızlı Müdahale Bonusu'] = { value: 10, class: 'score-plus' };
+                        scoreBreakdown['Fast Response Bonus'] = { value: 10, class: 'score-plus' };
                     } else if (this.timer.remaining >= 120) {
                         totalScore += 5;
-                        scoreBreakdown['Zamanında Müdahale Bonusu'] = { value: 5, class: 'score-plus' };
+                        scoreBreakdown['Timely Response Bonus'] = { value: 5, class: 'score-plus' };
                     } else {
                         totalScore -= 10;
-                        scoreBreakdown['Geç Müdahale Cezası'] = { value: -10, class: 'score-minus' };
+                        scoreBreakdown['Late Response Penalty'] = { value: -10, class: 'score-minus' };
                     }
 
                     totalScore = Math.round(Math.max(0, Math.min(100, totalScore))); 
                     this.state.totalScore = totalScore;
-                    // --- PUANLAMA SİSTEMİ SONU ---
+                    // --- END SCORING SYSTEM ---
 
                     let badgeInfo = {};
-                    if (totalScore >= 90) { badgeInfo = { text: 'SİBER KAHRAMAN', color: 'var(--accent-green)' }; } 
-                    else if (totalScore >= 75) { badgeInfo = { text: 'UZMAN KRİZ YÖNETİCİSİ', color: 'var(--accent-blue)' }; } 
-                    else if (totalScore >= 50) { badgeInfo = { text: 'ZORLU BİR MÜCADELE', color: 'var(--accent-yellow)' }; } 
-                    else { badgeInfo = { text: 'CİDDİ HASAR', color: '#ff5555' }; }
+                    if (totalScore >= 90) { badgeInfo = { text: 'CYBER HERO', color: 'var(--accent-green)' }; } 
+                    else if (totalScore >= 75) { badgeInfo = { text: 'EXPERT CRISIS MANAGER', color: 'var(--accent-blue)' }; } 
+                    else if (totalScore >= 50) { badgeInfo = { text: 'A TOUGH CHALLENGE', color: 'var(--accent-yellow)' }; } 
+                    else { badgeInfo = { text: 'SEVERE DAMAGE', color: '#ff5555' }; }
 
                     badge.textContent = badgeInfo.text;
                     badge.style.backgroundColor = badgeInfo.color;
 
-                    const qosMap = ['Kritik', 'Anormal', 'Orta', 'İyi'];
-                    const resourceMap = ['Anormal', 'Yüksek', 'Normal'];
-                    const reputationMap = ['Düşük', 'Düşük', 'Orta', 'İyi', 'Çok İyi'];
-                    const costMap = ['Çok Yüksek', 'Yüksek', 'Orta', 'Düşük', 'Minimum'];
+                    const qosMap = ['Critical', 'Abnormal', 'Medium', 'Good'];
+                    const resourceMap = ['Abnormal', 'High', 'Normal'];
+                    const reputationMap = ['Very Low', 'Low', 'Medium', 'Good', 'Very Good'];
+                    const costMap = ['Very High', 'High', 'Medium', 'Low', 'Minimal'];
                     
-                    const finalQoS = qosMap[Math.min(3, Math.max(0, this.score.qos + 1))] || 'Kritik';
-                    const finalResource = resourceMap[Math.min(2, Math.max(0, this.score.resource + 1))] || 'Anormal';
-                    const finalReputation = reputationMap[Math.min(4, Math.max(0, this.score.reputation + 2))] || 'Düşük';
-                    const finalCost = `₺${this.score.cost.toLocaleString('tr-TR')}`;
+                    const finalQoS = qosMap[Math.min(3, Math.max(0, this.score.qos + 1))] || 'Critical';
+                    const finalResource = resourceMap[Math.min(2, Math.max(0, this.score.resource + 1))] || 'Abnormal';
+                    const finalReputation = reputationMap[Math.min(4, Math.max(0, this.score.reputation + 2))] || 'Low';
+                    const finalCost = `$${this.score.cost.toLocaleString('en-US')}`;
 
 
                     metricsContainer.innerHTML = `
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Nihai Puan</div><div class="value">${totalScore}/100</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-signal"></i></div><div class="label">Hizmet Kalitesi</div><div class="value">${finalQoS}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Toplam Maliyet</div><div class="value">${finalCost}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-microchip"></i></div><div class="label">Kaynak Kullanımı</div><div class="value">${finalResource}</div></div>
-                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Müşteri İtibarı</div><div class="value">${finalReputation}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><div class="label">Final Score</div><div class="value">${totalScore}/100</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-signal"></i></div><div class="label">Quality of Service</div><div class="value">${finalQoS}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="label">Total Cost</div><div class="value">${finalCost}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-microchip"></i></div><div class="label">Resource Utilization</div><div class="value">${finalResource}</div></div>
+                        <div class="metric-card"><div class="icon"><i class="fa-solid fa-users"></i></div><div class="label">Customer Reputation</div><div class="value">${finalReputation}</div></div>
                     `;
 
                     timelineList.innerHTML = this.state.decisionHistory.map(decision => {
@@ -1096,18 +1096,18 @@
 
                     scoreBreakdownList.innerHTML = Object.entries(scoreBreakdown).map(([key, item]) => {
                         const sign = item.value > 0 ? '+' : '';
-                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Puan</span></li>`;
+                        return `<li class="${item.class}"><span>${key}</span><span class="score-value">${sign}${item.value} Points</span></li>`;
                     }).join('');
 
                     let debriefHTML = '';
-                    if (badgeInfo.text === 'SİBER KAHRAMAN') { 
-                        debriefHTML += `<p><strong>Olağanüstü Başarı!</strong> Sanallaştırma ortamındaki bu karmaşık ağ sorununu, doğru tanılama, kök neden analizi ve hızlı müdahale ile çözdünüz. Aldığınız doğru kararlar sayesinde hizmet kesintisi minimumda kaldı, müşteri şikayetleri sona erdi ve geleceğe yönelik stratejik iyileştirmelerle şirketinizin altyapısını daha güvenli ve dayanıklı hale getirdiniz.</p>`;
-                    } else if (badgeInfo.text === 'UZMAN KRİZ YÖNETİCİSİ') { 
-                        debriefHTML += `<p><strong>Başarılı Bir Müdahale!</strong> Zorlu bir ağ sorunuyla karşı karşıya kalmanıza rağmen, etkili müdahalelerle krizi kontrol altına almayı başardınız. Bazı küçük maliyetler ve gecikmeler yaşansa da, genel olarak hizmet kalitesini ve altyapı istikrarını önemli ölçüde korudunuz. Bu deneyim, altyapınızı gelecekteki sorunlara karşı daha dirençli hale getirmemizi sağladı.</p>`;
-                    } else if (badgeInfo.text === 'ZORLU BİR MÜCADELE') { 
-                        debriefHTML += `<p><strong>Öğrenilen Büyük Dersler:</strong> Sorunu çözdünüz ve en kötü senaryonun önüne geçtiniz, ancak müdahaleleriniz biraz yavaş veya eksik kaldı. Hizmet kesintileri ve müşteri şikayetleri bir süre devam etti, bu da maliyet ve itibar kaybına neden oldu. Bu deneyim, gelecekteki operasyonel süreçlerimizi geliştirmemiz için önemli dersler çıkardı.</p>`;
+                    if (badgeInfo.text === 'CYBER HERO') { 
+                        debriefHTML += `<p><strong>Outstanding Success!</strong> You solved this complex network issue in the virtualization environment with correct diagnosis, root cause analysis, and swift intervention. Thanks to your correct decisions, the service outage was minimal, customer complaints ceased, and you made the company's infrastructure more secure and resilient with forward-thinking strategic improvements.</p>`;
+                    } else if (badgeInfo.text === 'EXPERT CRISIS MANAGER') { 
+                        debriefHTML += `<p><strong>Successful Intervention!</strong> Despite facing a challenging network problem, you managed to bring the crisis under control with effective interventions. Although there were some minor costs and delays, you significantly preserved service quality and infrastructure stability overall. This experience has allowed us to make our infrastructure more resilient to future problems.</p>`;
+                    } else if (badgeInfo.text === 'A TOUGH CHALLENGE') { 
+                        debriefHTML += `<p><strong>Major Lessons Learned:</strong> You solved the problem and averted the worst-case scenario, but your interventions were somewhat slow or incomplete. Service outages and customer complaints continued for a while, leading to financial and reputational loss. This experience has provided important lessons for improving our future operational processes.</p>`;
                     } else { 
-                        debriefHTML += `<p><strong>Ciddi Sonuçlar:</strong> Sanallaştırma ağındaki sorun, zamanında ve doğru müdahale edilemediği için şirketimize ciddi zararlar verdi. Müşteri memnuniyetsizliği arttı, itibarımız zedelendi ve operasyonel maliyetlerimiz yükseldi. Bu deneyimden acilen ders çıkararak kriz yönetimi ve altyapı izleme stratejilerimizi kökten değiştirmeli ve daha güçlü savunma mekanizmaları inşa etmeliyiz.</p>`;
+                        debriefHTML += `<p><strong>Severe Consequences:</strong> The problem on the virtualization network caused significant damage to our company because it was not addressed in a timely and correct manner. Customer dissatisfaction increased, our reputation was tarnished, and our operational costs rose. We must urgently learn from this experience, radically change our crisis management and infrastructure monitoring strategies, and build stronger defense mechanisms.</p>`;
                     }
                     debriefContent.innerHTML = debriefHTML;
                     this.saveLeaderboard(totalScore);
@@ -1121,120 +1121,120 @@
                 loadGameHTML() {
                     const gameHTMLContent = `
                         <div id="stage1_triage" class="section" data-max-selections="2">
-                            <h2><i class="fa-solid fa-hourglass-start"></i> Aşama 1: İlk Belirti ve Triage (Ön Değerlendirme)</h2>
-                            <h3>Olay Anı: Müşteri Şikayetleri ve Sistem Alarmı</h3>
-                            <p>Sistem izleme araçlarınızdan, kritik e-ticaret sunucusunun gecikme değerlerinin aniden yükseldiğine dair bir uyarı alıyorsunuz. Müşteri şikayetleri geliyor ve aynı fiziksel hostta yer alan diğer sanal makinelerde de (VM'lerde) benzer performans anormallikleri görülmeye başlıyor. İlk incelemelerde CPU ve RAM kaynaklarının normal olduğu gözüküyor, bu da sorunun ağ katmanında olduğunu işaret ediyor.</p>
-                            <img src="https://i.imgur.com/rW4tH98.png" alt="Sistem izleme paneli ekran görüntüsü" class="scenario-image">
+                            <h2><i class="fa-solid fa-hourglass-start"></i> Stage 1: Initial Symptom and Triage</h2>
+                            <h3>Moment of Incident: Customer Complaints and System Alarm</h3>
+                            <p>You receive an alert from your system monitoring tools that the latency values of the critical e-commerce server have suddenly increased. Customer complaints are coming in, and similar performance anomalies are being observed on other virtual machines (VMs) on the same physical host. Initial checks show that CPU and RAM resources are normal, indicating the problem is at the network layer.</p>
+                            <img src="https://i.imgur.com/rW4tH98.png" alt="System monitoring dashboard screenshot" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Sorunun kaynağını belirlemek için öncelikle hangi adımları atacaksınız? (2 Seçim Yapın)</h4>
+                                <h4>What initial steps will you take to determine the source of the problem? (Make 2 Choices)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d1-triage-ping-traceroute"><i class="fa-solid fa-network-wired"></i><div class="btn-text">Seçenek A: Temel Tanılama Testleri<small>Sorunlu VM'nin içinden <code>ping</code> ve <code>traceroute</code> komutlarıyla gecikmeyi manuel olarak doğrulayın.</small></div></button>
-                                    <button class="btn" data-decision="d1-triage-physical-switch"><i class="fa-solid fa-ethernet"></i><div class="btn-text">Seçenek B: Fiziksel Switch Kontrolü<small>VM'in bağlı olduğu fiziksel switch portu üzerindeki istatistikleri (CRC hataları, paket düşüşleri) kontrol edin.</small></div></button>
-                                    <button class="btn" data-decision="d1-triage-virtual-switch"><i class="fa-solid fa-server"></i><div class="btn-text">Seçenek C: Sanal Switch Kontrolü<small>Sanallaştırma yönetim arayüzünden, sanal anahtarın (vSwitch) port gruplarındaki paket düşüşlerini inceleyin.</small></div></button>
+                                    <button class="btn" data-decision="d1-triage-ping-traceroute"><i class="fa-solid fa-network-wired"></i><div class="btn-text">Option A: Basic Diagnostic Tests<small>Manually verify the latency from within the affected VM using <code>ping</code> and <code>traceroute</code> commands.</small></div></button>
+                                    <button class="btn" data-decision="d1-triage-physical-switch"><i class="fa-solid fa-ethernet"></i><div class="btn-text">Option B: Physical Switch Check<small>Check the statistics (CRC errors, packet drops) on the physical switch port connected to the VM.</small></div></button>
+                                    <button class="btn" data-decision="d1-triage-virtual-switch"><i class="fa-solid fa-server"></i><div class="btn-text">Option C: Virtual Switch Check<small>From the virtualization management interface, inspect packet drops in the virtual switch (vSwitch) port groups.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Bir ağ sorunu yaşandığında, önce sorunun kapsamını belirlemek esastır. Fiziksel ve sanal katmanları ayırmak, doğru kök neden analizi için ilk adımdır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> When a network problem occurs, it is essential to first determine the scope of the issue. Separating the physical and virtual layers is the first step for a correct root cause analysis.</div>
                         </div>
 
                         <div id="stage2_root_cause" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Aşama 2: Kök Neden Analizi ve Sanal Ağ Gözlemi</h2>
-                            <h3>Analiz Sonucu: Sanal Anahtar Katmanında Anormallik</h3>
-                            <p>İlk analizleriniz, sorunun <strong>sanal anahtar (vSwitch) katmanında</strong> başladığını gösteriyor. Sanal anahtarın üzerindeki paket düşüşleri, tüm VM'lerin ağ performansını etkileyen bir darboğaz olduğunu işaret ediyor. Artık şüpheniz, host üzerindeki bir sanal makinenin aşırı trafik üreterek diğerlerinin performansını olumsuz etkilediği yönünde. Bu duruma sektörde <strong>"gürültücü komşu" (noisy neighbor)</strong> problemi denir.</p>
-                            <img src="https://i.imgur.com/z83V3rP.png" alt="Sanal ağ analizi" class="scenario-image">
+                            <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Stage 2: Root Cause Analysis and Virtual Network Observation</h2>
+                            <h3>Analysis Result: Anomaly at the Virtual Switch Layer</h3>
+                            <p>Your initial analyses indicate that the problem originates at the <strong>virtual switch (vSwitch) layer</strong>. The packet drops on the virtual switch suggest a bottleneck that is affecting the network performance of all VMs. Your suspicion now is that one virtual machine on the host is generating excessive traffic, negatively impacting the performance of others. This situation is known in the industry as the <strong>"noisy neighbor"</strong> problem.</p>
+                            <img src="https://i.imgur.com/z83V3rP.png" alt="Virtual network analysis" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Sorunlu sanal makineyi tespit etmek için sanal ağınızı nasıl gözlemleyeceksiniz? (1 Seçim Yapın)</h4>
+                                <h4>How will you observe your virtual network to identify the problematic virtual machine? (Make 1 Choice)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d2-analysis-promiscuous"><i class="fa-solid fa-eye"></i><div class="btn-text">Seçenek A: Sanal Anahtarda Promiscuous Mode ve PCAP<small>Sanal anahtar üzerinde Promiscuous Mode etkinleştirerek, ilgili hosttaki tüm sanal makinelerin trafik paketlerini yakalayın.</small></div></button>
-                                    <button class="btn" data-decision="d2-analysis-mirroring"><i class="fa-solid fa-share-nodes"></i><div class="btn-text">Seçenek B: Traffic Mirroring (SPAN) ile Harici Analiz<small>Sanal anahtarın uplink portunu fiziksel ağdaki bir analiz portuna yansıtın (SPAN) ve paketleri Wireshark ile harici bir makinede analiz edin.</small></div></button>
-                                    <button class="btn" data-decision="d2-analysis-cpu"><i class="fa-solid fa-gauge-high"></i><div class="btn-text">Seçenek C: Sanal Anahtarın CPU Kullanımını İnceleme<small>Fiziksel sunucunun CPU kullanımı normal görünse bile, sanal anahtarın ne kadar CPU kaynağı tükettiğini analiz edin.</small></div></button>
+                                    <button class="btn" data-decision="d2-analysis-promiscuous"><i class="fa-solid fa-eye"></i><div class="btn-text">Option A: Promiscuous Mode and PCAP on Virtual Switch<small>Enable Promiscuous Mode on the virtual switch to capture traffic packets from all virtual machines on the host.</small></div></button>
+                                    <button class="btn" data-decision="d2-analysis-mirroring"><i class="fa-solid fa-share-nodes"></i><div class="btn-text">Option B: External Analysis with Traffic Mirroring (SPAN)<small>Mirror the virtual switch's uplink port to an analysis port on the physical network (SPAN) and analyze the packets with Wireshark on an external machine.</small></div></button>
+                                    <button class="btn" data-decision="d2-analysis-cpu"><i class="fa-solid fa-gauge-high"></i><div class="btn-text">Option C: Examine the Virtual Switch's CPU Usage<small>Even if the physical server's CPU usage appears normal, analyze how much CPU resource the virtual switch is consuming.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Sanal ağ ortamlarında, "gürültücü komşu" problemini tespit etmek için geleneksel ağ araçları yetersiz kalabilir. Bu nedenle sanallaştırma platformunun sunduğu özel izleme özelliklerini kullanmak kritik önem taşır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> In virtual network environments, traditional network tools may be insufficient to detect a "noisy neighbor" problem. Therefore, using the special monitoring features provided by the virtualization platform is crucial.</div>
                         </div>
 
                         <div id="stage3_threat_analysis" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-user-secret"></i> Aşama 3: Saldırı Tipi Analizi ve Tehdit Modellenmesi</h2>
-                            <h3>Analiz Sonucu: Potansiyel DoS Saldırısı</h3>
-                            <p>Yakaladığınız ağ paketlerini Wireshark ile incelediğinizde, bir sanal makinenin (VM) yoğun bir şekilde anlamsız TCP/SYN paketleri gönderdiğini veya ağa sürekli yayın (broadcast) trafiği saldığını görüyorsunuz. Bu, sadece bir "gürültücü komşu" sorunu değil, <strong>potansiyel bir hizmet reddi (DoS) saldırısı</strong> olabilir. Acilen bu anormal trafiğin kaynağını ve nedenini kesin olarak belirlemelisiniz.</p>
-                            <img src="https://i.imgur.com/5u9F9iF.png" alt="Wireshark ekran görüntüsü" class="scenario-image">
+                            <h2><i class="fa-solid fa-user-secret"></i> Stage 3: Attack Type Analysis and Threat Modeling</h2>
+                            <h3>Analysis Result: Potential DoS Attack</h3>
+                            <p>Upon examining the captured network packets with Wireshark, you see that one virtual machine (VM) is sending a high volume of meaningless TCP/SYN packets or flooding the network with continuous broadcast traffic. This is not just a "noisy neighbor" problem, but a <strong>potential Denial of Service (DoS) attack</strong>. You must urgently determine the precise source and cause of this abnormal traffic.</p>
+                            <img src="https://i.imgur.com/5u9F9iF.png" alt="Wireshark screenshot" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Saldırının tipini ve kaynağını kesinleştirmek için hangi adımları atacaksınız? (1 Seçim Yapın)</h4>
+                                <h4>What steps will you take to confirm the type and source of the attack? (Make 1 Choice)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d3-threat-analysis-pcap"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">Seçenek A: Paket İçeriği Analizi<small>Wireshark'ta filtreler (<code>tcp.flags.syn==1</code>, <code>arp.isannouncement</code>) kullanarak anormal paketleri tespit edin.</small></div></button>
-                                    <button class="btn critical" data-decision="d3-threat-analysis-source"><i class="fa-solid fa-magnifying-glass-location"></i><div class="btn-text">Seçenek B: Kaynak Tespiti<small>Anormal trafiği üreten kaynak IP ve MAC adresini kesin olarak belirleyin ve ilgili VM'i bulun.</small></div></button>
-                                    <button class="btn" data-decision="d3-threat-analysis-logs"><i class="fa-solid fa-chart-line"></i><div class="btn-text">Seçenek C: Log Korelasyonu<small>Tespit ettiğiniz kaynak IP'sini SIEM sisteminizde aratarak, bu IP'ye ait bir cihazın yakın zamanda bir güvenlik uyarısı tetikleyip tetiklemediğini kontrol edin.</small></div></button>
+                                    <button class="btn" data-decision="d3-threat-analysis-pcap"><i class="fa-solid fa-file-waveform"></i><div class="btn-text">Option A: Packet Content Analysis<small>Use filters in Wireshark (<code>tcp.flags.syn==1</code>, <code>arp.isannouncement</code>) to identify abnormal packets.</small></div></button>
+                                    <button class="btn critical" data-decision="d3-threat-analysis-source"><i class="fa-solid fa-magnifying-glass-location"></i><div class="btn-text">Option B: Source Identification<small>Definitively identify the source IP and MAC address generating the abnormal traffic and find the corresponding VM.</small></div></button>
+                                    <button class="btn" data-decision="d3-threat-analysis-logs"><i class="fa-solid fa-chart-line"></i><div class="btn-text">Option C: Log Correlation<small>Search for the identified source IP in your SIEM system to check if a device with this IP recently triggered a security alert.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Ağ trafiğini analiz etmek, bir performans sorununu bir güvenlik olayı olarak yeniden tanımlamanızı sağlayabilir. Doğru araçlarla doğru filtreleri kullanmak, en kritik bilgiyi ortaya çıkarır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Analyzing network traffic can reclassify a performance issue as a security incident. Using the right filters with the right tools reveals the most critical information.</div>
                         </div>
                         
                         <div id="stage4_mitigation" class="section" data-max-selections="1">
-                            <h2><i class="fa-solid fa-shield-halved"></i> Aşama 4: Sınırlama ve Acil Müdahale</h2>
-                            <h3>Bulgu: Kötü Niyetli Sanal Makine Ağınızı Sekteye Uğratıyor</h3>
-                            <p>Kötü niyetli bir sanal makinenin (VM-Gürültücü), yoğun ve anlamsız trafik üreterek ağınızın temel işleyişini sekteye uğrattığını teyit ettiniz. Bu durum, diğer kritik hizmetlerin de performansını düşürüyor ve müşteri şikayetlerine neden oluyor. Derhal bu tehdidi sınırlamalı ve diğer sistemlerin güvenliğini sağlamalısınız.</p>
-                            <img src="https://i.imgur.com/2pW71uR.png" alt="Sanal makine izolasyonu" class="scenario-image">
+                            <h2><i class="fa-solid fa-shield-halved"></i> Stage 4: Containment and Emergency Response</h2>
+                            <h3>Finding: Malicious Virtual Machine is Disrupting Your Network</h3>
+                            <p>You have confirmed that a malicious virtual machine (VM-Noisy) is disrupting the basic operation of your network by generating intense and meaningless traffic. This situation is also degrading the performance of other critical services and causing customer complaints. You must immediately contain this threat and ensure the security of other systems.</p>
+                            <img src="https://i.imgur.com/2pW71uR.png" alt="Virtual machine isolation" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Ağ performansını hızla normale döndürmek ve zararı sınırlamak için en etkili acil müdahale hangisidir? (1 Seçim Yapın)</h4>
+                                <h4>What is the most effective emergency response to quickly restore network performance and limit the damage? (Make 1 Choice)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn critical" data-decision="d4-mitigation-isolate-vm"><i class="fa-solid fa-link-slash"></i><div class="btn-text">Seçenek A: Sanal İzolasyon<small>Anormal trafiği üreten sanal makineyi, sanal anahtarda bir kural yazarak diğer tüm sanal makinelere erişimini engelleyin.</small></div></button>
-                                    <button class="btn" data-decision="d4-mitigation-traffic-shape"><i class="fa-solid fa-traffic-light"></i><div class="btn-text">Seçenek B: Trafik Hız Sınırlaması (Traffic Shaping)<small>Sorunlu VM'nin vNIC'ine acil durum hız sınırlaması uygulayarak, ağ kaynaklarını tekeline almasını engelleyin.</small></div></button>
-                                    <button class="btn" data-decision="d4-mitigation-firewall"><i class="fa-solid fa-firewall"></i><div class="btn-text">Seçenek C: Dış Güvenlik Duvarı Kuralı Yazma<small>Kaynak IP adresinden çıkan tüm trafiği dış güvenlik duvarında engelleyin.</small></div></button>
+                                    <button class="btn critical" data-decision="d4-mitigation-isolate-vm"><i class="fa-solid fa-link-slash"></i><div class="btn-text">Option A: Virtual Isolation<small>Block the abnormal traffic-generating VM from accessing all other virtual machines by creating a rule on the virtual switch.</small></div></button>
+                                    <button class="btn" data-decision="d4-mitigation-traffic-shape"><i class="fa-solid fa-traffic-light"></i><div class="btn-text">Option B: Traffic Rate Limiting (Traffic Shaping)<small>Apply an emergency rate limit to the problematic VM's vNIC to prevent it from monopolizing network resources.</small></div></button>
+                                    <button class="btn" data-decision="d4-mitigation-firewall"><i class="fa-solid fa-firewall"></i><div class="btn-text">Option C: Create an External Firewall Rule<small>Block all outbound traffic from the source IP address at the external firewall.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Acil müdahalede öncelik, zararın yayılmasını durdurmaktır. Doğrudan ve hedef odaklı bir müdahale, en hızlı sonuçları verir ve ikincil hasarları önler.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> The priority in an emergency response is to stop the spread of damage. A direct and targeted intervention yields the fastest results and prevents secondary damage.</div>
                         </div>
 
                         <div id="stage5_optimization" class="section" data-max-selections="2">
-                            <h2><i class="fa-solid fa-wrench"></i> Aşama 5: Kök Neden Analizi ve Kalıcı Optimizasyon</h2>
-                            <h3>Durum: Tehdit Kontrol Altında, Şimdi Kalıcı Çözüm Zamanı</h3>
-                            <p>Tehdit kontrol altına alındı ve hizmet kalitesi normale döndü. Ancak bu tür bir olayın bir daha yaşanmaması için kalıcı iyileştirmeler yapmalısınız. Altyapınızı, gelecekteki "gürültücü komşu" veya DoS benzeri saldırılara karşı daha dirençli hale getirmelisiniz. Bu aşamada, sadece acil durumu çözmek değil, aynı zamanda sisteminize uzun vadeli bir istikrar kazandırmak önemlidir.</p>
-                            <img src="https://i.imgur.com/eB3jV4F.png" alt="Ağ optimizasyonu ve yönetim paneli" class="scenario-image">
+                            <h2><i class="fa-solid fa-wrench"></i> Stage 5: Eradication and Permanent Optimization</h2>
+                            <h3>Situation: Threat Contained, Now Time for a Permanent Solution</h3>
+                            <p>The threat is under control, and service quality has returned to normal. However, you must implement permanent improvements to prevent such an incident from happening again. You need to make your infrastructure more resilient against future "noisy neighbor" or DoS-like attacks. At this stage, it's important not only to resolve the immediate situation but also to provide long-term stability to your system.</p>
+                            <img src="https://i.imgur.com/eB3jV4F.png" alt="Network optimization and management panel" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Altyapınızı bu tür sorunlara karşı daha dayanıklı hale getirmek için hangi kalıcı çözümleri uygulayacaksınız? (2 Seçim Yapın)</h4>
+                                <h4>What permanent solutions will you implement to make your infrastructure more resilient to such problems? (Make 2 Choices)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d5-optimization-qos"><i class="fa-solid fa-ranking-star"></i><div class="btn-text">Seçenek A: Ağ Kaynak Yönetimi (QoS) Uygulamak<small>Sanal anahtar üzerinde Network I/O Control kullanarak, kritik VM'ler için ağ kaynaklarını garanti altına alın.</small></div></button>
-                                    <button class="btn" data-decision="d5-optimization-micro-segmentation"><i class="fa-solid fa-border-all"></i><div class="btn-text">Seçenek B: Mikro-Segmentasyon Politikası<small>Kritik sunucuları, sanal güvenlik duvarı kurallarıyla mikro-segmentasyon politikasıyla koruyarak, içeriden gelebilecek yatay saldırı riskini azaltın.</small></div></button>
-                                    <button class="btn" data-decision="d5-optimization-driver-update"><i class="fa-solid fa-drivers-license"></i><div class="btn-text">Seçenek C: Ağ Kartı Sürücü Güncellemesi<small>Fiziksel sunucunun ağ kartı sürücülerinin ve sanallaştırma platformu yamalarının en son sürümde olduğunu kontrol edip güncelleyin.</small></div></button>
+                                    <button class="btn" data-decision="d5-optimization-qos"><i class="fa-solid fa-ranking-star"></i><div class="btn-text">Option A: Implement Network Resource Management (QoS)<small>Use Network I/O Control on the virtual switch to guarantee network resources for critical VMs.</small></div></button>
+                                    <button class="btn" data-decision="d5-optimization-micro-segmentation"><i class="fa-solid fa-border-all"></i><div class="btn-text">Option B: Micro-segmentation Policy<small>Protect critical servers with a micro-segmentation policy using virtual firewall rules, reducing the risk of internal lateral attacks.</small></div></button>
+                                    <button class="btn" data-decision="d5-optimization-driver-update"><i class="fa-solid fa-drivers-license"></i><div class="btn-text">Option C: Network Card Driver Update<small>Check and update the physical server's network card drivers and virtualization platform patches to the latest versions.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Kriz yönetimi, sadece mevcut sorunu çözmekle kalmaz, aynı zamanda gelecekteki olayları önlemek için sistemleri iyileştirmeyi de içerir. Proaktif optimizasyon, reaktif müdahaleden daha değerlidir.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Crisis management involves not only solving the current problem but also improving systems to prevent future incidents. Proactive optimization is more valuable than reactive intervention.</div>
                         </div>
 
                         <div id="stage6_reporting" class="section" data-max-selections="2">
-                            <h2><i class="fa-solid fa-clipboard-check"></i> Aşama 6: Raporlama ve Stratejik İyileştirme</h2>
-                            <h3>Olay Sonrası: Tam Çözüm ve Gelecek Stratejisi</h3>
-                            <p>Olayı tamamen çözdünüz. Hizmetler normale döndü, altyapı güçlendirildi ve potansiyel güvenlik açıkları giderildi. Şimdi, yönetim için detaylı bir rapor hazırlamalı ve geleceğe yönelik stratejik önerilerde bulunmalısınız. Bu rapor, yaşanan krizin nedenlerini, alınan kararları ve şirketin altyapısını güçlendirmek için atılması gereken adımları içermelidir.</p>
-                            <img src="https://i.imgur.com/Gj3H8l1.png" alt="Raporlama ve sunum görseli" class="scenario-image">
+                            <h2><i class="fa-solid fa-clipboard-check"></i> Stage 6: Reporting and Strategic Improvement</h2>
+                            <h3>Post-Incident: Full Resolution and Future Strategy</h3>
+                            <p>You have completely resolved the incident. Services are back to normal, the infrastructure has been strengthened, and potential security vulnerabilities have been addressed. Now, you must prepare a detailed report for management and make strategic recommendations for the future. This report should include the causes of the crisis, the decisions made, and the steps that need to be taken to strengthen the company's infrastructure.</p>
+                            <img src="https://i.imgur.com/Gj3H8l1.png" alt="Reporting and presentation visual" class="scenario-image">
                             <div class="interactive-element">
-                                <h4>Yönetime sunmak üzere hangi stratejik iyileştirme ve eğitim önerilerinde bulunacaksınız? (2 Seçim Yapın)</h4>
+                                <h4>What strategic improvement and training recommendations will you present to management? (Make 2 Choices)</h4>
                                 <div class="decision-buttons">
-                                    <button class="btn" data-decision="d6-reporting-report"><i class="fa-solid fa-file-lines"></i><div class="btn-text">Seçenek A: Kapsamlı Olay Sonrası Rapor (Post-Incident Report) Hazırlamak<small>Olayın detaylarını, kullanılan araçları, çözümü ve maliyet etkilerini kapsayan kapsamlı bir rapor hazırlayın.</small></div></button>
-                                    <button class="btn critical" data-decision="d6-reporting-dvs"><i class="fa-solid fa-diagram-project"></i><div class="btn-text">Seçenek B: Dağıtık Sanal Anahtara (DVS) Geçiş Önerisi<small>Daha gelişmiş yönetim ve özellikler sunan Dağıtık Sanal Anahtar (DVS) gibi bir çözüme geçiş için yönetime bir öneri sunun.</small></div></button>
-                                    <button class="btn" data-decision="d6-reporting-training"><i class="fa-solid fa-chalkboard-user"></i><div class="btn-text">Seçenek C: Personel Eğitimi Planı Hazırlamak<small>Ağ ve sanallaştırma ekiplerinin, sanal ağ yönetimi ve paket analizi gibi konularda eğitim alması için bir plan hazırlayın.</small></div></button>
+                                    <button class="btn" data-decision="d6-reporting-report"><i class="fa-solid fa-file-lines"></i><div class="btn-text">Option A: Prepare a Comprehensive Post-Incident Report<small>Prepare a comprehensive report detailing the incident, tools used, solution, and cost impact.</small></div></button>
+                                    <button class="btn critical" data-decision="d6-reporting-dvs"><i class="fa-solid fa-diagram-project"></i><div class="btn-text">Option B: Propose Migration to a Distributed Virtual Switch (DVS)<small>Submit a proposal to management to switch to a solution like a DVS, which offers more advanced management and features.</small></div></button>
+                                    <button class="btn" data-decision="d6-reporting-training"><i class="fa-solid fa-chalkboard-user"></i><div class="btn-text">Option C: Prepare a Staff Training Plan<small>Prepare a plan for network and virtualization teams to receive training on topics like virtual network management and packet analysis.</small></div></button>
                                 </div>
                             </div>
-                            <div class="learning-note"><strong>Öğrenme Notu:</strong> Etkin kriz yönetimi, sadece teknik çözümler sunmakla kalmaz, aynı zamanda kurumsal bilgi birikimini artırır ve geleceğe yönelik stratejik planlama yapılmasına olanak tanır.</div>
+                            <div class="learning-note"><strong>Learning Note:</strong> Effective crisis management not only provides technical solutions but also enhances corporate knowledge and enables strategic planning for the future.</div>
                         </div>
 
                         <div id="finalSection" class="section centered-page" style="display: none;">
-                            <h2><i class="fa-solid fa-chart-line"></i> Kriz Sonrası Değerlendirme Raporu</h2>
-                            <p>Simülasyon tamamlandı. Kriz yönetimi performansınızın detaylı dökümü aşağıdadır.</p>
+                            <h2><i class="fa-solid fa-chart-line"></i> Post-Crisis Evaluation Report</h2>
+                            <p>Simulation complete. A detailed breakdown of your crisis management performance is below.</p>
                             <div id="performance-badge-container"><span id="performance-badge"></span></div>
                             <div class="final-metrics" id="finalMetricsContainer"></div>
                             <div class="post-crisis-layout">
                                 <div class="event-timeline">
-                                    <h3><i class="fa-solid fa-timeline"></i> Karar Zaman Tüneli</h3>
+                                    <h3><i class="fa-solid fa-timeline"></i> Decision Timeline</h3>
                                     <ul id="decision-timeline-list"></ul>
                                 </div>
                                 <div class="strategic-debrief">
-                                    <h3><i class="fa-solid fa-lightbulb"></i> Stratejik Değerlendirme</h3>
+                                    <h3><i class="fa-solid fa-lightbulb"></i> Strategic Debrief</h3>
                                     <div id="strategic-debrief-content"></div>
-                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Puan Dökümü</h3>
+                                    <h3 style="margin-top: 20px;"><i class="fa-solid fa-calculator"></i> Score Breakdown</h3>
                                     <ul id="score-breakdown"></ul>
                                 </div>
                             </div>
                             <div class="decision-buttons" style="margin-top: 40px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Simülasyonu Yeniden Başlat</button>
+                                <button class="btn btn-start" onclick="location.reload()"><i class="fa-solid fa-arrow-rotate-right"></i> Restart Simulation</button>
                             </div>
                         </div>
                     `;
@@ -1256,7 +1256,7 @@
                         this.updateTimerUI();
                         if (this.timer.remaining <= 0) {
                             this.stopGlobalTimer();
-                            alert("Süre doldu! Rapor oluşturuluyor.");
+                            alert("Time's up! Generating report.");
                             this.showFinalReport();
                         }
                     }, 1000);
@@ -1286,10 +1286,10 @@
                 },
 
                 async saveLeaderboard(finalScore) {
-                    const name = localStorage.getItem('playerName') || 'Anonim';
+                    const name = localStorage.getItem('playerName') || 'Anonymous';
                     
                     const payload = {
-                        scenario: 'v5-sanallastirma',
+                        scenario: 'v5-virtualization',
                         name: name.toString().slice(0, 40),
                         score: finalScore,
                         details: {
@@ -1309,10 +1309,10 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
-                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                        if (!res.ok) throw new Error('API request failed: ' + res.status);
                     } catch(e) {
-                        console.warn("API'ye ulaşılamadı. Puan yerel olarak saklanıyor.");
-                        const key = 'leaderboard-v5-sanallastirma';
+                        console.warn("Could not reach API. Score is being saved locally.");
+                        const key = 'leaderboard-v5-virtualization';
                         const arr = JSON.parse(localStorage.getItem(key) || '[]');
                         arr.push(payload);
                         arr.sort((a,b)=> b.score - a.score);
@@ -1322,22 +1322,22 @@
 
                 async loadLeaderboard() {
                     const tbody = this.elements.leaderboard.body;
-                    const key = 'leaderboard-v5-sanallastirma';
-                    tbody.innerHTML = `<tr><td colspan="4">Yükleniyor…</td></tr>`;
+                    const key = 'leaderboard-v5-virtualization';
+                    tbody.innerHTML = `<tr><td colspan="4">Loading…</td></tr>`;
                     let rows = [];
                     try {
-                        const res = await fetch('/api/leaderboard?scenario=v5-sanallastirma', { method:'GET' });
-                        if (!res.ok) throw new Error('API isteği başarısız: ' + res.status);
+                        const res = await fetch('/api/leaderboard?scenario=v5-virtualization', { method:'GET' });
+                        if (!res.ok) throw new Error('API request failed: ' + res.status);
                         const data = await res.json();
                         rows = Array.isArray(data) ? data : [];
                     } catch(e) {
-                        console.warn("API'ye ulaşılamadı. Liderlik tablosu yerelden yükleniyor.");
+                        console.warn("Could not reach API. Leaderboard is being loaded from local storage.");
                         const arr = JSON.parse(localStorage.getItem(key) || '[]');
                         rows = arr.map(x => ({ name: x.name, score: x.score, timestamp: x.timestamp }));
                     }
 
                     if (!rows.length) {
-                        tbody.innerHTML = `<tr><td colspan="4">Henüz kayıt bulunmuyor.</td></tr>`;
+                        tbody.innerHTML = `<tr><td colspan="4">No records found yet.</td></tr>`;
                         return;
                     }
                     
@@ -1345,9 +1345,9 @@
                     tbody.innerHTML = rows.slice(0,50).map((r,i)=>`
                         <tr>
                             <td>${i+1}</td>
-                            <td>${(r.name || 'Anonim').toString().slice(0,40)}</td>
+                            <td>${(r.name || 'Anonymous').toString().slice(0,40)}</td>
                             <td>${r.score}</td>
-                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('tr-TR') : '-'}</td>
+                            <td>${r.timestamp ? new Date(r.timestamp).toLocaleString('en-US') : '-'}</td>
                         </tr>
                     `).join('');
                 }
